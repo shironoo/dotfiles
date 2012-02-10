@@ -1,0 +1,39 @@
+#alias
+
+alias ls='ls --color=auto'
+#alias vdir='vdir --color=auto'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
+# some more ls aliases
+alias ll='ls -alhF'
+alias la='ls -A'
+alias l='ls -CF'
+
+
+alias la="ls -a"
+alias lf="ls -F"
+alias ll="ls -l"
+
+alias du="du -h"
+alias df="df -h"
+
+alias su="su -l"
+alias sudo='sudo '
+
+alias tree="tree -NC"
+
+alias up="cd .."
+alias cl="clear"
+
+alias pbcopy="xsel -ib"
+alias pbpaste="xsel -ob"
+
+alias pu="pushd"
+alias po="popd"
+alias pp="dirs"
+
+alias emacs="emacs"
+alias ew="emacs"
+alias em="emacs -nw"
