@@ -148,7 +148,7 @@
 
 ;; latexmk
 ;(setq tex-command "platex")
-;(setq tex-command "latexmk -pv -dvi")
+(setq tex-command "latexmk -pv -dvi")
 
 ;yatex-mode
 (setq auto-mode-alist
