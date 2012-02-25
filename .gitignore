@@ -4,3 +4,4 @@
 .emacs.d/backup/
 .emacs.d/ac-comphist.dat
 .emacs.d/session.*
+.emacs.d/ede-projects.el
