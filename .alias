@@ -37,3 +37,5 @@ alias pp="dirs"
 alias emacs="emacs"
 alias ew="emacs"
 alias em="emacs -nw"
+
+alias lv="lv -c"
