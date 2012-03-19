@@ -9,3 +9,11 @@
 (global-set-key "\C-c\C-d" 'my-get-date)
 (global-set-key "\C-c\C-t" 'my-get-time)
 (global-set-key "\C-c\ed" 'my-get-dtime)
+
+;; C-,で次のバッファへ切り替え
+(global-set-key [?\C-,] 'other-window)
+;; C-.で前のバッファへ切り替え
+(defun back-window ()
+  (interactive)
+  (other-window -1))
+(global-set-key [?\C-.] 'back-window)
