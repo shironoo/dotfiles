@@ -1,2 +1,2 @@
-escape ^z^z
+#escape ^z^z
 scrollback 10000
