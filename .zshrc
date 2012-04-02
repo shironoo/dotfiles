@@ -11,8 +11,9 @@ setopt transient_rprompt # 右側まで入力がきたら時間を消す
 setopt prompt_subst # 便利なプロント
 bindkey -e # emacsライクなキーバインド
 
-#ls に色をつける
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+#補完候補に色をつける
+eval `dircolors -b`
+zstyle ':completion:*' list-colors di=34 fi=0
 
 export LANG=ja_JP.UTF-8 # 日本語環境
 export EDITOR=emacs # エディタはemacs
@@ -28,7 +29,6 @@ setopt auto_cd # 自動的にディレクトリ移動
 setopt list_packed # リストを詰めて表示
 setopt list_types # 補完一覧ファイル種別表示
 #setopt correct #コマンドの間違いを修正
-
 
 # 履歴
 HISTFILE=~/.zsh_history # historyファイル
