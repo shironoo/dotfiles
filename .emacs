@@ -31,6 +31,7 @@
         ;(expand-file-name "~/.emacs.d/elisp/mode/evernote/")
 	(expand-file-name "~/.emacs.d/elisp/color-theme/")
 	(expand-file-name "~/.emacs.d/elisp/riece-8.0.0/")
+	(expand-file-name "~/.emacs.d/elisp/twittering/")
         )
        load-path))
 
