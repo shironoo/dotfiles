@@ -1,0 +1,40 @@
+# intel compiler
+if [ -f /opt/intel/composerxe-2011.4.191/bin/iccvars.sh ]; then
+   . /opt/intel/composerxe-2011.4.191/bin/iccvars.sh intel64
+fi
+
+# python
+if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
+   #export PYTHONPATH=/usr/local/lib/python2.6/dist-packages/
+   #export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/
+   export WORKON_HOME=${HOME}/venvs
+   source /usr/local/bin/virtualenvwrapper.sh
+fi
+
+# syntax highlight
+if [ -f /usr/share/source-highlight/src-hilite-lesspipe.sh ]; then
+   export LESS='-R'
+   export LESSOPEN='| /usr/share/source-highlight/src-hilite-lesspipe.sh %s'
+fi
+
+# pip
+export PIP_DOWNLOAD_CACHE=${HOME}/.pip_cache
+export PIP_RESPECT_VIRTUALENV=true
+PIP_REQUIRE_VIRTUALENV=true
+
+# autojump
+if [ -f /usr/share/autojump/autojump.sh ]; then
+   . /usr/share/autojump/autojump.sh
+fi
+
+#=============================
+# source auto-fu.zsh
+#=============================
+if [ -f ~/.zsh/auto-fu.zsh ]; then
+    source ~/.zsh/auto-fu.zsh
+    function zle-line-init () {
+        auto-fu-init
+    }
+    zle -N zle-line-init
+    zstyle ':completion:*' completer _oldlist _complete
+fi
