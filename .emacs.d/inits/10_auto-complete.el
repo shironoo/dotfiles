@@ -1,4 +1,6 @@
-;; auto-completeを有効にする
-(require 'auto-complete)
-(require 'auto-complete-config)    ; 必須ではないですが一応
-(global-auto-complete-mode t)
+;; auto-complete
+(when (require 'auto-complete-config nil t)
+  (add-to-list 'ac-dictionary-directories
+               "~/.emacs.d/elisp/ac-dict")
+  (define-key ac-mode-map (kbd "TAB") 'auto-complete)
+  (ac-config-default))
