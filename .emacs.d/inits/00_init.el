@@ -10,11 +10,24 @@
 	    (when (equal "Japanese" current-language-environment)
 	      (setq default-buffer-file-coding-system 'utf-8))))
 
-; C-x bでバッファリストをミニバッファに表示する。超便利。
+;; C-x bでバッファリストをミニバッファに表示する。超便利。
 (iswitchb-mode 1)
 
-;; backup-file-directory
-(setq backup-directory-alist '(("." . "~/.emacs.d/backup")))
+;; バックアップファイルとオートセーブファイルの置場所
+(add-to-list 'backup-directory-alist
+      (cons "." "~/.emacs.d/backup/"))
+(setq auto-save-file-name-transforms
+      `((".*" ,(expand-file-name "~/.emacs.d/backup/") t)))
 
-; xのクリップボードを使えるように
+;; xのクリップボードを使えるように
 (setq x-select-enable-clipboard t)
+
+;; TAB幅を4に
+(setq-default tab-width 4)
+
+;; インデントにTAB文字を使用しない
+(setq-default indent-tabs-mode nil)
+
+;; ファイルが#!から始まる場合，実行権限をつけて保存する
+(add-hook 'after-save-hook
+          'executable-make-buffer-file-executable-if-script-p)
