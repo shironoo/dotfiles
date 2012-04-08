@@ -37,13 +37,13 @@ alias po="popd"
 alias pp="dirs"
 
 alias emacs23="TERM=xterm-256color emacs23"
-alias ew="emacs23"
-alias em="emacs23 -nw"
-alias emacs="emacsclient"
+alias ew2="emacs23"
+alias em2="emacs23 -nw"
+alias emacs="TERM=xterm-256color emacsclient"
 alias e="emacs"
 alias en="emacs -n"
 alias ew="emacs -nc"
-alias em="emacs -nw"
+alias em="emacs -tc"
 alias lv="lv -c"
 
 alias -g L='| lv -c'
