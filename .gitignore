@@ -1,7 +1,7 @@
 *~
 *.elc
-.emacs.d/auto-save-list/
 .emacs.d/backup/
 .emacs.d/ac-comphist.dat
 .emacs.d/session.*
 .emacs.d/ede-projects.el
+.emacs.d/url/
