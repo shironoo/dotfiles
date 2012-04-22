@@ -20,6 +20,7 @@ export EDITOR=emacs # エディタはemacs
 PATH=$PATH:/pub1/ensyu/compiler/util/
 PATH=$PATH:/pub1/ensyu/compiler/visvm/
 export PATH
+export TERM=xterm-256color
 
 autoload -U compinit # 強力な補完機能
 compinit -u # このあたりを使わないとzsh使ってる意味なし
