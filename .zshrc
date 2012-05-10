@@ -17,9 +17,6 @@ zstyle ':completion:*' list-colors di=34 fi=0
 
 export LANG=ja_JP.UTF-8 # 日本語環境
 export EDITOR=emacs # エディタはemacs
-PATH=$PATH:/pub1/ensyu/compiler/util/
-PATH=$PATH:/pub1/ensyu/compiler/visvm/
-export PATH
 export TERM=xterm-256color
 
 autoload -U compinit # 強力な補完機能
