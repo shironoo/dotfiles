@@ -23,7 +23,7 @@
         ;(expand-file-name "~/.emacs.d/elisp/mode/psgml/")
         ;(expand-file-name "~/.emacs.d/elisp/mode/yml/")
         ;(expand-file-name "~/.emacs.d/elisp/mode/javascript/")
-        (expand-file-name "~/.emacs.d/elisp/mode/yatex/")
+        (expand-file-name "~/.emacs.d/elisp/yatex/")
         (expand-file-name "~/.emacs.d/elisp/auto-complete/")
         ;(expand-file-name "~/.emacs.d/elisp/mode/hatena/")
         ;(expand-file-name "~/.emacs.d/elisp/mode/ruby/")
