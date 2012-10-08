@@ -8,5 +8,9 @@
 (autoload 'yatex-mode "yatex" "Yet Another LaTeX mode" t)
 ; previous key-bind
 (setq YaTeX-inhibit-prefix-letter nil)
-; tex -> euc-jp
-(setq YaTeX-kanji-code 3)
+; kanji code
+; 1 = Shift_JIS
+; 2 = ISO-2022-JP
+; 3 = EUC-JP
+; 4 = UTF-8
+(setq YaTeX-kanji-code 4)
