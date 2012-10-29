@@ -1,5 +1,5 @@
 $latex = 'platex';
-$pdflatex = 'pdflatex';
+$pdflatex = 'pdfplatex';
 $bibtex = 'jbibtex';
 $makeindex = 'mendex';
 $dvipdf = 'dvipdfmx';
