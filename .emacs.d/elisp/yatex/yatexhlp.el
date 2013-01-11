@@ -32,11 +32,11 @@
 (defvar YaTeX-help-saved-config nil
   "Holds window configruation before the editing of manual.")
 (defvar YaTeX-help-synopsis
-  (cond (YaTeX-japan "y‘®z")
+  (cond (YaTeX-japan "ã€æ›¸å¼ã€‘")
 	(t "[[ Synopsis ]]"))
   "Section header of synopsis.")
 (defvar YaTeX-help-description
-  (cond (YaTeX-japan "yà–¾z")
+  (cond (YaTeX-japan "ã€èª¬æ˜ã€‘")
 	(t "[[ Description ]]"))
   "Section header of description.")
 
@@ -240,7 +240,7 @@ Where:	<DELIM> is the value of YaTeX-help-delimiter.
     (define-key YaTeX-help-entry-map "\r" 'YaTeX-help-newline)
     (use-local-map YaTeX-help-entry-map)
     (message
-     (cond (YaTeX-japan "“ü—Í‚ğI‚¦‚½‚ç . ‚Ì‚İ“ü—Í‚µ‚ÄRET")
+     (cond (YaTeX-japan "å…¥åŠ›ã‚’çµ‚ãˆãŸã‚‰ . ã®ã¿å…¥åŠ›ã—ã¦RET")
 	   (t "Type only `.' and RET to exit.")))))
 
 (defun YaTeX-enrich-help (command)

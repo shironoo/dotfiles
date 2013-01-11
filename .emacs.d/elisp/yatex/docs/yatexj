@@ -11,378 +11,378 @@ File: yatexj, Node: Top, Next: Intro, Prev: (dir), Up: (dir)
 
 * Menu:
 
-* Intro::                       $B$O$8$a$K(B
-* Terminology::                 $B%^%K%e%"%k;2>H>e$NCm0U(B
-* Main features::               $B<g$J5!G=(B
-* Installation::                $B%$%s%9%H!<%k(B
-* Invocation::                  $B%W%m%;%95/F0(B
-* %#notation ::                 %#$B5-K!(B
-* Completion::                  $BJd40F~NO(B
-* Local dictionary::            $B%m!<%+%k<-=q(B
-* Commenting out::              $B%3%a%s%H%"%&%H(B
-* Cursor jump::                 $B%+!<%=%k%8%c%s%W(B
-* Modifying/Deleting::          LaTeX$B%3%^%s%I$NJQ99(B/$B:o=|(B
-* Filling::                     $B7eB7$((B
-* Includeonly::                 $B>!<j$K(B includeonly
-* What column::                 $B%+%i%`0LCV%,%$%I(B
-* Intelligent newline::         $B$*$^$+$;2~9T(B
-* Usepackage cheker::           $B@h2s$j(Busepackage
-* Changing mode of YaTeX::      $BLnD;F0:n%b!<%IJQ99(B
-* Online help::                 LaTeX$B%*%s%i%$%s%X%k%W(B
-* Inclusion hierarchy browser::  $B%U%!%$%kJ,3d3,AX9=B$$NI=<((B
-* Cooperation with other packages::  $BB>%Q%C%1!<%8$H$NO"7H(B
-* Customizations::              $B%+%9%?%^%$%:(B
-* Etc::                         $B$=$NB>(B
-* Copying::                     $B<h$j07$$(B
-* Concept Index::               $B:w0z(B
+* Intro::                       はじめに
+* Terminology::                 マニュアル参照上の注意
+* Main features::               主な機能
+* Installation::                インストール
+* Invocation::                  プロセス起動
+* %#notation ::                 %#記法
+* Completion::                  補完入力
+* Local dictionary::            ローカル辞書
+* Commenting out::              コメントアウト
+* Cursor jump::                 カーソルジャンプ
+* Modifying/Deleting::          LaTeXコマンドの変更/削除
+* Filling::                     桁揃え
+* Includeonly::                 勝手に includeonly
+* What column::                 カラム位置ガイド
+* Intelligent newline::         おまかせ改行
+* Usepackage cheker::           先回りusepackage
+* Changing mode of YaTeX::      野鳥動作モード変更
+* Online help::                 LaTeXオンラインヘルプ
+* Inclusion hierarchy browser::  ファイル分割階層構造の表示
+* Cooperation with other packages::  他パッケージとの連携
+* Customizations::              カスタマイズ
+* Etc::                         その他
+* Copying::                     取り扱い
+* Concept Index::               索引
 
 
 
 File: yatexj, Node: Intro, Next: Terminology, Prev: Top, Up: Top
 
-$B$O$8$a$K(B
+はじめに
 ********
 
-  $BLnD;$O!"(BGNU Emacs $B$G(B LaTeX $BMQ$NJ8=q$r:n@.$9$k;~$K(B pLaTeX $B$J$I$N%?%$%W%;%C(B
-$B%H%3%^%s%I$d!"%W%l%t%e!<%"$N5/F0$r(B Emacs $BJT=82hLLCf$+$i9T$($k$h$&$K$9$k$H(B
-$B6&$K!"3HD%@-$N9b$$<o!9$NJd405!G=$K$h$j%=!<%9%F%-%9%H$NJT=8$r;Y1g$7$^$9!#$5(B
-$B$i$K(B LaTeX $B%3%^%s%I$N%*%s%i%$%s%X%k%W$K$h$j%^%K%e%"%k$rD4$Y$k<j4V$r7Z8:$7(B
-$B$^$9!#(B
+  野鳥は、GNU Emacs で LaTeX 用の文書を作成する時に pLaTeX などのタイプセッ
+トコマンドや、プレヴューアの起動を Emacs 編集画面中から行えるようにすると
+共に、拡張性の高い種々の補完機能によりソーステキストの編集を支援します。さ
+らに LaTeX コマンドのオンラインヘルプによりマニュアルを調べる手間を軽減し
+ます。
 
   English manual *Note Top: (yatexe)Top.
 
 
 File: yatexj, Node: Terminology, Next: Main features, Prev: Intro, Up: Top
 
-$BK\%^%K%e%"%k;2>H>e$NCm0U(B
+本マニュアル参照上の注意
 ************************
 
-  $BK\%^%K%e%"%k$G$O0J2<$NI=5-$rMQ$$$^$9!#(B
+  本マニュアルでは以下の表記を用います。
 
-   * begin$B7?%3%^%s%I(B
+   * begin型コマンド
 
-     `\begin{$B4D6-(B} $B!A(B \end{$B4D6-(B}'$B$H$$$&7A<0$N(BLaTeX$B%3%^%s%I$r;X$7$^$9!#(B
-     begin$B7?%3%^%s%I$rJd40F~NO$9$k$3$H$r(Bbegin$B7?Jd40$H8F$S$^$9!#(B
+     `\begin{環境} 〜 \end{環境}'という形式のLaTeXコマンドを指します。
+     begin型コマンドを補完入力することをbegin型補完と呼びます。
 
-   * section$B7?%3%^%s%I(B
+   * section型コマンド
 
-     `\section{$B%?%$%H%k(B}'$B$d(B`\mbox{$BFbMF(B}'$B$N$h$&$K0z?t$r<h$k(BLaTeX$B%3%^%s%I$r(B
-     $B;X$7$^$9!#(B
+     `\section{タイトル}'や`\mbox{内容}'のように引数を取るLaTeXコマンドを
+     指します。
 
-   * maketitle$B7?%3%^%s%I(B
+   * maketitle型コマンド
 
-     `\maketitle'$B$d(B`\tableofcontents'$B$N$h$&$K0z?t$r<h$i$J$$(BLaTeX$B%3%^%s%I$r(B
-     $B;X$7$^$9!#(B
+     `\maketitle'や`\tableofcontents'のように引数を取らないLaTeXコマンドを
+     指します。
 
-   * large$B7?%3%^%s%I(B
+   * large型コマンド
 
-     `{\large ...}' $B$d(B `{\tt ...}' $B$N$h$&$J%U%)%s%H(B/$B%5%$%:;XDj;R$r;X$7$^$9!#(B
+     `{\large ...}' や `{\tt ...}' のようなフォント/サイズ指定子を指します。
 
    * `[prefix]'
 
-     $BLnD;$N5!G=$r8F$S=P$9$?$a$N%W%j%U%#%/%9%-!<!#%G%U%)%k%H$G$O(B`C-c'$B$K3d$j(B
-     $BEv$F$i$l$F$$$k$N$G!"FC$KJQ99$7$F$$$J$$>l9gK\%^%K%e%"%k$N(B `[prefix]' 
-     $B$H$$$&I=5-$O!"(B`C-c' $B$HFI$_49$($F$/$@$5$$!#(B
+     野鳥の機能を呼び出すためのプリフィクスキー。デフォルトでは`C-c'に割り
+     当てられているので、特に変更していない場合本マニュアルの `[prefix]' 
+     という表記は、`C-c' と読み換えてください。
 
 
 File: yatexj, Node: Main features, Next: Installation, Prev: Terminology, Up: Top
 
-$B<g$J5!G=(B
+主な機能
 ********
 
-   * $B%?%$%W%;%C%?$d%W%l%t%e!<%"$J$I$NJT=82hLL$+$i$N5/F0(B(`C-c t')
-   * $B%+!<%=%k0LCV$K$h$i$J$$8GDj%j%8%g%s$NItJ,%?%$%W%;%C%H(B
-   * \includeonly$B$N%o%s%?%C%A99?7(B
-   * $B%(%i!<2U=j$X$N<+F0%8%c%s%W(B(`C-c '')
-   * `\begin{}, \end{}, \section...' $B$J$I$N(B LaTeX$B%3%^%s%I$NJd40F~NO(B(`C-c
+   * タイプセッタやプレヴューアなどの編集画面からの起動(`C-c t')
+   * カーソル位置によらない固定リジョンの部分タイプセット
+   * \includeonlyのワンタッチ更新
+   * エラー箇所への自動ジャンプ(`C-c '')
+   * `\begin{}, \end{}, \section...' などの LaTeXコマンドの補完入力(`C-c
      b', `C-c s', `C-c l', `C-c m')
-   * $B4{$KF~NO$7$?%F%-%9%H$r4D6-$d%3%^%s%I0z?t$NCf$K<h$j9~$`3g$jJd40(B(`C-u'
-     +$BDL>oJd40%-!<(B)
-   * $B%;%/%7%g%s6h@Z$jF~NO;~$NJ8=q9=B$%"%&%H%i%$%sI=<((B
-   * $B%;%/%7%g%s%3%^%s%I$N0l3g%7%U%H(B (*Note view-sectioning::)
-   * $BJd40<-=q$N3X=,(B
-   * LaTeX $B$N4D6-$d%3%^%s%I$K1~$8$?%,%$%IIU$-0z?tF~NO(B
-   * $BLnD;$K$J$$%,%$%IIU$-0z?tF~NO4X?t$N<+F0@8@.(B(`yatexgen.el')
-   * LaTeX $B%3%^%s%I$N:o=|(B/$BJQ99(B(`C-c k', `C-c c')
-   * $B%U%!%$%k4V!"(B`\begin'<->`\end'$B4V!"(B
-             `\ref'<->`\label'$B4V!"(B
-             `\cite'<->`\bibitem'$B%8%c%s%W(B(`C-c g')
-   * $B0l3g%3%a%s%H%"%&%H(B/$B%"%s%3%a%s%H%"%&%H(B
+   * 既に入力したテキストを環境やコマンド引数の中に取り込む括り補完(`C-u'
+     +通常補完キー)
+   * セクション区切り入力時の文書構造アウトライン表示
+   * セクションコマンドの一括シフト (*Note view-sectioning::)
+   * 補完辞書の学習
+   * LaTeX の環境やコマンドに応じたガイド付き引数入力
+   * 野鳥にないガイド付き引数入力関数の自動生成(`yatexgen.el')
+   * LaTeX コマンドの削除/変更(`C-c k', `C-c c')
+   * ファイル間、`\begin'<->`\end'間、
+             `\ref'<->`\label'間、
+             `\cite'<->`\bibitem'ジャンプ(`C-c g')
+   * 一括コメントアウト/アンコメントアウト
              (`C-c >', `C-c <', `C-c ,', `C-c .')
-   * $B%"%/%;%s%H5-9f(B/$B?t<04D6-MQ%3%^%s%I(B/$B%.%j%7%cJ8;z$NF~NO;Y1g(B
+   * アクセント記号/数式環境用コマンド/ギリシャ文字の入力支援
              (`C-c a', `;', `/')
-   * tabular/array$B4D6-$N%+%i%`0LCV%,%$%I(B
-   * $BI8=`E*(B LaTeX $B%3%^%s%I$N%*%s%i%$%s%X%k%W(B(`C-c ?', `C-c /')
-   * $B%I%-%e%a%s%H$N%$%s%/%k!<%I9=B$$N;k3PE*I=<($H%P%C%U%!@Z$jBX$((B(`C-c d')
-   * $BJd40F~NO$7$?%^%/%m$K1~$8$FI,MW$J(B \userpackage $B$rF~$l$F$/$l$k@h2s$j(B
+   * tabular/array環境のカラム位置ガイド
+   * 標準的 LaTeX コマンドのオンラインヘルプ(`C-c ?', `C-c /')
+   * ドキュメントのインクルード構造の視覚的表示とバッファ切り替え(`C-c d')
+   * 補完入力したマクロに応じて必要な \userpackage を入れてくれる先回り
      userpackage
-   * \label$B$rBG$D$3$H$O$b$&K:$l$h$&(B! ref$B$d(Bcite$BJd40F~NO$G<+F0@8@.$7$^$9(B
+   * \labelを打つことはもう忘れよう! refやcite補完入力で自動生成します
 
 
 File: yatexj, Node: Installation, Next: Invocation, Prev: Main features, Up: Top
 
-$B5/F0K!(B
+起動法
 ******
 
-$BLnD;5/F0$N$?$a$N@_Dj(B
+野鳥起動のための設定
 ====================
 
-  ~/.emacs$B$K2<$N(B2$B9`L\$r2C$($^$9!#(B
+  ~/.emacsに下の2項目を加えます。
 
      (setq auto-mode-alist
            (cons (cons "\\.tex$" 'yatex-mode) auto-mode-alist))
      (autoload 'yatex-mode "yatex" "Yet Another LaTeX mode" t)
 
-$B<!$KLnD;$N(B emacs-lisp $B%U%!%$%k72$rCV$/%G%#%l%/%H%j$r(B load-path $B$K2C$($^$9!#(B
-$B$?$H$($P!"(B `~/src/emacs/yatex'$B$KCV$/$N$G$"$l$P!"(B
+次に野鳥の emacs-lisp ファイル群を置くディレクトリを load-path に加えます。
+たとえば、 `~/src/emacs/yatex'に置くのであれば、
 
      (setq load-path (cons (expand-file-name "~/src/emacs/yatex") load-path))
 
-$B$J$I$H$7$^$9!#(B
+などとします。
 
-  $B0J>e$N@_Dj$K$h$j!"3HD%;R$,(B .tex $B$G$"$k%U%!%$%k$rJT=8$9$k$H<+F0E*$KLnD;$,(B
-$B%m!<%I$5$l$^$9!#LnD;$,@5>o$K5/F0$G$-$?$H$-$O%b!<%I%i%$%s$NI=<($,!V$d$F$U!W(B
-$B$KJQ$o$j$^$9!#(B
+  以上の設定により、拡張子が .tex であるファイルを編集すると自動的に野鳥が
+ロードされます。野鳥が正常に起動できたときはモードラインの表示が「やてふ」
+に変わります。
 
 
-$B%?%$%W%;%C%?(B/$B%W%l%t%e!<%"4D6-$N@_Dj(B
+タイプセッタ/プレヴューア環境の設定
 ===================================
 
-  $BMxMQ$9$k30It%W%m%0%i%`$K4X$9$k0J2<$NJQ?t$r3NG'$7!"I,MW$J$i@5$7$$CM$KJQ99(B
-$B$7$^$9!#(B
+  利用する外部プログラムに関する以下の変数を確認し、必要なら正しい値に変更
+します。
 `tex-command'
-             ... $B5/F0$9$k%?%$%W%;%C%?$N%3%^%s%IL>(B
+             ... 起動するタイプセッタのコマンド名
 `dvi2-command'
-             ... $B5/F0$9$k%W%l%t%e!<%"$N%3%^%s%IL>(B
+             ... 起動するプレヴューアのコマンド名
 `NTT-jTeX'
-             ... $B2~9T(B+$B%$%s%G%s%H$K$h$C$F!"%?%$%W%;%C%H8e$N;z4V$,6u$$$F$7$^(B
-             $B$&$N$rM^@)$9$k>l9g$K(Bt$B$K$9$k(B($B8E$$(BNTT-jTeX$B$G82Cx$K8=$l$k(B)$B!#6qBN(B
-     $BE*$K$O!"(B
-             fill$B$9$k$H$-$K3F9T$N=*$o$j$K(B%$B$rIU2C$9$k$h$&$K$J$k!#(B
+             ... 改行+インデントによって、タイプセット後の字間が空いてしま
+             うのを抑制する場合にtにする(古いNTT-jTeXで顕著に現れる)。具体
+     的には、
+             fillするときに各行の終わりに%を付加するようになる。
 `YaTeX-kanji-code'
-             ... $BJ8=q$r:n@.$9$k;~$N4A;z%3!<%I(B
+             ... 文書を作成する時の漢字コード
 `dviprint-command-format'
-             ... $B%U%!%$%k$N0u:~$K;H$o$l$k%3%^%s%INs$N=q<0(B
+             ... ファイルの印刷に使われるコマンド列の書式
 `makeindex-command'
-             ... makeindex$B%3%^%s%I(B
+             ... makeindexコマンド
 
-$B$3$l$i$rJQ99$9$k>l9g$O!"$d$O$j(B`~/.emacs'$B$K$F!"$?$H$($P(B
+これらを変更する場合は、やはり`~/.emacs'にて、たとえば
      (setq tex-command "bigjlatex")
-$B$N$h$&$K$7$F$/$@$5$$!#$I$N$h$&$JCM$r%;%C%H$9$l$PNI$$$+$K$D$$$F$O!"(B
-*Note All customizable variables::$B$r;2>H$7$F$/$@$5$$!#(B
+のようにしてください。どのような値をセットすれば良いかについては、
+*Note All customizable variables::を参照してください。
 
 
 
 File: yatexj, Node: Invocation, Next: %#notation, Prev: Installation, Up: Top
 
-latex$B%3%^%s%I5/F0(B
+latexコマンド起動
 *****************
 
-LaTeX$B%=!<%9$NJT=8Cf!"<!$N%-!<F~NO$K$h$j!"(Bplatex $B$J$I$N%?%$%W%;%C%H%W%m%0%i(B
-$B%`(B($B0J8e%?%$%W%;%C%?$H8F$V(B)$B!"%W%l%t%e!<%"$J$I$N5/F0$,$G$-$^$9!#(B
+LaTeXソースの編集中、次のキー入力により、platex などのタイプセットプログラ
+ム(以後タイプセッタと呼ぶ)、プレヴューアなどの起動ができます。
 
 `[prefix] t j'
-             ... $B%?%$%W%;%C%?(B(platex)$B5/F0(B
+             ... タイプセッタ(platex)起動
 `[prefix] t r'
-             ... $B%?%$%W%;%C%?5/F0(B($BNN0h;XDj(B)
+             ... タイプセッタ起動(領域指定)
 `[prefix] t k'
-             ... $BF0:nCf$N%?%$%W%;%C%?$NDd;_(B
+             ... 動作中のタイプセッタの停止
 `[prefix] t b'
-             ... jbibtex$B5/F0(B
+             ... jbibtex起動
 `[prefix] t p'
-             ... $B%W%l%t%e!<%"5/F0(B
+             ... プレヴューア起動
 `[prefix] t l'
-             ... lpr($B%W%j%s%H%"%&%HMQ(B)$B%3%^%s%I5/F0(B
+             ... lpr(プリントアウト用)コマンド起動
 `[prefix] t s'
-             ... xdvi -remote $B$G$N%5!<%A(B
+             ... xdvi -remote でのサーチ
 
 * Menu:
 
-* Calling typesetter::          $B%?%$%W%;%C%?5/F0(B
-* Calling previewer::           $B%W%l%t%e!<%"5/F0(B
-* Print out::                   $B%W%j%s%H%"%&%HMQ%3%^%s%I$N5/F0(B
+* Calling typesetter::          タイプセッタ起動
+* Calling previewer::           プレヴューア起動
+* Print out::                   プリントアウト用コマンドの起動
 
 
 File: yatexj, Node: Calling typesetter, Next: Calling previewer, Prev: Invocation, Up: Invocation
 
-$B%?%$%W%;%C%?5/F0(B
+タイプセッタ起動
 ================
 
-  $B%?%$%W%;%C%?$r5/F0$9$k$H!"JT=8%&%#%s%I%&$,(B2$B$D$KJ,3d$5$l!"JRJ}$N%&%#%s%I(B
-$B%&$K%?%$%W%;%C%H2hLL$,I=<($5$l$^$9!#=PNO$5$l$k%a%C%;!<%8$HO"F0$7%?%$%W%;%C(B
-$B%H%P%C%U%!$O<+F0E*$K%9%/%m!<%k$7$^$9!#$b$7!"ESCf$G%(%i!<$,5/$3$C$F;_$^$C$F(B
-$B$7$^$C$?>l9g$K$O%?%$%W%;%C%H%P%C%U%!$K0\$j!"(B(`C-x o') $B%?%$%W%;%C%?$N=P$7$F(B
-$B$$$k(B ? $B%W%m%s%W%H$KBP$7$F!"(B`x' ($B=hM}$NCfCG(B)$B$J$I$N;X<($rAw$k$3$H$,$G$-$^$9!#(B
-$B%(%i!<$r=$@5$9$k>l9g$O!"(B
+  タイプセッタを起動すると、編集ウィンドウが2つに分割され、片方のウィンド
+ウにタイプセット画面が表示されます。出力されるメッセージと連動しタイプセッ
+トバッファは自動的にスクロールします。もし、途中でエラーが起こって止まって
+しまった場合にはタイプセットバッファに移り、(`C-x o') タイプセッタの出して
+いる ? プロンプトに対して、`x' (処理の中断)などの指示を送ることができます。
+エラーを修正する場合は、
 
 `[prefix] ''
-`(prefix+$B%"%]%9%H%m%U%#(B)'
-             ... $BD>A0$N%(%i!<H/@89T$X%8%c%s%W(B
+`(prefix+アポストロフィ)'
+             ... 直前のエラー発生行へジャンプ
 
-$B$rF~NO$9$k$3$H$K$h$j!"%?%$%W%;%C%?$,%(%i!<$rH/@8$7$?9T$K0\$k$3$H$,$G$-$^$9!#(B
-$B$^$?!"%?%$%W%;%C%?$N=PNO$9$k(B overfull hbox $B$J$I$N%&%)!<%K%s%09T$K$bBP1~$7(B
-$B$F$$$^$9$N$G!"=g<!(B `[prefix] '' $B$r2!$9$3$H$K$h$j!"0l$DA0$N%&%)!<%K%s%0H/@8(B
-$B9T$K%8%c%s%W$7$F$$$-$^$9!#(B
+を入力することにより、タイプセッタがエラーを発生した行に移ることができます。
+また、タイプセッタの出力する overfull hbox などのウォーニング行にも対応し
+ていますので、順次 `[prefix] '' を押すことにより、一つ前のウォーニング発生
+行にジャンプしていきます。
 
-  $B$b$7!"5$$K$J$k%(%i!<9T$,$"$C$?>l9g$O!"%?%$%W%;%C%H%P%C%U%!$G!"%(%i!<$NI=(B
-$B<($5$l$F$$$k9T$K%+!<%=%k$r9g$o$;%9%Z!<%9%-!<$r2!$9$H(B LaTeX $B%=!<%9$NBP1~$9(B
-$B$k9T$K%8%c%s%W$7$^$9!#(B
+  もし、気になるエラー行があった場合は、タイプセットバッファで、エラーの表
+示されている行にカーソルを合わせスペースキーを押すと LaTeX ソースの対応す
+る行にジャンプします。
 
 
-$BNN0h%?%$%W%;%C%H(B
+領域タイプセット
 ----------------
 
-  $B%]%$%s%H$H%^!<%/$N4V!"$"$k$$$O%F%-%9%HCf$KKd$a9~$s$@(B `%#BEGIN' $B$H(B`%#END'
-$B$N4V$NNN0h(B(*Note %#notation::)$B$@$1$r@Z$j<h$C$F%?%$%W%;%C%H$9$k$3$H$,$G$-$^(B
-$B$9!#$3$N>l9g$N(B documentclass $B$O!"C10l%U%!%$%k$N(B LaTeX $B%=!<%9$NJT=8;~$K$O$=(B
-$B$N%U%!%$%k$N(B documentclass $B$,!"JL%U%!%$%k$+$i(B include $B$7$F$$$k>l9g$K$O%a%$(B
-$B%s%U%!%$%k$N(B documentclass $B$,<+F0E*$KA*Br$5$l$^$9!#;XDjNN0h$O!"%a%$%s%U%!(B
-$B%$%k$N$"$k%G%#%l%/%H%j$N(B`texput.tex'$B$H$$$&NW;~%U%!%$%k$K=PNO$5$l$^$9$N$G!"(B
-$B>e=q$-$K$OCm0U$7$F$/$@$5$$!#(B
+  ポイントとマークの間、あるいはテキスト中に埋め込んだ `%#BEGIN' と`%#END'
+の間の領域(*Note %#notation::)だけを切り取ってタイプセットすることができま
+す。この場合の documentclass は、単一ファイルの LaTeX ソースの編集時にはそ
+のファイルの documentclass が、別ファイルから include している場合にはメイ
+ンファイルの documentclass が自動的に選択されます。指定領域は、メインファ
+イルのあるディレクトリの`texput.tex'という臨時ファイルに出力されますので、
+上書きには注意してください。
 
 
 File: yatexj, Node: Calling previewer, Next: Print out, Prev: Calling typesetter, Up: Invocation
 
-$B%W%l%t%e!<%"5/F0(B
+プレヴューア起動
 ================
-  `[prefix] t p' $B$K$h$j%W%l%t%e!<%"$N5/F0$,$G$-$^$9!#$5$i$K!"$b$7$"$J$?$,!"(B-
-remote $B5!G=$D$-$N(Bxdvi$B$rMxMQ$7$F$$$k>l9g$O(B `[prefix] t s' $B$r2!$9$3$H$K$h$j(B
-$B%+!<%=%k0LCV$NJ8;zNs$r8!:w$7$F$=$N%Z!<%8$rI=<($9$k$h$&$K$9$G$K5/F0Cf$N(Bxdvi
-$B$KL?Na$rAw$j$^$9!#$3$l$K$h$j!"8=:_JT=8Cf$N2U=j$N%?%$%W%;%C%H7k2L$rB(:B$K8+(B
-$B$k$3$H$,$G$-$^$9!#(B
+  `[prefix] t p' によりプレヴューアの起動ができます。さらに、もしあなたが、-
+remote 機能つきのxdviを利用している場合は `[prefix] t s' を押すことにより
+カーソル位置の文字列を検索してそのページを表示するようにすでに起動中のxdvi
+に命令を送ります。これにより、現在編集中の箇所のタイプセット結果を即座に見
+ることができます。
 
 
 
 File: yatexj, Node: Print out, Prev: Calling previewer, Up: Invocation
 
-$B%W%j%s%H%"%&%H(B
+プリントアウト
 ==============
 
-  `[prefix] t l'$B$r2!$7$F%W%j%s%H%"%&%H$r;X<($9$k$H!"=PNO3+;O(B/$B=*N;%Z!<%8$r(B
-$BJ9$$$F$/$k$N$G!"$=$l$>$l$KEz$($^$9!#$3$l$r>JN,$7$?$$;~$O!"(B
-universal-argument $B$r$D$1!"(B
+  `[prefix] t l'を押してプリントアウトを指示すると、出力開始/終了ページを
+聞いてくるので、それぞれに答えます。これを省略したい時は、
+universal-argument をつけ、
 
 
 `C-u [prefix] t l'
-             ... $B%Z!<%83NG'>JN,(Blpr$B5/F0(B
+             ... ページ確認省略lpr起動
 
-$B$N$h$&$K5/F0$7$F$/$@$5$$!#(B
+のように起動してください。
 
 
 File: yatexj, Node: %#notation, Next: Completion, Prev: Invocation, Up: Top
 
-%#$B5-K!(B
+%#記法
 ******
 
-  $BK\J8Cf$K(B`%#'$B$G$O$8$^$k%-!<%o!<%I$rKd$a9~$`$3$H$G%?%$%W%;%C%?5/F0Ey$N@)8f(B
-$B$r$9$k$3$H$,$G$-$^$9!#(B
+  本文中に`%#'ではじまるキーワードを埋め込むことでタイプセッタ起動等の制御
+をすることができます。
 
 * Menu:
 
-* Changing typesetter::         $B%?%$%W%;%C%HMQ%3%^%s%I$NJQ99(B
-* Splitting input files::       $BF~NO%U%!%$%kJ,3d(B
-* Fix region for typesetting::  $BNN0h$N8GDj(B
-* lpr format::                  $B%W%j%s%H%"%&%H%3%^%s%IMQ%U%)!<%^%C%H(B
-* Editing %# notation::         %#$B5-K!$NJT=8(B
+* Changing typesetter::         タイプセット用コマンドの変更
+* Splitting input files::       入力ファイル分割
+* Fix region for typesetting::  領域の固定
+* lpr format::                  プリントアウトコマンド用フォーマット
+* Editing %# notation::         %#記法の編集
 
 
 File: yatexj, Node: Changing typesetter, Next: Splitting input files, Prev: %#notation, Up: %#notation
 
-$B%?%$%W%;%C%HMQ%3%^%s%IJQ99(B
+タイプセット用コマンド変更
 ==========================
 
-  $B5/F0$9$k%3%^%s%I$rJQ$($?$$;~$OK\J8Cf$K<!$N$h$&$J9T$r=q$-$^$9!#(B
+  起動するコマンドを変えたい時は本文中に次のような行を書きます。
 
 
              %#!jlatex-ntt
 
-NTT jTeX $B$H!"(BASCII jTeX $B$r;H$$J,$1$?$$$h$&$J>l9g$KJXMx$G$7$g$&!#(B
+NTT jTeX と、ASCII jTeX を使い分けたいような場合に便利でしょう。
 
 
 
 File: yatexj, Node: Splitting input files, Next: Fix region for typesetting, Prev: Changing typesetter, Up: %#notation
 
-$BF~NO%U%!%$%kJ,3d(B
+入力ファイル分割
 ================
 
-$B$^$?!">OKh$KJL%U%!%$%k$N(B .tex $B$r:n@.$7$F$$$k>l9g$G!"(B`main.tex'$B$+$i(B 
-`sub.tex'$B$r(B `\include'$B$7$F$$$k$h$&$J;~$O!"(B`sub.tex'$B$NG$0U$N0LCV$K<!$N$h$&(B
-$B$J9T$rKd$a9~$_$^$9!#(B
+また、章毎に別ファイルの .tex を作成している場合で、`main.tex'から 
+`sub.tex'を `\include'しているような時は、`sub.tex'の任意の位置に次のよう
+な行を埋め込みます。
 
              %#!platex main.tex
 
 
-$B>e$NNc$N$h$&$K%3%^%s%IL>$@$1$G$J$/0z?t$b=q$$$?>l9g$K$O!"A4$F$r$=$N$^$^(B 
-shell $B$KEO$9$N$G<!$N$h$&$K=q$1$P!"(Bghostview $B$J$I$r%W%l%t%e!<%"$K;H$&;~$KJX(B
-$BMx$G$9!#(B
+上の例のようにコマンド名だけでなく引数も書いた場合には、全てをそのまま 
+shell に渡すので次のように書けば、ghostview などをプレヴューアに使う時に便
+利です。
 
 
              %#!platex main ; dvi2ps main.dvi > main
 
-$B$J$*!"$3$N9T$N:G8e$NC18l$N%T%j%*%I0JA0$r!V%a%$%s%U%!%$%k!W$N%Y!<%9%M!<%`$G(B
-$B$"$k$H2>Dj$7$^$9(B($B>e$N(B2$B$D$N>l9g$I$A$i$b(B`main')$B!#$3$N9T$K5-=R$7$?!"(B`%f'$B$O%a(B
-$B%$%s%U%!%$%kL>$K!"(B`%r' $B$O%a%$%s%U%!%$%k$N3HD%;R$r<h$j=|$$$?ItJ,$KCV49$5$l(B
-$B$^$9!#$?$@$7!"(B`%f,%r'$B$rMxMQ$7$?>l9g!"=i2s%?%$%W%;%C%H;~$KI,$:%a%$%s%U%!%$(B
-$B%kL>$NF~NO$rB%$5$l$^$9!#(B
+なお、この行の最後の単語のピリオド以前を「メインファイル」のベースネームで
+あると仮定します(上の2つの場合どちらも`main')。この行に記述した、`%f'はメ
+インファイル名に、`%r' はメインファイルの拡張子を取り除いた部分に置換され
+ます。ただし、`%f,%r'を利用した場合、初回タイプセット時に必ずメインファイ
+ル名の入力を促されます。
 
-  `[prefix] g' (*Note Cursor jump::$B;2>H(B) $B$G$N%U%!%$%k4V%8%c%s%W$rM-8z$K5!(B
-$BG=$5$;$k$?$a!"F~NO%U%!%$%kJ,3d;~$K$O<!$N$3$H$KCm0U$7$F2<$5$$!#(B
+  `[prefix] g' (*Note Cursor jump::参照) でのファイル間ジャンプを有効に機
+能させるため、入力ファイル分割時には次のことに注意して下さい。
 
-  1. $B%5%V%G%#%l%/%H%j$r:n$C$F!"$=$NCf$K%5%V%U%!%$%k$rCV$/$3$H$O$G$-$k$,%5(B
-     $B%V%G%#%l%/%H%j$N%5%V%G%#%l%/%H%j$K$OCV$1$J$$!#(B
-  2. $B%a%$%s%U%!%$%k$+$i%5%V%G%#%l%/%H%jFb$N%U%!%$%k$r(B include$B$9$k;~$K$O!"(B
-     $BAjBP%Q%9;XDj$rMQ$$$F!"(B`\include{chap1/sub}'$B$N$h$&$K5-=R!#(B
-  3. $B%a%$%s%U%!%$%k$,0l$D>e$N%G%#%l%/%H%j$K$"$k>l9g$b!"%5%V%U%!%$%k$K$O(B
-     %#!platex main.tex $B$N$h$&$K5-=R$9$k(B(../main$B$G$O$J$$(B)$B!#(B
+  1. サブディレクトリを作って、その中にサブファイルを置くことはできるがサ
+     ブディレクトリのサブディレクトリには置けない。
+  2. メインファイルからサブディレクトリ内のファイルを includeする時には、
+     相対パス指定を用いて、`\include{chap1/sub}'のように記述。
+  3. メインファイルが一つ上のディレクトリにある場合も、サブファイルには
+     %#!platex main.tex のように記述する(../mainではない)。
 
 
 
 
 File: yatexj, Node: Fix region for typesetting, Next: lpr format, Prev: Splitting input files, Up: %#notation
 
-$BNN0h$N8GDj(B
+領域の固定
 ==========
 
-  `[prefix] tr' $B$NNN0h;XDj$N%?%$%W%;%C%H$G$O!"$H$/$K;XDj$N$J$$$+$.$j!"(B 
-`C-SPC'$B$G%^!<%/$7$?0LCV$H!"%]%$%s%H(B($B%+!<%=%k0LCV(B)$B$N4V$rNN0h$H$_$J$7$^$9$,!"(B
-$BI,$:7h$^$C$?NN0h$r%?%$%W%;%C%H$7$?$$>l9g$O!"$=$NNN0h$r(B
+  `[prefix] tr' の領域指定のタイプセットでは、とくに指定のないかぎり、 
+`C-SPC'でマークした位置と、ポイント(カーソル位置)の間を領域とみなしますが、
+必ず決まった領域をタイプセットしたい場合は、その領域を
 
              %#BEGIN
-             <$BEO$7$?$$NN0h(B>
+             <渡したい領域>
              %#END
 
-$B$N$h$&$K(B`%#BEGIN'$B$H(B`%#END'$B$G0O$_!"%+!<%=%k$r!V(B`%#BEGIN'$B0J9_!W$KCV$$$F$/$@(B
-$B$5$$!#$3$N;~$NNN0h7hDj5,B'$r$^$H$a$k$H<!$N$h$&$K$J$j$^$9!#(B
+のように`%#BEGIN'と`%#END'で囲み、カーソルを「`%#BEGIN'以降」に置いてくだ
+さい。この時の領域決定規則をまとめると次のようになります。
 
 
-  1. $B%+!<%=%k0LCV$h$j%P%C%U%!$N@hF,J}8~$K(B`%#BEGIN'$B$H$$$&%-!<%o!<%I$,$"$k>l(B
-     $B9g(B
+  1. カーソル位置よりバッファの先頭方向に`%#BEGIN'というキーワードがある場
+     合
 
-       1. `%#BEGIN'$B$h$j%P%C%U%!$NKvHxJ}8~$K(B`%#END'$B$H$$$&%-!<%o!<%I$,8+$D$+$C(B
-          $B$?>l9g!#(B
-          =>`%#BEGIN' $B$+$i!"$=$N(B `%#END' $B$N$"$k0LCV$^$G!#(B
-       2. `%#END' $B$,8+$D$+$i$J$+$C$?>l9g!#(B=>$B%P%C%U%!$N:G8eHx$^$G!#(B
+       1. `%#BEGIN'よりバッファの末尾方向に`%#END'というキーワードが見つかっ
+          た場合。
+          =>`%#BEGIN' から、その `%#END' のある位置まで。
+       2. `%#END' が見つからなかった場合。=>バッファの最後尾まで。
 
-  2. $B%+!<%=%k0LCV$h$j%P%C%U%!$N@hF,J}8~$K(B `%#BEGIN' $B$H$$$&%-!<%o!<%I$,(B
-     $B8+$D$+$i$J$+$C$?>l9g!#(B
-     =>$B%^!<%/(B(`C-SPC'$B0LCV(B)$B$H%]%$%s%H(B($B%+!<%=%k0LCV(B)$B$N4V$NNN0h!#(B
+  2. カーソル位置よりバッファの先頭方向に `%#BEGIN' というキーワードが
+     見つからなかった場合。
+     =>マーク(`C-SPC'位置)とポイント(カーソル位置)の間の領域。
 
-  tabular $B4D6-$r2?EY$b;n9T:x8m$7$F$$$k$h$&$J>l9g$O!"(B`\begin'$B$NA0$N9T$K(B 
-`%#BEGIN' $B$H=q$-!"(B`\end' $B$N<!$N9T$K(B `%#END' $B$H=q$$$F$*$/$H4JC1$K:nI=7k2L$r(B
-$B%F%9%H$9$k$3$H$,$G$-$^$9!#$^$?!"D9$$(B .tex $B%U%!%$%k$N8eH>$K(B `%#BEGIN' $B$r=q(B
-$B$$$F$*$1$P!"A0H>$NItJ,$OL5;k$G$-$^$9!#$3$N(BBEGIN$B$H(BEND$B$N>C$7K:$l$K$O==J,$4Cm(B
-$B0U2<$5$$!#(B
+  tabular 環境を何度も試行錯誤しているような場合は、`\begin'の前の行に 
+`%#BEGIN' と書き、`\end' の次の行に `%#END' と書いておくと簡単に作表結果を
+テストすることができます。また、長い .tex ファイルの後半に `%#BEGIN' を書
+いておけば、前半の部分は無視できます。このBEGINとENDの消し忘れには十分ご注
+意下さい。
 
 
 
 File: yatexj, Node: lpr format, Next: Editing %# notation, Prev: Fix region for typesetting, Up: %#notation
 
-lpr$B%U%)!<%^%C%H(B
+lprフォーマット
 ===============
 
-  $B$^$:!"%W%j%s%H%"%&%HMQ%3%^%s%INs$N%U%)!<%^%C%H$K$D$$$F@bL@$7$^$9!#%3%^%s(B
-$B%INs%U%)!<%^%C%H$O!"(B3$B$D$N(B Lisp $BJQ?t$K$h$C$FI=8=$5$l$^$9!#%G%U%)%k%H$N(B 
-dvi2ps $BMQ$N%U%)!<%^%C%H$rNc$K@bL@$7$^$9!#(B
+  まず、プリントアウト用コマンド列のフォーマットについて説明します。コマン
+ド列フォーマットは、3つの Lisp 変数によって表現されます。デフォルトの 
+dvi2ps 用のフォーマットを例に説明します。
 
 `(1)dviprint-command-format'
      `"dvi2ps %f %t %s | lpr"'
@@ -393,78 +393,78 @@ dvi2ps $BMQ$N%U%)!<%^%C%H$rNc$K@bL@$7$^$9!#(B
 `(3)dviprint-to-format'
      `"-t %e"'
 
-$B<B:]$K%W%j%s%H%"%&%H$9$k;~$O!"(B(1)$BCf$N(B %s $B$,%U%!%$%kL>$KCV$-49$($i$l!"(B%f $B$,(B
-(2)$B$NFbMF!"(B%t $B$,(B(3)$B$NFbMF$KCV$-49$($i$l$^$9!#$=$N:]$K(B(2)$B$NJ8;zNsCf$N(B %b $B$O(B
-$B!V=PNO3+;O%Z!<%8!W!"(B(3)$B$NJ8;zNsCf$N(B %e $B$O!V=PNO=*N;%Z!<%8!W$KCV$-49$($i$l(B
-$B$^$9!#$b$7!"%Z!<%8$r;XDj$7$J$$;~$K$O!"(B%f, %t $BN>J}$H$bL5;k$5$l$^$9!#(B
+実際にプリントアウトする時は、(1)中の %s がファイル名に置き換えられ、%f が
+(2)の内容、%t が(3)の内容に置き換えられます。その際に(2)の文字列中の %b は
+「出力開始ページ」、(3)の文字列中の %e は「出力終了ページ」に置き換えられ
+ます。もし、ページを指定しない時には、%f, %t 両方とも無視されます。
 
-  $B$3$N!"(Bdviprint-command-format $B$rNW;~$KJQ$($?$$;~$O!"(BLaTeX $B$N%=!<%9%F%-%9(B
-$B%HCf$NG$0U$N>l=j$K!"(B
+  この、dviprint-command-format を臨時に変えたい時は、LaTeX のソーステキス
+ト中の任意の場所に、
 
              %#LPR dvi2ps %f %t %s | 4up -page 4 | texfix | lpr -Plp2
 
-$B$N$h$&$K=q$$$F2<$5$$!#%W%j%s%H%"%&%H$9$k%Z!<%8HO0O$r$$$A$$$AJ9$+$;$J$$$h$&(B
-$B$K$9$k;~$K(B
+のように書いて下さい。プリントアウトするページ範囲をいちいち聞かせないよう
+にする時に
 
              %#LPR dvi2ps %s | lpr
 
-$B$J$I$H$9$k$N$bJXMx$+$b$7$l$^$;$s!#(B
+などとするのも便利かもしれません。
 
 
 File: yatexj, Node: Editing %# notation, Prev: lpr format, Up: %#notation
 
-%#$B5-K!<+BN$NJT=8(B
+%#記法自体の編集
 ================
 
-$B0J>e$N$h$&$J(B`%#'$B$G;O$^$k3F<o@)8f5-K!$rJT=8$9$k$?$a$K$O(B
+以上のような`%#'で始まる各種制御記法を編集するためには
 
 `[prefix] %'
-             ... `%#'$B5-K!JT=8%a%K%e!<(B
+             ... `%#'記法編集メニュー
 
-$B$r2!$7$^$9!#(B
+を押します。
 
              !)Edit-%#! B)EGIN-END-region L)Edit-%#LPR
 
-$B$H$$$&%a%K%e!<$,=P$FMh$k$N$G!"(B`%#!'$B$KB3$/%3%^%s%I$rJQ99$7$?$$;~$K$O(B`!'$B$r!"(B
-`%#LPR'$B$G(B lpr $B%U%)!<%^%C%H$rJQ$($?$$;~$O(B`l'$B$r!"$"$i$+$8$a@_Dj$7$?%j%8%g%s(B
-$B$r(B `%#BEGIN' $B!A(B `%#END' $B$G3g$j$?$$;~$O!"(B`b'$B$r2!$7$^$9!#(B`b'$B$rA*$s$@;~$K$O!"(B
-$B$=$l$^$G%P%C%U%!Cf$KCV$+$l$F$$$?(B `%#BEGIN', `%#END' $B$,<+F0E*$K>C5n$5$l$^$9!#(B
+というメニューが出て来るので、`%#!'に続くコマンドを変更したい時には`!'を、
+`%#LPR'で lpr フォーマットを変えたい時は`l'を、あらかじめ設定したリジョン
+を `%#BEGIN' 〜 `%#END' で括りたい時は、`b'を押します。`b'を選んだ時には、
+それまでバッファ中に置かれていた `%#BEGIN', `%#END' が自動的に消去されます。
 
 
 File: yatexj, Node: Completion, Next: Local dictionary, Prev: %#notation, Up: Top
 
-$BJd40F~NO(B
+補完入力
 ********
 
-  LaTeX $B$G$N4D6-L>$J$I$O!"LnD;$NJd405!G=$rMxMQ$7$FG=N(E*$KF~NO$9$k$3$H$,$G(B
-$B$-$^$9!#(B
+  LaTeX での環境名などは、野鳥の補完機能を利用して能率的に入力することがで
+きます。
 
 * Menu:
 
-* begin$B7?Jd40(B::                 
-* section$B7?Jd40(B::               
-* large$B7?Jd40(B::                 
-* maketitle$B7?Jd40(B::             
-* Arbitrary completion::        $B?o;~Jd40(B
-* end$BJd40(B::                     
-* Accent mark completion::      $B%"%/%;%s%H5-9fJd40(B
-* Image completion::            $B?t<05-9f%$%a!<%8Jd40(B
-* Greek letter completion::     $B%.%j%7%cJ8;zJd40(B
+* begin型補完::                 
+* section型補完::               
+* large型補完::                 
+* maketitle型補完::             
+* Arbitrary completion::        随時補完
+* end補完::                     
+* Accent mark completion::      アクセント記号補完
+* Image completion::            数式記号イメージ補完
+* Greek letter completion::     ギリシャ文字補完
 
 
-File: yatexj, Node: begin$B7?Jd40(B, Next: section$B7?Jd40(B, Prev: Completion, Up: Completion
+File: yatexj, Node: begin型補完, Next: section型補完, Prev: Completion, Up: Completion
 
-begin$B7?Jd40(B
+begin型補完
 ===========
 
-  `\begin{env}...\end{env}'$B$NMM$J7A<0$NF~NO$NJd40$r(Bbegin$B7?Jd40$H8F$V$3$H$K(B
-$B$7$^$9!#(Bbegin $B7?Jd40$O!"(B
+  `\begin{env}...\end{env}'の様な形式の入力の補完をbegin型補完と呼ぶことに
+します。begin 型補完は、
 
 `[prefix] b'
-             ... begin $B7?Jd403+;O(B($BI8=`$G$O(B `C-c b')
+             ... begin 型補完開始(標準では `C-c b')
 
-$B$G;O$^$j$^$9!#IQHK$KMQ$$$i$l$k<!$N(B LaTeX $B4D6-$NJd40$O!"(B[prefix] `b'$B$KB3$/(B
-$B<!$N(B1$BJ8;z$rF~NO$9$k$@$1$G!"(B`\begin{xxx}...\end{xxx}'$B$r40@.$5$;$^$9!#(B
+で始まります。頻繁に用いられる次の LaTeX 環境の補完は、[prefix] `b'に続く
+次の1文字を入力するだけで、`\begin{xxx}...\end{xxx}'を完成させます。
 
 `[prefix] b c'
              ... `\begin{center}...\end{center}'
@@ -501,328 +501,328 @@ begin$B7?Jd40(B
 `[prefix] b V'
              ... `\begin{verse}...\end{verse}'
 
-  $B>e5-$N$b$N0J30$N4D6-L>$O(B Emacs $B$N;}$D%$%s%/%j%a%s%?%k$JJd405!G=$rMQ$$$F(B
-$BF~NO$7$^$9(B($B>e5-$N4D6-L>$b0J2<$NJd40F~NO2DG=(B)$B!#(B
+  上記のもの以外の環境名は Emacs の持つインクリメンタルな補完機能を用いて
+入力します(上記の環境名も以下の補完入力可能)。
 
 `[prefix] b SPC'
-             ... begin $B7?Jd40F~NO(B
+             ... begin 型補完入力
 
-`[prefix] b SPC' $B$HF~NO$9$k$H!":G2<9T$N%_%K%P%C%U%!$K(B
+`[prefix] b SPC' と入力すると、最下行のミニバッファに
 
              Begin environment(default document): 
 
-$B$HI=<($5$l$^$9!#$3$3$G!"2?$bF~$l$:$K%j%?!<%s%-!<$N$_2!$9$H!"3g8LFb$K=P$F$$(B
-$B$k%G%U%)%k%H$N4D6-L>$,F~NO$5$l$^$9$,!"E,Ev$J4D6-L>$rF~NO$9$k$H!"(B`\begin{$B4D(B
-$B6-L>(B} $B!D(B \end{$B4D6-L>(B}'$B$,J8=qCf$KA^F~$5$l$^$9!#%_%K%P%C%U%!$G4D6-L>$rF~NO$9(B
-$B$k$H$-$K!"4D6-L>$NF,J8;z$rF~NO$7!V%9%Z!<%9!W$r$?$?$/$H!"0lCW$9$k4D6-L>$,Fb(B
-$BIt%F!<%V%k$KB8:_$7$?>l9g!"@5$7$$4D6-L>$KJd40$5$l$k$N$G!"F~NO$N<j4V$,>J$1$^(B
-$B$9!#FbIt%F!<%V%k$KB8:_$7$J$$4D6-L>$rF~NO$7$?;~$O%f!<%6@lMQ$N%F!<%V%k$KEPO?(B
-$B$5$l!"$5$i$K$=$N%F!<%V%k$r<+F0E*$K!"%f!<%6<-=q(B($B%G%U%)%k%H$G$O(B 
-`~/.yatexrc')$B$KJ]B8$7$^$9!#(B
+と表示されます。ここで、何も入れずにリターンキーのみ押すと、括弧内に出てい
+るデフォルトの環境名が入力されますが、適当な環境名を入力すると、`\begin{環
+境名} … \end{環境名}'が文書中に挿入されます。ミニバッファで環境名を入力す
+るときに、環境名の頭文字を入力し「スペース」をたたくと、一致する環境名が内
+部テーブルに存在した場合、正しい環境名に補完されるので、入力の手間が省けま
+す。内部テーブルに存在しない環境名を入力した時はユーザ専用のテーブルに登録
+され、さらにそのテーブルを自動的に、ユーザ辞書(デフォルトでは 
+`~/.yatexrc')に保存します。
 
-$B$5$i$K!"FCDj$N4D6-$rJd40F~NO$7$?;~$K$O$=$N4D6-$GI,$:MQ$$$i$l$k%(%s%H%j$r<+(B
-$BF0A^F~$7$^$9(B($BNc(B: `itemize'$B4D6-$K$*$1$k(B`\item'$B$J$I(B)$B!#A^F~$5$l$?%(%s%H%j$,IT(B
-$BMW$J>l9g$K$O(Bundo$B$K$h$C$F>C5n$7$F2<$5$$!#(B
+さらに、特定の環境を補完入力した時にはその環境で必ず用いられるエントリを自
+動挿入します(例: `itemize'環境における`\item'など)。挿入されたエントリが不
+要な場合にはundoによって消去して下さい。
 
 
-$B4{$K=q$$$?%F%-%9%H$r4D6-$G3g$k(B
+既に書いたテキストを環境で括る
 ------------------------------
 
-  $B$H$3$m$G!":G=i$K=q$$$F$7$^$C$?%V%m%C%/$r8e$+$i!"(Bitemize $B4D6-$NCf$KJD$8$3(B
-$B$a$?$$$H;W$&$3$H$,$"$j$^$9$,!"$=$N$h$&$J$H$-$O!"$"$i$+$8$aJD$8$3$a$?$$CJMn(B
-$B$r%^!<%/$7$F!"(Bbegin $B7?Jd40$N3F%3%^%s%I$N(B `[prefix]'$B$N<!$N!X>.J8;z$N(B 'b'$B!Y(B 
-$B$r!XBgJ8;z!Y$KJQ$($F5/F0$7$F2<$5$$!#(B($B$^$?$O!"(B`C-u' $B$r@h$KBG$A!"(Buniversal
-argument $B$r$D$1$F$b2DG=$G$9(B)
+  ところで、最初に書いてしまったブロックを後から、itemize 環境の中に閉じこ
+めたいと思うことがありますが、そのようなときは、あらかじめ閉じこめたい段落
+をマークして、begin 型補完の各コマンドの `[prefix]'の次の『小文字の 'b'』 
+を『大文字』に変えて起動して下さい。(または、`C-u' を先に打ち、universal
+argument をつけても可能です)
 
-  $BNc$($P$"$k%Q%i%0%i%U$r(B description $B4D6-$NCf$KF~$l$?$$$H$-$O!"$=$N%Q%i%0(B
-$B%i%U$r%^!<%/$7$F$+$i!"(B
+  例えばあるパラグラフを description 環境の中に入れたいときは、そのパラグ
+ラフをマークしてから、
 
 `[prefix] B D'
-`($B$^$?$O(B ESC 1 [prefix] b D)'
-`($B$^$?$O(B  C-u  [prefix] b D $B$J$I(B)'
+`(または ESC 1 [prefix] b D)'
+`(または  C-u  [prefix] b D など)'
 
-$B$H%?%$%W$7$F$/$@$5$$!#$3$l$O!"(B`[prefix] b SPC'$B$NJd40F~NO$K$b$"$F$O$^$j!"(B
-`b' $B$rBgJ8;z$KJQ$($F!"(B`[prefix] B SPC' $B$H%?%$%W$9$l$P!"$"$i$+$8$a%^!<%/$7(B
-$B$F$*$$$?%j%8%g%s$r!"(Bbegin $B$H(B end $B$N4D6-$G3g$j$^$9!#(B
+とタイプしてください。これは、`[prefix] b SPC'の補完入力にもあてはまり、
+`b' を大文字に変えて、`[prefix] B SPC' とタイプすれば、あらかじめマークし
+ておいたリジョンを、begin と end の環境で括ります。
 
 
-File: yatexj, Node: section$B7?Jd40(B, Next: large$B7?Jd40(B, Prev: begin$B7?Jd40(B, Up: Completion
+File: yatexj, Node: section型補完, Next: large型補完, Prev: begin型補完, Up: Completion
 
-section$B7?Jd40(B
+section型補完
 =============
 
-  `\section{$BL\E*(B}' $B$N$h$&$J7A<0$NF~NO$NJd40$r(B section $B7?Jd40$H8F$V$3$H$K$7(B
-$B$^$9!#(Bsection $B7?Jd40$O!"(B
+  `\section{目的}' のような形式の入力の補完を section 型補完と呼ぶことにし
+ます。section 型補完は、
 
 `[prefix] s'
-             ... section $B7?Jd40(B
+             ... section 型補完
 
-$B$G<B9T$7$^$9!#(B`[prefix] s' $B$rF~NO$9$k$H%_%K%P%C%U%!$K!"(B
+で実行します。`[prefix] s' を入力するとミニバッファに、
 
              (C-v for view-section) \???{} (default documentclass):
 
-$B$H$$$&%W%m%s%W%H$,8=$l$k$N$G!"$=$3$G(B `section' $B$N$h$&$J(B LaTeX $B%3%^%s%IL>$r(B
-$BF~NO$7$^$9!#$3$3$G$b%j%?!<%s%-!<$N$_$G3g8LFb$N%G%U%)%k%HCM$,A*Br$5$l$k$[$+!"(B
-`chapter'$B$J$I$N$h$&$JIQEY$N9b$$L>>NF~NO$K$O%9%Z!<%9%-!<$K$h$kJd405!G=$,M-(B
-$B8z$G$9!#(B $B<!$K!"(B{}$B$NCf?H$NF~NO$rB%$9!"(B
+というプロンプトが現れるので、そこで `section' のような LaTeX コマンド名を
+入力します。ここでもリターンキーのみで括弧内のデフォルト値が選択されるほか、
+`chapter'などのような頻度の高い名称入力にはスペースキーによる補完機能が有
+効です。 次に、{}の中身の入力を促す、
 
              \section{???}:
 
-$B$H$$$&%W%m%s%W%H$,8=$l$k$N$G!"%;%/%7%g%s$N%?%$%H%k$J$I$rF~NO$7$^$9!#$?$H$((B
-$B$P!"(B
+というプロンプトが現れるので、セクションのタイトルなどを入力します。たとえ
+ば、
 
              (C-v for view-section) \???{} (default documentclass): section
-             \section{???}: $BL\E*(B
+             \section{???}: 目的
 
-$B$N$h$&$KF~NO$7$?>l9g$O!"J8>OCf$K(B
+のように入力した場合は、文章中に
 
-             \section{$BL\E*(B}
+             \section{目的}
 
-$B$,A^F~$5$l!"(B
+が挿入され、
 
              (C-v for view-section) \???{} (default section): vspace*
              \vspace*{???}: 
 
-$B$N$h$&$K(B{}$B$NCf?H$r>JN,$7$?$H$-$O!"(B
+のように{}の中身を省略したときは、
 
              \vspace*{}
 
-$B$@$1$,A^F~$5$l!"2~9T$O$;$:%+!<%=%k$O<+F0E*$KCf3g8L$NFbB&$K0\F0$7$^$9!#(B
+だけが挿入され、改行はせずカーソルは自動的に中括弧の内側に移動します。
 
 * Menu:
 
-* 2$B8D0J>e$N0z?t$r$H$k(B section$B7?%3%^%s%I(B::  
-* Enclose section-type command::  $B3g$jJd40(B
-* Recursive completion::        $B:F5"Jd40(B
-* view-sectioning::             $B%;%/%7%g%s6h@Z$j$N%"%&%H%i%$%sI=<((B
-* label-generation::            $B%i%Y%k<+F0@8@.(B
+* 2個以上の引数をとる section型コマンド::  
+* Enclose section-type command::  括り補完
+* Recursive completion::        再帰補完
+* view-sectioning::             セクション区切りのアウトライン表示
+* label-generation::            ラベル自動生成
 
 
-File: yatexj, Node: 2$B8D0J>e$N0z?t$r$H$k(B section$B7?%3%^%s%I(B, Next: Enclose section-type command, Prev: section$B7?Jd40(B, Up: section$B7?Jd40(B
+File: yatexj, Node: 2個以上の引数をとる section型コマンド, Next: Enclose section-type command, Prev: section型補完, Up: section型補完
 
-2$B8D0J>e$N0z?t$r$H$k(B section$B7?%3%^%s%I(B
+2個以上の引数をとる section型コマンド
 -------------------------------------
 
-  $B$H$3$m$G!"(B`\addtolength{\topmargin}{8mm}' $B$J$I$N$h$&$K!"0z?t$rFs$D0J>e<h(B
-$B$k(B LaTeX $B%3%^%s%I$,$"$j$^$9!#$3$N$h$&$J%3%^%s%I$NJd40F~NO$K$O!"(Bsection $B7?(B
-$BJd408F$S=P$7$K0z?t$rIU$1$F$/$@$5$$!#Nc$($P>e$N(B`addtolength' $B$NNc$G$"$l$P!"(B
-$B0z?t(B2$B$r;XDj$7$^$9!#$D$^$j!"(B
+  ところで、`\addtolength{\topmargin}{8mm}' などのように、引数を二つ以上取
+る LaTeX コマンドがあります。このようなコマンドの補完入力には、section 型
+補完呼び出しに引数を付けてください。例えば上の`addtolength' の例であれば、
+引数2を指定します。つまり、
 
-             C-u 2 [prefix] s   ($B$^$?$O!"(BESC 2 [prefix] s)
+             C-u 2 [prefix] s   (または、ESC 2 [prefix] s)
 
-$B$H(B section $B7?Jd40$r8F$S=P$7$?8e!"(B
+と section 型補完を呼び出した後、
 
              (Ctrl-v for view-section) \???{} (default vspace*): addtolength
              \addtolength{???}: \topmargin
              Argument 2: 8mm
 
-$B$N$h$&$KF~NO$7$F$/$@$5$$!#:G=i$N(B addtolength $B$NItJ,$H!"Bh0l0z?t$G$"$k(B 
-\topmargin $B$NF~NO$OEvA3%9%Z!<%9$K$h$kJd40F~NO$,2DG=$G$9!#%f!<%6<-=q$KEPO?(B
-$B$5$l$k(B LaTeX $B%3%^%s%I$K$O!"$3$N0z?t$N?t$b3X=,$5$l$k$N$G!":G=i$NJd40$N;~0z(B
-$B?t$N?t$r;XDj$7$F5/F0$7$F$*$1$P!"0J8e$NJd40;~$K$O!"5-21$5$l$?8D?t$@$10z?t$r(B
-$BJ9$$$FMh$k$h$&$K$J$j$^$9!#$"$H$G0z?t$N8D?t$rJQ$($?$$;~$O!":F$S(B `C-u' $B$rMQ(B
-$B$$$F8D?t$r;XDj$7D>$9$3$H$G!"<+F0E*$K<-=qCf$N0z?t$N8D?t$NItJ,$r99?7$7$^$9!#(B
+のように入力してください。最初の addtolength の部分と、第一引数である 
+\topmargin の入力は当然スペースによる補完入力が可能です。ユーザ辞書に登録
+される LaTeX コマンドには、この引数の数も学習されるので、最初の補完の時引
+数の数を指定して起動しておけば、以後の補完時には、記憶された個数だけ引数を
+聞いて来るようになります。あとで引数の個数を変えたい時は、再び `C-u' を用
+いて個数を指定し直すことで、自動的に辞書中の引数の個数の部分を更新します。
 
 
 
-File: yatexj, Node: Enclose section-type command, Next: Recursive completion, Prev: 2$B8D0J>e$N0z?t$r$H$k(B section$B7?%3%^%s%I(B, Up: section$B7?Jd40(B
+File: yatexj, Node: Enclose section-type command, Next: Recursive completion, Prev: 2個以上の引数をとる section型コマンド, Up: section型補完
 
-$B4{$K=q$$$?%F%-%9%H$r3g$k(B
+既に書いたテキストを括る
 ------------------------
 
-  $B$^$?!"5/F0%3%^%s%I$N(B`s'$B$rBgJ8;z$KJQ$($F5/F0$9$k$H!"$"$i$+$8$a=q$$$?J8>O(B
-$B$r(B section $B7?%3%^%s%I$NBh0l0z?t$H$7$F3g$j$^$9!#(B
+  また、起動コマンドの`s'を大文字に変えて起動すると、あらかじめ書いた文章
+を section 型コマンドの第一引数として括ります。
 
 
-File: yatexj, Node: Recursive completion, Next: view-sectioning, Prev: Enclose section-type command, Up: section$B7?Jd40(B
+File: yatexj, Node: Recursive completion, Next: view-sectioning, Prev: Enclose section-type command, Up: section型補完
 
-$B:F5"Jd40(B
+再帰補完
 --------
 
-  $B9bEY$J;H$$J}$K$J$k$+$b$7$l$^$;$s$,!"(Bsection$B7?Jd40$N0z?t$NF~NO;~$K$5$i$K(B
-$BJd40F~NO$rMxMQ$9$k$3$H$,$G$-$^$9(B(section/large/maketitle$B7?$K8B$k(B)$B!#(Bsection
-$B7?%3%^%s%I$N0z?t$K99$K(B LaTeX $B%3%^%s%I$,Mh$k>l9g$K$O%_%K%P%C%U%!$GLnD;$NJd(B
-$B40%-!<$r:F5"E*$KF~NO$9$k$3$H$G0z?t$NF~NO$b8zN(E*$K9T$J$($^$9!#(B
+  高度な使い方になるかもしれませんが、section型補完の引数の入力時にさらに
+補完入力を利用することができます(section/large/maketitle型に限る)。section
+型コマンドの引数に更に LaTeX コマンドが来る場合にはミニバッファで野鳥の補
+完キーを再帰的に入力することで引数の入力も効率的に行なえます。
 
 
-File: yatexj, Node: view-sectioning, Next: label-generation, Prev: Recursive completion, Up: section$B7?Jd40(B
+File: yatexj, Node: view-sectioning, Next: label-generation, Prev: Recursive completion, Up: section型補完
 
-$B%;%/%7%g%s6h@Z$j$N%"%&%H%i%$%sI=<((B
+セクション区切りのアウトライン表示
 ----------------------------------
 
-  $BDL>o$N(Bsection$B7?Jd40$N;~$K%_%K%P%C%U%!$G(B`C-v'$B$r2!$9$H8=:_B8:_$9$k%;%/%7%g(B
-$B%s6h@Z$j%3%^%s%IA4$F$r(B `*Sectioning Lines*'$B$H$$$&%P%C%U%!$K0lMwI=<($7$^$9(B
-($B!V(B<<--$B!W$N$D$$$F$$$k9T$,$b$C$H$b6a$$%;%/%7%g%s6h@Z$j(B)$B!#$3$N;~%_%K%P%C%U%!(B
-$B$G(B`C-p', `C-n' $B$r2!$9$H(B`part', `chapter', ..., `subparagraph' $B$N%3%^%s%I$,(B
-$BO@M}3,AX$N9b$5$K$7$?$,$C$F>e2<$7$^$9!#$^$?!"(B`C-v', `M-v' $B$r2!$9$H%;%/%7%g(B
-$B%s6h@Z$j0lMw%P%C%U%!$,%9%/%m!<%k$7!"?t;z$N(B`0'$B!A(B`7'$B$r2!$9$H$"$k9b$50J>e$N%;(B
-$B%/%7%g%s6h@Z$j$@$1$rA*$s$GI=<($7$^$9(B($B<B:]$K$d$C$F8+$l$PJ,$+$j$^$9(B)$B!#(B
+  通常のsection型補完の時にミニバッファで`C-v'を押すと現在存在するセクショ
+ン区切りコマンド全てを `*Sectioning Lines*'というバッファに一覧表示します
+(「<<--」のついている行がもっとも近いセクション区切り)。この時ミニバッファ
+で`C-p', `C-n' を押すと`part', `chapter', ..., `subparagraph' のコマンドが
+論理階層の高さにしたがって上下します。また、`C-v', `M-v' を押すとセクショ
+ン区切り一覧バッファがスクロールし、数字の`0'〜`7'を押すとある高さ以上のセ
+クション区切りだけを選んで表示します(実際にやって見れば分かります)。
 
-`*Sectioning Lines*'$B%P%C%U%!$O!"(B
+`*Sectioning Lines*'バッファは、
 
 `M-x YaTeX-section-overview'
-             ... $B%;%/%7%g%s6h@Z$j0lMw%P%C%U%!$r@8@.(B
+             ... セクション区切り一覧バッファを生成
 
-$B$G:n@.$9$k$3$H$,$G$-$^$9!#$3$N%P%C%U%!$rA*Br$7G$0U$N9T$G%9%Z!<%9$r2!$9$H!"(B
-$B3:Ev$9$k%;%/%7%g%s6h@Z$j$N$"$kK\J8Cf$N>l=j$K%8%c%s%W$7$^$9!#$5$i$K!"F1%P%C(B
-$B%U%!$G(B `u' $B$r2!$9$H!"%=!<%9%F%-%9%H$NBP1~$9$k%;%/%7%g%s%3%^%s%I$,0l3,AX>e(B
-$B$,$j(B($BNc(B: subsection $B$,(B section $B$KJQ$o$k(B)$B!"(B`d'$B$r2!$9$H0l3,AX2<$,$j$^$9!#(B
-`*Sectioning Lines*'$B%P%C%U%!$K$"$k%;%/%7%g%s6h@Z$j$N9T$r%^!<%/$7$F$*$$$F(B
-`U'$B$r2!$9$H%j%8%g%sFb$N$b$N$KBP1~$9$k%=!<%9%F%-%9%H$N%;%/%7%g%s%3%^%s%I$9(B
-$B$Y$F$,0l3,AX>e$,$j!"(B`D'$B$r2!$9$H2<$,$j$^$9!#%;%/%7%g%s6h@Z$j0lMw%P%C%U%!$G(B
-$BMxMQ$G$-$k%-!<%3%^%s%I$K$O0J2<$N$b$N$,$"$j$^$9!#(B
+で作成することができます。このバッファを選択し任意の行でスペースを押すと、
+該当するセクション区切りのある本文中の場所にジャンプします。さらに、同バッ
+ファで `u' を押すと、ソーステキストの対応するセクションコマンドが一階層上
+がり(例: subsection が section に変わる)、`d'を押すと一階層下がります。
+`*Sectioning Lines*'バッファにあるセクション区切りの行をマークしておいて
+`U'を押すとリジョン内のものに対応するソーステキストのセクションコマンドす
+べてが一階層上がり、`D'を押すと下がります。セクション区切り一覧バッファで
+利用できるキーコマンドには以下のものがあります。
 
 `SPC'
-             ... $BBP1~$9$k%=!<%99T$X%8%c%s%W(B
+             ... 対応するソース行へジャンプ
 `.'
-             ... $BBP1~$9$k%=!<%99T$rI=<((B
+             ... 対応するソース行を表示
 `u'
-             ... $B%+!<%=%k0LCV$KBP1~$9$k%;%/%7%g%s%3%^%s%I$r0l3,AX>e$2$k(B
+             ... カーソル位置に対応するセクションコマンドを一階層上げる
 `d'
-             ... $B%+!<%=%k0LCV$KBP1~$9$k%;%/%7%g%s%3%^%s%I$r0l3,AX2<$2$k(B
+             ... カーソル位置に対応するセクションコマンドを一階層下げる
 `U'
-             ... $B%^!<%/$7$?%;%/%7%g%s%3%^%s%I$r0l3,AX>e$2$k(B
+             ... マークしたセクションコマンドを一階層上げる
 `D'
-             ... $B%^!<%/$7$?%;%/%7%g%s%3%^%s%I$r0l3,AX>e$2$k(B
-`0$B!A(B6'
-             ... $B%l%Y%k(B n $B0J2<$N%;%/%7%g%s%3%^%s%I$r1#$7$FI=<((B
+             ... マークしたセクションコマンドを一階層上げる
+`0〜6'
+             ... レベル n 以下のセクションコマンドを隠して表示
 
 
 
-File: yatexj, Node: label-generation, Prev: view-sectioning, Up: section$B7?Jd40(B
+File: yatexj, Node: label-generation, Prev: view-sectioning, Up: section型補完
 
-$B%i%Y%k<+F0@8@.(B
+ラベル自動生成
 --------------
 
-  `\ref{}' $B$d(B `\cite{@}' $B%^%/%m$r(Bsection$B7?Jd40$GF~$l$?>l9g;2>H@h$H$J$jF@$k(B
-$B$b$N$rA4$FC5$7$F%a%K%e!<$K$7$FA*Br$G$-$^$9!#;2>H@h$K$O(B`\label{}'$B$r$D$1$F$*(B
-$B$/I,MW$O$"$j$^$;$s!#$b$7$"$l$P!"$=$N%i%Y%k$r;H$$!"$J$1$l$P$=$N>l$G;2>H@h$K(B
-`\label{}'$B$r:n$i$;$F$/$l$^$9!#%i%Y%kL>$r9M$($k$N$O6lDK$K46$8$k$b$N$G$9!#A4(B
-$B$F$N%+%&%s%?$K%i%Y%k$r$D$1$k$N$b$?$$$X$s$G$9!#$b$&%i%Y%kL>$K2?$r$D$1$k$+!"(B
-$B%i%Y%k$r$D$1$k$+$D$1$^$$$+!"$J$I$H$$$&$3$H$OK:$l$^$7$g$&(B!
+  `\ref{}' や `\cite{@}' マクロをsection型補完で入れた場合参照先となり得る
+ものを全て探してメニューにして選択できます。参照先には`\label{}'をつけてお
+く必要はありません。もしあれば、そのラベルを使い、なければその場で参照先に
+`\label{}'を作らせてくれます。ラベル名を考えるのは苦痛に感じるものです。全
+てのカウンタにラベルをつけるのもたいへんです。もうラベル名に何をつけるか、
+ラベルをつけるかつけまいか、などということは忘れましょう!
 
 
-File: yatexj, Node: large$B7?Jd40(B, Next: maketitle$B7?Jd40(B, Prev: section$B7?Jd40(B, Up: Completion
+File: yatexj, Node: large型補完, Next: maketitle型補完, Prev: section型補完, Up: Completion
 
-large$B7?Jd40(B
+large型補完
 ===========
 
-  `{\large }' $B$N$h$&$J7A<0$NJd40$r(B large $B7?Jd40$H8F$V$3$H$K$7$^$9!#(B
+  `{\large }' のような形式の補完を large 型補完と呼ぶことにします。
 
 `[prefix] l'
-             ... large $B7?Jd403+;O(B
+             ... large 型補完開始
 
-$B$,(Blarge$B7?Jd40$N3+;O$G$9!#(B`[prefix] l' $B$r2!$9$H!"%_%K%P%C%U%!$K(B
+がlarge型補完の開始です。`[prefix] l' を押すと、ミニバッファに
 
              {\??? } (default large): 
 
-$B$HI=<($5$l$k$N$G!">e5-$N$b$N$HF1$8MWNN$GJd40F~NO$7$F2<$5$$!#Jd408uJd$KMQ0U(B
-$B$5$l$F$$$k$N$O!"(B`footnotesize' $B$d(B `huge' $B$N$h$&$JJ8;z%5%$%:;XDj;R$H!"(B`bf'
-$B$d(B`dg'$B$N$h$&$J%U%)%s%H;XDj;R$G$9!#(B
+と表示されるので、上記のものと同じ要領で補完入力して下さい。補完候補に用意
+されているのは、`footnotesize' や `huge' のような文字サイズ指定子と、`bf'
+や`dg'のようなフォント指定子です。
 
 
-$B4{$K=q$$$?J8;z$r3g$k(B
+既に書いた文字を括る
 --------------------
 
-  $B$^$?!"(Bbegin$B7?Jd40$N;~$HF1MM!"@h$K=q$$$F$7$^$C$?0lO"$NJ8>O$NJ8;z$N%5%$%:(B
-$B$rJQ$($?$$$H;W$&;~$,$"$j$^$9$,!"$=$N$h$&$J;~$O!"%5%$%:$dBg$-$5$rJQ$($?$$J8(B
-$B;z$NHO0O$r%^!<%/$7$F$+$i!"8F$S=P$7%-!<$r(B `[prefix] L' $B$H!"BgJ8;z$N(B L $B$KJQ(B
-$B$($F8F$S=P$;$P!"$=$N%j%8%g%sA4BN$,!"%V%l!<%9$G0O$^$l$^$9!#(B
+  また、begin型補完の時と同様、先に書いてしまった一連の文章の文字のサイズ
+を変えたいと思う時がありますが、そのような時は、サイズや大きさを変えたい文
+字の範囲をマークしてから、呼び出しキーを `[prefix] L' と、大文字の L に変
+えて呼び出せば、そのリジョン全体が、ブレースで囲まれます。
 
 
-File: yatexj, Node: maketitle$B7?Jd40(B, Next: Arbitrary completion, Prev: large$B7?Jd40(B, Up: Completion
+File: yatexj, Node: maketitle型補完, Next: Arbitrary completion, Prev: large型補完, Up: Completion
 
-maketitle$B7?Jd40(B
+maketitle型補完
 ===============
 
-  `\maketitle' $B$N7A<0$NJd40$r(B maketitle $B7?Jd40$H8F$V$3$H$K$7$^$9!#(B
+  `\maketitle' の形式の補完を maketitle 型補完と呼ぶことにします。
 
 `[prefix] m'
-             ... maketitle $B7?Jd403+;O(B
+             ... maketitle 型補完開始
 
-$B$G!"(Bmaketitle $B7?Jd40$r3+;O$7$^$9!#Jd40$NMWNN$O:#$^$G$N$b$N$H$^$C$?$/F1$8$G(B
-$B$9!#(BLaTeX $BMQ$N%3%^%s%IL>$,Jd408uJd$H$7$FMQ0U$5$l$F$$$^$9!#(B
+で、maketitle 型補完を開始します。補完の要領は今までのものとまったく同じで
+す。LaTeX 用のコマンド名が補完候補として用意されています。
 
 
-File: yatexj, Node: Arbitrary completion, Next: end$BJd40(B, Prev: maketitle$B7?Jd40(B, Up: Completion
+File: yatexj, Node: Arbitrary completion, Next: end補完, Prev: maketitle型補完, Up: Completion
 
-$B?o;~Jd40(B
+随時補完
 ========
 
-  $B$5$F!":#$^$G=R$Y$?E57?E*$J(B LaTeX $B%3%^%s%I7A<0$NJd40F~NO$rMQ$$$:$K!":#F~(B
-$BNO$7$h$&$H$7$F$$$k(B LaTeX $B%3%^%s%I$rJ8=qCf$NG$0U$N0LCV$G?o;~Jd40$9$k$3$H$b(B
-$B$G$-$^$9!#(BLaTeX $B%3%^%s%I(B($B@hF,$,(B\$B$G;O$^$k(B)$B$rF~NO$7$F$$$kESCf$G!"(B
+  さて、今まで述べた典型的な LaTeX コマンド形式の補完入力を用いずに、今入
+力しようとしている LaTeX コマンドを文書中の任意の位置で随時補完することも
+できます。LaTeX コマンド(先頭が\で始まる)を入力している途中で、
 
 `[prefix] SPC'
-             ... $B?o;~Jd40(B
+             ... 随時補完
 
-$B$rF~NO$9$l$P!"A4$F$NJd408uJd$NCf$+$i0lCW$9$k$b$N$,A*$P$l%+!<%=%k0LCV$KA^F~(B
-$B$5$l$^$9!#(B
+を入力すれば、全ての補完候補の中から一致するものが選ばれカーソル位置に挿入
+されます。
 
 
-File: yatexj, Node: end$BJd40(B, Next: Accent mark completion, Prev: Arbitrary completion, Up: Completion
+File: yatexj, Node: end補完, Next: Accent mark completion, Prev: Arbitrary completion, Up: Completion
 
-end$BJd40(B
+end補完
 =======
 
-  $B8=:_3+$$$?$^$^$N4D6-L>$r<+F0E*$K8!=P$7!"(B`\end{$B4D6-L>(B}'$B$rA^F~$7$^$9!#(B
-begin $B7?Jd40$rMQ$$$l$P4D6-$NJD$8K:$l$O$J$$$N$G$9$,!";~$K$O$D$$$D$$<j$G(B 
-`\begin{$B4D6-L>(B}' $B$rF~$l$F$7$^$$!"Ha$7$$;W$$$r$9$k$3$H$,$"$j$^$9!#$=$N$h$&(B
-$B$J;~$K$O5$$K$;$:B3$1$FJ8>O$rF~NO$7!"$7$+$k$N$A$K(B
+  現在開いたままの環境名を自動的に検出し、`\end{環境名}'を挿入します。
+begin 型補完を用いれば環境の閉じ忘れはないのですが、時にはついつい手で 
+`\begin{環境名}' を入れてしまい、悲しい思いをすることがあります。そのよう
+な時には気にせず続けて文章を入力し、しかるのちに
 
 `[prefix] e'
-             ... end $BJd40(B
+             ... end 補完
 
-$B$H$9$k$3$H$G!"8=:_3+$$$F$$$k4D6-L>$G(B \end{} $B$,Jd$o$l$^$9!#(B
+とすることで、現在開いている環境名で \end{} が補われます。
 
 
-File: yatexj, Node: Accent mark completion, Next: Image completion, Prev: end$BJd40(B, Up: Completion
+File: yatexj, Node: Accent mark completion, Next: Image completion, Prev: end補完, Up: Completion
 
-$B%"%/%;%s%H5-9fJd40(B
+アクセント記号補完
 ==================
 
-  $B2$J8$N%"%/%;%s%H5-9f(B(`\`{o}'$B$J$I(B)$B$rF~NO$9$k;~$O!"(B
+  欧文のアクセント記号(`\`{o}'など)を入力する時は、
 
 `[prefix] a'
-             ... $B%"%/%;%s%H5-9fF~NO(B
+             ... アクセント記号入力
 
-$B$r2!$9$H!"%_%K%P%C%U%!$K(B
+を押すと、ミニバッファに
 
              1:` 2:' 3:^ 4:" 5:~ 6:= 7:. u v H t c d b
 
-$B$H$$$&%a%K%e!<$,=P$FMh$k$N$G!"?t;z!"$^$?$OBP1~$9$k5-9f(B/$B1Q;z$rF~NO$7$F2<$5(B
-$B$$!#$9$k$HJT=8%P%C%U%!$K!"(B
+というメニューが出て来るので、数字、または対応する記号/英字を入力して下さ
+い。すると編集バッファに、
 
              \`{}
 
-$B$,$"$i$o$l!"%+!<%=%k$,(B{}$BFb$K0LCV$9$k$N$G!"$5$i$K0lJ8;zF~NO$9$k;v$G!"(B
+があらわれ、カーソルが{}内に位置するので、さらに一文字入力する事で、
 
              \`{o}
 
-$B$,40@.$5$l!"%+!<%=%k$O(B{}$B$N30$KLa$j$^$9!#(B
+が完成され、カーソルは{}の外に戻ります。
 
 
 File: yatexj, Node: Image completion, Next: Greek letter completion, Prev: Accent mark completion, Up: Completion
 
-$B?t<05-9f%$%a!<%8Jd40(B
+数式記号イメージ補完
 ====================
 
-  $B<g$K?t<0%b!<%I$G;HMQ$5$l$k!"Lp0u$d&2$J$I$N5-9f$r5<;wE*$KI=8=$9$k%-!<F~NO(B
-$B$G!"(BLaTeX $B%3%^%s%I$rF~NO$G$-$^$9!#$3$l$OLnD;<+?H$N!V?t<0%b!<%I!W$G$N$_F0:n(B
-$B$7$^$9!#LnD;$O%+!<%=%k$,(BTeX$B$N?t<04D6-$NCf$K$"$k;~$K(B`;'$B$d!"(B`:'$B$KFC<l$J5!G=(B
-$B$r;}$?$;$^$9!#(B
+  主に数式モードで使用される、矢印やΣなどの記号を擬似的に表現するキー入力
+で、LaTeX コマンドを入力できます。これは野鳥自身の「数式モード」でのみ動作
+します。野鳥はカーソルがTeXの数式環境の中にある時に`;'や、`:'に特殊な機能
+を持たせます。
 
-  $B$5$F!"Nc$($P!""+(B(leftarrow)$B$r(BASCII$BJ8;z$@$1$GI=8=$9$k>l9g!"0lHLE*$K$O!V(B<-$B!W(B
-$B$N$h$&$K$7$^$9$,!"$3$l$rMxMQ$7$F!"?t<05-9f%$%a!<%8F~NO%b!<%I$G(B 
-`\leftarrow'$B$rF~NO$9$k$K$O!"(B`;'($B%;%_%3%m%s(B)$B$rBG$C$F$+$i(B`<-'$B$HF~NO$7$^$9!#(B
-$BF1MM$K!"D9$$Lp0u"+(B-(long-leftarrow) $B$r(BASCII$BJ8;z$@$1$GI=8=$9$k>l9g!V(B<--$B!W$H(B
-$B$9$k$N$G!"(B`\longleftarrow'$B$rF~NO$9$k$?$a$K$O!"(B`;<--'$B$HF~NO$7$^$9!#$"$k$$$O(B
-$BL58BBg5-9f$r(BASCII$BJ8;z$@$1$GI=8=$9$k;~$O!V(Boo$B!W$N$h$&$K$9$k$3$H$+$i!"(B
-`\infty' $B$rF~NO$9$k;~$O!"(B`;oo'$B$H%-!<F~NO$7$^$9!#(B
+  さて、例えば、←(leftarrow)をASCII文字だけで表現する場合、一般的には「<-」
+のようにしますが、これを利用して、数式記号イメージ入力モードで 
+`\leftarrow'を入力するには、`;'(セミコロン)を打ってから`<-'と入力します。
+同様に、長い矢印←-(long-leftarrow) をASCII文字だけで表現する場合「<--」と
+するので、`\longleftarrow'を入力するためには、`;<--'と入力します。あるいは
+無限大記号をASCII文字だけで表現する時は「oo」のようにすることから、
+`\infty' を入力する時は、`;oo'とキー入力します。
 
-  $B$3$l$i$NA`:n$r$^$H$a$k$H<!$N$h$&$K$J$j$^$9!#(B
+  これらの操作をまとめると次のようになります。
 
-     INPUT                   $BF~NO$5$l$k(B LaTeX $B%3%^%s%I(B
+     INPUT                   入力される LaTeX コマンド
      ; < -                   `\leftarrow'
      ; < - -                 `\longleftarrow'
      ; < - - >               `\longleftrightarrow'
@@ -830,893 +830,893 @@ File: yatexj, Node: Image completion, Next: Greek letter completion, Prev: Accen
      ; o o                   `\infty'
 
 
-  $B$$$:$l$N>l9g$b!"%$%a!<%8F~NO$r9T$C$F$$$kESCf$GK>$_$N$b$N$,%P%C%U%!$KI=<((B
-$B$5$l$?$J$i!"$=$3$G%$%a!<%8F~NO$r;_$a$F<!$NJT=8F0:n$K0\$C$F$b9=$$$^$;$s!#(B
+  いずれの場合も、イメージ入力を行っている途中で望みのものがバッファに表示
+されたなら、そこでイメージ入力を止めて次の編集動作に移っても構いません。
 
-  $B?t<04D6-Cf$G(B`;'$B<+?H$rF~NO$9$k$K$O(B`;;'$B$N$h$&$K$7$^$9!#%$%a!<%8F~NO$NESCf(B
-$B$G(BTAB$B$r2!$9$H!"$=$l$^$GF~NO$7$?J8;z$G;O$^$k$b$N0lMw$,I=<($5$l$^$9!#$3$3$G(B
-$BL\E*$N(B LaTeX $B%3%^%s%I$^$G%+!<%=%k$r0\F0$7:FEY(BTAB$B$r2!$9$3$H$G$=$N(B LaTeX $B%3(B
-$B%^%s%I$,%P%C%U%!$KA^F~$5$l$^$9!#(B
+  数式環境中で`;'自身を入力するには`;;'のようにします。イメージ入力の途中
+でTABを押すと、それまで入力した文字で始まるもの一覧が表示されます。ここで
+目的の LaTeX コマンドまでカーソルを移動し再度TABを押すことでその LaTeX コ
+マンドがバッファに挿入されます。
 
-  $B$I$N%-!<F~NO$K$I$N5-9f$,BP1~$7$F$$$k$+A4$FCN$j$?$$;~$O!"(B`;'$B$r2!$7$?D>8e(B
-$B$K(BTAB$B$r2!$7$F$/$@$5$$!#0J2<$NNc$O!"(B`;<'$B$H2!$7$?8e$K(BTAB$B$r2!$7$?$b$N$G$9!#(B
+  どのキー入力にどの記号が対応しているか全て知りたい時は、`;'を押した直後
+にTABを押してください。以下の例は、`;<'と押した後にTABを押したものです。
 
      KEY             LaTeX sequence          sign
-     <               \leq                    $B!e(B
-     <<              \ll                     $B!T(B
-     <-              \leftarrow              $B"+(B
+     <               \leq                    ≦
+     <<              \ll                     《
+     <-              \leftarrow              ←
      <=              \Leftarrow              <=
 
-$B:8$+$i(B[$BF~NO%-!<(B]$B!"(B[$BBP1~$9$k(B LaTeX $B%3%^%s%I(B]$B!"(B[($B5<;w(B)$B5-9f?^<((B]$B!"$H$$$&=g$G(B
-$B%a%K%e!<$,=P$FMh$k$N$G!"$h$/;H$&$b$N$r3P$($F$*$/$HNI$$$G$7$g$&!#$b$N$K$h$C(B
-$B$F$O(BASCII$BJ8;z$GI=8=$9$k$3$H$,:$Fq$J$N$G!"$"$^$j3P$($d$9$$%-!<JB$S$G$O$J$$(B
-$B$b$N$,$"$k$G$7$g$&$+$i!"$=$N$h$&$J>l9g$O(B \maketitle $B7?Jd40$GF~NO$9$k$+!"0J(B
-$B2<$K=R$Y$kBP1~I=$N@_Dj$r9T$C$FC1=c$J%-!<JB$S$N$b$N$r@_Dj$9$k$HNI$$$G$7$g$&!#(B
+左から[入力キー]、[対応する LaTeX コマンド]、[(擬似)記号図示]、という順で
+メニューが出て来るので、よく使うものを覚えておくと良いでしょう。ものによっ
+てはASCII文字で表現することが困難なので、あまり覚えやすいキー並びではない
+ものがあるでしょうから、そのような場合は \maketitle 型補完で入力するか、以
+下に述べる対応表の設定を行って単純なキー並びのものを設定すると良いでしょう。
 
-  $BF~NO%-!<$H(B LaTeX $B%3%^%s%I!"5-9f$NBP1~I=$r8D?ME*$K@_Dj$7$?$$>l9g$O(B 
-Emacs-Lisp $BJQ?t(B `YaTeX-math-sign-alist-private' $B$KDj5A$7$F$/$@$5$$!#$=$NFb(B
-$BMF$H%G%U%)%k%H$N$b$N$r9g$o$;$?$b$N$,BP1~I=$H$7$F;HMQ$5$l$^$9(B(private$B$NJ}$,(B
-$BM%@h$5$l$k(B)$B!#$J$*!"$3$NJQ?t$N9=B$$K$D$$$F$O(B `yatexmth.el' $B$r;2>H$7$F$/$@$5(B
-$B$$!#(B
+  入力キーと LaTeX コマンド、記号の対応表を個人的に設定したい場合は 
+Emacs-Lisp 変数 `YaTeX-math-sign-alist-private' に定義してください。その内
+容とデフォルトのものを合わせたものが対応表として使用されます(privateの方が
+優先される)。なお、この変数の構造については `yatexmth.el' を参照してくださ
+い。
 
 
 File: yatexj, Node: Greek letter completion, Prev: Image completion, Up: Completion
 
-$B%.%j%7%cJ8;zJd40(B
+ギリシャ文字補完
 ================
 
-  $B$b$&0l$D!"?t<04D6-Cf$G(B`:'$B$r2!$9$H%.%j%7%cJ8;zF~NO%b!<%I$KF~$j$^$9!#(B`:'$B$r(B
-$B2!$7$?D>8e$K(B`a'$B$r2!$9$H(B`\alpha'$B$,!"(B`g' $B$r2!$9$H(B `\gamma'$B$,!"$J$I%"%k%U%!%Y%C(B
-$B%H$KBP1~$7$?%.%j%7%cJ8;z$,A^F~$5$l$^$9!#A`:nJ}K!$O(B;$B$N?t<05-9fJd40$H$^$C$?(B
-$B$/F1$8$G$9!#$^$:$O(B`:'$B$ND>8e$K(BTAB$B$r2!$7$F$I$N%"%k%U%!%Y%C%H$K$I$N%.%j%7%cJ8(B
-$B;z$,BP1~$7$F$$$k$+D4$Y$F$_$F$/$@$5$$!#(B
+  もう一つ、数式環境中で`:'を押すとギリシャ文字入力モードに入ります。`:'を
+押した直後に`a'を押すと`\alpha'が、`g' を押すと `\gamma'が、などアルファベッ
+トに対応したギリシャ文字が挿入されます。操作方法は;の数式記号補完とまった
+く同じです。まずは`:'の直後にTABを押してどのアルファベットにどのギリシャ文
+字が対応しているか調べてみてください。
 
-  `;'$B$H(B`:'$B$r?t<04D6-Cf$G2!$7$F$$$k$K$b$+$+$o$i$:!"%$%a!<%8Jd40$,F/$+$J$$>l(B
-$B9g$O!"(B`C-u ;'$B$N$h$&$K(B universal-argument $B$r$D$1$F%-!<$r2!$9$3$H$K$h$j!"6/(B
-$B@)E*$K%$%a!<%8Jd40$KF~$k$3$H$,$G$-$^$9!#$^$?!"$3$N;~$K$I$N$h$&$J>uBV$G?t<0(B
-$B4D6-FbH=Dj$K<:GT$7$?$+$r$4O"Mm2<$5$$!#(B
+  `;'と`:'を数式環境中で押しているにもかかわらず、イメージ補完が働かない場
+合は、`C-u ;'のように universal-argument をつけてキーを押すことにより、強
+制的にイメージ補完に入ることができます。また、この時にどのような状態で数式
+環境内判定に失敗したかをご連絡下さい。
 
 
 File: yatexj, Node: Local dictionary, Next: Commenting out, Prev: Completion, Up: Top
 
-$B%m!<%+%k<-=q(B
+ローカル辞書
 ************
 
-  $BJd40F~NOMQ$N8uJd$O;0<oN`$N<-=q$+$i9=@.$5$l$F$$$^$9!#0l$D$O(B`yatex.el'$B$KAH(B
-$B$_9~$^$l$?!VI8=`<-=q!W!"$b$&0l$D$O%f!<%6$,8D?ME*$K>oMQ$9$k%3%^%s%I$rJ]B8$9(B
-$B$k!V%f!<%6<-=q!W!"$=$7$F$b$&$R$H$D$O$"$k%G%#%l%/%H%j$G$N$_M-8z$J%3%^%s%I$r(B
-$BJ]B8$9$k!V%m!<%+%k<-=q!W$G$9!#(B
+  補完入力用の候補は三種類の辞書から構成されています。一つは`yatex.el'に組
+み込まれた「標準辞書」、もう一つはユーザが個人的に常用するコマンドを保存す
+る「ユーザ辞書」、そしてもうひとつはあるディレクトリでのみ有効なコマンドを
+保存する「ローカル辞書」です。
 
-  $BJd40F~NO;~$K?7$7$$C18l$rF~$l$?>l9g$K!"$=$NC18l$r$I$N<-=q$KF~$l$k$+J9$$$F(B
-$BMh$^$9!#(B
+  補完入力時に新しい単語を入れた場合に、その単語をどの辞書に入れるか聞いて
+来ます。
 
        `foo' is not in table. Register into: U)serDic L)ocalDic N)one D)iscard
 
-$B$H$$$&%W%m%s%W%H$KBP$7!"(B`u'$B$HEz$($k$H!V%f!<%6<-=q!W$r!"(B`l'$B$HEz$($k$H%m!<%+(B
-$B%k<-=q$r99?7$7!"(B`n'$B$HEz$($k$H<-=q%U%!%$%k$O99?7$;$:8=:_$N(BEmacs$B%;%C%7%g%s$N(B
-$B$_M-8z$JC18l$H$7!"(B`d'$B$HEz$($k$H?7$?$JC18l$r3X=,$;$:$K<N$F$k$3$H$K$J$j$^$9!#(B
+というプロンプトに対し、`u'と答えると「ユーザ辞書」を、`l'と答えるとローカ
+ル辞書を更新し、`n'と答えると辞書ファイルは更新せず現在のEmacsセッションの
+み有効な単語とし、`d'と答えると新たな単語を学習せずに捨てることになります。
 
-  $B$b$7!"%m!<%+%k<-=q$N5!G=$O$$$i$:!"A4$F%f!<%6<-=q$N99?7$N$_$G$h$$$H8@$&>l(B
-$B9g$K$O(B`~/.emacs'$B$J$I$G!"(B
+  もし、ローカル辞書の機能はいらず、全てユーザ辞書の更新のみでよいと言う場
+合には`~/.emacs'などで、
 
              (setq YaTeX-nervous nil)
 
-$B$H$7$F2<$5$$!#(B
+として下さい。
 
 
 File: yatexj, Node: Commenting out, Next: Cursor jump, Prev: Local dictionary, Up: Top
 
-$B%3%a%s%H%"%&%H(B
+コメントアウト
 **************
 
 
-  LaTeX$B$NJT=8$K$O;n9T:x8m$,$D$-$b$N$G$9!#$"$kItJ,$r0l3g$G%3%a%s%H%"%&%H$7(B
-$B$?$j!"%3%a%s%H$r30$7$?$j$7$?$$$3$H$,$"$j$^$9!#(B
+  LaTeXの編集には試行錯誤がつきものです。ある部分を一括でコメントアウトし
+たり、コメントを外したりしたいことがあります。
 
 `[prefix] >'
-             ... $B%j%8%g%s$r(B % $B$G%3%a%s%H%"%&%H(B
+             ... リジョンを % でコメントアウト
 `[prefix] <'
-             ... $B%j%8%g%s$N(B % $B$N%3%a%s%H$r30$9(B
+             ... リジョンの % のコメントを外す
 
-$B$O!"$"$i$+$8$a@_Dj$7$?%j%8%g%s$KBP$7$F$NA`:n!"(B
+は、あらかじめ設定したリジョンに対しての操作、
 
 `[prefix] .'
-             ... $B8=:_$N%Q%i%0%i%U$r%3%a%s%H%"%&%H(B
+             ... 現在のパラグラフをコメントアウト
 `[prefix] ,'
-             ... $B8=:_$N%Q%i%0%i%U$N%3%a%s%H$r30$9(B
+             ... 現在のパラグラフのコメントを外す
 
-$B$O!"%+!<%=%k$N0LCV$9$k%Q%i%0%i%UA4BN$KBP$7$F$NA`:n$G$9!#$J$*!"$3$3$G$$$&(B
-$B!V%Q%i%0%i%U!W$O(B (`mark-paragraph') $B4X?t$K$h$j%^!<%/$5$l$kHO0O$r;X$7$^$9(B
-($BI8=`@_Dj$G(B`ESC h'$B$K%P%$%s%I$5$l$F$$$k(B)$B!#$J$*!"4{$K(B`%'$B$G%3%a%s%H%"%&%H$5$l(B
-$B$F$$$k%Q%i%0%i%U$KBP$7$F7+$jJV$7%Q%i%0%i%U$N%3%a%s%H$r;HMQ$7$?>l9g$NF0:n$O(B
-$BJ]>Z$7$^$;$s$N$G8fCm0U$/$@$5$$!#(B
+は、カーソルの位置するパラグラフ全体に対しての操作です。なお、ここでいう
+「パラグラフ」は (`mark-paragraph') 関数によりマークされる範囲を指します
+(標準設定で`ESC h'にバインドされている)。なお、既に`%'でコメントアウトされ
+ているパラグラフに対して繰り返しパラグラフのコメントを使用した場合の動作は
+保証しませんので御注意ください。
 
-  $B$5$F!"J8>O$KBP$7$F$@$1$G$J$/!";~$K$O(B`\begin', `\end' $B<+BN$KBP$7$F$b%3%a(B
-$B%s%H%"%&%H$NA`:n$r$7$?$$$H$-$,$"$j$^$9!#$3$N$h$&$J$H$-$O!"(B`\begin{}' $B$"$k(B
-$B$$$O(B `\end{}' $B$N9T$K%+!<%=%k$r9g$o$;!"(B
+  さて、文章に対してだけでなく、時には`\begin', `\end' 自体に対してもコメ
+ントアウトの操作をしたいときがあります。このようなときは、`\begin{}' ある
+いは `\end{}' の行にカーソルを合わせ、
 
 `[prefix] >'
-             ... `\begin{}'$B!A(B`\end{}' $BA4$F%3%a%s%H%"%&%H(B
+             ... `\begin{}'〜`\end{}' 全てコメントアウト
 `[prefix] <'
-             ... `\begin{}'$B!A(B`\end{}' $BA4$F%3%a%s%H$r30$9(B
+             ... `\begin{}'〜`\end{}' 全てコメントを外す
 
-$B$H$9$k$3$H$G!"(B`\begin$B!A(B\end'$B$G0O$^$l$k4D6-A4$F$KBP$7$F%3%a%s%HA`:n$7!"(B
+とすることで、`\begin〜\end'で囲まれる環境全てに対してコメント操作し、
 
 `[prefix] .'
-             ... `\begin{}' $B$H(B `\end{}' $B$r%3%a%s%H%"%&%H(B
+             ... `\begin{}' と `\end{}' をコメントアウト
 `[prefix] ,'
-             ... `\begin{}' $B$H(B `\end{}' $B$N%3%a%s%H$r30$9(B
+             ... `\begin{}' と `\end{}' のコメントを外す
 
-$B$O!"BP1~$9$k(B `\begin' $B$H(B `\end' 2$B9T$@$1$r!"%3%a%s%HA`:n$NBP>]$H$7$^$9!#%j(B
-$B%8%g%s$r%3%a%s%H%"%&%H$7$h$&$H$7$F!"%^!<%/$r@_Dj$7$?$N$A$K%+!<%=%k$r0\F0$7(B
-`[preifx] >' $B$r2!$7$F$b%+!<%=%k$,(B `\begin{}' $B$N>e$K$"$k$H(B`\begin{}'$B!A(B
-`\end{}'$B%b!<%I$G%3%a%s%H5!G=$,F/$$$F$7$^$&$N$GCm0U$7$F2<$5$$!#(B
+は、対応する `\begin' と `\end' 2行だけを、コメント操作の対象とします。リ
+ジョンをコメントアウトしようとして、マークを設定したのちにカーソルを移動し
+`[preifx] >' を押してもカーソルが `\begin{}' の上にあると`\begin{}'〜
+`\end{}'モードでコメント機能が働いてしまうので注意して下さい。
 
 
 File: yatexj, Node: Cursor jump, Next: Modifying/Deleting, Prev: Commenting out, Up: Top
 
-$B%+!<%=%k%8%c%s%W(B
+カーソルジャンプ
 ****************
 
 
 * Menu:
 
-* $BBP1~%*%V%8%'%/%H$X$N%8%c%s%W(B::  
-* $B$*3(IA$-%D!<%k5/F0(B::          
-* $B%a%$%s%U%!%$%k$X$N%8%c%s%W(B::  
-* $B4D6-$rC10L$H$7$?%8%c%s%W(B::    
-* $B:G8e$NJd400LCV$X$N%8%c%s%W(B::  
+* 対応オブジェクトへのジャンプ::  
+* お絵描きツール起動::          
+* メインファイルへのジャンプ::  
+* 環境を単位としたジャンプ::    
+* 最後の補完位置へのジャンプ::  
 
 
-File: yatexj, Node: $BBP1~%*%V%8%'%/%H$X$N%8%c%s%W(B, Next: $B$*3(IA$-%D!<%k5/F0(B, Prev: Cursor jump, Up: Cursor jump
+File: yatexj, Node: 対応オブジェクトへのジャンプ, Next: お絵描きツール起動, Prev: Cursor jump, Up: Cursor jump
 
-$BBP1~%*%V%8%'%/%H$X$N%8%c%s%W(B
+対応オブジェクトへのジャンプ
 ============================
 
-  $BJ8=qCf$N$$$m$$$m$J>l=j$G(B
+  文書中のいろいろな場所で
 
 `[prefix] g'
-             ... $BBP1~$9$k%*%V%8%'%/%H$K%8%c%s%W(B
+             ... 対応するオブジェクトにジャンプ
 
-$B$r2!$9$3$H$K$h$j!"%+!<%=%k0LCV$N(BLaTeX$B%3%^%s%I$KBP1~$9$k>l=j$K%8%c%s%W$7$^(B
-$B$9!#BP1~4X78$,B8:_$9$k$H2r<a$5$l$k%3%^%s%I$K$O0J2<$N$b$N$,$"$j$^$9!#(B
+を押すことにより、カーソル位置のLaTeXコマンドに対応する場所にジャンプしま
+す。対応関係が存在すると解釈されるコマンドには以下のものがあります。
 
-   * `\begin{}' $B"+"*(B `\end{}'
-   * `%#BEGIN' $B"+"*(B `%#END'
-   * $B2hA|%U%!%$%k$N<h$j9~$_%^%/%m(B $B"*(B $BBP1~$9$k(Bviewer/$B$*3($+$-%D!<%k5/F0(B
-   * `\label{}' $B"+"*(B `\ref{}'
-   * `\include(\input)' $B"*(B $BBP1~$9$k%U%!%$%k(B
-   * `\bibitem{}' $B"+"*(B `\cite{}'
+   * `\begin{}' ←→ `\end{}'
+   * `%#BEGIN' ←→ `%#END'
+   * 画像ファイルの取り込みマクロ → 対応するviewer/お絵かきツール起動
+   * `\label{}' ←→ `\ref{}'
+   * `\include(\input)' → 対応するファイル
+   * `\bibitem{}' ←→ `\cite{}'
 
-  `\begin{}' $B$+(B `\end{}' $B$N9T$G(B`[prefix] g'$B$r2!$9$3$H$K$h$j!"BP1~$9$k(B
-`end/begin'$B$N9T$K%8%c%s%W$7$^$9!#$b$A$m$sBP1~$9$k$b$N$,$J$$>l9g$O%(%i!<$K(B
-$B$J$j$^$9!#$^$?$3$l$O!"NN0h8GDj$N$?$a$N(B `%#BEGIN' $B$H(B `%#END' $B$N%Z%"$KBP$7$F(B
-$B$bF1MM$KF0:n$7$^$9!#$J$*!"(B`label/ref'$B$d(B`cite/bibitem'$BBP1~$9$k$b$N$,JL%U%!(B
-$B%$%k$K$"$k;~$O!"%8%c%s%W@h$H$J$k%U%!%$%k$,%*!<%W%s$5$l$F$$$J$1$l$P$J$j$^$;(B
-$B$s!#(B*Note %#notation::.  $B%a%$%s$N(B .tex $B%U%!%$%k$N(B `\include{chap1}' $B$J$I$K(B
-$B%+!<%=%k$r9g$o$;!"(B`[prefix] g' $B$r2!$9$H!"(B`chap1.tex' $B$K%8%c%s%W$7$^$9!#(B
+  `\begin{}' か `\end{}' の行で`[prefix] g'を押すことにより、対応する
+`end/begin'の行にジャンプします。もちろん対応するものがない場合はエラーに
+なります。またこれは、領域固定のための `%#BEGIN' と `%#END' のペアに対して
+も同様に動作します。なお、`label/ref'や`cite/bibitem'対応するものが別ファ
+イルにある時は、ジャンプ先となるファイルがオープンされていなければなりませ
+ん。*Note %#notation::.  メインの .tex ファイルの `\include{chap1}' などに
+カーソルを合わせ、`[prefix] g' を押すと、`chap1.tex' にジャンプします。
 
-$B$^$?!"(B
+また、
 
 `[prefix] 4 g'
-             ... $BJL%&%#%s%I%&$GBP1~%*%V%8%'%/%H$K%8%c%s%W(B
+             ... 別ウィンドウで対応オブジェクトにジャンプ
 
-$B$r2!$9$H!"BP1~$9$k%*%V%8%'%/%H$X$N%8%c%s%W$rJL%&%#%s%I%&$G9T$$$^$9!#$?$@$7!"(B
-$B$3$N5!G=$O(B `begin/end', `%#BEGIN/%#END' $B4V$N%8%c%s%W$KBP$7$F$O(B($B0UL#$,$J$$(B
-$B$H;W$o$l$k$N$G(B)$B5!G=$7$J$$$N$GCm0U$7$F$/$@$5$$!#(B
+を押すと、対応するオブジェクトへのジャンプを別ウィンドウで行います。ただし、
+この機能は `begin/end', `%#BEGIN/%#END' 間のジャンプに対しては(意味がない
+と思われるので)機能しないので注意してください。
 
 
-File: yatexj, Node: $B$*3(IA$-%D!<%k5/F0(B, Next: $B%a%$%s%U%!%$%k$X$N%8%c%s%W(B, Prev: $BBP1~%*%V%8%'%/%H$X$N%8%c%s%W(B, Up: Cursor jump
+File: yatexj, Node: お絵描きツール起動, Next: メインファイルへのジャンプ, Prev: 対応オブジェクトへのジャンプ, Up: Cursor jump
 
-$B$*3(IA$-%D!<%k5/F0(B
+お絵描きツール起動
 ==================
 
-$B>e5-$N!V2hA|%U%!%$%k$N<h$j9~$_%^%/%m!W$H$O!"Nc$($P(B `\epsfile{file=foo}' $B$N(B
-$B$h$&$JA^3(<h$j9~$_%3%^%s%I$N$3$H$G!"$3$N9T$K%+!<%=%k$r9g$o$;$F(B`[prefix] g'
-$B$r2!$9$H$=$N2hA|%U%!%$%k$N85$H$J$C$?%U%!%$%k$rBP1~$9$k$*3(IA$-%D!<%k$r5/F0(B
-$B$7$F%*!<%W%s$7$^$9!#5/F0$9$k%D!<%k$NH=Dj$O0J2<$N$h$&$K$J$5$l$^$9!#(B
+上記の「画像ファイルの取り込みマクロ」とは、例えば `\epsfile{file=foo}' の
+ような挿絵取り込みコマンドのことで、この行にカーソルを合わせて`[prefix] g'
+を押すとその画像ファイルの元となったファイルを対応するお絵描きツールを起動
+してオープンします。起動するツールの判定は以下のようになされます。
 
-  1. $B%+%l%s%H9T$,JQ?t(B `YaTeX-processed-file-regexp-alist' $B$KDj5A$5$l$F$$$k(B
-     $B@55,I=8=$N$$$:$l$+$H%^%C%A$7$?$i!"%U%!%$%kL>$KAjEv$9$kItJ,$r(B \\(\\)$B$+(B
-     $B$iH4$-=P$7$F3P$($F$*$/(B($B2?HVL\$N(B\\(\\)$B$+$OJQ?t$N3F%j%9%H$N(B cdr $BIt$KF~(B
-     $B$l$F$*$/(B)$B!#%^%C%A$7$J$1$l$P2?$b$7$J$$!#(B
-  2. $B9TKv$K!"JQ?t(B `YaTeX-file-processor-alist' $B$KEPO?$5$l$F$$$k%3%^%s%I$,(B
-     $B!V(B%$B%3%^%s%I!W(B $B$N$h$&$K=q$$$F$"$l$P6/@)E*$K!V%3%^%s%I(B $B%U%!%$%kL>(B.$B3HD%(B
-     $B;R!W$r5/F0!#(B
-  3. $B$J$1$l$P!"JQ?t(B `YaTeX-file-processor-alist' $B$N3F%j%9%H$N(Bcdr$BIt$KF~$C$F(B
-     $B$$$k3HD%;R$r!V%U%!%$%kL>!W$N8e$m$KB-$7$?%U%!%$%k$,B8:_$9$k$+=g<!D4$Y(B
-     $B$F!"B8:_$7$?>l9g(Bcar$BIt$KF~$C$F$$$k%3%^%s%I$r5/F0$9$k!#(B
-  4. $B0J>e$I$l$+$K%^%C%A$7$J$1$l$P$"$-$i$a$k!#(B
+  1. カレント行が変数 `YaTeX-processed-file-regexp-alist' に定義されている
+     正規表現のいずれかとマッチしたら、ファイル名に相当する部分を \\(\\)か
+     ら抜き出して覚えておく(何番目の\\(\\)かは変数の各リストの cdr 部に入
+     れておく)。マッチしなければ何もしない。
+  2. 行末に、変数 `YaTeX-file-processor-alist' に登録されているコマンドが
+     「%コマンド」 のように書いてあれば強制的に「コマンド ファイル名.拡張
+     子」を起動。
+  3. なければ、変数 `YaTeX-file-processor-alist' の各リストのcdr部に入って
+     いる拡張子を「ファイル名」の後ろに足したファイルが存在するか順次調べ
+     て、存在した場合car部に入っているコマンドを起動する。
+  4. 以上どれかにマッチしなければあきらめる。
 
 
-$BJQ?t(B `YaTeX-file-processor-alist' $B$HJQ?t(B `YaTeX-file-processor-alist' $B$N@_(B
-$BDjJ}K!$K$D$$$F$O$=$l$>$l$NJQ?t$K$D$$$F(B describe-variable $B$7$F@bL@$rFI$s$G(B
-$B2<$5$$!#$&$^$/@_Dj$9$k$H!"2hA|%U%!%$%k$K$+$.$i$:!"G$0U$N7A<0$N%U%!%$%k$rG$(B
-$B0U$N%W%m%;%C%5$G=hM}$9$k%3%^%s%I$r4JC1$K8F$S=P$9$3$H$,$G$-$^$9!#(B
+変数 `YaTeX-file-processor-alist' と変数 `YaTeX-file-processor-alist' の設
+定方法についてはそれぞれの変数について describe-variable して説明を読んで
+下さい。うまく設定すると、画像ファイルにかぎらず、任意の形式のファイルを任
+意のプロセッサで処理するコマンドを簡単に呼び出すことができます。
 
 
-File: yatexj, Node: $B%a%$%s%U%!%$%k$X$N%8%c%s%W(B, Next: $B4D6-$rC10L$H$7$?%8%c%s%W(B, Prev: $B$*3(IA$-%D!<%k5/F0(B, Up: Cursor jump
+File: yatexj, Node: メインファイルへのジャンプ, Next: 環境を単位としたジャンプ, Prev: お絵描きツール起動, Up: Cursor jump
 
-$B%a%$%s%U%!%$%k$X$N%8%c%s%W(B
+メインファイルへのジャンプ
 ==========================
 
-`chap1.tex'$B$N$h$&$J%5%V%U%!%$%k$G!"(B
+`chap1.tex'のようなサブファイルで、
 
 `[prefix] ^'
-             ... $B%a%$%s%U%!%$%k$K%8%c%s%W(B
+             ... メインファイルにジャンプ
 `[prefix] 4 ^'
-             ... $BJL%&%#%s%I%&$G%a%$%s%U%!%$%k$K%8%c%s%W(B
+             ... 別ウィンドウでメインファイルにジャンプ
 
-$B$r2!$9$H!"%a%$%s%U%!%$%k$NJT=8%P%C%U%!$K@ZBX$($^$9!#$b$7!"%a%$%s%U%!%$%k$r(B
-$B%*!<%W%s$7$F$$$J$$>l9g$O!"%+%l%s%H%G%#%l%/%H%j$+$iC5$7$F<+F0E*$K%*!<%W%s$7(B
-$B$^$9!#(B
+を押すと、メインファイルの編集バッファに切替えます。もし、メインファイルを
+オープンしていない場合は、カレントディレクトリから探して自動的にオープンし
+ます。
 
 
-File: yatexj, Node: $B4D6-$rC10L$H$7$?%8%c%s%W(B, Next: $B:G8e$NJd400LCV$X$N%8%c%s%W(B, Prev: $B%a%$%s%U%!%$%k$X$N%8%c%s%W(B, Up: Cursor jump
+File: yatexj, Node: 環境を単位としたジャンプ, Next: 最後の補完位置へのジャンプ, Prev: メインファイルへのジャンプ, Up: Cursor jump
 
-$B4D6-$rC10L$H$7$?%8%c%s%W(B
+環境を単位としたジャンプ
 ========================
 
-$B$5$i$K8=:_$N4D6-$rC10L$H$7$F5!G=$9$k%3%^%s%I$K0J2<$N$b$N$,$"$j$^$9!#(B
+さらに現在の環境を単位として機能するコマンドに以下のものがあります。
 
 `M-C-a'
-             ... $B4D6-$N@hF,(B(`\begin')$B$X%8%c%s%W(B
+             ... 環境の先頭(`\begin')へジャンプ
 `M-C-e'
-             ... $B4D6-$NKvHx(B(`\end')$B$X%8%c%s%W(B
+             ... 環境の末尾(`\end')へジャンプ
 `M-C-@'
-             ... $B4D6-A4BN$r%^!<%/(B
+             ... 環境全体をマーク
 
-$B>e5-$N%3%^%s%I$ODL>o$N(B`[prefix]'$B%-!<$G$O$J$/(B`META'$B%-!<$r%W%j%U%#%/%9$H$7$F(B
-$B5!G=$9$k$N$G$4Cm0U2<$5$$!#(B
+上記のコマンドは通常の`[prefix]'キーではなく`META'キーをプリフィクスとして
+機能するのでご注意下さい。
 
 
-File: yatexj, Node: $B:G8e$NJd400LCV$X$N%8%c%s%W(B, Prev: $B4D6-$rC10L$H$7$?%8%c%s%W(B, Up: Cursor jump
+File: yatexj, Node: 最後の補完位置へのジャンプ, Prev: 環境を単位としたジャンプ, Up: Cursor jump
 
-$B:G8e$NJd400LCV$X$N%8%c%s%W(B
+最後の補完位置へのジャンプ
 ==========================
 
-$BLnD;$OJd40F~NO$7$?0LCV$r>o$K%l%8%9%?(B `3'$B$KJ]B8$7$F$$$^$9!#F~NOESCf$GG!2?$J(B
-$B$k%U%!%$%k$NG!2?$J$k0LCV$K9T$C$?$H$7$F$b!"(B`C-x j 3'(`jump-to-register')$B$r(B
-$B;H$C$FD>$A$K:G8e$NJd40F~NO0LCV$KLa$k$3$H$,$G$-$^$9!#(B
+野鳥は補完入力した位置を常にレジスタ `3'に保存しています。入力途中で如何な
+るファイルの如何なる位置に行ったとしても、`C-x j 3'(`jump-to-register')を
+使って直ちに最後の補完入力位置に戻ることができます。
 
 
 File: yatexj, Node: Modifying/Deleting, Next: Filling, Prev: Cursor jump, Up: Top
 
-$BJQ99(B/$B:o=|(B
+変更/削除
 *********
 
-  $B4{$KF~NO$5$l$F$$$k(B LaTeX $B%3%^%s%I$NJQ99(B/$B:o=|$N$?$a$K0J2<$N5!G=$,MQ0U$5$l(B
-$B$F$$$^$9!#(B
+  既に入力されている LaTeX コマンドの変更/削除のために以下の機能が用意され
+ています。
 
 `[prefix] c'
-             ... $B%+!<%=%k0LCV$N(B LaTeX $B%3%^%s%I$NJQ99(B
+             ... カーソル位置の LaTeX コマンドの変更
 `[prefix] k'
-             ... $B%+!<%=%k0LCV$N(B LaTeX $B%3%^%s%I$N:o=|(B
+             ... カーソル位置の LaTeX コマンドの削除
 
-$B$3$l$i$N%3%^%s%I$O!"%3%^%s%I$r5/F0$9$k>l=j$K$h$C$FF0:n$r7hDj$9$k$N$GCm0U$7(B
-$B$F2<$5$$!#(B
+これらのコマンドは、コマンドを起動する場所によって動作を決定するので注意し
+て下さい。
 
 * Menu:
 
-* Changing LaTeX command::      LaTeX $B%3%^%s%I$NJQ99(B
-* Killing LaTeX command::       LaTeX $B%3%^%s%I$N:o=|(B
+* Changing LaTeX command::      LaTeX コマンドの変更
+* Killing LaTeX command::       LaTeX コマンドの削除
 
 
 File: yatexj, Node: Changing LaTeX command, Next: Killing LaTeX command, Prev: Modifying/Deleting, Up: Modifying/Deleting
 
-LaTeX $B%3%^%s%I$NJQ99(B
+LaTeX コマンドの変更
 ====================
 
-$BJQ99$7$?$$(B LaTeX $B%3%^%s%I$K%+!<%=%k$r9g$o$;$F(B `[prefix] c' $B$r2!$9$H$=$N%3(B
-$B%^%s%I$rJd40F~NO$J$I$rMQ$$$F<j7Z$KJQ$($k$3$H$,$G$-$^$9!#(B`[prefix] c' $B$GJQ(B
-$B99$G$-$k%3%^%s%I$K$O0J2<$N$b$N$,$"$j$^$9!#(B
+変更したい LaTeX コマンドにカーソルを合わせて `[prefix] c' を押すとそのコ
+マンドを補完入力などを用いて手軽に変えることができます。`[prefix] c' で変
+更できるコマンドには以下のものがあります。
 
-   * `begin/end' $B$N4D6-L>(B
-   * section$B7?%3%^%s%I$N%3%^%s%IL>(B
-   * section$B7?%3%^%s%I$N0z?t(B
-   * section$B7?%3%^%s%I$N%*%W%7%g%s%Q%i%a!<%?(B([]$B$G0O$^$l$?$b$N(B)
-   * large$B7?%3%^%s%I(B
-   * ($B%$%a!<%8Jd40$GF~NO2DG=$J(B)$B?t<0%b!<%I@lMQ$N(Bmaketitle$B7?%3%^%s%I(B
+   * `begin/end' の環境名
+   * section型コマンドのコマンド名
+   * section型コマンドの引数
+   * section型コマンドのオプションパラメータ([]で囲まれたもの)
+   * large型コマンド
+   * (イメージ補完で入力可能な)数式モード専用のmaketitle型コマンド
 
-  $BJQ$($?$$(Bsection$B7?%3%^%s%I$N0z?t$,$5$i$K(B LaTeX $B%3%^%s%I$r4^$`>l9g$O!"$=$N(B
-$B0z?t$r0O$`Cf3g8L$N>e$G(B `[prefix] c' $B$r2!$9$3$H$GCf$N%3%^%s%I$rJQ99BP>]H=Dj(B
-$B$+$i=|30$9$k$3$H$,$G$-$^$9!#(B
+  変えたいsection型コマンドの引数がさらに LaTeX コマンドを含む場合は、その
+引数を囲む中括弧の上で `[prefix] c' を押すことで中のコマンドを変更対象判定
+から除外することができます。
 
 
 
 File: yatexj, Node: Killing LaTeX command, Prev: Changing LaTeX command, Up: Modifying/Deleting
 
-LaTeX $B%3%^%s%I$N:o=|(B
+LaTeX コマンドの削除
 ====================
 
-`[prefix] k' $B$O5/F0$9$k0LCV$K$h$j<!$N$h$&$JF0:n$r9T$$$^$9!#(B
+`[prefix] k' は起動する位置により次のような動作を行います。
 
 
-     $B5/F00LCV(B                        $BF0:n(B
-     \begin, \end$B$N9T(B                `\begin\end'$B%Z%"$N:o=|(B
-     %#BEGIN, %#END $B$N9T(B             %#BEGIN,%#END$B%Z%"$N:o=|(B
-     section$B7?%3%^%s%I$N>e(B($BCf(B)       section$B7?%3%^%s%I$N:o=|(B
-     $B%U%)%s%H;XDj3g8L$N>e(B            $B%U%)%s%H;XDj$N:o=|(B
-     $B3g8L$N>e(B                        $BBP$r$J$93g8L$N:o=|(B
+     起動位置                        動作
+     \begin, \endの行                `\begin\end'ペアの削除
+     %#BEGIN, %#END の行             %#BEGIN,%#ENDペアの削除
+     section型コマンドの上(中)       section型コマンドの削除
+     フォント指定括弧の上            フォント指定の削除
+     括弧の上                        対をなす括弧の削除
 
-`\begin, \end' $B$*$h$S(B `%#BEGIN, %#END' $B$r:o=|$9$k>l9g!"(B`\begin, \end' $B$d(B 
-`%#BEGIN, %#END' $B$NB8:_$9$k9T$O$^$k$4$H:o=|$5$l$k$N$G!"$=$l$i$N0l9T$K(B 
-`\begin' $B$J$I$rFs$D0J>eO"$M$F=q$+$J$$$h$&$KCm0U$7$F$/$@$5$$!#>e5-$N$b$N$O(B
-$B$9$Y$FK\J8$r0O$&!VMF4o!W$r:o=|$9$k$h$&$KF/$-$^$9$,!"(Buniversal-argument
-(`C-u') $B$rBG$C$?8e$G(B`[prefix] k'$B$r%?%$%W$9$k$H!"$=$l$>$l$N!VMF4o!W$K4^$^$l(B
-$B$k!VCf?H!W$b0l5$$K:o=|$7$^$9!#0J2<$NNc$r;29M$K$7$F2<$5$$!#(B
+`\begin, \end' および `%#BEGIN, %#END' を削除する場合、`\begin, \end' や 
+`%#BEGIN, %#END' の存在する行はまるごと削除されるので、それらの一行に 
+`\begin' などを二つ以上連ねて書かないように注意してください。上記のものは
+すべて本文を囲う「容器」を削除するように働きますが、universal-argument
+(`C-u') を打った後で`[prefix] k'をタイプすると、それぞれの「容器」に含まれ
+る「中身」も一気に削除します。以下の例を参考にして下さい。
 
-             $B85$N%F%-%9%H(B:                   [prefix] k      C-u [prefix] k
-             $BK\J8(B\footnote{$B5SCm(B}$B$G$9!#(B     $BK\J85SCm$G$9!#(B  $BK\J8$G$9!#(B
-                     $B",(B($B%+!<%=%k0LCV(B)
+             元のテキスト:                   [prefix] k      C-u [prefix] k
+             本文\footnote{脚注}です。     本文脚注です。  本文です。
+                     ↑(カーソル位置)
 
 
 File: yatexj, Node: Filling, Next: Includeonly, Prev: Modifying/Deleting, Up: Top
 
-$B7eB7$((B
+桁揃え
 ******
 
 
-item$B$N7eB7$((B
+itemの桁揃え
 ============
 
-  itemize $B4D6-Cf$K$"$k(B`\item'$B$N9`L\(B($BJ8>O(B)$B$,J#?t9T$KEO$k>l9g$K!"9`L\$N@hF,(B
-$B$r7eB7$($7$?$$>l9g$K$O!"(B
+  itemize 環境中にある`\item'の項目(文章)が複数行に渡る場合に、項目の先頭
+を桁揃えしたい場合には、
 
 
 `M-q'
-             ... $B7eB7$((B
+             ... 桁揃え
 
-$B$K$h$C$F!"$=$N(B item $B$N%$%s%G%s%H$N?<$5$K1~$8$F(B fill $B$5$l$^$9!#$J$*!"8E$$(B
-NTT jTeX $B$r;HMQ$7$F$$$k>l9g$K$O!"(BLisp $BJQ?t(B`NTT-jTeX'$B$r(B`t'$B$K%;%C%H$7$F2<$5(B
-$B$$!#(B
+によって、その item のインデントの深さに応じて fill されます。なお、古い
+NTT jTeX を使用している場合には、Lisp 変数`NTT-jTeX'を`t'にセットして下さ
+い。
 
-  $B$3$N$H$-!"JQ?t(B`YaTeX-item-regexp'$B$NCM(B($BI8=`$G$O(B `"\\\\item"')$B$r9`L\;XDj%3(B
-$B%^%s%I$N@55,I=8=$H$7$F8!:w$K;HMQ$7$^$9!#(Bitemize $B4D6-$G!"FH<+$N%3%^%s%I$rDj(B
-$B5A$7$F9`L\$rNs5s$7$F$$$k>l9g(B($BNc$($P(B`\underlineitem')$B$O!"(B`~/.emacs' $B$G<!$N(B
-$B$h$&$K;XDj$7$F2<$5$$!#(B
+  このとき、変数`YaTeX-item-regexp'の値(標準では `"\\\\item"')を項目指定コ
+マンドの正規表現として検索に使用します。itemize 環境で、独自のコマンドを定
+義して項目を列挙している場合(例えば`\underlineitem')は、`~/.emacs' で次の
+ように指定して下さい。
 
              (setq YaTeX-item-regexp
                    "\\(\\\\\\(sub\\)*item\\)\\|\\(\\\\underlineitem\\)")
 
-$B$3$NJQ?t$N;XDj$N;EJ}$,$h$/J,$+$i$J$$>l9g$O!"FH<+$N9`L\Ns5s%3%^%s%I$NL>A0$r(B
-``"\item"'$B$G;O$^$k$b$N$K$7$F2<$5$$(B($BNc$($P(B"\itembf"')$B!#(B
+この変数の指定の仕方がよく分からない場合は、独自の項目列挙コマンドの名前を
+``"\item"'で始まるものにして下さい(例えば"\itembf"')。
 
-$BLnD;$N(B `M-q' $B$G$O(B `\item' $B$r4D6-$K1~$8$F0J2<$N$h$&$K!V%O%s%0%$%s%G%s%H!W$7(B
-$B$^$9!#(B
+野鳥の `M-q' では `\item' を環境に応じて以下のように「ハングインデント」し
+ます。
 
-     itemize, enumerate$B4D6-(B:
-            >\item[$B$[$2$[$2(B] $B1Q8l$G$O!"FC$K0UL#$N$J$$C18l$r(B `foo' $B$G$"$i$o$7$^(B
-            >                $B$9$,!"$3$l$NF|K\8lHG$H$b$$$($kC18l$,!V$[$2$[$2!W(B
-            >                $B$G$9!#(B
-     description$B4D6-(B:
-            > \item[$B$X$m$X$m(B] $B!V$[$2$[$2!W$r$G$?$i$a$,C18l$H$7$F;H$C$?;~$K!"Bh(B
-            >            2$B$N$G$?$i$a$JC18l$H$7$F!V$X$m$X$m!W$,;H$o$l$k$3$H$,B?(B
-            >            $B$$$h$&$G$9!#(B
+     itemize, enumerate環境:
+            >\item[ほげほげ] 英語では、特に意味のない単語を `foo' であらわしま
+            >                すが、これの日本語版ともいえる単語が「ほげほげ」
+            >                です。
+     description環境:
+            > \item[へろへろ] 「ほげほげ」をでたらめが単語として使った時に、第
+            >            2のでたらめな単語として「へろへろ」が使われることが多
+            >            いようです。
 
 
-$B%Q%i%0%i%U$N7eB7$((B
+パラグラフの桁揃え
 ==================
 
-  itemize$B4D6-0J30$G$N%Q%i%0%i%U$N7eB7$((B(fill)$B$O!"4pK\E*$KB>$N%b!<%I$HF1$8(B
-$B$h$&$K5!G=$7$^$9$,!"(Bverbatim$B4D6-$d!"(Btabular$B4D6-$J$I7eB7$($r$9$k$HHa;4$J>u(B
-$B67$K$J$k$h$&$J4D6-Cf$G$O5!G=$7$^$;$s!#$^$?!"(B\verb $B$G3g$C$F$"$k$b$N$O7h$7$F(B
-$B9TJ,3d$5$l$^$;$s(B($BJQ?t(B `YaTeX-verb-regexp' $B$G@)8f(B) )$B!#$5$i$K!"0l;~E*$K%$%s(B
-$B%G%s%H$N?<$5$rJQ$($F$"$k2U=j$G$O!"$=$N%$%s%G%s%H$N@hF,$G(B`M-q'$B$r2!$9$3$H$K(B
-$B$h$j(B fill-prefix $B$r$$$A$$$AJQ99$7$J$/$F7eB7$($,$G$-$^$9!#(B
+  itemize環境以外でのパラグラフの桁揃え(fill)は、基本的に他のモードと同じ
+ように機能しますが、verbatim環境や、tabular環境など桁揃えをすると悲惨な状
+況になるような環境中では機能しません。また、\verb で括ってあるものは決して
+行分割されません(変数 `YaTeX-verb-regexp' で制御) )。さらに、一時的にイン
+デントの深さを変えてある箇所では、そのインデントの先頭で`M-q'を押すことに
+より fill-prefix をいちいち変更しなくて桁揃えができます。
 
 
 
 File: yatexj, Node: Includeonly, Next: What column, Prev: Filling, Up: Top
 
-$B>!<j$K(Bincludeonly
+勝手にincludeonly
 *****************
 
-  $B%U%!%$%k$rJ,3d$7$FJ8>O$rF~NO$7$F$$$k;~$K$O!"%a%$%s%U%!%$%kCf$K(B
+  ファイルを分割して文章を入力している時には、メインファイル中に
 
-             \includeonly{$B8=:_JT=8Cf$N%U%!%$%kL>(B}
+             \includeonly{現在編集中のファイル名}
 
-$B$N$h$&$K=q$$$F$*$/$3$H$G!"%?%$%W%;%C%H$N;~4V$r@aLs$G$-$^$9$,!"$A$g$C$HB>$N(B
-$B%U%!%$%k$r<jD>$7$7$?$$;~$K$O(B
+のように書いておくことで、タイプセットの時間を節約できますが、ちょっと他の
+ファイルを手直ししたい時には
 
-             \includeonly{$B$A$g$C$H<jD>$7$7$?$$%U%!%$%kL>(B}
+             \includeonly{ちょっと手直ししたいファイル名}
 
-$B$H=q$-D>$5$J$1$l$P$J$i$:<j4V$,$+$+$j$^$9!#LnD;$G$O8=:_JT=8$7$F$$$k%U%!%$%k(B
-$BL>$,%a%$%s%U%!%$%k$N(B`\includeonly'$B$K$J$$>l9g$K$O<+F0E*$K$3$l$r8!=P$7!"<!$N(B
-$B;X<($r6D$.$^$9!#(B
+と書き直さなければならず手間がかかります。野鳥では現在編集しているファイル
+名がメインファイルの`\includeonly'にない場合には自動的にこれを検出し、次の
+指示を仰ぎます。
 
              A)dd R)eplace %)comment?
 
-$B8=:_JT=8Cf$N%U%!%$%k$r(B `\includeonly' $B$N%j%9%H$K2C$($?$$;~$K$O(B`a'$B$r!"8=:_(B
-$BJT=8Cf$N%U%!%$%k$@$1$r(B `\includeonly' $B$K$7$?$$;~$O(B`r'$B$r!"(B`\includeonly' $B$N(B
-$B9T$r%3%a%s%H%"%&%H$7$FL58z2=$7$?$$;~$K$O!"(B`%'$B$r$=$l$>$l2!$7$F2<$5$$!#(B
+現在編集中のファイルを `\includeonly' のリストに加えたい時には`a'を、現在
+編集中のファイルだけを `\includeonly' にしたい時は`r'を、`\includeonly' の
+行をコメントアウトして無効化したい時には、`%'をそれぞれ押して下さい。
 
 
 File: yatexj, Node: What column, Next: Intelligent newline, Prev: Includeonly, Up: Top
 
-$B$3$3$O$I$3(B?
+ここはどこ?
 ***********
 
-  $B9`L\?t$NB?$$(B tabular $B$J$I$r$?$/$5$s=q$$$F$$$k$H2<$NJ}$N9T$G!"$$$^=q$$$F(B
-$B$$$k7e$,$I$3$KBP1~$9$k$N$+$o$+$i$J$/$J$C$F$7$^$&$3$H$,$"$j$^$9!#Nc$($P!"0J(B
-$B2<$N$h$&$J(B tabular $B$K$*$$$F!"(B
+  項目数の多い tabular などをたくさん書いていると下の方の行で、いま書いて
+いる桁がどこに対応するのかわからなくなってしまうことがあります。例えば、以
+下のような tabular において、
 
              \begin{tabular}{|c|c|c|c|c|c|c|c|}\hline
-              $B;aL>(B&$B=jB0(B&$B")(B&$B=;=j(B&$BEEOC(B&FAX&$B5">J@h(B&$B5">J@hEEOC(B\\ \hline
-              $BLp>eFsO:(B & 6 & 223 & $B2#IM;T9AKL6hF|5H(B & xxx-yyy &
-                     zzz-www & $B%H%s%,(B & 9876-54321 \\
-              $BF|5H>.AN(B & 2 & \multicolumn{2}{c|}{$B65$($J$$(B}
+              氏名&所属&〒&住所&電話&FAX&帰省先&帰省先電話\\ \hline
+              矢上二郎 & 6 & 223 & 横浜市港北区日吉 & xxx-yyy &
+                     zzz-www & トンガ & 9876-54321 \\
+              日吉小僧 & 2 & \multicolumn{2}{c|}{教えない}
                      &&&(???)
               \\ \hline
              \end{tabular}
 
-(???)$B$NItJ,$,$I$N9`L\$J$N$+$9$0$KH=CG$9$k$N$OFq$7$$$G$7$g$&!#$3$s$J;~$O!"(B
+(???)の部分がどの項目なのかすぐに判断するのは難しいでしょう。こんな時は、
 
 `[prefix] &'
-             ... $B8=:_$N%+%i%`I=<((B
+             ... 現在のカラム表示
 
-$B$r2!$9$H%+!<%=%k0LCV$N%+%i%`$,$I$N9`L\$K3:Ev$9$k$+$r%_%K%P%C%U%!$KI=<($7$^(B
-$B$9!#(Btabular/array$B4D6-$NBh(B1$B9TL\$r9`L\L>$NJB$S$H$_$J$7$FBP1~$9$k$b$N$rC5$7$^(B
-$B$9!#$b$79`L\L>$H$7$FJL$N$b$N$rI=<($7$FM_$7$$>l9g$O!"9TF,$r(B`%'$B$K$7$F%@%_!<(B
-$B$N9`L\JB$S$r:n$C$F$*$/$HNI$$$G$7$g$&!#(B
+を押すとカーソル位置のカラムがどの項目に該当するかをミニバッファに表示しま
+す。tabular/array環境の第1行目を項目名の並びとみなして対応するものを探しま
+す。もし項目名として別のものを表示して欲しい場合は、行頭を`%'にしてダミー
+の項目並びを作っておくと良いでしょう。
 
 
 File: yatexj, Node: Intelligent newline, Next: Usepackage cheker, Prev: What column, Up: Top
 
-$B$*$^$+$;2~9T(B
+おまかせ改行
 ************
 
-  tabular[*], array, itemize, enumerate, tabbing $B4D6-$r(Bbegin$B7?Jd40$GF~NO$7(B
-$B$?;~!"$^$?$O3F4D6-Fb$G(B
+  tabular[*], array, itemize, enumerate, tabbing 環境をbegin型補完で入力し
+た時、または各環境内で
 
 `ESC RET'
-             ... $B$*$^$+$;2~9T(B
+             ... おまかせ改行
 
-$B$r2!$9$H!"$=$N4D6-$K1~$8$?9T%(%s%H%j$r<!$N9T$KA^F~$7$^$9(B(begin$B7?Jd40;~$K<+(B
-$BF0A^F~$5$l$?%(%s%H%j$,ITMW$J>l9g$O(B undo $B$K$h$C$F>C5n$G$-$^$9(B)$B!#Nc$($P!"(B
-tabular$B4D6-$G$O!"$=$N4D6-$N%+%i%`?t$KBP1~$7$?8D?t$N(B `&' $B$K2C$(!"9TKv$N(B 
-`\\' $B$rF~$l$^$9!#$3$N;~$=$l0JA0$K(B `\hline' $B$,$"$l$P$=$l$bIU$12C$($^$9!#4D(B
-$B6-$H$=$l$K1~$8$F<+F0F~NO$9$k$b$N$NBP1~$O0J2<$N$h$&$K$J$j$^$9!#(B
+を押すと、その環境に応じた行エントリを次の行に挿入します(begin型補完時に自
+動挿入されたエントリが不要な場合は undo によって消去できます)。例えば、
+tabular環境では、その環境のカラム数に対応した個数の `&' に加え、行末の 
+`\\' を入れます。この時それ以前に `\hline' があればそれも付け加えます。環
+境とそれに応じて自動入力するものの対応は以下のようになります。
 
    * `tabular', `tabular*', `array'
 
-             $B%+%i%`?t(B-1 $B$@$1$N(B `&' $B$H(B `\\'$B!#I,MW$K1~$8$F(B `\hline'
+             カラム数-1 だけの `&' と `\\'。必要に応じて `\hline'
 
    * `tabbing'
 
-             $B0l9TL\$GDj5A$7$F$$$k(B `\=' $B$HF1$88D?t$N(B `\>'$B!#(B
+             一行目で定義している `\=' と同じ個数の `\>'。
 
    * `itemize', `enumerate', `description', `list'
 
-             `\item' $B$^$?$O(B `item[]'
+             `\item' または `item[]'
 
-  tabular $B4D6-$NNc$N$h$&$K!"K\5!G=$O3F4D6-$N0l9TL\$NFbMF$r;29M$K$7$FF0:n$9(B
-$B$k$N$G!"$J$k$Y$/Fs9TL\0J9_$G8F$S=P$9$h$&$K$7$F$/$@$5$$!#(B
+  tabular 環境の例のように、本機能は各環境の一行目の内容を参考にして動作す
+るので、なるべく二行目以降で呼び出すようにしてください。
 
-  $B$b$7!"$=$NB>$N4D6-!"Nc$($P(B `foo'$B!"$KBP$7$F(B`$B$*$^$+$;2~9T(B'$B$rF0:n$5$;$?$$;~(B
-$B$O!"(B`YaTeX-intelligent-newline-foo' $B$H$$$&L>A0$N4X?t$rDj5A$7$^$9!#Dj5A$7$?(B
-$B4X?t$O!"8=:_$N9T$K2~9T$rA^F~$7$?D>8e$N9TF,$N0LCV$G8F$P$l$^$9!#4X?t(B 
-`YaTeX-indent-line' $B$r8F$V$H8=:_$N4D6-$N%M%9%H$K1~$8$??<$5$K%$%s%G%s%H$5$l(B
-$B$k$N$G!"$3$l$r8F$s$G$+$i2?$+$rA^F~$9$k$h$&$J%3!<%I$r=q$/$H$h$$$G$7$g$&!#(B
-`yatexenv.el'$BFb$N4X?t(B `YaTeX-intelligent-newline-itemize' $B$NDj5A$J$I$r;29M(B
-$B$K$7$F$/$@$5$$!#(B
+  もし、その他の環境、例えば `foo'、に対して`おまかせ改行'を動作させたい時
+は、`YaTeX-intelligent-newline-foo' という名前の関数を定義します。定義した
+関数は、現在の行に改行を挿入した直後の行頭の位置で呼ばれます。関数 
+`YaTeX-indent-line' を呼ぶと現在の環境のネストに応じた深さにインデントされ
+るので、これを呼んでから何かを挿入するようなコードを書くとよいでしょう。
+`yatexenv.el'内の関数 `YaTeX-intelligent-newline-itemize' の定義などを参考
+にしてください。
 
 
 
 File: yatexj, Node: Usepackage cheker, Next: Changing mode of YaTeX, Prev: Intelligent newline, Up: Top
 
-$B@h2s$j(Busepackage
+先回りusepackage
 ****************
 
-  begin$B7?!"(Bsection$B7?!"(Bmaketitle$B7?!"$$$:$l$+$N(BLaTeX2e$B%^%/%m$rJd40F~NO$9$k$H!"(B
-$B$=$N%^%/%m$NMxMQ$K30It%Q%C%1!<%8$rI,MW$H$9$k>l9g!"$=$N%Q%C%1!<%8$rK\J8Cf$G(B 
-`\usepackage{}' $B$7$F$$$k$+$I$&$+$rD4::$7!"$b$7$7$F$$$J$1$l$P%W%j%"%s%V%k$K(B
-$BBP1~$9$k%Q%C%1!<%8$r0z?t$K$7$?(B `\usepackage' $BJ8$r(B($B3NG'8e$K(B)$BA^F~$7$^$9!#(B
+  begin型、section型、maketitle型、いずれかのLaTeX2eマクロを補完入力すると、
+そのマクロの利用に外部パッケージを必要とする場合、そのパッケージを本文中で 
+`\usepackage{}' しているかどうかを調査し、もししていなければプリアンブルに
+対応するパッケージを引数にした `\usepackage' 文を(確認後に)挿入します。
 
-  $B$?$@$7$3$N5!G=$,F/$/$?$a$K$O!"%Q%C%1!<%8L>$H$=$NCf$GDj5A$5$l$F$$$k%^%/%m(B
-$B72$r(Balist$B$N7A<0$GJQ?t(B `YaTeX-package-alist-private' $B$K@_Dj$7$F$*$/I,MW$,$"(B
-$B$j$^$9!#(B
+  ただしこの機能が働くためには、パッケージ名とその中で定義されているマクロ
+群をalistの形式で変数 `YaTeX-package-alist-private' に設定しておく必要があ
+ります。
 
 
 File: yatexj, Node: Changing mode of YaTeX, Next: Online help, Prev: Usepackage cheker, Up: Top
 
-$BLnD;$NF0:n%b!<%I@Z$jBX$((B
+野鳥の動作モード切り替え
 ************************
 
 `[prefix] w'
-             ... $BLnD;F0:n%b!<%I@Z$jBX$(%a%K%e!<(B
+             ... 野鳥動作モード切り替えメニュー
 
-$B$GLnD;<+?H$NF0:n$r7hDj$9$k0J2<$N%b!<%I$r@Z$jBX$($^$9!#(B
+で野鳥自身の動作を決定する以下のモードを切り替えます。
 
-   * $B=$@5%b!<%I(B
-   * $BLnD;?t<0%b!<%I(B
+   * 修正モード
+   * 野鳥数式モード
 
-$B=$@5%b!<%I$O!"3+$-3g8LF~NO;~$N=hM}$r%3%s%H%m!<%k$7!"=$@5%b!<%I(BON$B$N;~$O3+$-(B
-$B3g8L$NF~NO$O3+$-3g8L$N$_$NF~NO$K$J$j!"=$@5%b!<%I(BOFF$B$N;~$O3+$-3g8L$NF~NO$@(B
-$B$1$GJD$83g8L$^$GF~NO$7$^$9!#%G%U%)%k%H(B($B5/F0;~(B)$B$N@_Dj$O(B*OFF*$B$G$9!#(B
+修正モードは、開き括弧入力時の処理をコントロールし、修正モードONの時は開き
+括弧の入力は開き括弧のみの入力になり、修正モードOFFの時は開き括弧の入力だ
+けで閉じ括弧まで入力します。デフォルト(起動時)の設定は*OFF*です。
 
-  $BLnD;?t<0%b!<%I$O!"JQ?t(B `YaTeX-auto-math-mode' $B$,(B `nil' $B$N;~$N$_M-8z$G!"(B
-$B$3$N$H$-(B`;'$B$d(B`:'$B$r2!$7$?;~(B(*Note Image completion::$B;2>H(B)$B$K!"$I$N$h$&$J%$%a!<(B
-$B%8Jd40$r5!G=$5$;$k$+!"DL>o$N%-!<$H$7$F5!G=$5$;$k$+$r<jF0$G@Z$jBX$($^$9!#<+(B
-$BF0H=Dj$,CY$$%^%7%s$G$O(B`YaTeX-auto-math-mode' `nil'$B$K%;%C%H$7!"LnD;?t<0%b!<(B
-$B%I$r<jF0$G@Z$jBX$($k$HNI$$$G$7$g$&!#(B
+  野鳥数式モードは、変数 `YaTeX-auto-math-mode' が `nil' の時のみ有効で、
+このとき`;'や`:'を押した時(*Note Image completion::参照)に、どのようなイメー
+ジ補完を機能させるか、通常のキーとして機能させるかを手動で切り替えます。自
+動判定が遅いマシンでは`YaTeX-auto-math-mode' `nil'にセットし、野鳥数式モー
+ドを手動で切り替えると良いでしょう。
 
 
 
 File: yatexj, Node: Online help, Next: Inclusion hierarchy browser, Prev: Changing mode of YaTeX, Up: Top
 
-$B%*%s%i%$%s%X%k%W(B
+オンラインヘルプ
 ****************
 
-  $B;H$*$&$H$9$k(B LaTeX $B%3%^%s%I$NMQK!$,$h$/J,$+$i$J$$;~$O!"%*%s%i%$%s%X%k%W(B
-$B$r$R$-$^$7$g$&!#%X%k%W$K4X$9$k%-!<$K$O0J2<$N$b$N$,$"$j$^$9!#(B
+  使おうとする LaTeX コマンドの用法がよく分からない時は、オンラインヘルプ
+をひきましょう。ヘルプに関するキーには以下のものがあります。
 
 `[prefix] ?'
-             ... $B%*%s%i%$%s%X%k%W(B
+             ... オンラインヘルプ
 `[prefix] /'
-             ... $B%*%s%i%$%s(Bapropos
+             ... オンラインapropos
 
 
-$B%*%s%i%$%s%X%k%W(B
+オンラインヘルプ
 ================
 
-  $B!V%*%s%i%$%s%X%k%W!W$O!"0lHLE*$J(B LaTeX $B%3%^%s%I(B($B%G%U%)%k%H$G%+!<%=%k0LCV(B
-$B$N%3%^%s%I(B)$B$KBP$9$k@bL@$rNY$N%P%C%U%!$KI=<($7$^$9!#$3$N;~;2>H$5$l$k%X%k%W(B
-$BMQ%U%!%$%k$K$O!V%0%m!<%P%k%X%k%W!W$H!V%W%i%$%Y!<%H%X%k%W!W$NFs<oN`$,$"$j!"(B
-$BA0<T$O(B LaTeX $B$NI8=`%3%^%s%I$N<g$J$b$N$N@bL@$r4^$`%U%!%$%k$G!"JQ?t(B
-`YaTeX-help-file'$B$NCM$G;XDj$5$l$^$9!#$3$N%U%!%$%k$ODL>o8x6&$N>l=j(B($B%G%U%)%k(B
-$B%H$G(B`$EMACSEXECPATH')$B$KCV$+$l!"C/$b$,$=$NFbMF$r99?7$G$-$k$h$&$KA40w$K=q$-(B
-$B9~$_8"$,M?$($i$l$k$Y$-$b$N$G$9!#8e<T$O!"HsI8=`$b$7$/$O8D?ME*$J%^%/%mDj5A$K(B
-$B4X$9$k@bL@$,=q$+$l$F$$$k%U%!%$%k$G!"JQ?t(B`YaTeX-help-file-private'$B$NCM$G;X(B
-$BDj$5$l$^$9!#$3$A$i$O%f!<%6$N%[!<%`%G%#%l%/%H%j$N2<$J$I$KCV$+$l$^$9!#(B
+  「オンラインヘルプ」は、一般的な LaTeX コマンド(デフォルトでカーソル位置
+のコマンド)に対する説明を隣のバッファに表示します。この時参照されるヘルプ
+用ファイルには「グローバルヘルプ」と「プライベートヘルプ」の二種類があり、
+前者は LaTeX の標準コマンドの主なものの説明を含むファイルで、変数
+`YaTeX-help-file'の値で指定されます。このファイルは通常公共の場所(デフォル
+トで`$EMACSEXECPATH')に置かれ、誰もがその内容を更新できるように全員に書き
+込み権が与えられるべきものです。後者は、非標準もしくは個人的なマクロ定義に
+関する説明が書かれているファイルで、変数`YaTeX-help-file-private'の値で指
+定されます。こちらはユーザのホームディレクトリの下などに置かれます。
 
 
-$B%*%s%i%$%s(Bapropos
+オンラインapropos
 =================
 
-  $B!V%*%s%i%$%s(Bapropos$B!W$O(B GNU Emacs $B$N(B apropos $B$HF1MM!"%f!<%6$,;XDj$7$?%-!<(B
-$B%o!<%I$r@bL@J8$K4^$`9`L\$9$Y$F$rNY$N%P%C%U%!$KI=<($7$^$9!#(B
+  「オンラインapropos」は GNU Emacs の apropos と同様、ユーザが指定したキー
+ワードを説明文に含む項目すべてを隣のバッファに表示します。
 
-  $B$b$7!"D4$Y$h$&$H$7$?(BLaTeX$B%3%^%s%I$KBP$9$k@bL@$,%X%k%W%U%!%$%kCf$K8+$D$+(B
-$B$i$J$+$C$?>l9g$O!"@bL@J8$NF~NO$r5a$a$F$/$k$N$G!"2DG=$G$"$l$P;29M=q$J$I$rD4(B
-$B$Y$F$=$N%3%^%s%I$N@bL@$rF~NO$7$F$/$@$5$$!#$b$7!"$J$K$+I8=`E*$J%3%^%s%I$KBP(B
-$B$9$k@bL@$r=q$$$?$J$i$P$<$R;d$^$G$=$N@bL@$r$*Aw$j2<$5$$!#<!2s$NG[I[$K4^$a$?(B
-$B$$$H;W$$$^$9!#(B
+  もし、調べようとしたLaTeXコマンドに対する説明がヘルプファイル中に見つか
+らなかった場合は、説明文の入力を求めてくるので、可能であれば参考書などを調
+べてそのコマンドの説明を入力してください。もし、なにか標準的なコマンドに対
+する説明を書いたならばぜひ私までその説明をお送り下さい。次回の配布に含めた
+いと思います。
 
 
 File: yatexj, Node: Inclusion hierarchy browser, Next: Cooperation with other packages, Prev: Online help, Up: Top
 
-$B%$%s%/%k!<%I9=B$%V%i%&%6(B
+インクルード構造ブラウザ
 ************************
 
-$BJ#?t$N%U%!%$%k$KJ,3d$7$F$$$k%I%-%e%a%s%H$r=q$$$F$$$k>l9g!"(B
+複数のファイルに分割しているドキュメントを書いている場合、
 
 `[prefix] d'
-             ... $B%$%s%/%k!<%I9=B$%V%i%&%:(B
+             ... インクルード構造ブラウズ
 
-$B$r2!$9$H!"$=$N%I%-%e%a%s%H$N?F%U%!%$%k$rJ9$$$FMh$^$9!#$3$3$GA4$F$N%U%!%$%k(B
-$B$N?F$H$J$k%U%!%$%k(B($B%G%U%)%k%H$,<($5$l$F$$$k$N$GBgDq$O(BRET$B$N$_(B)$B$rF~NO$9$k$H(B
-$B%$%s%/%k!<%I$7$F$$$kA4$F$N%U%!%$%k$r2r@O$7!"%$%s%/%k!<%I>u67$r;k3PE*$KI=<((B
-$B$7$^$9!#$3$N%P%C%U%!$G$O0J2<$N%-!<A`:n$,M-8z$G$9!#(B
+を押すと、そのドキュメントの親ファイルを聞いて来ます。ここで全てのファイル
+の親となるファイル(デフォルトが示されているので大抵はRETのみ)を入力すると
+インクルードしている全てのファイルを解析し、インクルード状況を視覚的に表示
+します。このバッファでは以下のキー操作が有効です。
 
 `n'
-             ... $B<!$N9T$K0\F0$7BP1~$9$k%U%!%$%k$rNY$N%P%C%U%!$KI=<((B
+             ... 次の行に移動し対応するファイルを隣のバッファに表示
 `p'
-             ... $B>e$N9T$K0\F0$7BP1~$9$k%U%!%$%k$rNY$N%P%C%U%!$KI=<((B
+             ... 上の行に移動し対応するファイルを隣のバッファに表示
 `N'
-             ... $BF1$8%$%s%/%k!<%I%l%Y%k$N<!$N%U%!%$%k$K0\F0(B
+             ... 同じインクルードレベルの次のファイルに移動
 `P'
-             ... $BF1$8%$%s%/%k!<%I%l%Y%k$NA0$N%U%!%$%k$K0\F0(B
+             ... 同じインクルードレベルの前のファイルに移動
 `j'
-             ... $B<!$N9T$K0\F0(B
+             ... 次の行に移動
 `k'
-             ... $B>e$N9T$K0\F0(B
+             ... 上の行に移動
 `u'
-             ... $B0lBe?F$K$"$?$k%U%!%$%k$K0\F0(B
+             ... 一代親にあたるファイルに移動
 `.'
-             ... $B%+!<%=%k0LCV$N%U%!%$%k$rNY$N%P%C%U%!$KI=<((B
+             ... カーソル位置のファイルを隣のバッファに表示
 `SPC'
-             ... $BNY$N%P%C%U%!$NBP1~%U%!%$%k$r%9%/%m!<%k%"%C%W(B
+             ... 隣のバッファの対応ファイルをスクロールアップ
 `DEL, b'
-             ... $BNY$N%P%C%U%!$NBP1~%U%!%$%k$r%9%/%m!<%k%@%&%s(B
+             ... 隣のバッファの対応ファイルをスクロールダウン
 `<'
-             ... $BNY$N%P%C%U%!$NBP1~%U%!%$%k$N@hF,$rI=<((B
+             ... 隣のバッファの対応ファイルの先頭を表示
 `>'
-             ... $BNY$N%P%C%U%!$NBP1~%U%!%$%k$NKvHx$rI=<((B
+             ... 隣のバッファの対応ファイルの末尾を表示
 `''
-             ... (`<'$B$d(B`>'$B$N8e$G(B)$B85$NI=<(0LCV$KLa$k(B
+             ... (`<'や`>'の後で)元の表示位置に戻る
 `RET, g'
-             ... $B%+!<%=%k0LCV$N%U%!%$%k$rNY$N%P%C%U%!$G%*!<%W%s(B
+             ... カーソル位置のファイルを隣のバッファでオープン
 `mouse-2'
-             ... RET$B$HF1$8(B($B%&%#%s%I%&;HMQ;~$N$_(B)
+             ... RETと同じ(ウィンドウ使用時のみ)
 `o'
-             ... $BNY$N%&%#%s%I%&$K0\F0(B
+             ... 隣のウィンドウに移動
 `1'
-             ... $BB>$N%&%#%s%I%&$r>C$9(B
+             ... 他のウィンドウを消す
 `-'
-             ... $B%V%i%&%:%&%#%s%I%&$r>.$5$/$9$k(B
+             ... ブラウズウィンドウを小さくする
 `+'
-             ... $B%V%i%&%:%&%#%s%I%&$rBg$-$/$9$k(B
+             ... ブラウズウィンドウを大きくする
 `?'
-             ... $B%X%k%WI=<((B
+             ... ヘルプ表示
 `q'
-             ... $BI=<(A0$N>uBV$KLa$k(B
+             ... 表示前の状態に戻る
 
-  $B$?$@$7!"NY$N%&%#%s%I%&$N%U%!%$%k$NFbMF$rI=<($9$k5!G=$K4X$7$F$O!"BP1~$9$k(B
-$B%U%!%$%k$r%/%m!<%:$7$F$7$^$&$H$&$^$/F/$-$^$;$s$N$G$4Cm0U$/$@$5$$!#(B
+  ただし、隣のウィンドウのファイルの内容を表示する機能に関しては、対応する
+ファイルをクローズしてしまうとうまく働きませんのでご注意ください。
 
 
 File: yatexj, Node: Cooperation with other packages, Next: Customizations, Prev: Inclusion hierarchy browser, Up: Top
 
-$BB>%Q%C%1!<%8$H$NO"7H(B
+他パッケージとの連携
 ********************
 
 
 gmhist
 ======
 
-  `gmhist.el'$B$H(B`gmhist-mh.el' $B$r%m!<%I$7$F$$$k>l9g!"%W%l%t%e!<%3%^%s%I$NF~(B
-$BNO(B(`[prefix] tp]')$B!"0u:~%3%^%s%I$NF~NO(B(`[prefix] tl')$B$N;~$KFHN)$7$?%R%9%H(B
-$B%j$rMxMQ$G$-$^$9!#$=$l$>$l$N%W%m%s%W%H$G!"(B`M-p' $B$r2!$9$HD>A0$KMxMQ$7$?%3%^(B
-$B%s%IJ8;zNs$r$/$jJV$78F$S=P$9$3$H$,$G$-$^$9!#(B
+  `gmhist.el'と`gmhist-mh.el' をロードしている場合、プレヴューコマンドの入
+力(`[prefix] tp]')、印刷コマンドの入力(`[prefix] tl')の時に独立したヒスト
+リを利用できます。それぞれのプロンプトで、`M-p' を押すと直前に利用したコマ
+ンド文字列をくり返し呼び出すことができます。
 
 
 min-out
 =======
 
-  `min-out.el' (`outline-minor-mode') $B$HLnD;$rAH$_9g$o$;$F;H$&$3$H$b$b$A$m(B
-$B$s2DG=$G$9!#@_Dj$NJ}K!$K4X$7$F$O(B`yatexm-o.el'$B$r$4Mw$/$@$5$$!#(B
+  `min-out.el' (`outline-minor-mode') と野鳥を組み合わせて使うことももちろ
+ん可能です。設定の方法に関しては`yatexm-o.el'をご覧ください。
 
 
 File: yatexj, Node: Customizations, Next: Etc, Prev: Cooperation with other packages, Up: Top
 
-$B%+%9%?%^%$%:(B
+カスタマイズ
 ************
 
-  $BLnD;$NF0:n$r@)8f$9$k<o!9$NJQ?t$rFH<+$K@_Dj$9$k$3$H$K$h$j!"Jd40F~NO$r5/F0(B
-$B$9$k%-!<%"%5%$%s$rJQ$($?$j!"4D6-L>$NJd408uJd$r$5$i$K=<<B$5$;$k$3$H$J$I$,$G(B
-$B$-$^$9!#(B
+  野鳥の動作を制御する種々の変数を独自に設定することにより、補完入力を起動
+するキーアサインを変えたり、環境名の補完候補をさらに充実させることなどがで
+きます。
 
 * Menu:
 
-* Lisp variables::              lisp $BJQ?t(B
-* Add-in functions::            $BIU2C4X?t(B($B%"%I%$%s4X?t(B)
+* Lisp variables::              lisp 変数
+* Add-in functions::            付加関数(アドイン関数)
 
 
 File: yatexj, Node: Lisp variables, Next: Add-in functions, Prev: Customizations, Up: Customizations
 
-lisp $BJQ?t(B
+lisp 変数
 =========
 
-  $BNc$($P(B prefix $B%-!<$r(B `C-c' $B0J30$N%-!<$K$7$?$$>l9g$O!"(B`YaTeX-prefix'$B$K(B 
-prefix $B%-!<$K$7$?$$%7%s%\%k$rDj5A$7$F$/$@$5$$!#$5$i$K!"!V(B`C-c $B1Q;z(B'$B!W$H$$(B
-$B$&%-!<%P%$%s%I$OFH<+$N4X?t$,3d$jEv$F$F$"$k$N$G;H$$$?$/$J$$!#$3$N$h$&$J;~$O!"(B
-`YaTeX-inhibit-prefix-letter' $B$r(B `t' $B$K@_Dj$9$k$3$H$K$h$j!"(B`C-c $B1Q;z!D(B'$B$N(B
-$B%P%$%s%I$,A4$F!"BP1~$9$k(B`C-c C-$B1Q;z!D(B'$B$KJQ$o$j$^$9(B($B$?$@$7!"(Bbegin$B7?(B large$B7?(B
-$BJd40$NBgJ8;z5/F0$K$h$k%j%8%g%s;XDj$O2DG=$J$^$^$G$9!#$3$l$bL58z$K$7$?$$>l9g(B
-$B$O(B`t'$B$G$O$J$/(B 1 $B$K%;%C%H$7$F2<$5$$!#(B)$B!#(B
+  例えば prefix キーを `C-c' 以外のキーにしたい場合は、`YaTeX-prefix'に 
+prefix キーにしたいシンボルを定義してください。さらに、「`C-c 英字'」とい
+うキーバインドは独自の関数が割り当ててあるので使いたくない。このような時は、
+`YaTeX-inhibit-prefix-letter' を `t' に設定することにより、`C-c 英字…'の
+バインドが全て、対応する`C-c C-英字…'に変わります(ただし、begin型 large型
+補完の大文字起動によるリジョン指定は可能なままです。これも無効にしたい場合
+は`t'ではなく 1 にセットして下さい。)。
 
 * Menu:
 
-* All customizable variables::  $B%+%9%?%^%$%:JQ?t0lMw(B
-* Sample definitions::          $B%+%9%?%^%$%:JQ?t@_DjNc(B
-* Hook variables::              hook$BJQ?t(B
-* Hook file::                   hook$BMQ%U%!%$%k(B
+* All customizable variables::  カスタマイズ変数一覧
+* Sample definitions::          カスタマイズ変数設定例
+* Hook variables::              hook変数
+* Hook file::                   hook用ファイル
 
 
 File: yatexj, Node: All customizable variables, Next: Sample definitions, Prev: Lisp variables, Up: Lisp variables
 
-$B%+%9%?%^%$%:JQ?t0lMw(B
+カスタマイズ変数一覧
 --------------------
 
-  yatex-mode $B$K$*$1$k<!$NJQ?t$,%+%9%?%^%$%:2DG=$G$9!#(B`~/.emacs' $B$G(B `setq' 
-$B$7$F$*$1$P!"$=$A$i$NDj5A$,M%@h$5$l$^$9!#3g8L$NCf$O%G%U%)%k%HCM$G$9!#<B:]$K(B
-$BJQ?t$NCM$rJQ99$9$k>l9g$O(B `M-x describe-variable' $B$GJQ?t$N>\:Y$J@bL@$r;2>H(B
-$B$7$F$/$@$5$$!#(B
+  yatex-mode における次の変数がカスタマイズ可能です。`~/.emacs' で `setq' 
+しておけば、そちらの定義が優先されます。括弧の中はデフォルト値です。実際に
+変数の値を変更する場合は `M-x describe-variable' で変数の詳細な説明を参照
+してください。
 
  -- Variable: YaTeX-prefix
-     yatex-mode $BCf$N%W%j%U%#%/%9%-!<(B (`\C-c')
+     yatex-mode 中のプリフィクスキー (`\C-c')
 
  -- Variable: YaTeX-inhibit-prefix-letter
-     prefix $B%-!<$ND>8e$N%-!<%P%$%s%I$G(B `$B1Q;z(B' $B$N$b$N$r(B `C-$B1Q;z(B' $B$KJQ99(B 
+     prefix キーの直後のキーバインドで `英字' のものを `C-英字' に変更 
      (`nil')
 
  -- Variable: YaTeX-fill-prefix
-     $BK\J8$r=q$/;~$N9TF,$KA^F~$9$k@\F,<-$9$J$o$A(B fill-prefix (`""(nil)')
+     本文を書く時の行頭に挿入する接頭辞すなわち fill-prefix (`""(nil)')
 
  -- Variable: YaTeX-user-completion-table
-     $B3X=,$7$?(BLaTeX$B%3%^%s%IJ]B8%U%!%$%kL>(B (`"~/.yatexrc"')
+     学習したLaTeXコマンド保存ファイル名 (`"~/.yatexrc"')
 
  -- Variable: YaTeX-kanji-code
-     $BJ8=q$r:n@.$9$k;~$N4A;z%3!<%I(Bnil=$B4{B8$N%3!<%I$N$^$^(B 
-     0=no-conversion1=Shift JIS, 2=JIS, 3=EUC (2 (MS-DOS$B$G$O(B1))
+     文書を作成する時の漢字コードnil=既存のコードのまま 
+     0=no-conversion1=Shift JIS, 2=JIS, 3=EUC (2 (MS-DOSでは1))
 
  -- Variable: tex-command
-     LaTeX$B%?%$%W%;%C%?%3%^%s%IL>(B (`"platex"')
+     LaTeXタイプセッタコマンド名 (`"platex"')
 
  -- Variable: dvi2-command
-     $B%W%l%t%e!<%"%3%^%s%IL>(B (`"xdvi -geo +0+0 -s 4"')
+     プレヴューアコマンド名 (`"xdvi -geo +0+0 -s 4"')
 
  -- Variable: dviprint-command-format
-     dvi$B%U%!%$%k$N0u:~$K;H$o$l$k%3%^%s%I<0(B (`"dvi2ps %f %t %s | lpr"')
+     dviファイルの印刷に使われるコマンド式 (`"dvi2ps %f %t %s | lpr"')
 
  -- Variable: dviprint-from-format
-     $B>e$N(B`%f'$B$KAjEv$9$k3+;O%Z!<%8;XDj=q<0!"(B`%b' $B$,3+;O%Z!<%8HV9f$KJQ$o$k(B 
+     上の`%f'に相当する開始ページ指定書式、`%b' が開始ページ番号に変わる 
      (`"-f %b"')
 
  -- Variable: dviprint-to-format
-     `%t' $B$KAjEv$9$k=*N;%Z!<%8;XDj=q<0!"(B`%e'$B$,=*N;%Z!<%8HV9f$KJQ$o$k(B (`"-t
+     `%t' に相当する終了ページ指定書式、`%e'が終了ページ番号に変わる (`"-t
      %e"')
 
  -- Variable: makeindex-command
-     makeindex$B%3%^%s%I(B (`"makeindex"' (MS-DOS$B$G$O(B`"makeind"'))
+     makeindexコマンド (`"makeindex"' (MS-DOSでは`"makeind"'))
 
  -- Variable: YaTeX-need-nonstop
-     `\nonstopmode{}'$B$r<+F0E*$KIU2C$9$k$+(B (`nil')
+     `\nonstopmode{}'を自動的に付加するか (`nil')
 
  -- Variable: latex-warning-regexp
-     latex$B%3%^%s%I$N=PNO$9$k%&%)!<%K%s%09T$N@55,I=8=(B (`"line.* [0-9]*"')
+     latexコマンドの出力するウォーニング行の正規表現 (`"line.* [0-9]*"')
 
  -- Variable: latex-error-regexp
-     $BF1$8$/%(%i!<9T$N@55,I=8=(B (`"l\\.[1-9][0-9]*"')
+     同じくエラー行の正規表現 (`"l\\.[1-9][0-9]*"')
 
  -- Variable: latex-dos-emergency-message
-     MS-DOS$B>e$GF0:n$9$k(B latex $B%3%^%s%I$,!"%(%i!<$K$h$jDd;_$9$k$H$-=PNO$9$k(B
-     $B%a%C%;!<%8(B (`"Emergency stop"')
+     MS-DOS上で動作する latex コマンドが、エラーにより停止するとき出力する
+     メッセージ (`"Emergency stop"')
 
  -- Variable: latex-message-kanji-code
-     $B%?%$%W%;%C%?$N=PNO$9$k%a%C%;!<%8$N4A;z%3!<%I(B.$B%?%$%W%;%C%H%P%C%U%!$N=P(B
-     $BNO$,2=$1$k;~$O!"$3$l$r@_Dj$9$k(B (2, Nemacs$B$G$N$_M-8z(B)
+     タイプセッタの出力するメッセージの漢字コード.タイプセットバッファの出
+     力が化ける時は、これを設定する (2, Nemacsでのみ有効)
 
  -- Variable: NTT-jTeX
-     $B8E$$(BNTT-jTeX$B;HMQ;~$N$h$&$K%$%s%G%s%H$7$?9T$N@hF,$HA0$N9T$N(B($B%?%$%W%;%C(B
-     $B%H8e$N(B)$B;z4V$,6u$$$F$7$^$&$N$r7y$&>l9g$O(B`t'$B$K$9$k(B(`nil')
+     古いNTT-jTeX使用時のようにインデントした行の先頭と前の行の(タイプセッ
+     ト後の)字間が空いてしまうのを嫌う場合は`t'にする(`nil')
 
  -- Variable: YaTeX-item-regexp
-     item$B$N7eB7$($N;~$KMQ$$$k!"(Bitem$B$N@55,I=8=(B (`"\\\\(sub\\)*item"')
+     itemの桁揃えの時に用いる、itemの正規表現 (`"\\\\(sub\\)*item"')
 
  -- Variable: YaTeX-verb-regexp
-     verb$B%3%^%s%I$N@55,I=8=!#@hF,$N(B\\\\$B$O$D$1$J$$(B (`"verb\\*?\\|path"')
+     verbコマンドの正規表現。先頭の\\\\はつけない (`"verb\\*?\\|path"')
 
  -- Variable: YaTeX-nervous
-     $B%m!<%+%k<-=q$rMQ$$$k;~(B `t' (`t')
+     ローカル辞書を用いる時 `t' (`t')
 
  -- Variable: YaTeX-sectioning-regexp
-     $B%;%/%7%g%s6h@Z$j@_Dj%3%^%s%I$N@55,I=8=(B 
+     セクション区切り設定コマンドの正規表現 
      (`"\\(part\\|chapter\\*?\\|\\(sub\\)*\\(section\\|paragraph\\)\\*?\\)\\b"')
 
  -- Variable: YaTeX-fill-inhibit-environments
-     fill $B$rM^;_$9$k4D6-L>$N%j%9%H(B (`'("tabular" "tabular*" "array"
+     fill を抑止する環境名のリスト (`'("tabular" "tabular*" "array"
      "picture" "eqnarray" "eqnarray*" "equation" "math" "displaymath"
      "verbatim" "verbatim*")')
 
  -- Variable: YaTeX-uncomment-once
-     $BNN0h(Buncomment$B$G9TF,$NJ#?t$N(B`%'$B$rA4$F:o=|$9$k$+(B (`nil')
+     領域uncommentで行頭の複数の`%'を全て削除するか (`nil')
 
  -- Variable: YaTeX-close-paren-always
-     $B3+$-3g8L$NF~NO$G>o$KJD$83g8L$rF~NO$9$k(B (`t')
+     開き括弧の入力で常に閉じ括弧を入力する (`t')
 
  -- Variable: YaTeX-auto-math-mode
-     $B?t<0%b!<%I$N@Z$jBX$($r<+F0E*$K9T$&(B (`t')
+     数式モードの切り替えを自動的に行う (`t')
 
  -- Variable: YaTeX-math-key-list-private
-     $B?t<0%$%a!<%8Jd40$GMQ$$$k(B ($B%W%j%U%#%/%9%-!<(B . $BBP1~Jd40%F!<%V%k(B) $B$N(B
-     alist (`nil')$B!#Jd40%F!<%V%k$N=q$-J}$K$D$$$F$O(B`yatexmth.el'$B$r;2>H!#(B
+     数式イメージ補完で用いる (プリフィクスキー . 対応補完テーブル) の
+     alist (`nil')。補完テーブルの書き方については`yatexmth.el'を参照。
 
  -- Variable: YaTeX-default-pop-window-height
-     1$B2hLL$N;~$K%?%$%W%;%C%H%P%C%U%!$r=i$a$F:n@.$9$k;~$N9b$5!#?tCM$G9T?t!"(B
-     $B?t;zJ8;zNs$G(BEmacs$B%&%#%s%I%&$KBP$9$kI4J,N((B (10)
+     1画面の時にタイプセットバッファを初めて作成する時の高さ。数値で行数、
+     数字文字列でEmacsウィンドウに対する百分率 (10)
 
  -- Variable: YaTeX-help-file
-     $B6&MQ%X%k%W%U%!%$%k(B (`$doc-directory/../../site-lisp/YATEXHLP.jp')
+     共用ヘルプファイル (`$doc-directory/../../site-lisp/YATEXHLP.jp')
 
  -- Variable: YaTeX-help-file-private
-     $B8D?MMQ%X%k%W%U%!%$%k(B (`"~/YATEXHLP.jp"')
+     個人用ヘルプファイル (`"~/YATEXHLP.jp"')
 
  -- Variable: YaTeX-no-begend-shortcut
-     `[prefix] b ??' $B$N%7%g!<%H%+%C%H$r;H$o$:!"(B`[prefix] b' $B$@$1$GJd40F~NO(B
-     $B$KF~$k(B (`nil')
+     `[prefix] b ??' のショートカットを使わず、`[prefix] b' だけで補完入力
+     に入る (`nil')
 
  -- Variable: YaTeX-hilit-pattern-adjustment-private
-     $B@55,I=8=$H$=$l$K%^%C%A$9$k$b$N$NO@M}E*0UL#$r%7%s%\%k$G$"$i$o$7$?$b$N(B
-     $B$N%j%9%H!D$N%j%9%H!#(Bhilit19 $B$rAH$_9~$s$G$$$k;~$N$_M-8z!#>\$7$/$O(B 
-     `(assq 'yatex-mode hilit-patterns-alist)' $B$7$?7k2L$H!"JQ?t(B 
-     `YaTeX-hilit-pattern-adjustment-default' $B$NCM(B($B$H>l9g$K$h$C$F$O(B 
-     hilit19 $B$N%I%-%e%a%s%H(B)$B$r;2>H$;$h!#(B
+     正規表現とそれにマッチするものの論理的意味をシンボルであらわしたもの
+     のリスト…のリスト。hilit19 を組み込んでいる時のみ有効。詳しくは 
+     `(assq 'yatex-mode hilit-patterns-alist)' した結果と、変数 
+     `YaTeX-hilit-pattern-adjustment-default' の値(と場合によっては 
+     hilit19 のドキュメント)を参照せよ。
 
  -- Variable: YaTeX-sectioning-level
-     LaTeX$B$N%;%/%7%g%sC10L@k8@%3%^%s%I$H$=$NO@M}E*9b$5$N(Balist$B!#(B
+     LaTeXのセクション単位宣言コマンドとその論理的高さのalist。
 
  -- Variable: YaTeX-hierarchy-ignore-heading-regexp
-     Hierarchy $B%P%C%U%!$ODL>o%U%!%$%k%X%C%@$H$7$F!"(BLaTeX$B$N%;%/%7%g%s@k8@%3(B
-     $B%^%s%I$N0z?t$r8!:w$7!"$=$l$,$J$1$l$P%3%a%s%H9T$rC5$9$,!"$=$N:]$K%X%C(B
-     $B%@$H$7$F$O0UL#$r;}$?$J$$%Q%?!<%s$r$3$NJQ?t$K@_Dj$9$k!#%G%U%)%k%H$G$O(B 
-     RCS $B%X%C%@$H%b!<%I;XDj9T(B(-*- xxx -*-)$B$,@_Dj$5$l$F$$$k!#(B
+     Hierarchy バッファは通常ファイルヘッダとして、LaTeXのセクション宣言コ
+     マンドの引数を検索し、それがなければコメント行を探すが、その際にヘッ
+     ダとしては意味を持たないパターンをこの変数に設定する。デフォルトでは 
+     RCS ヘッダとモード指定行(-*- xxx -*-)が設定されている。
 
  -- Variable: YaTeX-skip-default-reader
-     Non-nil $B$K@_Dj$9$k$H(Bsection$B7?%3%^%s%I$N0z?tF~NO;~!"%"%I%$%s4X?t$,$J$1(B
-     $B$l$P%_%K%P%C%U%!$G$NFI$_9~$_$r$;$:$KF~NO$r40N;$5$;$k(B (`nil')
+     Non-nil に設定するとsection型コマンドの引数入力時、アドイン関数がなけ
+     ればミニバッファでの読み込みをせずに入力を完了させる (`nil')
 
  -- Variable: YaTeX-create-file-prefix-g
-     `\include'$B$J$I$G(B `prefix g'$B$7$?;~$K!"%8%c%s%W@h$,B8:_$7$J$$%U%!%$%k$G(B
-     $B$"$C$F$b%*!<%W%s$9$k(B (`nil')
+     `\include'などで `prefix g'した時に、ジャンプ先が存在しないファイルで
+     あってもオープンする (`nil')
 
  -- Variable: YaTeX-simple-messages
-     $B3F<oJd40;~$N%a%C%;!<%8=PNO$r4JAG2=$9$k(B (`nil')
+     各種補完時のメッセージ出力を簡素化する (`nil')
 
  -- Variable: YaTeX-hilit-sectioning-face
-     $B?'IU$1$,M-8z$J;~$N(B `\part' $B$N?'(B (`'(yellow/dodgerblue
-     yellow/slateblue)')$B!#%j%9%H$NBh0lMWAG$O(B `hilit-background-mode' $B$,(B 
-     `'light' $B$N;~$N!"BhFsMWAG$O(B `'dark' $B$N;~$N(B `\chapter' $B$N?'$G!"J8;z?'(B/
-     $BGX7J?'(B $B$N$h$&$K;XDj$9$k!#(B
+     色付けが有効な時の `\part' の色 (`'(yellow/dodgerblue
+     yellow/slateblue)')。リストの第一要素は `hilit-background-mode' が 
+     `'light' の時の、第二要素は `'dark' の時の `\chapter' の色で、文字色/
+     背景色 のように指定する。
 
  -- Variable: YaTeX-hilit-sectioning-attenuation-rate
-     $B?'IU$1$,M-8z$J;~$N!"(B`\subparagraph' $B$N?'$r(B `\chapter' $B$NG;EY$N2?(B%$BGv$/(B
-     $B$7$?$b$N$K$9$k$+(B (`'(15 40)') `YaTeX-hilit-sectioning-face'$B$N9`;2>H!#(B
+     色付けが有効な時の、`\subparagraph' の色を `\chapter' の濃度の何%薄く
+     したものにするか (`'(15 40)') `YaTeX-hilit-sectioning-face'の項参照。
 
  -- Variable: YaTeX-use-AMS-LaTeX
-     AMS-LaTeX $B$r;HMQ$9$k>l9g$O(B `t' $B$K@_Dj$9$k(B (`nil')
+     AMS-LaTeX を使用する場合は `t' に設定する (`nil')
 
  -- Variable: YaTeX-use-LaTeX2e
-     LaTeX2e $B$r;HMQ$9$k>l9g$O(B `t' $B$K@_Dj$9$k(B (`t')
+     LaTeX2e を使用する場合は `t' に設定する (`t')
 
  -- Variable: YaTeX-template-file
-     $B?75,%U%!%$%k:n@.;~$K<+F0A^F~$9$k%U%!%$%kL>(B (`~/work/template.tex')
+     新規ファイル作成時に自動挿入するファイル名 (`~/work/template.tex')
 
  -- Variable: YaTeX-search-file-from-top-directory
-     input$B$9$k%U%!%$%k$rC5$9$H$-$N4p=`%G%#%l%/%H%j$r(Bmain$B%U%!%$%k$N$"$k%G%#(B
-     $B%l%/%H%j$K$9$k$+(B (`t')
+     inputするファイルを探すときの基準ディレクトリをmainファイルのあるディ
+     レクトリにするか (`t')
  -- Variable: YaTeX-use-font-lock
-     $B%=!<%9$N?'$E$1%Q%C%1!<%8$H$7$F(B font-lock $B$rMxMQ$9$k$+$I$&$+(B
+     ソースの色づけパッケージとして font-lock を利用するかどうか
      (`(featurep 'font-lock)')
 
  -- Variable: YaTeX-use-hilit19
-     $B%=!<%9$N?'$E$1%Q%C%1!<%8$H$7$F(B hilit19 $B$rMxMQ$9$k$+$I$&$+(B(`(featurep '
+     ソースの色づけパッケージとして hilit19 を利用するかどうか(`(featurep '
      hilit19)')
 
  -- Variable: YaTeX-use-italic-bold
-     italic, bold$B%U%)%s%H$rLnD;$,C5$9$+$I$&$+(B (Emacs20$B0J9_$J$i(B`t')
-     font-lock$BMxMQ;~$N$_M-8z!#(B(`(featurep 'hilit19)'
+     italic, boldフォントを野鳥が探すかどうか (Emacs20以降なら`t')
+     font-lock利用時のみ有効。(`(featurep 'hilit19)'
 
  -- Variable: YaTeX-singlecmd-suffix
-     $BA4$F$N(Bmaketitle$B7?%3%^%s%I$NJd40F~NOD>8e$KA^F~$9$kJ8;zNs!#(B`"{}"' $B$J$I(B
-     $B$,$*4+$a!#(B
+     全てのmaketitle型コマンドの補完入力直後に挿入する文字列。`"{}"' など
+     がお勧め。
 
  -- Variable: YaTeX-package-alist-private
-     LaTeX2e$B$N%Q%C%1!<%8L>$H$=$NCf$K4^$^$l$k%^%/%m$N%j%9%H!#E,@Z$K@_Dj$7$F(B
-     $B$*$/$HK\J8F~NO;~$K%^%/%m$rJd40F~NO$9$k$H$=$N%^%/%m$KI,MW$J%Q%C%1!<%8(B
-     $B$r(B usepackage $B$9$k$+<+F0E*$K8!::$7$F$/$l$k!#$7$F$$$J$1$l$P(B 
-     \usepackage $B$r<+F0DI2C$9$k$3$H$b$G$-$k!#%j%9%H$O(B
-             '(($B%Q%C%1!<%8L>(B1
-                  ($BJd40%?%$%W(B $B%^%/%m$N%j%9%H!D!D(B)
-                  ($BJd40%?%$%W(B $B%^%/%m$N%j%9%H!D!D(B))
-               ($B%Q%C%1!<%8L>(B2
-                  ($BJd40%?%$%W(B $B%^%/%m$N%j%9%H!D!D(B)
-                  ($BJd40%?%$%W(B $B%^%/%m$N%j%9%H!D!D(B))$B!D!D!D(B)$B$H$$$&7A<0$K$9$k!#(B
-     $BJd40%?%$%W$O(B `env, section, maketitle' $B$N$I$l$+!#6qBNNc$OJQ?t(B 
-     `YaTeX-package-alist-default'$B$NCM;2>H!#(B
+     LaTeX2eのパッケージ名とその中に含まれるマクロのリスト。適切に設定して
+     おくと本文入力時にマクロを補完入力するとそのマクロに必要なパッケージ
+     を usepackage するか自動的に検査してくれる。していなければ 
+     \usepackage を自動追加することもできる。リストは
+             '((パッケージ名1
+                  (補完タイプ マクロのリスト……)
+                  (補完タイプ マクロのリスト……))
+               (パッケージ名2
+                  (補完タイプ マクロのリスト……)
+                  (補完タイプ マクロのリスト……))………)という形式にする。
+     補完タイプは `env, section, maketitle' のどれか。具体例は変数 
+     `YaTeX-package-alist-default'の値参照。
 
  -- Variable: YaTeX-tabular-indentation
-     tabular/array $B4D6-$G8=:_9T$N@hF,0LCV$,I=$NBh(BN$B%+%i%`$N$H$-$OI8=`%$%s%G(B
-     $B%s%H0LCV$+$i(B N*YaTeX-tabular-indentation $B7e2<$2$?%$%s%G%s%H$K$9$k!#(B
+     tabular/array 環境で現在行の先頭位置が表の第Nカラムのときは標準インデ
+     ント位置から N*YaTeX-tabular-indentation 桁下げたインデントにする。
 
  -- Variable: YaTeX-noindent-env-regexp
-     $BJL$N4D6-Fb$K$"$C$F$b(B \begin{} $B$,9TF,$+$i;O$^$k$Y$-4D6-L>$N@55,I=8=!#(B
-     verbatim$B4D6-$J$I$r;XDj$9$k!#(B
+     別の環境内にあっても \begin{} が行頭から始まるべき環境名の正規表現。
+     verbatim環境などを指定する。
 
  -- Variable: YaTeX-ref-default-label-string
-     \ref{} $B$N%i%Y%kJd40$G%i%Y%kL$@_Dj$N$b$N$K<+F0E*$K@8@.$9$k%i%Y%kL>$N=q(B
-     $B<0!#(Bstrftime(3)$B4X?t$K;w$?F|IU%Y!<%9$G;XDj$9$k!#MxMQ$G$-$k=q<0$O0J2<$N(B
-     $B$H$*$j!#(B%y -> $B@>Nq2<Fs7e(B, %b -> $B7n$N1QL>(B, %m -> $B7n(B(1$B!A(B12) %d -> $BF|(B,
-     %H -> $B;~(B, %M -> $BJ,(B, %S -> $BIC(B, %qx -> $B%"%k%U%!%Y%C%H$G(B26$B?J?t2=$7$?(B 
-     yymmdd.  %qX -> $B%"%k%U%!%Y%C%H$G(B26$B?J?t2=$7$?(B HHMMSS.  $B%G%U%)%k%H$O(B 
+     \ref{} のラベル補完でラベル未設定のものに自動的に生成するラベル名の書
+     式。strftime(3)関数に似た日付ベースで指定する。利用できる書式は以下の
+     とおり。%y -> 西暦下二桁, %b -> 月の英名, %m -> 月(1〜12) %d -> 日,
+     %H -> 時, %M -> 分, %S -> 秒, %qx -> アルファベットで26進数化した 
+     yymmdd.  %qX -> アルファベットで26進数化した HHMMSS.  デフォルトは 
      "%H%M%S_%d%b%y"
 
  -- Variable: YaTeX-ref-generate-label-function
-     \ref{}$B$N%i%Y%kL><+F0@8@.$N$H$-$K;H$&4X?t$N%7%s%\%k!#%G%U%)%k%H$OI8=`(B
-     $B$N(B YaTeX::ref-generate-label $B4X?t$,3d$jEv$F$F$"$k!#0z?t$r(B2$B$D<h$k4X?t(B
-     $B$rDj5A$7$F!"$3$NJQ?t$K%;%C%H$9$k$H$=$N4X?t$r8F$s$@7k2L$r%G%U%)%k%H$N(B
-     $B%i%Y%kL>8uJd$H$9$k!#@_DjNc(B:
+     \ref{}のラベル名自動生成のときに使う関数のシンボル。デフォルトは標準
+     の YaTeX::ref-generate-label 関数が割り当ててある。引数を2つ取る関数
+     を定義して、この変数にセットするとその関数を呼んだ結果をデフォルトの
+     ラベル名候補とする。設定例:
             (setq YaTeX-ref-generate-label-function 'my-yatex-generate-label)
             (defun my-yatex-generate-label (command value)
               (and (string= command "caption")
@@ -1734,107 +1734,107 @@ File: yatexj, Node: All customizable variables, Next: Sample definitions, Prev: 
 
 File: yatexj, Node: Sample definitions, Next: Hook variables, Prev: All customizable variables, Up: Lisp variables
 
-$B%+%9%?%^%$%:JQ?t@_DjNc(B
+カスタマイズ変数設定例
 ----------------------
 
-  $B$?$H$($P!"(Bprefix $B%-!<$H$7$F(B`ESC'$B$r;HMQ$7!"?7$?$JJd408uJd$r3JG<$9$k%U%!%$(B
-$B%k$r!"(B`~/src/emacs/yatexrc' $B$K$7!"9TF,$N(B prefix $B$r%?%VJ8;z0l$D$KJQ$($?$$$H(B
-$B$-$O!"(B
+  たとえば、prefix キーとして`ESC'を使用し、新たな補完候補を格納するファイ
+ルを、`~/src/emacs/yatexrc' にし、行頭の prefix をタブ文字一つに変えたいと
+きは、
 
              (setq YaTeX-prefix "\e"
                    YaTeX-user-completion-table "~/src/emacs/yatexrc"
                    YaTeX-fill-prefix "       ")
 
-$B$r(B `~/.emacs' $B$K2C$($^$9!#(B
+を `~/.emacs' に加えます。
 
 
 File: yatexj, Node: Hook variables, Next: Hook file, Prev: Sample definitions, Up: Lisp variables
 
-hook$BJQ?t(B
+hook変数
 --------
 
-  $B$^$?!"(Bhook $BJQ?t(B `yatex-mode-hook', `yatex-mode-load-hook' $B$rMQ0U$7$F$$$^(B
-$B$9!#$9$Y$F$N(B yatex-mode $B$N%P%C%U%!$G:nMQ$5$;$?$$$b$N$O!"(B`yatex-mode-hook' 
-$B$K5-=R$7!"(B`yatex.el' $B$r%m!<%I$9$k;~$@$1:nMQ$5$;$?$$$b$N$O(B
-`yatex-mode-load-hook' $B$K5-=R$7$^$9!#Nc$($P!"(B`outline-minor-mode' $B$rMxMQ$9(B
-$B$k>l9g!"$=$l$>$l$N%P%C%U%!$G(B `outline-minor-mode' $B$rM-8z$K$7$?$$$N$G!"(B
-`yatex-mode-hook' $B$r<!$N$h$&$K@_Dj$7$^$9!#(B
+  また、hook 変数 `yatex-mode-hook', `yatex-mode-load-hook' を用意していま
+す。すべての yatex-mode のバッファで作用させたいものは、`yatex-mode-hook' 
+に記述し、`yatex.el' をロードする時だけ作用させたいものは
+`yatex-mode-load-hook' に記述します。例えば、`outline-minor-mode' を利用す
+る場合、それぞれのバッファで `outline-minor-mode' を有効にしたいので、
+`yatex-mode-hook' を次のように設定します。
 
              (setq yatex-mode-hook
                    '(lambda () (outline-minor-mode t)))
 
-$B5U$K!"FH<+$N%-!<Dj5A$r9T$$$?$$;~$J$I$O!"(B`yatex-mode-load-hook' $B$rMxMQ$7$^(B
-$B$9!#Nc$($P!"(Bbegin $B7?Jd40$K$*$$$F!"(B document $B$d!"(Benumerate $B0J30$N4D6-L>$b%7%g!<(B
-$B%H%+%C%H%-!<$GF~$l$?$$$J$I$H$$$&;~$O!"<!$N$h$&$K$7$^$9!#0J2<$NNc$O!"(B
-`[prefix] ba' $B$G(B `\begin{abstract}', `\end{abstract}' $B$rA^F~$7$^$9!#(B
+逆に、独自のキー定義を行いたい時などは、`yatex-mode-load-hook' を利用しま
+す。例えば、begin 型補完において、 document や、enumerate 以外の環境名もショー
+トカットキーで入れたいなどという時は、次のようにします。以下の例は、
+`[prefix] ba' で `\begin{abstract}', `\end{abstract}' を挿入します。
 
              (setq yatex-mode-load-hook
                    '(lambda() (YaTeX-define-begend-key "ba" "abstract")))
 
-$B$J$*!"?7$?$J%-!<$NDj5A$K$O!"4X?t(B `YaTeX-define-key'
-`YaTeX-define-begend-key'$B$rMxMQ$9$k$h$&$K$7$F$/$@$5$$!#(B
+なお、新たなキーの定義には、関数 `YaTeX-define-key'
+`YaTeX-define-begend-key'を利用するようにしてください。
 
 
 File: yatexj, Node: Hook file, Prev: Hook variables, Up: Lisp variables
 
-hook$BMQ%U%!%$%k(B
+hook用ファイル
 --------------
 
-  $BJQ?t(B `yatex-mode-load-hook' $B$GDj5A$9$kFbMF$,B?$$;~$O!"(B`yatexhks.el'$B$H$$(B
-$B$&%U%!%$%k$r:n$j!"$=$NCf$KLnD;4XO"$N@_Dj$r=q$/;v$G!"=i4|2=$N;~$K<+F0E*$K%m!<(B
-$B%I$7$^$9!#(B
+  変数 `yatex-mode-load-hook' で定義する内容が多い時は、`yatexhks.el'とい
+うファイルを作り、その中に野鳥関連の設定を書く事で、初期化の時に自動的にロー
+ドします。
 
 
 
 File: yatexj, Node: Add-in functions, Prev: Lisp variables, Up: Customizations
 
-$BIU2C4X?t(B($B%"%I%$%s4X?t(B)
+付加関数(アドイン関数)
 ======================
 
-  $B3F<oJd40;~$K!"4D6-L>$d%3%^%s%IL>$K1~$8$?$-$a:Y$d$+$JJd40F~NO5!G=$r<B8=$9(B
-$B$k$?$a$N4X?t$r:n@.$9$k$3$H$,$G$-$^$9!#$3$N4X?t$N:n@.J}K!$d!"AH$_9~$_J}K!$K(B
-$B4X$7$F$O!"(B`yatexadd.doc' $B$r$4Mw$/$@$5$$!#(B
+  各種補完時に、環境名やコマンド名に応じたきめ細やかな補完入力機能を実現す
+るための関数を作成することができます。この関数の作成方法や、組み込み方法に
+関しては、`yatexadd.doc' をご覧ください。
 
 
 File: yatexj, Node: Etc, Next: Copying, Prev: Customizations, Up: Top
 
-$B$=$NB>(B
+その他
 ******
 
-  $BLnD;$NI8=`$N(B LaTeX $B%3%^%s%I$N<-=q$K$O!":n<T$,IQHK$K;H$&$b$N$7$+EPO?$5$l(B
-$B$F$$$^$;$s!#$3$l$O!"Jd408uJd$K;H$$$=$&$b$J$$%3%^%s%I$,B8:_$7$F!"Jd40$7$?$$(B
-$B%3%^%s%I$r=P$9$^$G$N%9%H%m!<%/?t$rA}$d$7$F$7$^$&;v$rKI;_$9$k$?$a$G$9!#I8=`(B
-$B<-=q$K$J$$%3%^%s%I$b!"$G$-$k$@$1Jd40F~NOJ}<0$rMxMQ$7!"%f!<%6<-=q$r=<<B$5$;(B
-$B$k$3$H$G!"$"$J$?$N(B LaTeX $B%9%?%$%k$K$"$C$?LnD;$X$H0i$C$F$$$/$3$H$G$7$g$&!#(B
+  野鳥の標準の LaTeX コマンドの辞書には、作者が頻繁に使うものしか登録され
+ていません。これは、補完候補に使いそうもないコマンドが存在して、補完したい
+コマンドを出すまでのストローク数を増やしてしまう事を防止するためです。標準
+辞書にないコマンドも、できるだけ補完入力方式を利用し、ユーザ辞書を充実させ
+ることで、あなたの LaTeX スタイルにあった野鳥へと育っていくことでしょう。
 
 
 File: yatexj, Node: Copying, Next: Concept Index, Prev: Etc, Up: Top
 
-$B<h$j07$$(B
+取り扱い
 ********
 
-  $BK\%W%m%0%i%`$O%U%j!<%=%U%H%&%'%"$G$9!#K\%W%m%0%i%`$r;HMQ$7$F@8$8$?$$$+$J(B
-$B$k7k2L$KBP$7$F$b:n<T$O@UG$$rIi$o$J$$$3$H$H$7$^$9!#E>:\Ey$K4X$7$F$O@)8B$$$?(B
-$B$7$^$;$s!#>o<1E*$K07$C$F$/$@$5$$!#$^$?!"K\%W%m%0%i%`$K4^$^$l$k%3!<%I$rMxMQ(B
-$B$9$k$3$H!"2~B$$9$k$3$H$b<+M3$K9T$J$C$F9=$$$^$;$s$,!"N.MQ$9$k$3$H$K$h$j7@Ls(B
-$BDy7k$NI,MW$,@8$8$k>l9g!";d$O$$$+$J$k7@Ls$bDy7k$7$^$;$s!#6qBNE*$K$O(BGPL$B$X$N(B
-$B%5%$%s$O$7$^$;$s$N$G!"(BGNU$B$K4sB#$9$k$b$N$r:n$C$F$$$k>l9g;d$N:nIJ$+$i<h$j9~(B
-$B$s$@%3!<%I$rN.MQ$9$k$H6lO+$9$k$+$b$7$l$^$;$s!#$$$+$J$k%3!<%IN.MQ$b5qH]$7$^(B
-$B$;$s$,7@LsDy7k$O<-B`$7$^$9!#(B
+  本プログラムはフリーソフトウェアです。本プログラムを使用して生じたいかな
+る結果に対しても作者は責任を負わないこととします。転載等に関しては制限いた
+しません。常識的に扱ってください。また、本プログラムに含まれるコードを利用
+すること、改造することも自由に行なって構いませんが、流用することにより契約
+締結の必要が生じる場合、私はいかなる契約も締結しません。具体的にはGPLへの
+サインはしませんので、GNUに寄贈するものを作っている場合私の作品から取り込
+んだコードを流用すると苦労するかもしれません。いかなるコード流用も拒否しま
+せんが契約締結は辞退します。
 
-  $B6l>p!"4uK>!"%P%0Js9p!"46A[Ey$O4?7^$$$?$7$^$9!#O"Mm$O(B yuuji@yatex.org $B$^(B
-$B$G(B(2004$BG/(B1$B7n8=:_(B)$B!#7QB3E*$K;HMQ$7$F$/$@$5$kJ}$O%a%$%j%s%0%j%9%H!V(Bfj$BLnD;$N(B
-$B2q!W$K@'Hs2CF~$7$F$/$@$5$$!#2CF~J}K!$K$D$$$F$OK\%Q%C%1!<%8$N(B `docs/qanda'
-$B%U%!%$%k$N!V$=$NB>!W$N>O$r8fMw$/$@$5$$!#(B
+  苦情、希望、バグ報告、感想等は歓迎いたします。連絡は yuuji@yatex.org ま
+で(2004年1月現在)。継続的に使用してくださる方はメイリングリスト「fj野鳥の
+会」に是非加入してください。加入方法については本パッケージの `docs/qanda'
+ファイルの「その他」の章を御覧ください。
 
-$B;EMM$O!"M=9p$J$/3N<B$K(B($B5$J,<!Bh$G(B)$BJQ99$5$l$^$9(B:-p$B!#(B
+仕様は、予告なく確実に(気分次第で)変更されます:-p。
 
-                                                                  $B9-@%M:Fs(B
+                                                                  広瀬雄二
 
 
 File: yatexj, Node: Concept Index, Prev: Copying, Up: Top
 
-$B:w0z(B
+索引
 ****
 
 * Menu:
@@ -1844,114 +1844,114 @@ File: yatexj, Node: Concept Index, Prev: Copying, Up: Top
 * apropos:                      Online help.            4.
 * autoload:                     Installation.           4.
 * auto-mode-alist:              Installation.           4.
-* $B%0%m!<%P%k%X%k%W(B[$B$/$m$*$O$k$X$k$U(B]: Online help.      16.
-* $B0z?t(B[$B$R$-$9$&(B]:               2$B8D0J>e$N0z?t$r$H$k(B section$B7?%3%^%s%I(B.  4.
-* $B0z?t$N8D?t$rJQ$($k(B[$B$R$-$9$&$N$3$9$&$r$+$($k(B]: 2$B8D0J>e$N0z?t$r$H$k(B section$B7?%3%^%s%I(B.  24.
-* $B$*$^$+$;2~9T(B[$B$*$^$+$;$+$$$-$h$&(B]: Intelligent newline.  4.
-* $B&2(B[$B$7$/$^(B]:                   Image completion.       4.
-* $B2$J8(B[$B$*$&$U$s(B]:               Accent mark completion.  4.
-* $B$3$3$O$I$3(B?[$B$3$3$O$H$3(B?]:     What column.            4.
-* $B%3%a%s%H%"%&%H(B[$B$3$a$s$H$"$&$H(B]: Commenting out.       4.
-* $B3g$k(B[$B$/$/$k(B]:                 Enclose section-type command.  4.
-* $B3g$k(B[$B$/$/$k(B]:                 large$B7?Jd40(B.            21.
-* $B$*3(IA$-%D!<%k5/F0(B[$B$*$($+$-$D$&$k$-$H$&(B]: $B$*3(IA$-%D!<%k5/F0(B.  4.
-* $B%3%^%s%I%R%9%H%j(B[$B$3$^$s$H$R$9$H$j(B]: Cooperation with other packages.  8.
-* $B4D6-L>$NJd40(B[$B$+$s$-$h$&$a$$$N$[$+$s(B]: begin$B7?Jd40(B.    4.
-* $B4D6-L>$NJQ99(B[$B$+$s$-$h$&$a$$$N$X$s$3$&(B]: Changing LaTeX command.  20.
-* $B4D6-$N@hF,$X(B[$B$+$s$-$h$&$N$;$s$H$&$X(B]: $B4D6-$rC10L$H$7$?%8%c%s%W(B.  7.
-* $B4D6-$NKvHx$X(B[$B$+$s$-$h$&$N$^$D$R$X(B]: $B4D6-$rC10L$H$7$?%8%c%s%W(B.  7.
-* $B4D6-$N:o=|(B[$B$+$s$-$h$&$N$5$/$7$h(B]: Killing LaTeX command.  6.
-* $B4D6-$r%^!<%/(B[$B$+$s$-$h$&$r$^$"$/(B]: $B4D6-$rC10L$H$7$?%8%c%s%W(B.  7.
-* $B5/F0$9$k%3%^%s%I$rJQ$($k(B[$B$-$H$&$9$k$3$^$s$H$r$+$($k(B]: Changing typesetter.  7.
-* %#$B5-K!<+BN$NJT=8(B[%#$B$-$[$&$7$?$$$N$X$s$7$f$&(B]: Editing %# notation.  4.
-* $B%-!<%"%5%$%s(B[$B$-$$$"$5$$$s(B]:   Customizations.         4.
-* $B7eB7$((B[$B$1$?$=$m$((B]:           Filling.                4.
-* $B%;%/%7%g%s6h@Z$j0lMw%P%C%U%!(B[$B$;$/$7$h$s$/$-$j$$$A$i$s$O$D$U$"(B]: view-sectioning.  18.
-* $B%;%/%7%g%s6h@Z$j(B[$B$;$/$7$h$s$/$-$j(B]: view-sectioning.  42.
-* $B%8%c%s%W(B[$B$7$d$s$U(B]:           view-sectioning.        42.
-* $B8GDjNN0h$N%?%$%W%;%C%H(B[$B$3$F$$$j$h$&$$$-$N$?$$$U$;$D$H(B]: Fix region for typesetting.  4.
-* $B8=:_$N%+%i%`I=<((B[$B$1$s$5$$$N$+$i$`$R$h$&$7(B]: What column.  22.
-* $B%+%9%?%^%$%:(B[$B$+$9$?$^$$$9(B]:   Customizations.         4.
-* $B%+%9%?%^%$%:JQ?t0lMw(B[$B$+$9$?$^$$$9$X$s$9$&$$$A$i$s(B]: All customizable variables.  4.
-* $B%$%a!<%8Jd40(B[$B$$$a$($7$[$+$s(B]: Image completion.       4.
-* $B%b!<%I@Z$jBX$((B[$B$b$&$H$-$j$+$((B]: Changing mode of YaTeX.  4.
-* $BB>$N%U%!%$%k$N<jD>$7(B[$B$[$+$N$U$"$$$k$N$F$J$*$7(B]: Includeonly.  11.
-* $BB>%Q%C%1!<%8$H$NO"7H(B[$B$?$O$D$1$($7$H$N$l$s$1$$(B]: Cooperation with other packages.  4.
-* $BD9$$%U%!%$%k$NJT=8(B[$B$J$+$$$U$"$$$k$N$X$s$7$f$&(B]: Fix region for typesetting.  34.
-* $B$d$A$g$&(B[$B$d$A$h$&(B]:           Intro.                  4.
-* $B@_DjNc(B[$B$;$D$F$$$l$$(B]:         Sample definitions.     4.
+* グローバルヘルプ[くろおはるへるふ]: Online help.      16.
+* 引数[ひきすう]:               2個以上の引数をとる section型コマンド.  4.
+* 引数の個数を変える[ひきすうのこすうをかえる]: 2個以上の引数をとる section型コマンド.  24.
+* おまかせ改行[おまかせかいきよう]: Intelligent newline.  4.
+* Σ[しくま]:                   Image completion.       4.
+* 欧文[おうふん]:               Accent mark completion.  4.
+* ここはどこ?[ここはとこ?]:     What column.            4.
+* コメントアウト[こめんとあうと]: Commenting out.       4.
+* 括る[くくる]:                 Enclose section-type command.  4.
+* 括る[くくる]:                 large型補完.            21.
+* お絵描きツール起動[おえかきつうるきとう]: お絵描きツール起動.  4.
+* コマンドヒストリ[こまんとひすとり]: Cooperation with other packages.  8.
+* 環境名の補完[かんきようめいのほかん]: begin型補完.    4.
+* 環境名の変更[かんきようめいのへんこう]: Changing LaTeX command.  20.
+* 環境の先頭へ[かんきようのせんとうへ]: 環境を単位としたジャンプ.  7.
+* 環境の末尾へ[かんきようのまつひへ]: 環境を単位としたジャンプ.  7.
+* 環境の削除[かんきようのさくしよ]: Killing LaTeX command.  6.
+* 環境をマーク[かんきようをまあく]: 環境を単位としたジャンプ.  7.
+* 起動するコマンドを変える[きとうするこまんとをかえる]: Changing typesetter.  7.
+* %#記法自体の編集[%#きほうしたいのへんしゆう]: Editing %# notation.  4.
+* キーアサイン[きいあさいん]:   Customizations.         4.
+* 桁揃え[けたそろえ]:           Filling.                4.
+* セクション区切り一覧バッファ[せくしよんくきりいちらんはつふあ]: view-sectioning.  18.
+* セクション区切り[せくしよんくきり]: view-sectioning.  42.
+* ジャンプ[しやんふ]:           view-sectioning.        42.
+* 固定領域のタイプセット[こていりよういきのたいふせつと]: Fix region for typesetting.  4.
+* 現在のカラム表示[けんさいのからむひようし]: What column.  22.
+* カスタマイズ[かすたまいす]:   Customizations.         4.
+* カスタマイズ変数一覧[かすたまいすへんすういちらん]: All customizable variables.  4.
+* イメージ補完[いめえしほかん]: Image completion.       4.
+* モード切り替え[もうときりかえ]: Changing mode of YaTeX.  4.
+* 他のファイルの手直し[ほかのふあいるのてなおし]: Includeonly.  11.
+* 他パッケージとの連携[たはつけえしとのれんけい]: Cooperation with other packages.  4.
+* 長いファイルの編集[なかいふあいるのへんしゆう]: Fix region for typesetting.  34.
+* やちょう[やちよう]:           Intro.                  4.
+* 設定例[せつていれい]:         Sample definitions.     4.
 * %#BEGIN:                      Fix region for typesetting.  4.
-* begin$B7?Jd40(B[begin$B$+$?$[$+$s(B]: begin$B7?Jd40(B.            4.
-* $B:F5"Jd40(B[$B$5$$$-$[$+$s(B]:       Recursive completion.   4.
-* $B%f!<%6<-=q(B[$B$f$&$5$7$7$h(B]:     begin$B7?Jd40(B.            71.
-* &$BF~NO(B[&$B$K$f$&$j$h$/(B]:         Intelligent newline.    4.
-* $BF~NO%U%!%$%kJ,3d(B[$B$K$f$&$j$h$/$U$"$$$k$U$s$+$D(B]: Splitting input files.  11.
-* $B!g(B[$B$`$1$s$?$$(B]:               Image completion.       4.
-* $B@h2s$j(Busepackage[$B$5$-$^$o$j(B]: Usepackage cheker.      4.
-* ;$B<+?H(B[;$B$7$7$s(B]:               Image completion.       31.
-* $B%"%&%H%i%$%s(B[$B$"$&$H$i$$$s(B]:   view-sectioning.        4.
-* $B%(%i!<=$@5(B[$B$($i$"$7$f$&$;$$(B]: Calling typesetter.     4.
-* $B%i%Y%k<+F0@8@.(B[$B$i$X$k$7$H$&$;$$$;$$(B]: label-generation.  4.
-* $B%.%j%7%cJ8;zJd40(B[$B$-$j$7$d$b$7$[$+$s(B]: Greek letter completion.  4.
-* $BJ8;z%5%$%:;XDj;R(B[$B$b$7$5$$$9$7$F$$$7(B]: large$B7?Jd40(B.    17.
-* $BJD$89~$a$k(B[$B$H$7$3$a$k(B]:       begin$B7?Jd40(B.            81.
-* $BJ#;($J(Btabular[$B$U$/$5$D$J(Btabular]: What column.        4.
-* $B>!<j$K(Bincludeonly[$B$+$D$F$K(Bincludeonly]: Includeonly.  4.
-* $BJQ99(B/$B:o=|(B[$B$X$s$3$&(B/$B$5$/$7$h(B]: Modifying/Deleting.     4.
-* $B%+!<%=%k%8%c%s%W(B[$B$+$"$=$k$7$d$s$U(B]: Cursor jump.      4.
-* $BLp0u(B[$B$d$7$k$7(B]:               Image completion.       4.
-* $B%m!<%+%k<-=q(B[$B$m$*$+$k$7$7$h(B]: Local dictionary.       4.
-* $BNN0h7hDj5,B'(B[$B$j$h$&$$$-$1$D$F$$$-$=$/(B]: Fix region for typesetting.  25.
-* $B%-!<%o!<%I8!:w(B[$B$-$$$o$"$H$1$s$5$/(B]: Online help.      4.
-* $B?o;~Jd40(B[$B$9$$$7$[$+$s(B]:       Arbitrary completion.   4.
-* $BO@M}3,AX(B[$B$m$s$j$+$$$=$&(B]:     view-sectioning.        42.
-* $B=PNO3+;O%Z!<%8(B[$B$7$f$D$j$h$/$+$$$7$X$($7(B]: Print out.  9.
-* $B=PNO=*N;%Z!<%8(B[$B$7$f$D$j$h$/$7$f$&$j$h$&$X$($7(B]: Print out.  9.
-* $B%Q%i%0%i%U$N7eB7$((B[$B$O$i$/$i$U$N$1$?$=$m$((B]: Filling.  46.
-* $B%R%9%H%j(B[$B$R$9$H$j(B]:           Cooperation with other packages.  8.
-* $B%$%s%9%H!<%k(B[$B$$$s$9$H$*$k(B]:   Installation.           4.
-* $B%"%/%;%s%H5-9fJd40(B[$B$"$/$;$s$H$-$3$&$[$+$s(B]: Accent mark completion.  4.
-* $B%*%s%i%$%s%X%k%W(B[$B$*$s$i$$$s$X$k$U(B]: Online help.      4.
-* $B%$%s%/%k!<%I9=B$(B[$B$$$s$/$k$&$H$3$&$=$&(B]: Inclusion hierarchy browser.  4.
-* $B?t<05-9f%$%a!<%8Jd40(B[$B$9$&$7$-$-$3$&$$$a$($7$[$+$s(B]: Image completion.  4.
-* $B?t<0%b!<%I(B[$B$9$&$7$-$b$*$H(B]:   Image completion.       4.
-* $B%U%)%s%H;XDj;R(B[$B$U$*$s$H$7$F$$$7(B]: large$B7?Jd40(B.        17.
-* $B%V%m%C%/(B[$B$U$m$D$/(B]:           begin$B7?Jd40(B.            81.
-* $B%?%$%W%;%C%?5/F0(B[$B$?$$$U$;$D$?$-$H$&(B]: Calling typesetter.  4.
-* $B%?%$%W%;%C%?(B[$B$?$$$U$;$D$?(B]:   Invocation.             4.
-* $B%?%$%W%;%C%H%(%i!<(B[$B$?$$$U$;$D$H$($i$"(B]: Calling typesetter.  4.
-* $B%?%$%W%;%C%?$N;H$$J,$1(B[$B$?$$$U$;$D$?$N$D$+$$$o$1(B]: Changing typesetter.  12.
-* $B%W%i%$%Y!<%H%X%k%W(B[$B$U$i$$$X$($H$X$k$U(B]: Online help.  16.
-* $B%W%j%s%H%"%&%H(B[$B$U$j$s$H$"$&$H(B]: Invocation.           4.
-* $B%W%l%t%e!<%"(B[$B$U$l$R$f$&$"(B]:   Invocation.             4.
-* $B%Z!<%83NG'>JN,(Blpr$B5/F0(B[$B$X$($7$+$/$K$s$7$h$&$j$d$/(Blpr$B$-$H$&(B]: Print out.  12.
+* begin型補完[beginかたほかん]: begin型補完.            4.
+* 再帰補完[さいきほかん]:       Recursive completion.   4.
+* ユーザ辞書[ゆうさししよ]:     begin型補完.            71.
+* &入力[&にゆうりよく]:         Intelligent newline.    4.
+* 入力ファイル分割[にゆうりよくふあいるふんかつ]: Splitting input files.  11.
+* ∞[むけんたい]:               Image completion.       4.
+* 先回りusepackage[さきまわり]: Usepackage cheker.      4.
+* ;自身[;ししん]:               Image completion.       31.
+* アウトライン[あうとらいん]:   view-sectioning.        4.
+* エラー修正[えらあしゆうせい]: Calling typesetter.     4.
+* ラベル自動生成[らへるしとうせいせい]: label-generation.  4.
+* ギリシャ文字補完[きりしやもしほかん]: Greek letter completion.  4.
+* 文字サイズ指定子[もしさいすしていし]: large型補完.    17.
+* 閉じ込める[としこめる]:       begin型補完.            81.
+* 複雑なtabular[ふくさつなtabular]: What column.        4.
+* 勝手にincludeonly[かつてにincludeonly]: Includeonly.  4.
+* 変更/削除[へんこう/さくしよ]: Modifying/Deleting.     4.
+* カーソルジャンプ[かあそるしやんふ]: Cursor jump.      4.
+* 矢印[やしるし]:               Image completion.       4.
+* ローカル辞書[ろおかるししよ]: Local dictionary.       4.
+* 領域決定規則[りよういきけつていきそく]: Fix region for typesetting.  25.
+* キーワード検索[きいわあとけんさく]: Online help.      4.
+* 随時補完[すいしほかん]:       Arbitrary completion.   4.
+* 論理階層[ろんりかいそう]:     view-sectioning.        42.
+* 出力開始ページ[しゆつりよくかいしへえし]: Print out.  9.
+* 出力終了ページ[しゆつりよくしゆうりようへえし]: Print out.  9.
+* パラグラフの桁揃え[はらくらふのけたそろえ]: Filling.  46.
+* ヒストリ[ひすとり]:           Cooperation with other packages.  8.
+* インストール[いんすとおる]:   Installation.           4.
+* アクセント記号補完[あくせんときこうほかん]: Accent mark completion.  4.
+* オンラインヘルプ[おんらいんへるふ]: Online help.      4.
+* インクルード構造[いんくるうとこうそう]: Inclusion hierarchy browser.  4.
+* 数式記号イメージ補完[すうしききこういめえしほかん]: Image completion.  4.
+* 数式モード[すうしきもおと]:   Image completion.       4.
+* フォント指定子[ふおんとしていし]: large型補完.        17.
+* ブロック[ふろつく]:           begin型補完.            81.
+* タイプセッタ起動[たいふせつたきとう]: Calling typesetter.  4.
+* タイプセッタ[たいふせつた]:   Invocation.             4.
+* タイプセットエラー[たいふせつとえらあ]: Calling typesetter.  4.
+* タイプセッタの使い分け[たいふせつたのつかいわけ]: Changing typesetter.  12.
+* プライベートヘルプ[ふらいへえとへるふ]: Online help.  16.
+* プリントアウト[ふりんとあうと]: Invocation.           4.
+* プレヴューア[ふれひゆうあ]:   Invocation.             4.
+* ページ確認省略lpr起動[へえしかくにんしようりやくlprきとう]: Print out.  12.
 * C-c:                          Invocation.             4.
 * Demacs:                       Intro.                  4.
 * .emacs:                       Installation.           4.
 * %#END:                        Fix region for typesetting.  4.
-* end$BJd40(B[end$B$[$+$s(B]:           end$BJd40(B.                4.
+* end補完[endほかん]:           end補完.                4.
 * ghostview:                    Splitting input files.  16.
 * gmhist:                       Cooperation with other packages.  8.
-* hook$BJQ?t(B[hook$B$X$s$9$&(B]:       Hook variables.         4.
+* hook変数[hookへんすう]:       Hook variables.         4.
 * includeonly:                  Includeonly.            4.
 * Install:                      Installation.           4.
-* item$B$J$I$N7eB7$((B[item$B$J$H$N$1$?$=$m$((B]: Filling.      8.
+* itemなどの桁揃え[itemなとのけたそろえ]: Filling.      8.
 * jlatex:                       Invocation.             4.
-* large$B7?Jd40(B[large$B$+$?$[$+$s(B]: large$B7?Jd40(B.            4.
+* large型補完[largeかたほかん]: large型補完.            4.
 * LaTeX:                        Intro.                  4.
 * leftarrow:                    Image completion.       4.
 * lpr format:                   lpr format.             4.
-* lpr$B$U$)!<$^$C$H(B[lpr$B$U$*$*$^$D$H(B]: lpr format.         4.
-* lpr$B%U%)!<%^%C%H(B[lpr$B$U$*$*$^$D$H(B]: lpr format.         4.
-* lpr$B%U%)!<%^%C%H$NJQ99(B[lpr$B$U$*$*$^$D$H$N$X$s$3$&(B]: Editing %# notation.  18.
-* maketitle$B7?Jd40(B[maketitle$B$+$?$[$+$s(B]: maketitle$B7?Jd40(B.  4.
-* M-C-@:                        $B4D6-$rC10L$H$7$?%8%c%s%W(B.  7.
-* M-C-a:                        $B4D6-$rC10L$H$7$?%8%c%s%W(B.  7.
-* M-C-e:                        $B4D6-$rC10L$H$7$?%8%c%s%W(B.  7.
+* lprふぉーまっと[lprふおおまつと]: lpr format.         4.
+* lprフォーマット[lprふおおまつと]: lpr format.         4.
+* lprフォーマットの変更[lprふおおまつとのへんこう]: Editing %# notation.  18.
+* maketitle型補完[maketitleかたほかん]: maketitle型補完.  4.
+* M-C-@:                        環境を単位としたジャンプ.  7.
+* M-C-a:                        環境を単位としたジャンプ.  7.
+* M-C-e:                        環境を単位としたジャンプ.  7.
 * min-out:                      Cooperation with other packages.  17.
 * M-q:                          Filling.                46.
 * Mule:                         Intro.                  4.
-* NTT-jTeX[$B$($L$F$$$$$F$$$$$7$($$$F$D$/(B]: Filling.      16.
+* NTT-jTeX[えぬていいていいしえいてつく]: Filling.      16.
 * platex:                       Invocation.             4.
 * prefix ,:                     Commenting out.         4.
 * prefix .:                     Commenting out.         4.
@@ -1961,21 +1961,21 @@ File: yatexj, Node: Concept Index, Prev: Copying, Up: Top
 * prefix ?:                     Online help.            4.
 * prefix &:                     What column.            4.
 * prefix a:                     Accent mark completion.  4.
-* prefix b:                     begin$B7?Jd40(B.            4.
+* prefix b:                     begin型補完.            4.
 * prefix c:                     Modifying/Deleting.     4.
 * prefix d:                     Inclusion hierarchy browser.  4.
-* prefix e:                     end$BJd40(B.                4.
+* prefix e:                     end補完.                4.
 * prefix g:                     Cursor jump.            4.
 * prefix i:                     Filling.                8.
 * prefix k:                     Modifying/Deleting.     4.
 * prefix key:                   Invocation.             4.
-* prefix l:                     large$B7?Jd40(B.            4.
-* prefix m:                     maketitle$B7?Jd40(B.        4.
-* prefix s:                     section$B7?Jd40(B.          4.
+* prefix l:                     large型補完.            4.
+* prefix m:                     maketitle型補完.        4.
+* prefix s:                     section型補完.          4.
 * prefix SPC:                   Arbitrary completion.   4.
 * prefix w:                     Changing mode of YaTeX.  4.
-* prefix$B%-!<JQ99(B[prefix$B$-$$$X$s$3$&(B]: Lisp variables.   4.
-* section$B7?Jd40(B[section$B$+$?$[$+$s(B]: section$B7?Jd40(B.      4.
+* prefixキー変更[prefixきいへんこう]: Lisp variables.   4.
+* section型補完[sectionかたほかん]: section型補完.      4.
 * YaTeX-help-file:              Online help.            16.
 * YaTeX-help-file-private:      Online help.            16.
 * YaTeX-item-regexp:            Filling.                20.
@@ -2005,28 +2005,28 @@ Node: Fix region for typesetting14160
 Node: lpr format15905
 Node: Editing %# notation17305
 Node: Completion18057
-Node: begin$B7?Jd40(B18701
-Node: section$B7?Jd40(B22831
-Node: 2$B8D0J>e$N0z?t$r$H$k(B section$B7?%3%^%s%I(B24617
+Node: begin型補完18701
+Node: section型補完22831
+Node: 2個以上の引数をとる section型コマンド24617
 Node: Enclose section-type command26115
 Node: Recursive completion26515
 Node: view-sectioning27067
 Node: label-generation29528
-Node: large$B7?Jd40(B30273
-Node: maketitle$B7?Jd40(B31400
+Node: large型補完30273
+Node: maketitle型補完31400
 Node: Arbitrary completion31882
-Node: end$BJd40(B32488
+Node: end補完32488
 Node: Accent mark completion33125
 Node: Image completion33856
 Node: Greek letter completion37390
 Node: Local dictionary38385
 Node: Commenting out39625
 Node: Cursor jump41857
-Node: $BBP1~%*%V%8%'%/%H$X$N%8%c%s%W(B42231
-Node: $B$*3(IA$-%D!<%k5/F0(B44128
-Node: $B%a%$%s%U%!%$%k$X$N%8%c%s%W(B46093
-Node: $B4D6-$rC10L$H$7$?%8%c%s%W(B46762
-Node: $B:G8e$NJd400LCV$X$N%8%c%s%W(B47426
+Node: 対応オブジェクトへのジャンプ42231
+Node: お絵描きツール起動44128
+Node: メインファイルへのジャンプ46093
+Node: 環境を単位としたジャンプ46762
+Node: 最後の補完位置へのジャンプ47426
 Node: Modifying/Deleting47904
 Node: Changing LaTeX command48558
 Node: Killing LaTeX command49574

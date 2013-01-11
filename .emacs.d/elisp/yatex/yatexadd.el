@@ -63,11 +63,11 @@ YaTeX-make-begin-end."
   (concat (YaTeX:read-position "tb")
 	  "{" (read-string "Column format: ") "}"))
 (defun YaTeX:subequations ()
-  (message (if YaTeX-japan "•ª‚©‚è‚â‚·‚¢ƒRƒƒ“ƒg‚É•Ï‚¦‚é‚Æref•âŠ®‚ªŠy‚æ"
+  (message (if YaTeX-japan "åˆ†ã‹ã‚Šã‚„ã™ã„ã‚³ãƒ¡ãƒ³ãƒˆã«å¤‰ãˆã‚‹ã¨refè£œå®ŒãŒæ¥½ã‚ˆ"
 	     "Changing comment string reduces effort at `ref' completion"))
   (concat " " YaTeX-comment-prefix
 	  (YaTeX::ref-default-label "%H:%M")
-	  (if YaTeX-japan "‚Ì®ŒQ" "equations")))
+	  (if YaTeX-japan "ã®å¼ç¾¤" "equations")))
 
 (defun YaTeX:read-oneof (oneof &optional quick allow-dup)
   (let ((pos "") loc (guide ""))
@@ -359,11 +359,11 @@ YaTeX-make-begin-end."
 ; Label selection
 ;;
 (defvar YaTeX-label-menu-other
-  (if YaTeX-japan "':‘¼‚Ìƒoƒbƒtƒ@‚Ìƒ‰ƒxƒ‹\n" "':LABEL IN OTHER BUFFER.\n"))
+  (if YaTeX-japan "':ä»–ã®ãƒãƒƒãƒ•ã‚¡ã®ãƒ©ãƒ™ãƒ«\n" "':LABEL IN OTHER BUFFER.\n"))
 (defvar YaTeX-label-menu-repeat
-  (if YaTeX-japan ".:’¼‘O‚Ì\\ref‚Æ“¯‚¶\n" "/:REPEAT LAST \ref{}\n"))
+  (if YaTeX-japan ".:ç›´å‰ã®\\refã¨åŒã˜\n" "/:REPEAT LAST \ref{}\n"))
 (defvar YaTeX-label-menu-any
-  (if YaTeX-japan "*:”CˆÓ‚Ì•¶š—ñ\n" "*:ANY STRING.\n"))
+  (if YaTeX-japan "*:ä»»æ„ã®æ–‡å­—åˆ—\n" "*:ANY STRING.\n"))
 (defvar YaTeX-label-buffer "*Label completions*")
 (defvar YaTeX-label-guide-msg "Select label and hit RETURN.")
 (defvar YaTeX-label-select-map nil
@@ -758,8 +758,8 @@ See the documetation of YaTeX::ref-labeling-regexp-alist.")
   "subequations")
 
 (defvar YaTeX::ref-labeling-section-level 2
-  "*ref•âŠ®‚ÅûW‚·‚éƒZƒNƒVƒ‡ƒjƒ“ƒOƒRƒ}ƒ“ƒh‚Ì‰ºŒÀƒŒƒxƒ‹
-YaTeX-sectioning-level‚Ì”’l‚Åw’è.")
+  "*refè£œå®Œã§åé›†ã™ã‚‹ã‚»ã‚¯ã‚·ãƒ§ãƒ‹ãƒ³ã‚°ã‚³ãƒãƒ³ãƒ‰ã®ä¸‹é™ãƒ¬ãƒ™ãƒ«
+YaTeX-sectioning-levelã®æ•°å€¤ã§æŒ‡å®š.")
 
 (defun YaTeX::ref (argp &optional labelcmd refcmd predf)
   (setplist 'YaTeX::ref-labeling-regexp nil) ;erase memory cache
@@ -1708,9 +1708,9 @@ and print them to standard output."
 (defun YaTeX:scalebox ()
   "Add-in for \\scalebox"
   (let ((vmag (read-string
-	       (if YaTeX-japan "”{—¦(•‰‚Å”½“]): "
+	       (if YaTeX-japan "å€ç‡(è² ã§åè»¢): "
 		 "Magnification(Negative for flipped): ")))
-	(hmag (read-string (if YaTeX-japan "c”{—¦(È—ª‰Â): "
+	(hmag (read-string (if YaTeX-japan "ç¸¦å€ç‡(çœç•¥å¯): "
 			     "Vertical magnification(Optional): "))))
     (if (and hmag (string< "" hmag))
 	(format "{%s}[%s]" vmag hmag)
@@ -1741,10 +1741,10 @@ and print them to standard output."
   "Argument add-in for \\rotatebox"
   (cond
    ((= argp 1)
-    (read-string (if YaTeX-japan "‰ñ“]Šp(“x; ¶‰ñ‚è): "
+    (read-string (if YaTeX-japan "å›è»¢è§’(åº¦; å·¦å›ã‚Š): "
 		   "Angle in degree(unclockwise): ")))
    ((= argp 2)
-	(read-string (if YaTeX-japan "ƒeƒLƒXƒg: " "Text: ")))))
+	(read-string (if YaTeX-japan "ãƒ†ã‚­ã‚¹ãƒˆ: " "Text: ")))))
 
 (defun YaTeX:includegraphics ()
   "Add-in for \\includegraphics's option"
@@ -1802,7 +1802,7 @@ and print them to standard output."
     (let ((minibuffer-local-completion-map YaTeX-minibuffer-completion-map)
 	  (delim ","))
       (YaTeX-cplread-with-learning
-       (if YaTeX-japan "Use package(ƒJƒ“ƒ}‚Å‹æØ‚Á‚ÄOK): "
+       (if YaTeX-japan "Use package(ã‚«ãƒ³ãƒã§åŒºåˆ‡ã£ã¦OK): "
 	 "Use package(delimitable by comma): ")
        'YaTeX::usepackage-alist-default
        'YaTeX::usepackage-alist-private

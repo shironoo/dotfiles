@@ -48,14 +48,14 @@
 ;;;	default completion list invoked with `;', by defining those lists
 ;;;	into variable YaTeX-math-sign-alist-private.
 
-;;; ÅyÉCÉÅÅ[ÉWï‚äÆÇÃí«â¡ï˚ñ@Åz
+;;; „Äê„Ç§„É°„Éº„Ç∏Ë£úÂÆå„ÅÆËøΩÂä†ÊñπÊ≥ï„Äë
 ;;;
-;;;	  ïWèÄÇÃÉCÉÅÅ[ÉWï‚äÆÇ≈ÇÕÅAÅu;ÅvÇ≈énÇ‹ÇÈêîéÆãLçÜï‚äÆÇ∆ÅAÅu:ÅvÇ≈én
-;;;	Ç‹ÇÈÉMÉäÉVÉÉï∂éöï‚äÆÇ™égópâ¬î\Ç≈Ç∑Ç™ÅAÇ±ÇÍà»äOÇÃï∂éöÇ≈énÇ‹ÇÈï‚äÆ
-;;;	ÉVÉäÅ[ÉYÇ‡íËã`Ç∑ÇÈÇ±Ç∆Ç™Ç≈Ç´Ç‹Ç∑ÅBó·Ç¶ÇŒÅAÅu,ÅvÇ≈énÇ‹ÇÈéüÇÃÇÊÇ§
-;;;	Ç»ï‚äÆÉVÉäÅ[ÉYÇíËã`Ç∑ÇÈèÍçáÇçlÇ¶ÇƒÇ›Ç‹Ç∑ÅB
+;;;	  Ê®ôÊ∫ñ„ÅÆ„Ç§„É°„Éº„Ç∏Ë£úÂÆå„Åß„ÅØ„ÄÅ„Äå;„Äç„ÅßÂßã„Åæ„ÇãÊï∞ÂºèË®òÂè∑Ë£úÂÆå„Å®„ÄÅ„Äå:„Äç„ÅßÂßã
+;;;	„Åæ„Çã„ÇÆ„É™„Ç∑„É£ÊñáÂ≠óË£úÂÆå„Åå‰ΩøÁî®ÂèØËÉΩ„Åß„Åô„Åå„ÄÅ„Åì„Çå‰ª•Â§ñ„ÅÆÊñáÂ≠ó„ÅßÂßã„Åæ„ÇãË£úÂÆå
+;;;	„Ç∑„É™„Éº„Ç∫„ÇÇÂÆöÁæ©„Åô„Çã„Åì„Å®„Åå„Åß„Åç„Åæ„Åô„ÄÇ‰æã„Åà„Å∞„ÄÅ„Äå,„Äç„ÅßÂßã„Åæ„ÇãÊ¨°„ÅÆ„Çà„ÅÜ
+;;;	„Å™Ë£úÂÆå„Ç∑„É™„Éº„Ç∫„ÇíÂÆöÁæ©„Åô„ÇãÂ†¥Âêà„ÇíËÄÉ„Åà„Å¶„Åø„Åæ„Åô„ÄÇ
 ;;;
-;;;		ï‚äÆÉLÅ[	ï‚äÆåãâ 
+;;;		Ë£úÂÆå„Ç≠„Éº	Ë£úÂÆåÁµêÊûú
 ;;;		s		\sin
 ;;;		S		\arcsin
 ;;;		c		\cos
@@ -65,8 +65,8 @@
 ;;;		l		\log
 ;;;		hs		\sinh
 ;;;
-;;;	Åu,ÅvÇÃÇ†Ç∆Ç… s ÇâüÇ∑Ç∆ \sin Ç™ÅAhs ÇâüÇ∑Ç∆ \sinh Ç™ì¸óÕÇ≥ÇÍÇ‹
-;;;	Ç∑ÅBÇ±ÇÃÇÊÇ§Ç»ï‚äÆÉäÉXÉgÇÃìoò^ÇÕà»â∫ÇÃÇÊÇ§Ç…ÇµÇ‹Ç∑(ïœêîñºÇÕîCà”)ÅB
+;;;	„Äå,„Äç„ÅÆ„ÅÇ„Å®„Å´ s „ÇíÊäº„Åô„Å® \sin „Åå„ÄÅhs „ÇíÊäº„Åô„Å® \sinh „ÅåÂÖ•Âäõ„Åï„Çå„Åæ
+;;;	„Åô„ÄÇ„Åì„ÅÆ„Çà„ÅÜ„Å™Ë£úÂÆå„É™„Çπ„Éà„ÅÆÁôªÈå≤„ÅØ‰ª•‰∏ã„ÅÆ„Çà„ÅÜ„Å´„Åó„Åæ„Åô(Â§âÊï∞Âêç„ÅØ‰ªªÊÑè)„ÄÇ
 ;;;
 ;;;		(setq YaTeX-math-funcs-list
 ;;;		      '(("s"	"sin")
@@ -74,15 +74,15 @@
 ;;;				:
 ;;;			("hs"	"sinh")))
 ;;;
-;;;	Ç≥ÇÁÇ…ÅAÅu,ÅvÇâüÇµÇΩéûÇ…ÉCÉÅÅ[ÉWï‚äÆÇ™énÇ‹ÇÈÇÊÇ§éüÇÃïœêîÇ…ÅAãNìÆÉLÅ[
-;;;	Ç∆è„Ç≈íËã`ÇµÇΩï‚äÆópïœêîÇÃìoò^ÇçsÇ»Ç¢Ç‹Ç∑ÅB
+;;;	„Åï„Çâ„Å´„ÄÅ„Äå,„Äç„ÇíÊäº„Åó„ÅüÊôÇ„Å´„Ç§„É°„Éº„Ç∏Ë£úÂÆå„ÅåÂßã„Åæ„Çã„Çà„ÅÜÊ¨°„ÅÆÂ§âÊï∞„Å´„ÄÅËµ∑Âãï„Ç≠„Éº
+;;;	„Å®‰∏ä„ÅßÂÆöÁæ©„Åó„ÅüË£úÂÆåÁî®Â§âÊï∞„ÅÆÁôªÈå≤„ÇíË°å„Å™„ÅÑ„Åæ„Åô„ÄÇ
 ;;;
 ;;;		(setq YaTeX-math-key-list-private
 ;;;		      '(("," . YaTeX-math-funcs-list)
-;;;			("'" . ÇŸÇ©Ç…íËã`ÇµÇΩÇ¢ÉVÉäÅ[ÉYÇ™Ç†ÇÍÇŒÅc)))
+;;;			("'" . „Åª„Åã„Å´ÂÆöÁæ©„Åó„Åü„ÅÑ„Ç∑„É™„Éº„Ç∫„Åå„ÅÇ„Çå„Å∞‚Ä¶)))
 ;;;
-;;;	Ç±ÇÍÇÁÇ ~/.emacs Ç…èëÇ¢ÇƒÇ®ÇØÇŒÅAmath-mode Ç≈é©ï™êÍópÇÃÉCÉÅÅ[ÉW
-;;;	ï‚äÆÇ™óòópÇ≈Ç´Ç‹Ç∑ÅB
+;;;	„Åì„Çå„Çâ„Çí ~/.emacs „Å´Êõ∏„ÅÑ„Å¶„Åä„Åë„Å∞„ÄÅmath-mode „ÅßËá™ÂàÜÂ∞ÇÁî®„ÅÆ„Ç§„É°„Éº„Ç∏
+;;;	Ë£úÂÆå„ÅåÂà©Áî®„Åß„Åç„Åæ„Åô„ÄÇ
 
 (defvar YaTeX-jisold
   (and (boundp 'dos-machine-type)
@@ -91,35 +91,35 @@
 (defmacro YaTeX-setq-math-sym (sym old new)
   (list 'setq sym (list 'if 'YaTeX-jisold old new)))
 
-(YaTeX-setq-math-sym YaTeX-image-in		"E"    		"Å∏")
-(YaTeX-setq-math-sym YaTeX-image-ni		"Éà"		"Åπ")
-(YaTeX-setq-math-sym YaTeX-image-subset		" _\n(\n ~"	"Åº")
-(YaTeX-setq-math-sym YaTeX-image-subseteq	" _\n(_\n ~"	"Å∫")
-(YaTeX-setq-math-sym YaTeX-image-supset		"_\n )\n~"	"ÅΩ")
-(YaTeX-setq-math-sym YaTeX-image-supseteq	"_\n_)\n~" 	"Åª")
-(YaTeX-setq-math-sym YaTeX-image-nabla		"___\n\\\\/"	"Åﬁ")
-(YaTeX-setq-math-sym YaTeX-image-partial	" -+\n+-+\n+-+" "Å›")
-(YaTeX-setq-math-sym YaTeX-image-dagger		"+\n|"		"Åı")
-(YaTeX-setq-math-sym YaTeX-image-ddagger	"+\n+\n|"	"Åˆ")
-(YaTeX-setq-math-sym YaTeX-image-equiv		"ÅÅ\nÅP"	"Åﬂ")
-(YaTeX-setq-math-sym YaTeX-image-int		" /\\\n \\\n\\/" "ÅÁ")
-(YaTeX-setq-math-sym YaTeX-image-bot		"Åb\nÅP"	"Å€")
-(YaTeX-setq-math-sym YaTeX-image-neg		"Ü≤"		"Å ")
-(YaTeX-setq-math-sym YaTeX-image-flat		"ÇÇ"		"ÅÛ")
-(YaTeX-setq-math-sym YaTeX-image-sqrt		"áï"		"Å„")
-(defvar YaTeX-image-nearrow '("__\n /|\n/" "  ÅQ\n  Å^|\nÅ^" ))
-(defvar YaTeX-image-nwarrow '(" __\n|\\\n  \\" " ÅQ\n|Å_\n   Å_"))
-(defvar YaTeX-image-searrow '("\\\n \\|\n--`" "Å_\n  Å_|\n  ÅP"))
-(defvar YaTeX-image-swarrow '("  /\n|/\n'~~" "   Å^\n|Å^\n ÅP"))
+(YaTeX-setq-math-sym YaTeX-image-in		"E"    		"‚àà")
+(YaTeX-setq-math-sym YaTeX-image-ni		"„É®"		"‚àã")
+(YaTeX-setq-math-sym YaTeX-image-subset		" _\n(\n ~"	"‚äÇ")
+(YaTeX-setq-math-sym YaTeX-image-subseteq	" _\n(_\n ~"	"‚äÜ")
+(YaTeX-setq-math-sym YaTeX-image-supset		"_\n )\n~"	"‚äÉ")
+(YaTeX-setq-math-sym YaTeX-image-supseteq	"_\n_)\n~" 	"‚äá")
+(YaTeX-setq-math-sym YaTeX-image-nabla		"___\n\\\\/"	"‚àá")
+(YaTeX-setq-math-sym YaTeX-image-partial	" -+\n+-+\n+-+" "‚àÇ")
+(YaTeX-setq-math-sym YaTeX-image-dagger		"+\n|"		"‚Ä†")
+(YaTeX-setq-math-sym YaTeX-image-ddagger	"+\n+\n|"	"‚Ä°")
+(YaTeX-setq-math-sym YaTeX-image-equiv		"Ôºù\n‚Äæ"	"‚â°")
+(YaTeX-setq-math-sym YaTeX-image-int		" /\\\n \\\n\\/" "‚à´")
+(YaTeX-setq-math-sym YaTeX-image-bot		"ÔΩú\n‚Äæ"	"‚ä•")
+(YaTeX-setq-math-sym YaTeX-image-neg		""		"¬¨")
+(YaTeX-setq-math-sym YaTeX-image-flat		"ÔΩÇ"		"‚ô≠")
+(YaTeX-setq-math-sym YaTeX-image-sqrt		"‚àö"		"‚àö")
+(defvar YaTeX-image-nearrow '("__\n /|\n/" "  Ôºø\n  Ôºè|\nÔºè" ))
+(defvar YaTeX-image-nwarrow '(" __\n|\\\n  \\" " Ôºø\n|Ôºº\n   Ôºº"))
+(defvar YaTeX-image-searrow '("\\\n \\|\n--`" "Ôºº\n  Ôºº|\n  ‚Äæ"))
+(defvar YaTeX-image-swarrow '("  /\n|/\n'~~" "   Ôºè\n|Ôºè\n ‚Äæ"))
 
 
 (defvar
  YaTeX-math-sign-alist-default
  '(
    ;frequently used
-   ("||"	"|"		("||"		"Åa"))
-   ("sum"	"sum"		("\\-+\n >\n/-+" "É∞"))
-   ("sigma"	"sum"		("\\-+\n >\n/-+" "É∞"))
+   ("||"	"|"		("||"		"‚Äñ"))
+   ("sum"	"sum"		("\\-+\n >\n/-+" "Œ£"))
+   ("sigma"	"sum"		("\\-+\n >\n/-+" "Œ£"))
    ("integral"	"int"		(" /\\\n \\\n\\/" YaTeX-image-int))
    ("ointegral"	"oint"		" /\\\n(\\)\n\\/")
    ("sqrt"	"sqrt"		("  __\n,/" YaTeX-image-sqrt))
@@ -127,18 +127,18 @@
    ("A"		"forall"	"|_|\nV")
    ("E"		"exists"	"-+\n-+\n-+")
    ("!"		"neg"		("--+\n  |" YaTeX-image-neg))
-   ("oo"	"infty"		("oo"		"Åá"))
-   ("\\"	"backslash"	("\\"		"Å_"))
-   ("..."	"cdots"		("..."		"Åc"))
+   ("oo"	"infty"		("oo"		"‚àû"))
+   ("\\"	"backslash"	("\\"		"Ôºº"))
+   ("..."	"cdots"		("..."		"‚Ä¶"))
 
    ;;binary operators
-   ("+-"	"pm"		("+\n-" "Å}"))
+   ("+-"	"pm"		("+\n-" "¬±"))
    ("-+"	"mp"		"-\n+")
-   ("x"		"times"		("x" "Å~"))
-   ("/"		"div"		(",\n-\n'" "ÅÄ"))
-   ("f"		"frac"		"xxx\n---\nyyy" "ÅÄ")
+   ("x"		"times"		("x" "√ó"))
+   ("/"		"div"		(",\n-\n'" "√∑"))
+   ("f"		"frac"		"xxx\n---\nyyy" "√∑")
    ("*"		"ast"		"*")
-   ("#"		"star"		("_/\\_\n\\  /\n//\\\\" "Åö"))
+   ("#"		"star"		("_/\\_\n\\  /\n//\\\\" "‚òÖ"))
    ("o"		"circ"		"o")
    ("o*"	"bullet"	" _\n(*)\n ~")
    ("."		"cdot"		".")
@@ -152,8 +152,8 @@
    ("\\\\"	"setminus"	"\\")
    (")("	"wr"		" )\n(")
    ("<>"	"diamond"	"<>")
-   ("/\-"	"bigtriangleup"	("/\\\n~~" "Å¢"))
-   ("-\\/"	"bigtriangledown" ("__\n\\/" "Å§"))
+   ("/\-"	"bigtriangleup"	("/\\\n~~" "‚ñ≥"))
+   ("-\\/"	"bigtriangledown" ("__\n\\/" "‚ñΩ"))
    ("<|"	"triangleleft"	"<|")
    ("|>"	"triangleright"	"|>")
    ("<||"	"lhd"		"/|\n\\|")
@@ -171,8 +171,8 @@
    ("II"	"amalg"		"II")
    ;	:
    ;;relational operators
-   ("<"		"leq"		("<\n-"		"ÅÖ"))
-   (">"		"geq"		(">\n-"		"ÅÜ"))
+   ("<"		"leq"		("<\n-"		"‚â¶"))
+   (">"		"geq"		(">\n-"		"‚âß"))
    ("-="	"equiv"		("=\n-"		YaTeX-image-equiv))
    ("=-"	"equiv"		("=\n-"		YaTeX-image-equiv))
    ("---"	"equiv"		("=\n-"		YaTeX-image-equiv))
@@ -193,7 +193,7 @@
    ("asymp"	"asymp"		"v\n^")
    ("~~"	"approx"	"~\n~")
    ("~="	"cong"		"~\n=")
-   ("=/"	"neq"		("=/="		"ÅÇ"))
+   ("=/"	"neq"		("=/="		"‚â†"))
    (".="	"doteq"		".\n=")
    ("o<"	"propto"	"o<")
    ("|="	"models"	"|=")
@@ -204,31 +204,31 @@
    ("|><|"	"join"		"|><|")
    ("\\_/"	"smile"		"\\_/")
    ("/~\\"	"frown"		"/~~\\")
-   ("-<"	"prec"		("-<"		"Ç≠"))
-   ("-<="	"preceq"	("-<\n-"	"Ç≠\n="))
-   ("<<"	"ll"		("<<"		"Ås"))
-   (">>"	"gg"		(">>"		"Åt"))
+   ("-<"	"prec"		("-<"		"„Åè"))
+   ("-<="	"preceq"	("-<\n-"	"„Åè\n="))
+   ("<<"	"ll"		("<<"		"„Ää"))
+   (">>"	"gg"		(">>"		"„Äã"))
    ;	:
    ;;arrows
-   ("<-"	"leftarrow"	("<-"		"Å©"))
-   ("\C-b"	"leftarrow"	("<-"		"Å©"))
-   ("<--"	"longleftarrow"	("<--"		"Å©--"))
+   ("<-"	"leftarrow"	("<-"		"‚Üê"))
+   ("\C-b"	"leftarrow"	("<-"		"‚Üê"))
+   ("<--"	"longleftarrow"	("<--"		"‚Üê--"))
    ("<="	"Leftarrow"	"<=")
    ("<=="	"Longleftarrow"	"<==")
-   ("->"	"rightarrow"	("->"		"Å®"))
-   ("\C-f"	"rightarrow"	("->"		"Å®"))
-   ("-->"	"longrightarrow" ("-->"		"--Å®"))
+   ("->"	"rightarrow"	("->"		"‚Üí"))
+   ("\C-f"	"rightarrow"	("->"		"‚Üí"))
+   ("-->"	"longrightarrow" ("-->"		"--‚Üí"))
    ("=>"	"Rightarrow"	"=>")
    ("==>"	"Longrightarrow" "==>")
-   ("<->"	"leftrightarrow" ("<->"		"Å©Å®"))
-   ("<-->"	"longleftrightarrow" ("<---->"	"Å©--Å®"))
+   ("<->"	"leftrightarrow" ("<->"		"‚Üê‚Üí"))
+   ("<-->"	"longleftrightarrow" ("<---->"	"‚Üê--‚Üí"))
    ("<=>"	"Leftrightarrow" "<=>")
    ("<==>"	"Longleftrightarrow" "<==>")
-   ("^|"	"uparrow"	("^\n|" "Å™"))
-   ("\C-p"	"uparrow"	("^\n|" "Å™"))
+   ("^|"	"uparrow"	("^\n|" "‚Üë"))
+   ("\C-p"	"uparrow"	("^\n|" "‚Üë"))
    ("^||"	"Uparrow"	"/\\\n||")
-   ("\C-n"	"downarrow"	("|\nv" "Å´"))
-   ("v|"	"downarrow"	("|\nv" "Å´"))
+   ("\C-n"	"downarrow"	("|\nv" "‚Üì"))
+   ("v|"	"downarrow"	("|\nv" "‚Üì"))
    ("v||"	"Downarrow"	"||\n\\/")
    ("\C-p\C-f"	"nearrow"	YaTeX-image-nearrow)
    ("\C-f\C-p"	"nearrow"	YaTeX-image-nearrow)
@@ -242,9 +242,9 @@
    ("\C-n\C-b"	"swarrow"       YaTeX-image-swarrow)
    ("\C-b\C-n"	"swarrow"	YaTeX-image-swarrow)
    ("sw"	"swarrow"	YaTeX-image-swarrow)
-   ("|->"	"mapsto"	("|->"		"|Å®"))
-   ("<-)"	"hookleftarrow"	("   ,\n<--+"	"   ÅR\n<--/"))
-   ("(->"	"hookrightarrow" ("`\n+-->"	"Å^\nÅ_-->"))
+   ("|->"	"mapsto"	("|->"		"|‚Üí"))
+   ("<-)"	"hookleftarrow"	("   ,\n<--+"	"   „ÉΩ\n<--/"))
+   ("(->"	"hookrightarrow" ("`\n+-->"	"Ôºè\nÔºº-->"))
    ("/-"	"leftharpoonup"	"/\n~~~")
    ("\\-"	"leftharpoondown" "__\n\\")
    ("-/"	"rightharpoondown"  "__\n/")
@@ -265,11 +265,11 @@
    ("wbar"	"overline"	"--\n??")
    ("dot"	"dot"		".\n?")
    ("ddot"	"ddot"		"..\n??")
-   ("vec"	"vec"		("->\n??" "Å®\n??"))
-   ("~>"	"overrightarrow" ("-->\nAB" "Å®\nAB"))
-   ("VEC"	"overrightarrow" ("-->\nAB" "Å®\nAB"))
+   ("vec"	"vec"		("->\n??" "‚Üí\n??"))
+   ("~>"	"overrightarrow" ("-->\nAB" "‚Üí\nAB"))
+   ("VEC"	"overrightarrow" ("-->\nAB" "‚Üí\nAB"))
    ;;rage-aware stuffs
-   ("prod"	"prod"		("-+--+-\n |  |" "ÉÆ"))
+   ("prod"	"prod"		("-+--+-\n |  |" "Œ†"))
    ("CUP"	"bigcup"	"|~~|\n|  |\n|  |")
    ("union"	"bigcup"	"|~~|\n|  |\n|  |")
    ("CAP"	"bigcap"	"|  |\n|  |\n|__|")
@@ -277,8 +277,8 @@
    ("O+"	"bigoplus"	"/~~~\\\n| + |\n\\___/")
    ("Ox"	"bigotimes"	"/~~~\\\n| X |\n\\___/")
    ;;other marks
-   ("angle"	"angle"		("/\n~" "Å⁄"))
-   ("/_"	"angle"		("/\n~" "Å⁄"))
+   ("angle"	"angle"		("/\n~" "‚à†"))
+   ("/_"	"angle"		("/\n~" "‚à†"))
    ("Z"		"aleph"		"|\\|")
    ("|\\|"	"aleph"		"|\\|")
    ("h-"	"hbar"		"_\nh")
@@ -332,50 +332,50 @@
 
 (defvar YaTeX-greek-key-alist-default
   '(
-    ("a"	"alpha"		("a" "Éø"))
-    ("b"	"beta"		("|>\n|>\n|" "É¿"))
-    ("g"	"gamma"		("~r" "É¡"))
-    ("G"	"Gamma"		("|~" "É°"))
-    ("d"	"delta"		("<~\n<>" "É¬"))
-    ("D"	"Delta"		("/\\\n~~" "É¢"))
+    ("a"	"alpha"		("a" "Œ±"))
+    ("b"	"beta"		("|>\n|>\n|" "Œ≤"))
+    ("g"	"gamma"		("~r" "Œ≥"))
+    ("G"	"Gamma"		("|~" "Œì"))
+    ("d"	"delta"		("<~\n<>" "Œ¥"))
+    ("D"	"Delta"		("/\\\n~~" "Œî"))
     ("e"	"epsilon"	"<\n<~")
-    ("e-"	"varepsilon"	("(\n(~" "É√"))
-    ("z"	"zeta"		("(~\n >" "Éƒ"))
-    ("et"	"eta"		("n\n/" "É≈"))
-    ("th"	"theta"		("8" "É∆"))
-    ("Th"	"Theta"		("(8)" "É¶"))
-    ("th-"	"vartheta"	("-8" "-É∆"))
-    ("i"	"iota"		("i\n\\_/" "É«"))
-    ("k"	"kappa"		("k" "É»"))
-    ("l"	"lambda"	("\\n/\\" "É…"))
-    ("L"	"Lambda"	("/\\" "É©"))
-    ("m"	"mu"		(" u_\n/" "É "))
-    ("n"	"nu"		("|/" "ÉÀ"))
-    ("x"	"xi"		("E\n >" "ÉÃ"))
-    ("X"	"Xi"		("---\n -\n---" "É¨"))
-    ("p"	"pi"		("__\n)(" "ÉŒ"))
-    ("P"	"Pi"		("__\n||" "ÉÆ"))
-    ("p-"	"varpi"		("_\nw" "__\nÉ÷"))
-    ("r"	"rho"		("/O" "Éœ"))
-    ("r-"	"varrho"	("/O\n~~" "Éœ\n~~"))
-    ("s"	"sigma"		("o~" "É–"))
-    ("S"	"Sigma"		("\\-+\n >\n/-+" "É∞"))
+    ("e-"	"varepsilon"	("(\n(~" "Œµ"))
+    ("z"	"zeta"		("(~\n >" "Œ∂"))
+    ("et"	"eta"		("n\n/" "Œ∑"))
+    ("th"	"theta"		("8" "Œ∏"))
+    ("Th"	"Theta"		("(8)" "Œò"))
+    ("th-"	"vartheta"	("-8" "-Œ∏"))
+    ("i"	"iota"		("i\n\\_/" "Œπ"))
+    ("k"	"kappa"		("k" "Œ∫"))
+    ("l"	"lambda"	("\\n/\\" "Œª"))
+    ("L"	"Lambda"	("/\\" "Œõ"))
+    ("m"	"mu"		(" u_\n/" "Œº"))
+    ("n"	"nu"		("|/" "ŒΩ"))
+    ("x"	"xi"		("E\n >" "Œæ"))
+    ("X"	"Xi"		("---\n -\n---" "Œû"))
+    ("p"	"pi"		("__\n)(" "œÄ"))
+    ("P"	"Pi"		("__\n||" "Œ†"))
+    ("p-"	"varpi"		("_\nw" "__\nœâ"))
+    ("r"	"rho"		("/O" "œÅ"))
+    ("r-"	"varrho"	("/O\n~~" "œÅ\n~~"))
+    ("s"	"sigma"		("o~" "œÉ"))
+    ("S"	"Sigma"		("\\-+\n >\n/-+" "Œ£"))
     ("s-"	"varsigma"	"(~~ \n>")
-    ("t"	"tau"		("__\n(" "É—"))
-    ("u"	"upsilon"	("~v" "É“"))
-    ("y"	"upsilon"	("~v" "É“"))
-    ("U"	"Upsilon"	("~Y~" "É≤"))
-    ("Y"	"Upsilon"	("~Y~" "É≤"))
-    ("ph"	"phi"		("  /\n(/)\n/" "É”"))
-    ("Ph"	"Phi"		(" _\n(|)\n ~" "É≥"))
+    ("t"	"tau"		("__\n(" "œÑ"))
+    ("u"	"upsilon"	("~v" "œÖ"))
+    ("y"	"upsilon"	("~v" "œÖ"))
+    ("U"	"Upsilon"	("~Y~" "Œ•"))
+    ("Y"	"Upsilon"	("~Y~" "Œ•"))
+    ("ph"	"phi"		("  /\n(/)\n/" "œÜ"))
+    ("Ph"	"Phi"		(" _\n(|)\n ~" "Œ¶"))
     ("ph-"	"varphi"	"\\O\n|")
-    ("c"	"chi"		("x" "É‘"))
-    ("ps"	"psi"		("\\|/\\n |" "É’"))
-    ("Ps"	"Psi"		(" ~\n\\|/\\n |" "Éµ"))
-    ("o"	"omega"		("w" "É÷"))
-    ("w"	"omega"		("w" "É÷"))
-    ("O"	"Omega"		("(~)\n~ ~" "É∂"))
-    ("W"	"Omega"		("(~)\n~ ~" "É∂"))
+    ("c"	"chi"		("x" "œá"))
+    ("ps"	"psi"		("\\|/\\n |" "œà"))
+    ("Ps"	"Psi"		(" ~\n\\|/\\n |" "Œ®"))
+    ("o"	"omega"		("w" "œâ"))
+    ("w"	"omega"		("w" "œâ"))
+    ("O"	"Omega"		("(~)\n~ ~" "Œ©"))
+    ("W"	"Omega"		("(~)\n~ ~" "Œ©"))
     ("f" "foo")
     )
   "Default LaTeX-math-command alist.")

@@ -151,7 +151,7 @@ LEVEL is including depth."
 		   win:current-config)))
   (let*((b-in (YaTeX-get-builtin "!"))
 	default)
-    ;;$B$`!<$s"-$3$N$X$s$N;EMM$I$&$7$?$i$$$$$+NI$/J,$+$i$s(B...
+    ;;むーん↓このへんの仕様どうしたらいいか良く分からん...
     (if default (setq default (expand-file-name default)))
     (YaTeX-visit-main t)		;move to parent file
     (setq default buffer-file-name)

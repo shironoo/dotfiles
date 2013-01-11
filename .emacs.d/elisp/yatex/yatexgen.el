@@ -15,13 +15,13 @@
 (put 'YaTeX-setq 'lisp-indent-hook 1)
 
 (YaTeX-setq YaTeX-generate-initial-message
-  "             ©“®¶¬ƒ‚[ƒh‚Ö‚æ‚¤‚±‚»!!
+  "             è‡ªå‹•ç”Ÿæˆãƒ¢ãƒ¼ãƒ‰ã¸ã‚ˆã†ã“ã!!
 
-‰‚ß‚Ä‚â‚él‚Í‚±‚Ìƒoƒbƒtƒ@‚Ì—á‚É‚µ‚½‚ª‚Á‚Äw¦’Ê‚è‚É‚â‚Á‚Ä—ûK‚µ‚Ä‚ËB
-–{”Ô‚Ì‚à‚±‚Ìƒoƒbƒtƒ@‚Éo‚éƒƒbƒZ[ƒW‚ğ *‚æ‚­“Ç‚ñ‚Å* ‘€ì‚µ‚È‚¢‚Æ‚¤
-‚Ü‚­ŠÖ”‚ªì‚ê‚È‚¢‚æ!!
+åˆã‚ã¦ã‚„ã‚‹äººã¯ã“ã®ãƒãƒƒãƒ•ã‚¡ã®ä¾‹ã«ã—ãŸãŒã£ã¦æŒ‡ç¤ºé€šã‚Šã«ã‚„ã£ã¦ç·´ç¿’ã—ã¦ã­ã€‚
+æœ¬ç•ªã®æ™‚ã‚‚ã“ã®ãƒãƒƒãƒ•ã‚¡ã«å‡ºã‚‹ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ *ã‚ˆãèª­ã‚“ã§* æ“ä½œã—ãªã„ã¨ã†
+ã¾ãé–¢æ•°ãŒä½œã‚Œãªã„ã‚ˆ!!
 
-  ‚Å‚ÍƒŠƒ^[ƒ“ƒL[‚ğ‰Ÿ‚µ‚Ä‰º‚³‚¢B"
+  ã§ã¯ãƒªã‚¿ãƒ¼ãƒ³ã‚­ãƒ¼ã‚’æŠ¼ã—ã¦ä¸‹ã•ã„ã€‚"
   "             Welcome to auto-generation mode!!
 
 If this is your first trial, exercise this according to example and
@@ -33,10 +33,10 @@ function.
 )
 
 (YaTeX-setq YaTeX-generate-start-message
-  "‚³‚Ÿ‚Í‚¶‚ß‚é‚æ.\n1.“o˜^‚µ‚½‚¢•âŠ®‚ğ‚â‚Á‚Ä‚İ‚Ä.
-‚½‚Æ‚¦‚Î section Œ^•âŠ®‚Ì \\documentstyle ‚¾‚Á‚½‚ç \\documentstyle{}
-‚¾‚¯‚ğ‚¢‚ê‚Ä‚İ‚Ä‚Ë. ‚¿‚á‚ñ‚Æw`Œ^•âŠ®x‚ğg‚í‚È‚¢‚Æƒ_ƒ‚æ!B
-‚ÅA‚¨‚í‚Á‚½‚ç‚è‚½[‚ñ!!"
+  "ã•ãã¯ã˜ã‚ã‚‹ã‚ˆ.\n1.ç™»éŒ²ã—ãŸã„è£œå®Œã‚’ã‚„ã£ã¦ã¿ã¦.
+ãŸã¨ãˆã° section å‹è£œå®Œã® \\documentstyle ã ã£ãŸã‚‰ \\documentstyle{}
+ã ã‘ã‚’ã„ã‚Œã¦ã¿ã¦ã­. ã¡ã‚ƒã‚“ã¨ã€ã€œå‹è£œå®Œã€ã‚’ä½¿ã‚ãªã„ã¨ãƒ€ãƒ¡ã‚ˆ!ã€‚
+ã§ã€ãŠã‚ã£ãŸã‚‰ã‚ŠãŸãƒ¼ã‚“!!"
   "Let's begin completion for which you want to make add-in function.
 If you want to make add-in function for \\documentstyle input only
 `\\documentstyle{}' *with* completion of yatex-mode.
@@ -44,45 +44,45 @@ If you finish this, please press RET."
 )
 
 (YaTeX-setq YaTeX-generate-abort-message
-  "‚â‚ß‚½A‚â‚ß‚½`‚¢‚ß‚ñ‚Ç‚­‚¹`"
+  "ã‚„ã‚ãŸã€ã‚„ã‚ãŸã€œã„ã‚ã‚“ã©ãã›ã€œ"
   "Aborted."
 )
 
 (YaTeX-setq YaTeX-generate-same-message
-  "‚»‚ê‚¶‚áA‚È‚É‚à•Ï‚í‚Á‚Ä‚Ë‚¥‚¾‚ë[‚ª! ‚â‚ß‚½B"
+  "ãã‚Œã˜ã‚ƒã€ãªã«ã‚‚å¤‰ã‚ã£ã¦ã­ã‡ã ã‚ãƒ¼ãŒ! ã‚„ã‚ãŸã€‚"
   "I found no difference between them.  So I'm quitting."
 )
 
 (YaTeX-setq YaTeX-generate-invalid-message
-  "‚»‚ê‚ÍA‚¿‚Æ–³—‚Æ‚¢‚¤‚à‚Ì‚¶‚á."
+  "ãã‚Œã¯ã€ã¡ã¨ç„¡ç†ã¨ã„ã†ã‚‚ã®ã˜ã‚ƒ."
   "It's impossible."
 )
 
 (YaTeX-setq YaTeX-generate-idontknow-message
-  "‚¤`‚ñA“ï‚µ‚­‚Ä‚æ‚­‚í‚©‚ç‚È‚¢‚È‚ŸB‚Î‚©‚Å‚²‚ß‚ñ‚ËƒF`"
+  "ã†ã€œã‚“ã€é›£ã—ãã¦ã‚ˆãã‚ã‹ã‚‰ãªã„ãªãã€‚ã°ã‹ã§ã”ã‚ã‚“ã­ã‚§ã€œ"
   "Sorry I can't tell your adding method."
 )
 
 (YaTeX-setq YaTeX-generate-confirm-message
-  "‚Æ‚¢‚¤‚±‚Æ‚ÍA•t‚¯‘«‚µ‚½‚¢•”•ª‚Í‚±‚ê‚Å‚¢‚¢‚Ì‚Ë"
+  "ã¨ã„ã†ã“ã¨ã¯ã€ä»˜ã‘è¶³ã—ãŸã„éƒ¨åˆ†ã¯ã“ã‚Œã§ã„ã„ã®ã­"
   "Is it additional string of add-in function?"
 )
 
 (YaTeX-setq YaTeX-generate-output-message
-  "2.‚¶‚áA‚»‚ê‚É‚­‚Á‚Â‚¯‚½‚¢‚à‚Ì‚ğ *ƒJ[ƒ\ƒ‹‚ÌˆÊ’u‚É* ‘«‚µ‚Ä‚İ‚Ä. 
-‚³‚Á‚«‚Ì \\documentstyle{} ‚Ì—á‚¾‚Æ \\documentstyle[12pt]{} ‚Æ‚©‚É‚·‚é‚ÌB
-‚µ‚Â‚±‚¢‚æ‚¤‚¾‚¯‚ÇA¡‚ÌˆÊ’u‚©‚çƒJ[ƒ\ƒ‹“®‚©‚µ‚¿‚áƒ_ƒ‚æ!!
-‚ÅA‚Ü‚½‚¨‚í‚Á‚½‚ç‚è‚½[‚ñ!!"
+  "2.ã˜ã‚ƒã€ãã‚Œã«ãã£ã¤ã‘ãŸã„ã‚‚ã®ã‚’ *ã‚«ãƒ¼ã‚½ãƒ«ã®ä½ç½®ã«* è¶³ã—ã¦ã¿ã¦. 
+ã•ã£ãã® \\documentstyle{} ã®ä¾‹ã ã¨ \\documentstyle[12pt]{} ã¨ã‹ã«ã™ã‚‹ã®ã€‚
+ã—ã¤ã“ã„ã‚ˆã†ã ã‘ã©ã€ä»Šã®ä½ç½®ã‹ã‚‰ã‚«ãƒ¼ã‚½ãƒ«å‹•ã‹ã—ã¡ã‚ƒãƒ€ãƒ¡ã‚ˆ!!
+ã§ã€ã¾ãŸãŠã‚ã£ãŸã‚‰ã‚ŠãŸãƒ¼ã‚“!!"
   "2.Then input additional string *at CURSOR POSITION*
 According to last example \\documentstyle{},
 modify it \\documentstyle[12pt]{}.  RET to finish."
 )
 
 (YaTeX-setq YaTeX-generate-put-arg-message
-  "3.‚±‚Ì‚¤‚¿AƒL[ƒ{[ƒh‚©‚ç“Ç‚İ‚ñ‚Å—~‚µ‚¢•¶š—ñ‚ğ‡‚É“ü‚ê‚ÄB
-‚³‚Á‚«‚Ì \\documentstyle[12pt]{} ‚¾‚Á‚½‚çA•t‰Á‚·‚é•¶š‚Í[12pt]‚¾‚¯‚Ç
-è‚Å“ü‚ê‚½‚¢‚Ì‚Í 12pt ‚Ì•”•ª‚¾‚¯‚Å‚·‚ËB
-‚ÅA‘S•”“ü‚êI‚Á‚½‚çA‚è‚½[‚ñ‚¾‚¯‚¤‚Á‚Ä‚Ë!!"
+  "3.ã“ã®ã†ã¡ã€ã‚­ãƒ¼ãƒœãƒ¼ãƒ‰ã‹ã‚‰èª­ã¿è¾¼ã‚“ã§æ¬²ã—ã„æ–‡å­—åˆ—ã‚’é †ã«å…¥ã‚Œã¦ã€‚
+ã•ã£ãã® \\documentstyle[12pt]{} ã ã£ãŸã‚‰ã€ä»˜åŠ ã™ã‚‹æ–‡å­—ã¯[12pt]ã ã‘ã©
+æ‰‹ã§å…¥ã‚ŒãŸã„ã®ã¯ 12pt ã®éƒ¨åˆ†ã ã‘ã§ã™ã­ã€‚
+ã§ã€å…¨éƒ¨å…¥ã‚Œçµ‚ã£ãŸã‚‰ã€ã‚ŠãŸãƒ¼ã‚“ã ã‘ã†ã£ã¦ã­!!"
   "3.In this string, extract string which you want to input from key
 board with quiry afterwards.  For example, though additional string is
 \\documentstyle[12pt]{}, but you want enter only `12pt' by hand.
@@ -90,19 +90,19 @@ RET to finish!"
 )
 
 (YaTeX-setq YaTeX-generate-read-prompt-message
-  "4.‚Å‚ÍA‚ ‚Æ‚Å‚±‚ê‚ç‚Ì•¶š—ñ‚ğ“Ç‚İ‚Ş‚ÉA‚Ç‚¤‚¢‚¤ƒvƒƒ“ƒvƒg‚ğ
-o‚µ‚½‚¢‚Å‚·‚©? ‡‚É“ü‚ê‚Ä‰º‚³‚¢B–Ê“|‚È‚ç’P‚ÉƒŠƒ^[ƒ“‚ğ‘Å‚Á‚Ä‚ËB
-‚³‚Á‚«‚Ì 12pt ‚Ì•”•ª‚¾‚Á‚½‚çAwƒTƒCƒY‚Íx‚Æ‚©‚ª‚¨‚·‚·‚ßB"
+  "4.ã§ã¯ã€ã‚ã¨ã§ã“ã‚Œã‚‰ã®æ–‡å­—åˆ—ã‚’èª­ã¿è¾¼ã‚€æ™‚ã«ã€ã©ã†ã„ã†ãƒ—ãƒ­ãƒ³ãƒ—ãƒˆã‚’
+å‡ºã—ãŸã„ã§ã™ã‹? é †ã«å…¥ã‚Œã¦ä¸‹ã•ã„ã€‚é¢å€’ãªã‚‰å˜ã«ãƒªã‚¿ãƒ¼ãƒ³ã‚’æ‰“ã£ã¦ã­ã€‚
+ã•ã£ãã® 12pt ã®éƒ¨åˆ†ã ã£ãŸã‚‰ã€ã€ã‚µã‚¤ã‚ºã¯ã€ã¨ã‹ãŒãŠã™ã™ã‚ã€‚"
   "4.When you use this add-in function afterwards, what message
 do you like to be prompted with to enter these values.  In last
 example `12pt', typical prompt string may be `Size?: '."
 )
 
 (YaTeX-setq YaTeX-generate-done-message
-  "‚æ‚µ! ‚±‚ê‚ªAŒN‚Ìì‚è‚½‚©‚Á‚½ŠÖ”‚¾B~/.emacs ‚É‚Å‚à“ü‚ê‚Ä‚¹‚¢‚º‚¢
-Šy‚µ‚Ä‚­‚êB‚±‚Ìƒoƒbƒtƒ@(*‚²ˆÄ“à*)‚ğ yatex-mode ‚É‚µ‚Ä‚¨‚­‚©‚ç
-‚Å‚«‚½ŠÖ”‚ª–{“–‚É‚¨–]‚İ‚Ì“®ì‚ğ‚·‚é‚©Šm‚©‚ß‚Ä‚İ‚é‚Æ‚¢‚¢‚©‚à‚ËB
-  ‚Æ‚±‚ë‚ÅA‚±‚ÌŠÖ”‚±‚ñ‚È‚ÉŠÈ’P‚¾‚ë‚¤? ‚»‚ë‚»‚ë©•ª‚Å‘‚¢‚½‚ç‚Ç‚¤?
+  "ã‚ˆã—! ã“ã‚ŒãŒã€å›ã®ä½œã‚ŠãŸã‹ã£ãŸé–¢æ•°ã ã€‚~/.emacs ã«ã§ã‚‚å…¥ã‚Œã¦ã›ã„ãœã„
+æ¥½ã—ã¦ãã‚Œã€‚ã“ã®ãƒãƒƒãƒ•ã‚¡(*ã”æ¡ˆå†…*)ã‚’ yatex-mode ã«ã—ã¦ãŠãã‹ã‚‰
+ã§ããŸé–¢æ•°ãŒæœ¬å½“ã«ãŠæœ›ã¿ã®å‹•ä½œã‚’ã™ã‚‹ã‹ç¢ºã‹ã‚ã¦ã¿ã‚‹ã¨ã„ã„ã‹ã‚‚ã­ã€‚
+  ã¨ã“ã‚ã§ã€ã“ã®é–¢æ•°ã“ã‚“ãªã«ç°¡å˜ã ã‚ã†? ãã‚ãã‚è‡ªåˆ†ã§æ›¸ã„ãŸã‚‰ã©ã†?
 "
   "OK! This is the definition of function you want to make!  Add
 this description to your ~/.emacs or so.  Use this buffer(*Guide*)
@@ -113,28 +113,28 @@ write your most favorite add-in function yourself!
 )
 
 (YaTeX-setq YaTeX-generate-nomatch-message
-  "‚±‚ç‚±‚çA‚»‚ñ‚È•¶š—ñ‚Ç‚±‚É‚à‚Ë[‚¼!!"
+  "ã“ã‚‰ã“ã‚‰ã€ãã‚“ãªæ–‡å­—åˆ—ã©ã“ã«ã‚‚ã­ãƒ¼ã!!"
   "No such string in additional string."
 )
 (YaTeX-setq YaTeX-generate-buffer
-  "*•t‰ÁŠÖ”¶¬ƒoƒbƒtƒ@*"
+  "*ä»˜åŠ é–¢æ•°ç”Ÿæˆãƒãƒƒãƒ•ã‚¡*"
   "*Generate-add-in-function*"
 )
 
 (YaTeX-setq YaTeX-generate-message-buffer
-  "*‚²ˆÄ“à*"
+  "*ã”æ¡ˆå†…*"
   "*Guide*"
 )
 
 (YaTeX-setq YaTeX-generate-bug-message
-  "‚²‚ß`‚ñ!! ‚¿‚å‚Á‚ÆA‚±‚ÌƒAƒhƒCƒ“ŠÖ”‚Â‚­‚é‚Ì¸”s‚µ‚¿‚á‚Á‚½‚İ‚½‚¢!!
-ìÒ‚Ü‚Å˜A—‚µ‚Ä‚­‚¾‚³```‚¢!"
+  "ã”ã‚ã€œã‚“!! ã¡ã‚‡ã£ã¨ã€ã“ã®ã‚¢ãƒ‰ã‚¤ãƒ³é–¢æ•°ã¤ãã‚‹ã®å¤±æ•—ã—ã¡ã‚ƒã£ãŸã¿ãŸã„!!
+ä½œè€…ã¾ã§é€£çµ¡ã—ã¦ãã ã•ã€œã€œã€œã„!"
   "Sorry I failed to make add-in function for you...
 Send bug report to me."
 )
 
 (YaTeX-setq YaTeX-generate-narrow-message
-  "‰æ–Ê‚ª‚¹‚Ü‚·‚¬‚é‚æ‚¤‚È‹C‚ª‚µ‚Ü‚·B"
+  "ç”»é¢ãŒã›ã¾ã™ãã‚‹ã‚ˆã†ãªæ°—ãŒã—ã¾ã™ã€‚"
   "Too narrow screen height."
 )
 
@@ -165,7 +165,7 @@ Send bug report to me."
 	  (erase-buffer)
 	  (insert YaTeX-generate-initial-message)
 	  (read-string
-	   (if YaTeX-japan "ƒŠƒ^[ƒ“ƒL[‚ğ‰Ÿ‚µ‚Ä‰º‚³‚¢." "Press RETURN."))
+	   (if YaTeX-japan "ãƒªã‚¿ãƒ¼ãƒ³ã‚­ãƒ¼ã‚’æŠ¼ã—ã¦ä¸‹ã•ã„." "Press RETURN."))
 	  (erase-buffer)
 	  (insert YaTeX-generate-start-message)
 	  (pop-to-buffer (get-buffer-create YaTeX-generate-buffer))
@@ -238,7 +238,7 @@ Send bug report to me."
 	    (insert "\"" (YaTeX-generate-lisp-quote add-in) "\")\n")
 	    (indent-region (point-min) (point-max) nil)
 	    (message (if YaTeX-japan
-			 "‚±‚Ì‚­‚ç‚¢‚ÌŠÖ”è‚Å‘‚¯!!"
+			 "ã“ã®ãã‚‰ã„ã®é–¢æ•°æ‰‹ã§æ›¸ã‘!!"
 		       "You don't need me to make such easy function.")))
 	  );let
       (put 'YaTeX-generate 'disabled nil)
@@ -268,7 +268,7 @@ Variable add-in is referred in parent function."
 	  (aset prompt (1- i)
 		(read-string
 		 (format
-		  (if YaTeX-japan "%d”Ô–Ú(%s)‚ğ“Ç‚Ş?: "
+		  (if YaTeX-japan "%dç•ªç›®(%s)ã‚’èª­ã‚€æ™‚?: "
 		    "When reading argument #%d(%s)?: ") i (car arg))))
 	  (while (string-match (regexp-quote carg) (substring add-in index))
 	    (setq beg (+ index (match-beginning 0))
@@ -322,16 +322,16 @@ Referencing variables in parent function YaTeX-generate-parse-add-in."
   (pop-to-buffer YaTeX-generate-message-buffer)
   (goto-char (point-max))
   (insert "\n\n"
-	  (format (if YaTeX-japan "%d ”Ô–Ú‚Ìˆø” %s ‚Á‚Ä"
+	  (format (if YaTeX-japan "%d ç•ªç›®ã®å¼•æ•° %s ã£ã¦"
 		    "Is argument #%d's value `%s' also corresponding to")
 		  i carg) "\n" add-in "\n")
   (indent-to-column beg)
   (let ((c beg))
     (while (< c end) (insert "^") (setq c (1+ c))))
-  (insert "\n" (if YaTeX-japan "‚±‚±‚É‚à‘Î‰‚µ‚Ä‚é‚Ì?"
+  (insert "\n" (if YaTeX-japan "ã“ã“ã«ã‚‚å¯¾å¿œã—ã¦ã‚‹ã®?"
 		 "this underlined part too?"))
   (other-window -1)
-  (y-or-n-p (if YaTeX-japan "‰ºü•”‚Í‚ ‚Á‚Ä‚Ü‚·‚©" "Is underline right"))
+  (y-or-n-p (if YaTeX-japan "ä¸‹ç·šéƒ¨ã¯ã‚ã£ã¦ã¾ã™ã‹" "Is underline right"))
 )
 
 (defun YaTeX-generate-register-match ()
@@ -600,7 +600,7 @@ Referencing variables in parent function YaTeX-generate-parse-add-in."
 	    command (if (string= "" command) YaTeX-section-name command)))
   (message
    (cond
-    (YaTeX-japan "(o)’Ç‰ÁŒ^? (a)ˆø”Œ^? (yatexadd.doc‚ğQÆ‚Ì‚±‚Æ) :")
+    (YaTeX-japan "(o)è¿½åŠ å‹? (a)å¼•æ•°å‹? (yatexadd.docã‚’å‚ç…§ã®ã“ã¨) :")
     (t "(O)ption? (A)rgument?")))
   (YaTeX-showup-buffer
    (if (= (read-char) ?o)

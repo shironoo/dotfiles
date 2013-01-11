@@ -237,19 +237,19 @@
 (define-key YaTeX-mode-map [?\M-\C- ] 'YaTeX-mark-environment)
 
 ;; Highlightening
-;; ƒƒjƒ…[‚É”ä‚×‚Ä‚±‚Á‚¿‚ÍŒ‹\–{‹C‚Å‚â‚Á‚Ä‚Ü‚·B
-;; ‚¾‚Á‚Ä•¶‘\‘¢‚ª‚Æ‚Á‚Ä‚à•ª‚©‚èˆÕ‚¢‚ñ‚¾‚à‚ñB
-;; ‚İ‚ñ‚È‚à hilit19.el ‚ğg‚¨‚¤!
-;; ‚Æ‚©‚¢‚Á‚Ä‚é‚¤‚¿‚É hilit19 ‚Á‚Ä obsolete ‚É‚È‚Á‚Ä‚µ‚Ü‚Á‚½c
-;; c‚Æ‚¢‚¤‚±‚Æ‚ÅAhilit19 —p‚Ìƒpƒ^[ƒ“‚ğ font-lock ‚É•ÏŠ·‚·‚éŠÖ”‚ğ
-;; ì¬‚µ‚Ä‚È‚ñ‚Æ‚© font-lock ‚É‚à‘Î‰(2000”N12Œ)B
-;; ‚µ‚©‚µAfont-lock ‚Íd—l‚ª•Ï‚í‚è‚â‚·‚¢•µˆÍ‹C‚Å‚¸‚Á‚Æ“®‚«‘±‚¯‚é‚©
-;; ‚Ç‚¤‚©‚Í•s–¾B‚Ş‚µ‚ëi‰»‚Ì~‚Ü‚Á‚½hilit19‚ğg‚¢‘±‚¯‚é•û‚ªˆÀS‚Æ
-;; Œ¾‚¦‚È‚¢‚±‚Æ‚à‚È‚¢‚ª¢‚Ì—¬‚ê‚Í“Ç‚ß‚¸ccB
+;; ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã«æ¯”ã¹ã¦ã“ã£ã¡ã¯çµæ§‹æœ¬æ°—ã§ã‚„ã£ã¦ã¾ã™ã€‚
+;; ã ã£ã¦æ–‡æ›¸æ§‹é€ ãŒã¨ã£ã¦ã‚‚åˆ†ã‹ã‚Šæ˜“ã„ã‚“ã ã‚‚ã‚“ã€‚
+;; ã¿ã‚“ãªã‚‚ hilit19.el ã‚’ä½¿ãŠã†!
+;; ã¨ã‹ã„ã£ã¦ã‚‹ã†ã¡ã« hilit19 ã£ã¦ obsolete ã«ãªã£ã¦ã—ã¾ã£ãŸâ€¦
+;; â€¦ã¨ã„ã†ã“ã¨ã§ã€hilit19 ç”¨ã®ãƒ‘ã‚¿ãƒ¼ãƒ³ã‚’ font-lock ã«å¤‰æ›ã™ã‚‹é–¢æ•°ã‚’
+;; ä½œæˆã—ã¦ãªã‚“ã¨ã‹ font-lock ã«ã‚‚å¯¾å¿œ(2000å¹´12æœˆ)ã€‚
+;; ã—ã‹ã—ã€font-lock ã¯ä»•æ§˜ãŒå¤‰ã‚ã‚Šã‚„ã™ã„é›°å›²æ°—ã§ãšã£ã¨å‹•ãç¶šã‘ã‚‹ã‹
+;; ã©ã†ã‹ã¯ä¸æ˜ã€‚ã‚€ã—ã‚é€²åŒ–ã®æ­¢ã¾ã£ãŸhilit19ã‚’ä½¿ã„ç¶šã‘ã‚‹æ–¹ãŒå®‰å¿ƒã¨
+;; è¨€ãˆãªã„ã“ã¨ã‚‚ãªã„ãŒä¸–ã®æµã‚Œã¯èª­ã‚ãšâ€¦â€¦ã€‚
 ;;
-;; ‚³‚ÄA‚Ü‚¸‚Í‘Î‰‚·‚é {} ‚ğƒsƒJƒsƒJ”ÍˆÍ‚Æ‚·‚é‚æ‚¤‚ÈŠÖ”‚ğì‚éB
-;; ‚±‚ê‚Í hilit-LaTeX.el ‚ğQl‚É‚µ‚½B‚Å‚àA‚¿‚á‚ñ‚Æ section Œ^ƒRƒ}ƒ“ƒh‚Ì
-;; ˆø”‚ğ”‚¦‚Ä³‚µ‚¢ˆÊ’u‚Ü‚ÅƒsƒJƒsƒJ‚³‚¹‚é‚æ`‚ñ!
+;; ã•ã¦ã€ã¾ãšã¯å¯¾å¿œã™ã‚‹ {} ã‚’ãƒ”ã‚«ãƒ”ã‚«ç¯„å›²ã¨ã™ã‚‹ã‚ˆã†ãªé–¢æ•°ã‚’ä½œã‚‹ã€‚
+;; ã“ã‚Œã¯ hilit-LaTeX.el ã‚’å‚è€ƒã«ã—ãŸã€‚ã§ã‚‚ã€ã¡ã‚ƒã‚“ã¨ section å‹ã‚³ãƒãƒ³ãƒ‰ã®
+;; å¼•æ•°ã‚’æ•°ãˆã¦æ­£ã—ã„ä½ç½®ã¾ã§ãƒ”ã‚«ãƒ”ã‚«ã•ã›ã‚‹ã‚ˆã€œã‚“!
 
 (defun YaTeX-19-region-section-type (pattern)
   "Return cons of starting and end point of section-type commands of PATTERN."
@@ -257,12 +257,12 @@
       (let ((m0 (match-beginning 0)) (e0 (match-end 0)) cmd (argc 1))
 	(setq cmd (substring (YaTeX-match-string 0) 1)
 	      argc (or (car (cdr (YaTeX-lookup-table cmd 'section))) argc))
-	(if (= argc 0) (cons m0 (point)) ;ˆø”ŒÂ”0‚È‚çƒ}ƒbƒ`‚µ‚½—Ìˆæ
+	(if (= argc 0) (cons m0 (point)) ;å¼•æ•°å€‹æ•°0ãªã‚‰ãƒãƒƒãƒã—ãŸé ˜åŸŸ
 	  (skip-chars-forward " \n\t*")
-	  (while (looking-at "\\[") (forward-list 1)) ;option‚È‚çƒXƒLƒbƒv
+	  (while (looking-at "\\[") (forward-list 1)) ;optionãªã‚‰ã‚¹ã‚­ãƒƒãƒ—
 	  (skip-chars-forward " \n\t")
 	  (prog1
-	      (if (looking-at "{")	;{}‚ªn‚Ü‚é‚È‚ç‚¿‚á‚ñ‚Æ‚µ‚½sectionŒ^
+	      (if (looking-at "{")	;{}ãŒå§‹ã¾ã‚‹ãªã‚‰ã¡ã‚ƒã‚“ã¨ã—ãŸsectionå‹
 		  (cons m0
 			(condition-case err
 			    (progn
@@ -273,7 +273,7 @@
 				(setq argc (1- argc)))
 			      (point))
 			  (error m0)))
-			;{}‚Å‚È‚¢‚È‚ç‚½‚Ô‚ñ \verb ŠÂ‹«‚È‚Ç‚É‚ ‚éƒ_ƒ~[
+			;{}ã§ãªã„ãªã‚‰ãŸã¶ã‚“ \verb ç’°å¢ƒãªã©ã«ã‚ã‚‹ãƒ€ãƒŸãƒ¼
 		(cons m0 e0))
 	    ;;move to re-search end not to make font-lock confused
 	    (goto-char e0))))))
@@ -348,9 +348,9 @@ Assumes PATTERN begins with `{'."
 			 (t (1+ (point)))))))
 	  (goto-char e)))))
 
-;; ±×‚È‚±‚Æ‚¾‚ª % ‚Ì‘O‚Ì•¶š‚àƒsƒJƒŠ‚Æ‚³‚¹‚Ä‚µ‚Ü‚¤‚æ‚¤‚Åc >hilit19
-;; «‚±‚ÌŠÖ”‚Í‰º‚Ì hilit-set-mode-patterns ‚Ì "[^\\]\\(%\\).*$" ‚É
-;; ˆË‘¶‚µ‚Ä‚¢‚é
+;; äº›ç´°ãªã“ã¨ã ãŒ % ã®å‰ã®æ–‡å­—ã‚‚ãƒ”ã‚«ãƒªã¨ã•ã›ã¦ã—ã¾ã†ã‚ˆã†ã§â€¦ >hilit19
+;; â†“ã“ã®é–¢æ•°ã¯ä¸‹ã® hilit-set-mode-patterns ã® "[^\\]\\(%\\).*$" ã«
+;; ä¾å­˜ã—ã¦ã„ã‚‹
 (defun YaTeX-19-region-comment (pattern)
   "Return list of comment start and end point."
   (if (re-search-forward pattern nil t)
@@ -376,8 +376,8 @@ Assumes PATTERN begins with `{'."
 ;;(set-face-font 'tt "-schumacher-clean-medium-r-normal--*-*-*-*-*-*-*-*")
 ;;(hilit-translate 'tt "white")
 
-;; font-lock‚ÌŠÖ”ŒÄ‚Ñƒpƒ^[ƒ“‚Ìê‡‚Í³‹K•\Œ»‚ªs––‚Ü‚Åƒ}ƒbƒ`‚·‚é‚Æ
-;; hilitŒó•â‘ÎÛŠO‚É‚³‚ê‚Ä‚µ‚Ü‚¤‚Ì‚Å1šè‘O‚Å³‹K•\Œ»‚ğ~‚ß‚é
+;; font-lockã®é–¢æ•°å‘¼ã³ãƒ‘ã‚¿ãƒ¼ãƒ³ã®å ´åˆã¯æ­£è¦è¡¨ç¾ãŒè¡Œæœ«ã¾ã§ãƒãƒƒãƒã™ã‚‹ã¨
+;; hilitå€™è£œå¯¾è±¡å¤–ã«ã•ã‚Œã¦ã—ã¾ã†ã®ã§1å­—æ‰‹å‰ã§æ­£è¦è¡¨ç¾ã‚’æ­¢ã‚ã‚‹
 (defvar YaTeX-hilit-patterns-alist
   '(
     ;; formulas
@@ -456,7 +456,7 @@ Assumes PATTERN begins with `{'."
   "*Hiliting pattern alist for LaTeX text.")
 
 ;;(defvar YaTeX-hilit-pattern-adjustment-default nil)
-;; ª‚¢‚ç‚È‚­‚È‚Á‚½B
+;; â†‘ã„ã‚‰ãªããªã£ãŸã€‚
 (defvar YaTeX-hilit-pattern-adjustment-private nil
   "*Adjustment hilit-pattern-alist for default yatex-mode's pattern.")
 (defvar YaTeX-hilit-sectioning-face
@@ -473,10 +473,10 @@ towards to lowest sectioning unit.  Numbers should be written in percentage.")
   '("slateblue2" . "aquamarine")
   "*Hilightening face for maketitle type.  '(FaceForLight FaceForDark)")
 
-;;; ƒZƒNƒVƒ‡ƒ“ƒRƒ}ƒ“ƒh‚ğA\‘¢ƒŒƒxƒ‹‚Ì‚‚³‚É‰‚¶‚ÄF‚Ì”Z“x‚ğ•Ï‚¦‚é
-;;; ”wŒi‚ª•‚Å‚È‚¢‚Æ‰½‚ªŠğ‚µ‚¢‚Ì‚©•ª‚©‚ç‚È‚¢‚Éˆá‚¢‚È‚¢.
-;;; ‚à‚µ‚©‚µ‚Ä”’’n‚Ì‚Í\‘¢ƒŒƒxƒ‹‚É‰‚¶‚ÄF‚ğ–¾‚é‚­‚µ‚½‚Ù‚¤‚ª—Ç‚¢‚Ì‚©?
-;;; ...‚Ç‚¤‚â‚ç‚»‚¤‚Å‚à‚È‚¢‚ç‚µ‚¢B‚±‚ê‚Å‚¢‚¢‚İ‚½‚¢(2000/12)B
+;;; ã‚»ã‚¯ã‚·ãƒ§ãƒ³ã‚³ãƒãƒ³ãƒ‰ã‚’ã€æ§‹é€ ãƒ¬ãƒ™ãƒ«ã®é«˜ã•ã«å¿œã˜ã¦è‰²ã®æ¿ƒåº¦ã‚’å¤‰ãˆã‚‹
+;;; èƒŒæ™¯ãŒé»’ã§ãªã„ã¨ä½•ãŒå¬‰ã—ã„ã®ã‹åˆ†ã‹ã‚‰ãªã„ã«é•ã„ãªã„.
+;;; ã‚‚ã—ã‹ã—ã¦ç™½åœ°ã®æ™‚ã¯æ§‹é€ ãƒ¬ãƒ™ãƒ«ã«å¿œã˜ã¦è‰²ã‚’æ˜ã‚‹ãã—ãŸã»ã†ãŒè‰¯ã„ã®ã‹?
+;;; ...ã©ã†ã‚„ã‚‰ãã†ã§ã‚‚ãªã„ã‚‰ã—ã„ã€‚ã“ã‚Œã§ã„ã„ã¿ãŸã„(2000/12)ã€‚
 ;(if (fboundp 'win32-color-values)
 ;    (fset 'x-color-values 'win32-color-values))
 
@@ -548,7 +548,7 @@ towards to lowest sectioning unit.  Numbers should be written in percentage.")
 		  list YaTeX-sectioning-level)
 	    (while list
 	      (setq pat (concat YaTeX-ec-regexp (car (car list))
-				;;"\\*?\\(\\[[^]]*\\]\\)?\\>" ;‰üs‚Í‚³‚Ş‚Æ‘Ê–Ú
+				;;"\\*?\\(\\[[^]]*\\]\\)?\\>" ;æ”¹è¡Œã¯ã•ã‚€ã¨é§„ç›®
 				"\\>"
 				)
 		    level (cdr (car list))
@@ -580,8 +580,8 @@ towards to lowest sectioning unit.  Numbers should be written in percentage.")
 	    0
 	    'define)))))))
 
-;; ƒ[ƒJƒ‹‚Èƒ}ƒNƒ‚ğ“Ç‚İ‚ñ‚¾Œã redraw ‚·‚é‚Æ
-;; ƒ[ƒJƒ‹ƒ}ƒNƒ‚ğ keyword ‚Æ‚µ‚ÄŒõ‚ç‚¹‚é(keyword‚¶‚á‚Ü‚¸‚¢‚©‚Èc)B
+;; ãƒ­ãƒ¼ã‚«ãƒ«ãªãƒã‚¯ãƒ­ã‚’èª­ã¿è¾¼ã‚“ã å¾Œ redraw ã™ã‚‹ã¨
+;; ãƒ­ãƒ¼ã‚«ãƒ«ãƒã‚¯ãƒ­ã‚’ keyword ã¨ã—ã¦å…‰ã‚‰ã›ã‚‹(keywordã˜ã‚ƒã¾ãšã„ã‹ãªâ€¦)ã€‚
 (defvar hilit-patterns-alist nil)	;for absence of hilit19
 
 (defun YaTeX-19-collect-macros ()
@@ -786,10 +786,10 @@ WARNING, This code is not perfect."
      (t (switch-to-buffer-other-frame (buffer-name b))
 	(goto-char p)))))
 
-;;; reverseVideo ‚É‚µ‚Ä hilit-background-mode ‚ğ 'dark
-;;; ‚É‚µ‚Ä‚¢‚él‚Í”®‚È‚Ç‚ªˆÃ‚­‚È‚è‚·‚¬‚ÄŒ©‚Ã‚ç‚¢‚©‚à‚µ‚ê‚È‚¢B
-;;; Ÿ‚ÌƒR[ƒh‚ğ hilit19 ‚ğƒ[ƒh‚µ‚Ä‚¢‚éêŠ‚Ì’¼Œã‚É’u‚­‚Æ‚¿‚å‚Á
-;;; ‚Æ‚Í‚Ü‚µB
+;;; reverseVideo ã«ã—ã¦ hilit-background-mode ã‚’ 'dark
+;;; ã«ã—ã¦ã„ã‚‹äººã¯æ•°å¼ãªã©ãŒæš—ããªã‚Šã™ãã¦è¦‹ã¥ã‚‰ã„ã‹ã‚‚ã—ã‚Œãªã„ã€‚
+;;; æ¬¡ã®ã‚³ãƒ¼ãƒ‰ã‚’ hilit19 ã‚’ãƒ­ãƒ¼ãƒ‰ã—ã¦ã„ã‚‹å ´æ‰€ã®ç›´å¾Œã«ç½®ãã¨ã¡ã‚‡ã£
+;;; ã¨ã¯ã¾ã—ã€‚
 ;;;  (if (eq hilit-background-mode 'dark)
 ;;;      (hilit-translate
 ;;;       string 'mediumspringgreen

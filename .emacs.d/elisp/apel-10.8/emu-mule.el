@@ -32,12 +32,12 @@
 ;;;
 
 (defun regulate-latin-char (chr)
-  (cond ((and (<= ?$B#A(B chr)(<= chr ?$B#Z(B))
-	 (+ (- chr ?$B#A(B) ?A))
-	((and (<= ?$B#a(B chr)(<= chr ?$B#z(B))
-	 (+ (- chr ?$B#a(B) ?a))
-	((eq chr ?$B!%(B) ?.)
-	((eq chr ?$B!$(B) ?,)
+  (cond ((and (<= ?Ａ chr)(<= chr ?Ｚ))
+	 (+ (- chr ?Ａ) ?A))
+	((and (<= ?ａ chr)(<= chr ?ｚ))
+	 (+ (- chr ?ａ) ?a))
+	((eq chr ?．) ?.)
+	((eq chr ?，) ?,)
 	(t chr)))
 
 (defun regulate-latin-string (str)

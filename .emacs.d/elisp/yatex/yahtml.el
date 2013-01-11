@@ -21,35 +21,35 @@
 ;;; 		("/home/staff/yuuji/html" . "http://www.othernet/~yuuji")))
 ;;;      ;Write correspondence alist from ABSOLUTE unix path name to URL path.
 ;;; 
-;;;[ƒCƒ“ƒXƒg[ƒ‹•û–@]
+;;;[ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«æ–¹æ³•]
 ;;;
-;;; yahtml.el, yatexlib.el, yatexprc.el ‚ğ load-path ‚Ì’Ê‚Á‚½ƒfƒBƒŒƒNƒg
-;;; ƒŠ‚ÉƒCƒ“ƒXƒg[ƒ‹‚µ‚Ä‚­‚¾‚³‚¢B‚»‚ÌŒãAˆÈ‰º‚ğQl‚É ~/.emacs ‚Éİ’è‚ğ
-;;; ’Ç‰Á‚µ‚Ä‰º‚³‚¢B
+;;; yahtml.el, yatexlib.el, yatexprc.el ã‚’ load-path ã®é€šã£ãŸãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆ
+;;; ãƒªã«ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã—ã¦ãã ã•ã„ã€‚ãã®å¾Œã€ä»¥ä¸‹ã‚’å‚è€ƒã« ~/.emacs ã«è¨­å®šã‚’
+;;; è¿½åŠ ã—ã¦ä¸‹ã•ã„ã€‚
 ;;;
 ;;; 	(setq auto-mode-alist
 ;;; 		(cons (cons "\\.html$" 'yahtml-mode) auto-mode-alist))
 ;;; 	(autoload 'yahtml-mode "yahtml" "Yet Another HTML mode" t)
 ;;; 	(setq yahtml-www-browser "netscape")
-;;;      ;‚¨‹C‚É“ü‚è‚Ìƒuƒ‰ƒEƒU‚ğ‘‚¢‚Ä‰º‚³‚¢Bnetscape‚ª•Ö—˜‚Å‚·B
+;;;      ;ãŠæ°—ã«å…¥ã‚Šã®ãƒ–ãƒ©ã‚¦ã‚¶ã‚’æ›¸ã„ã¦ä¸‹ã•ã„ã€‚netscapeãŒä¾¿åˆ©ã§ã™ã€‚
 ;;; 	(setq yahtml-path-url-alist
 ;;; 	      '(("/home/yuuji/public_html" . "http://www.mynet/~yuuji")
 ;;; 		("/home/staff/yuuji/html" . "http://www.othernet/~yuuji")))
-;;;      ;UNIX‚Ìâ‘ÎƒpƒX‚Æ‘Î‰‚·‚éURL‚ÌƒŠƒXƒg‚ğ‘‚¢‚Ä‰º‚³‚¢B
+;;;      ;UNIXã®çµ¶å¯¾ãƒ‘ã‚¹ã¨å¯¾å¿œã™ã‚‹URLã®ãƒªã‚¹ãƒˆã‚’æ›¸ã„ã¦ä¸‹ã•ã„ã€‚
 ;;; 
-;;; HTMLƒtƒ@ƒCƒ‹Š¿šƒR[ƒh‚ª³‚µ‚­”»•Ê‚³‚ê‚é‚æ‚¤‚Éƒz[ƒ€ƒfƒBƒŒƒNƒgƒŠ‚É
-;;; .htaccess ƒtƒ@ƒCƒ‹‚ğì‚èˆÈ‰º‚Ì‚Ç‚ê‚©1s‚ğ‘I‚ñ‚Å‘‚¢‚Ä‰º‚³‚¢B
+;;; HTMLãƒ•ã‚¡ã‚¤ãƒ«æ¼¢å­—ã‚³ãƒ¼ãƒ‰ãŒæ­£ã—ãåˆ¤åˆ¥ã•ã‚Œã‚‹ã‚ˆã†ã«ãƒ›ãƒ¼ãƒ ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã«
+;;; .htaccess ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½œã‚Šä»¥ä¸‹ã®ã©ã‚Œã‹1è¡Œã‚’é¸ã‚“ã§æ›¸ã„ã¦ä¸‹ã•ã„ã€‚
 ;;; 
-;;;	AddType "text/html; charset=Shift_JIS"	.html	(SJIS‚Ìê‡)
-;;;	AddType "text/html; charset=iso2022-jp"	.html	(JIS‚Ìê‡)
-;;;	AddType "text/html; charset=EUC-JP"	.html	(EUC‚Ìê‡)
+;;;	AddType "text/html; charset=Shift_JIS"	.html	(SJISã®å ´åˆ)
+;;;	AddType "text/html; charset=iso2022-jp"	.html	(JISã®å ´åˆ)
+;;;	AddType "text/html; charset=EUC-JP"	.html	(EUCã®å ´åˆ)
 ;;; 
-;;; .htaccess ‚ªì‚ê‚È‚¢ê‡‚Í
+;;; .htaccess ãŒä½œã‚Œãªã„å ´åˆã¯
 ;;;	(setq yahtml-kanji-code 2)
-;;;	;HTMLƒtƒ@ƒCƒ‹‚ÌŠ¿šƒR[ƒh‚ğ•ÏX‚·‚éê‡‚Í 1=SJISA2=JISA3=EUC
-;;;	;‚Åİ’è‚µ‚Ä‰º‚³‚¢BƒfƒtƒHƒ‹ƒg‚Í 2 ‚Å‚·B
+;;;	;HTMLãƒ•ã‚¡ã‚¤ãƒ«ã®æ¼¢å­—ã‚³ãƒ¼ãƒ‰ã‚’å¤‰æ›´ã™ã‚‹å ´åˆã¯ 1=SJISã€2=JISã€3=EUC
+;;;	;ã§è¨­å®šã—ã¦ä¸‹ã•ã„ã€‚ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ 2 ã§ã™ã€‚
 ;;; 
-;;; ‚ğ“KØ‚É‘‚«Š·‚¦‚Ä ~/.emacs ‚É‘«‚µ‚Ä‰º‚³‚¢B
+;;; ã‚’é©åˆ‡ã«æ›¸ãæ›ãˆã¦ ~/.emacs ã«è¶³ã—ã¦ä¸‹ã•ã„ã€‚
 ;;; 
 ;;;[Commentary]
 ;;;
@@ -99,72 +99,72 @@
 ;;;  * [prefix] #	Translate unsafe-chars and unreserved-chars to
 ;;;			URLencoded string in the region.
 ;;; 
-;;;[ƒL[‚Ìà–¾]
+;;;[ã‚­ãƒ¼ã®èª¬æ˜]
 ;;; 
-;;; ˆÈ‰º‚Ìà–¾‚É‚¨‚¢‚ÄA“Á‚ÉƒJƒXƒ^ƒ}ƒCƒY‚ğ‚µ‚Ä‚¢‚È‚¢ŒÀ‚èA[prefix] ‚Í
-;;; C-c ƒL[‚ğˆÓ–¡‚µ‚Ü‚·B
+;;; ä»¥ä¸‹ã®èª¬æ˜ã«ãŠã„ã¦ã€ç‰¹ã«ã‚«ã‚¹ã‚¿ãƒã‚¤ã‚ºã‚’ã—ã¦ã„ãªã„é™ã‚Šã€[prefix] ã¯
+;;; C-c ã‚­ãƒ¼ã‚’æ„å‘³ã—ã¾ã™ã€‚
 ;;;
-;;;  * [prefix] b X	`</H1>' ‚Æ‚¢‚Á‚½I—¹ƒ^ƒO‚ª•K—v‚Æ‚È‚é`H1'‚Ì‚æ‚¤
-;;;			‚ÈŠÂ‹«‚ğ•âŠ®“ü—Í‚µ‚Ü‚·B<a href=foo> ... </a>
-;;;			‚à‚±‚ÌƒOƒ‹[ƒv‚Å‚·B
-;;;			`href=...' ‚Æ“ü—Í‚µ‚½ŒãATABƒL[‚ğ‰Ÿ‚·‚±‚Æ‚ÅA
-;;;			ƒtƒ@ƒCƒ‹–¼‚â (href="#foo") ‚Ì‚æ‚¤‚Èƒ‰ƒxƒ‹‚à•âŠ®
-;;;			‚Å‚«‚Ü‚·B
-;;;  * [prefix] s	ˆÈ‰º‚Ì‚æ‚¤‚ÈéŒ¾‚Ì•âŠ®‚ğs‚¢‚Ü‚·B
+;;;  * [prefix] b X	`</H1>' ã¨ã„ã£ãŸçµ‚äº†ã‚¿ã‚°ãŒå¿…è¦ã¨ãªã‚‹`H1'ã®ã‚ˆã†
+;;;			ãªç’°å¢ƒã‚’è£œå®Œå…¥åŠ›ã—ã¾ã™ã€‚<a href=foo> ... </a>
+;;;			ã‚‚ã“ã®ã‚°ãƒ«ãƒ¼ãƒ—ã§ã™ã€‚
+;;;			`href=...' ã¨å…¥åŠ›ã—ãŸå¾Œã€TABã‚­ãƒ¼ã‚’æŠ¼ã™ã“ã¨ã§ã€
+;;;			ãƒ•ã‚¡ã‚¤ãƒ«åã‚„ (href="#foo") ã®ã‚ˆã†ãªãƒ©ãƒ™ãƒ«ã‚‚è£œå®Œ
+;;;			ã§ãã¾ã™ã€‚
+;;;  * [prefix] s	ä»¥ä¸‹ã®ã‚ˆã†ãªå®£è¨€ã®è£œå®Œã‚’è¡Œã„ã¾ã™ã€‚
 ;;;			`<img src="foo.gif">'
 ;;;			`<input name="var" ...>'
-;;;  * [prefix] l	`<i> ... </i>' ‚â `<samp> ... </samp>' ‚Ì‚æ‚¤
-;;;			‚ÈƒeƒLƒXƒgƒXƒ^ƒCƒ‹w’è‚Ìƒ^ƒO‚ğ•âŠ®‚µ‚Ü‚·B
-;;;			‚±‚Ì•âŠ®‹@”\‚Í’Êí [prefix] b ‚Å•âŠ®‚Å‚«‚é‚à‚Ì‚ğ
-;;;			ˆês“à‚Å‘‚«‚½‚¢‚Æ‚«‚É‚à—p‚¢‚é‚±‚Æ‚ªo—ˆ‚Ü‚·B
-;;;  * [prefix] m	`<br>' ‚â `<hr> 'A`<li>' “™‚Ì’P‘Ìƒ^ƒO‚Ì•âŠ®
-;;;			‚ğs‚¢‚Ü‚·B
-;;;  * [prefix] p	ƒJ[ƒ\ƒ‹ˆÊ’u‚É<p></p>‚ğ‘}“ü‚µ‚Ü‚·B
-;;;  * M-RET		‚¨‚Ü‚©‚¹‰üs; ‚à‚µulAolAdl“™‚Ìƒ^ƒO(ƒŠƒXƒg)‚ğ
-;;;			g‚Á‚Ä‚¢‚éê‡‚ÉAŠÂ‹«‚É‡‚í‚¹‚Ä‰üs‚Æ <li>A
-;;;			<dt>A<dd>‚ğ“ü—Í‚µ‚Ü‚·B
-;;;  * menu-bar yahtml	‘I‘ğ‚µ‚½ƒAƒCƒeƒ€‚ğƒƒjƒ…[‚æ‚è•âŠ®‚Å‚«‚Ü‚·B
-;;;			(„‚Íƒƒjƒ…[‚ªŒ™‚¢‚È‚ñ‚Å‚·‚ªAhtml‚ÉŠÖ‚µ‚Ä‚Íƒ
-;;;			ƒjƒ…[‚Íˆê”Ô‚ ‚è‚ª‚½‚¢‚©‚à)
-;;;  * [prefix] g	‘Î‰‚·‚éƒ^ƒOA<dl> <-> </dl> ‚â href="xxx" ‚Ì
-;;;			‚æ‚¤‚È TAG ‚ÉƒWƒƒƒ“ƒv‚µ‚Ü‚·B
-;;;			<img src=...> ‚Ìê‡‚ÍƒCƒ[ƒWƒrƒ…[ƒ‚ğŒÄ‚Ño
-;;;			‚µ‚Ü‚·Bhref=hoge.html ‚Ìê‡‚Íhoge.html‚É”ò‚Ñ‚Ü
-;;;			‚·B
-;;;  * [prefix] k	ƒ|ƒCƒ“ƒgã‚Ì HTML ƒ^ƒO‚ğÁ‹‚µ‚Ü‚·B
-;;;			‚à‚µ universal-argument ‚ğ•t‚¯‚½ê‡(C-u‚ğæ‚É‰Ÿ
-;;;			‚·)HTMLƒ^ƒO‚ÅˆÍ‚Ü‚ê‚½“à—e‚à“¯‚ÉÁ‹‚µ‚Ü‚·B
-;;;  * [prefix] c	ƒ|ƒCƒ“ƒgã‚Ìƒ^ƒO‚ğ•ÏX‚µ‚Ü‚·B
-;;;			`href="xxx"'‚Ìã‚Å [prefix] c ‚ğ—˜—p‚µ‚½ê‡‚ÍA
-;;;			QÆ‚µ‚Ä‚¢‚éƒŠƒ“ƒN‚ğ•âŠ®‹@”\‚ğg‚¢‚È‚ª‚ç•ÏX‚Å
-;;;			‚«‚Ü‚·B
-;;;  * [prefix] t j	ƒJƒŒƒ“ƒgƒtƒ@ƒCƒ‹‚É‘Î‚µ‚Ä jweblint ‚ğŒÄ‚Ño‚µ‚Ü
-;;;			‚·B
-;;;  * [prefix] t p	WWW ƒuƒ‰ƒEƒU‚ÅƒJƒŒƒ“ƒgƒtƒ@ƒCƒ‹‚ğ•\¦‚µ‚Ü‚·B
-;;;			(lisp•Ï” yahtml-www-browser ‚Ìİ’è‚ğ‚¨–Y‚ê‚È
-;;;			‚­B‚¨„‚ß‚Í "netscape" ‚ÅA‚Ë‚·‚¯‚Ìê‡Šù‚É‚Ë‚·
-;;;			‚¯‚ª‹N“®‚³‚ê‚Ä‚¢‚½ê‡‚»‚Ì‚Ë‚·‚¯‚É Reload –½—ß‚ğ
-;;;			‘—‚é‚Æ‚¢‚¤Œ|“–‚ªo—ˆ‚Ü‚·)
-;;;  * [prefix] a	YaTeX ‚ÌƒAƒNƒZƒ“ƒg‹L†•âŠ®‚Æ“¯‚¶‚Å‚·B
-;;;			&lt; &gt; “™‚ª“ü—Í‚Å‚«‚Ü‚·B
-;;;  * [prefix] ;	w’è‚µ‚½ƒŠƒWƒ‡ƒ“’†‚Ì > < & " ‚ğ‚»‚ê‚¼‚ê
-;;;			&gt; &lt; &amp; &quot; ‚É•ÏŠ·‚µ‚Ü‚·B
-;;;  * [prefix] :	w’è‚µ‚½ƒŠƒWƒ‡ƒ“’†‚Åã‚Æ‹t‚Ì•ÏŠ·‚ğ‚µ‚Ü‚·B
-;;;  * [prefix] #	w’è‚µ‚½ƒŠƒWƒ‡ƒ“’†‚Å%ƒGƒ“ƒR[ƒh‚Ì•K—v‚È•¶š‚ª
-;;;			‚ ‚ê‚Î‚»‚ê‚ç‚ğƒGƒ“ƒR[ƒh‚µ‚Ü‚·B
-;;;  * [prefix] ESC	yahtml-mode ‚ğ”²‚¯ yahtml-mode ‚É“ü‚é‘O‚É“®ì‚µ
-;;;			‚Ä‚¢‚½ƒƒWƒƒ[ƒ‚[ƒh‚É–ß‚è‚Ü‚·B
+;;;  * [prefix] l	`<i> ... </i>' ã‚„ `<samp> ... </samp>' ã®ã‚ˆã†
+;;;			ãªãƒ†ã‚­ã‚¹ãƒˆã‚¹ã‚¿ã‚¤ãƒ«æŒ‡å®šã®ã‚¿ã‚°ã‚’è£œå®Œã—ã¾ã™ã€‚
+;;;			ã“ã®è£œå®Œæ©Ÿèƒ½ã¯é€šå¸¸ [prefix] b ã§è£œå®Œã§ãã‚‹ã‚‚ã®ã‚’
+;;;			ä¸€è¡Œå†…ã§æ›¸ããŸã„ã¨ãã«ã‚‚ç”¨ã„ã‚‹ã“ã¨ãŒå‡ºæ¥ã¾ã™ã€‚
+;;;  * [prefix] m	`<br>' ã‚„ `<hr> 'ã€`<li>' ç­‰ã®å˜ä½“ã‚¿ã‚°ã®è£œå®Œ
+;;;			ã‚’è¡Œã„ã¾ã™ã€‚
+;;;  * [prefix] p	ã‚«ãƒ¼ã‚½ãƒ«ä½ç½®ã«<p></p>ã‚’æŒ¿å…¥ã—ã¾ã™ã€‚
+;;;  * M-RET		ãŠã¾ã‹ã›æ”¹è¡Œ; ã‚‚ã—ulã€olã€dlç­‰ã®ã‚¿ã‚°(ãƒªã‚¹ãƒˆ)ã‚’
+;;;			ä½¿ã£ã¦ã„ã‚‹å ´åˆã«ã€ç’°å¢ƒã«åˆã‚ã›ã¦æ”¹è¡Œã¨ <li>ã€
+;;;			<dt>ã€<dd>ã‚’å…¥åŠ›ã—ã¾ã™ã€‚
+;;;  * menu-bar yahtml	é¸æŠã—ãŸã‚¢ã‚¤ãƒ†ãƒ ã‚’ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã‚ˆã‚Šè£œå®Œã§ãã¾ã™ã€‚
+;;;			(ç§ã¯ãƒ¡ãƒ‹ãƒ¥ãƒ¼ãŒå«Œã„ãªã‚“ã§ã™ãŒã€htmlã«é–¢ã—ã¦ã¯ãƒ¡
+;;;			ãƒ‹ãƒ¥ãƒ¼ã¯ä¸€ç•ªã‚ã‚ŠãŒãŸã„ã‹ã‚‚)
+;;;  * [prefix] g	å¯¾å¿œã™ã‚‹ã‚¿ã‚°ã€<dl> <-> </dl> ã‚„ href="xxx" ã®
+;;;			ã‚ˆã†ãª TAG ã«ã‚¸ãƒ£ãƒ³ãƒ—ã—ã¾ã™ã€‚
+;;;			<img src=...> ã®å ´åˆã¯ã‚¤ãƒ¡ãƒ¼ã‚¸ãƒ“ãƒ¥ãƒ¼ãƒ¯ã‚’å‘¼ã³å‡º
+;;;			ã—ã¾ã™ã€‚href=hoge.html ã®å ´åˆã¯hoge.htmlã«é£›ã³ã¾
+;;;			ã™ã€‚
+;;;  * [prefix] k	ãƒã‚¤ãƒ³ãƒˆä¸Šã® HTML ã‚¿ã‚°ã‚’æ¶ˆå»ã—ã¾ã™ã€‚
+;;;			ã‚‚ã— universal-argument ã‚’ä»˜ã‘ãŸå ´åˆ(C-uã‚’å…ˆã«æŠ¼
+;;;			ã™)HTMLã‚¿ã‚°ã§å›²ã¾ã‚ŒãŸå†…å®¹ã‚‚åŒæ™‚ã«æ¶ˆå»ã—ã¾ã™ã€‚
+;;;  * [prefix] c	ãƒã‚¤ãƒ³ãƒˆä¸Šã®ã‚¿ã‚°ã‚’å¤‰æ›´ã—ã¾ã™ã€‚
+;;;			`href="xxx"'ã®ä¸Šã§ [prefix] c ã‚’åˆ©ç”¨ã—ãŸå ´åˆã¯ã€
+;;;			å‚ç…§ã—ã¦ã„ã‚‹ãƒªãƒ³ã‚¯ã‚’è£œå®Œæ©Ÿèƒ½ã‚’ä½¿ã„ãªãŒã‚‰å¤‰æ›´ã§
+;;;			ãã¾ã™ã€‚
+;;;  * [prefix] t j	ã‚«ãƒ¬ãƒ³ãƒˆãƒ•ã‚¡ã‚¤ãƒ«ã«å¯¾ã—ã¦ jweblint ã‚’å‘¼ã³å‡ºã—ã¾
+;;;			ã™ã€‚
+;;;  * [prefix] t p	WWW ãƒ–ãƒ©ã‚¦ã‚¶ã§ã‚«ãƒ¬ãƒ³ãƒˆãƒ•ã‚¡ã‚¤ãƒ«ã‚’è¡¨ç¤ºã—ã¾ã™ã€‚
+;;;			(lispå¤‰æ•° yahtml-www-browser ã®è¨­å®šã‚’ãŠå¿˜ã‚Œãª
+;;;			ãã€‚ãŠæ¨ã‚ã¯ "netscape" ã§ã€ã­ã™ã‘ã®å ´åˆæ—¢ã«ã­ã™
+;;;			ã‘ãŒèµ·å‹•ã•ã‚Œã¦ã„ãŸå ´åˆãã®ã­ã™ã‘ã« Reload å‘½ä»¤ã‚’
+;;;			é€ã‚‹ã¨ã„ã†èŠ¸å½“ãŒå‡ºæ¥ã¾ã™)
+;;;  * [prefix] a	YaTeX ã®ã‚¢ã‚¯ã‚»ãƒ³ãƒˆè¨˜å·è£œå®Œã¨åŒã˜ã§ã™ã€‚
+;;;			&lt; &gt; ç­‰ãŒå…¥åŠ›ã§ãã¾ã™ã€‚
+;;;  * [prefix] ;	æŒ‡å®šã—ãŸãƒªã‚¸ãƒ§ãƒ³ä¸­ã® > < & " ã‚’ãã‚Œãã‚Œ
+;;;			&gt; &lt; &amp; &quot; ã«å¤‰æ›ã—ã¾ã™ã€‚
+;;;  * [prefix] :	æŒ‡å®šã—ãŸãƒªã‚¸ãƒ§ãƒ³ä¸­ã§ä¸Šã¨é€†ã®å¤‰æ›ã‚’ã—ã¾ã™ã€‚
+;;;  * [prefix] #	æŒ‡å®šã—ãŸãƒªã‚¸ãƒ§ãƒ³ä¸­ã§%ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰ã®å¿…è¦ãªæ–‡å­—ãŒ
+;;;			ã‚ã‚Œã°ãã‚Œã‚‰ã‚’ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰ã—ã¾ã™ã€‚
+;;;  * [prefix] ESC	yahtml-mode ã‚’æŠœã‘ yahtml-mode ã«å…¥ã‚‹å‰ã«å‹•ä½œã—
+;;;			ã¦ã„ãŸãƒ¡ã‚¸ãƒ£ãƒ¼ãƒ¢ãƒ¼ãƒ‰ã«æˆ»ã‚Šã¾ã™ã€‚
 ;;; 
-;;; [Ó«]
+;;; [è¬è¾]
 ;;; 
-;;; fj–ì’¹‚Ì‰ï‚ÌŠF‚³‚ñ‚É‚Í‹Md‚È•Œ¾‚ğ’¸‚«‚Ü‚µ‚½B‚Ü‚½A‰º‚É¦‚·•ûX‚É‚Í
-;;; “Á‚É‘å‚«‚È‹¦—Í‚ğ’¸‚«‚Ü‚µ‚½B‚ ‚í‚¹‚Ä‚±‚±‚ÉŠ´Ó\‚µã‚°‚Ü‚·B
+;;; fjé‡é³¥ã®ä¼šã®çš†ã•ã‚“ã«ã¯è²´é‡ãªåŠ©è¨€ã‚’é ‚ãã¾ã—ãŸã€‚ã¾ãŸã€ä¸‹ã«ç¤ºã™æ–¹ã€…ã«ã¯
+;;; ç‰¹ã«å¤§ããªå”åŠ›ã‚’é ‚ãã¾ã—ãŸã€‚ã‚ã‚ã›ã¦ã“ã“ã«æ„Ÿè¬ç”³ã—ä¸Šã’ã¾ã™ã€‚
 ;;; 
-;;;	* ‰¡“c˜a–ç‚³‚ñ(ƒ}ƒcƒ_)
-;;;		ƒ}ƒjƒ…ƒAƒ‹‚Ì˜a–ó‚ğ‚µ‚Ä’¸‚«‚Ü‚µ‚½B
-;;;	* ‹g“c®u‚³‚ñ(NTT Data)
-;;;		Mule for Win32 ‚Å‚Ì“®ì‚Ì‚³‚¹•û‚ğ‹³‚¦‚Ä’¸‚«‚Ü‚µ‚½B
-;;;		(‚Æ‚¢‚¤‚©‚Ù‚Æ‚ñ‚Ç‚â‚Á‚Ä‚à‚ç‚Á‚½ ^^;)
+;;;	* æ¨ªç”°å’Œä¹Ÿã•ã‚“(ãƒãƒ„ãƒ€)
+;;;		ãƒãƒ‹ãƒ¥ã‚¢ãƒ«ã®å’Œè¨³ã‚’ã—ã¦é ‚ãã¾ã—ãŸã€‚
+;;;	* å‰ç”°å°šå¿—ã•ã‚“(NTT Data)
+;;;		Mule for Win32 ã§ã®å‹•ä½œã®ã•ã›æ–¹ã‚’æ•™ãˆã¦é ‚ãã¾ã—ãŸã€‚
+;;;		(ã¨ã„ã†ã‹ã»ã¨ã‚“ã©ã‚„ã£ã¦ã‚‚ã‚‰ã£ãŸ ^^;)
 ;;; 
 
 
@@ -676,7 +676,7 @@ T for static indentation depth")
   (interactive)
   (message
    (concat "Yet Another HTML-mode "
-	   (if YaTeX-japan "uHTML‰®v" "`yahtml'")
+	   (if YaTeX-japan "ã€ŒHTMLå±‹ã€" "`yahtml'")
 	   " Revision "
 	   yahtml-revision-number)))
 
@@ -854,7 +854,7 @@ T for static indentation depth")
 	(insert "\n")
 	(indent-to-column cc)
 	(insert (format "</%s>" cmd)))
-      (if (string-match "^a\\|p$" cmd)	;a‚ÆpŒˆ‚ß‘Å‚¿‚Á‚Ä‚Ì‚ª”ü‚µ‚­‚È‚¢c
+      (if (string-match "^a\\|p$" cmd)	;aã¨pæ±ºã‚æ‰“ã¡ã£ã¦ã®ãŒç¾ã—ããªã„â€¦
 	  (newline)
 	(yahtml-intelligent-newline nil))
       (yahtml-indent-line))))
@@ -892,7 +892,7 @@ T for static indentation depth")
     (read-from-minibuffer
      (substitute-command-keys
       (if YaTeX-japan
-	  "ƒNƒ‰ƒX(•¡”w’è‚Í\\[quoted-insert] SPC‚Å‹æØ‚é): "
+	  "ã‚¯ãƒ©ã‚¹(è¤‡æ•°æŒ‡å®šã¯\\[quoted-insert] SPCã§åŒºåˆ‡ã‚‹): "
 	"class(or class list delimited by \\[quoted-insert] SPC): "))
      nil YaTeX-minibuffer-completion-map nil)))
   
@@ -1010,19 +1010,19 @@ If optional argument FILE is specified collect labels in FILE."
 ; From: Masayasu Ishikawa <mimasa@sfc.keio.ac.jp>
 ; To: yatex@arcadia.jaist.ac.jp
 ; Date: Mon, 31 May 1999 21:09:31 +0900
-; RFC 2396 ‚Ì "2.4.3. Excluded US-ASCII Characters" ‚É‚æ‚é‚ÆAˆÈ‰º‚Ì•¶š
-; ‚Í•K‚¸ƒGƒXƒP[ƒv‚µ‚È‚¢‚Æ‚¢‚¯‚Ü‚¹‚ñB
+; RFC 2396 ã® "2.4.3. Excluded US-ASCII Characters" ã«ã‚ˆã‚‹ã¨ã€ä»¥ä¸‹ã®æ–‡å­—
+; ã¯å¿…ãšã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã—ãªã„ã¨ã„ã‘ã¾ã›ã‚“ã€‚
 ;
 ;     control     = <US-ASCII coded characters 00-1F and 7F hexadecimal>
 ;     space       = <US-ASCII coded character 20 hexadecimal>
 ;     delims      = "<" | ">" | "#" | "%" | <">
 ;     unwise      = "{" | "}" | "|" | "\" | "^" | "[" | "]" | "`"
 (defvar yahtml-unsafe-chars-regexp
-  "[][\x0- \x7f <>%\"{}|\\^`]" ;#‚Íœ‹‚·‚é
+  "[][\x0- \x7f <>%\"{}|\\^`]" ;#ã¯é™¤å»ã™ã‚‹
   "Characters regexp which must be escaped in URI.")
 ;
-; ‚Ü‚½AˆÈ‰º‚Ì•¶š‚Í—\–ñ‚³‚ê‚½—p–@ˆÈŠO‚É—p‚¢‚éê‡‚É‚ÍƒGƒXƒP[ƒv‚µ‚È‚¢‚Æ
-; ‚¢‚¯‚È‚¢‚±‚Æ‚É‚È‚Á‚Ä‚¢‚Ü‚·B
+; ã¾ãŸã€ä»¥ä¸‹ã®æ–‡å­—ã¯äºˆç´„ã•ã‚ŒãŸç”¨æ³•ä»¥å¤–ã«ç”¨ã„ã‚‹å ´åˆã«ã¯ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã—ãªã„ã¨
+; ã„ã‘ãªã„ã“ã¨ã«ãªã£ã¦ã„ã¾ã™ã€‚
 ;
 ;     reserved    = ";" | "/" | "?" | ":" | "@" | "&" | "=" | "+" |
 ;                   "$" | ","
@@ -1481,7 +1481,7 @@ Returns list of '(WIDTH HEIGHT BYTES DEPTH COMMENTLIST)."
   "")
 
 (defun yahtml:link ()
-  "Add-in function for `link' (‚Ü‚¾‚¿‚å‚Á‚Æ—Ç‚­•ª‚©‚Á‚Ä‚È‚¢)"
+  "Add-in function for `link' (ã¾ã ã¡ã‚‡ã£ã¨è‰¯ãåˆ†ã‹ã£ã¦ãªã„)"
   (let (rel rev type href)
     (setq rel (yahtml-read-parameter "rel"))
     (cond
@@ -1490,7 +1490,7 @@ Returns list of '(WIDTH HEIGHT BYTES DEPTH COMMENTLIST)."
 	       "rev" (yahtml-read-parameter "rev"))
 	      (yahtml-make-optional-argument
 	       "href" (yahtml-read-parameter "href")
-	       ;;‘¼‚É—Ç‚­g‚¤‚Ì‚Á‚Ä‰½?
+	       ;;ä»–ã«è‰¯ãä½¿ã†ã®ã£ã¦ä½•?
 	       )))
      ((string-match "stylesheet" rel)
       (concat
@@ -1688,9 +1688,9 @@ Returns list of '(WIDTH HEIGHT BYTES DEPTH COMMENTLIST)."
   "Check if point is on href clause."
   (let ((p (point)) e cmd (case-fold-search t))
     (save-excursion
-      (and ;;(string= (YaTeX-inner-environment t) "a") ;a‚Å‚È‚­‚Ä‚à‹–‰Â‚É‚µ‚½
+      (and ;;(string= (YaTeX-inner-environment t) "a") ;aã§ãªãã¦ã‚‚è¨±å¯ã«ã—ãŸ
 	   (save-excursion
-	     ;;(search-forward "</a>" nil t) ;a‚Å‚È‚­‚Ä‚à‹–‰Â‚É‚µ‚½
+	     ;;(search-forward "</a>" nil t) ;aã§ãªãã¦ã‚‚è¨±å¯ã«ã—ãŸ
 	     (search-forward "[\" \t\n]" nil t)
 	     (setq e (point)))
 	   ;(goto-char (get 'YaTeX-inner-environment 'point))
@@ -2520,7 +2520,7 @@ If no matches found in yahtml-path-url-alist, return raw file name."
       (setq file (expand-file-name file)))
     (if (string-match "^[A-Za-z]:/" file)
 	(progn
-	  ;; (aset file 1 ?|) ;‚±‚ê‚Í—v‚ç‚È‚¢‚ç‚µ‚¢c
+	  ;; (aset file 1 ?|) ;ã“ã‚Œã¯è¦ã‚‰ãªã„ã‚‰ã—ã„â€¦
 	  (setq file (concat "///" file))))
     (while list
       (if (string-match (concat "^" (regexp-quote (car (car list)))) file)
@@ -2709,7 +2709,7 @@ If no matches found in yahtml-path-url-alist, return raw file name."
 	(setq p (point)))
       (if (> cols 0)
 	  (message "%s columns found.  %s"
-		   cols (if YaTeX-japan "V‚µ‚¢tr(N)? ‘O‚Ìtr‚Ì•¡Ê?(D)?: "
+		   cols (if YaTeX-japan "æ–°ã—ã„tr(N)? å‰ã®trã®è¤‡å†™?(D)?: "
 			  "New tr?(N) or Duplicate")))
       (cond
        ((and (> cols 0)
@@ -2815,7 +2815,7 @@ If no matches found in yahtml-path-url-alist, return raw file name."
 			  (append alist (yahtml-css-collect-classes-file f)))))
 	    (setq e (point))
 	    (goto-char b)
-	    (while (re-search-forward	;‚¿‚å‚Æ‚¢‚¢‰ÁŒ¸‚ÈREGEXP
+	    (while (re-search-forward	;ã¡ã‚‡ã¨ã„ã„åŠ æ¸›ãªREGEXP
 		    "\\([a-z*][-a-z0-9]*\\)?\\.\\([-a-z0-9][-a-z0-9]*\\)\\>"
 		    e t)
 	      (setq element (YaTeX-match-string 1)

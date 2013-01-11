@@ -4,7 +4,7 @@
 ;;; Last modified Fri Jun 27 12:10:15 2003 on firestorm
 
 ;;;
-;; outline-minor-mode(g—p‚µ‚È‚¢ê‡‚Í•s—v‚Å‚·)
+;; outline-minor-mode(ä½¿ç”¨ã—ãªã„å ´åˆã¯ä¸è¦ã§ã™)
 ;;; 
 (autoload 'outline-minor-mode "min-out" t)
 (make-variable-buffer-local 'outline-prefix-char)
@@ -23,7 +23,7 @@
 ;;;
 (setq auto-mode-alist (cons '("\\.tex$" . yatex-mode) auto-mode-alist))
 (autoload 'yatex-mode "yatex" "Yet Another LaTeX mode" t)
-;;«min-out‚ğg—p‚µ‚È‚¢ê‡A;;@ ‚Ìs‚Í•s—v‚Å‚·B
+;;â†“min-outã‚’ä½¿ç”¨ã—ãªã„å ´åˆã€;;@ ã®è¡Œã¯ä¸è¦ã§ã™ã€‚
 (defvar yatex-mode-hook
   '(lambda ()
      (setq outline-regexp LaTeX-outline-regexp)			    ;;@
@@ -33,9 +33,9 @@
   '(lambda ()
      (setq-default outline-prefix-char (concat YaTeX-prefix "\C-o"));;@
      (require 'min-out)						    ;;@
-     ;;auctex •t‘®‚Ì min-out.el ‚Ìê‡‚±‚ê«
+     ;;auctex ä»˜å±ã® min-out.el ã®å ´åˆã“ã‚Œâ†“
      ;(define-key outline-minor-keymap "\C-?" 'hide-subtree)	    ;;@
-     ;;Emacs •t‘®‚Ì outline.el ‚Ìê‡‚±‚ê«
+     ;;Emacs ä»˜å±ã® outline.el ã®å ´åˆã“ã‚Œâ†“
      (define-key outline-mode-prefix-map "\C-?" 'hide-subtree)
      (YaTeX-define-begend-key "ba" "abstract")
      ))

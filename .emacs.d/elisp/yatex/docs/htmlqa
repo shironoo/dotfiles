@@ -1,184 +1,184 @@
 %%
 %% Q and A on yahtml
 %%
-%% C-u C-x $ �Ƃ���Ǝ��⍀�ڂ����\������܂��BC-x $ �Ō��ɖ߂�܂��B
+%% C-u C-x $ とすると質問項目だけ表示されます。C-x $ で元に戻ります。
 %%
-(�V����: �Efont-lock���Ďg���܂���?)
+(新項目: ・font-lockって使えますか?)
 
 
-���C���X�g�[���֘A
-�ELaTeX�g��Ȃ��񂾂��ǖ쒹������Ȃ���_���ł���?
+■インストール関連
+・LaTeX使わないんだけど野鳥も入れなきゃダメですか?
 	
-	��A�ʂɂ��������B
-	http://www.yatex.org/ �̃\�[�X�A�[�J�C�u�����N
-	�̂Ȃ��ɁA"yahtml" �Ŏn�܂�t�@�C��������̂Ŏ�����͂��������
-	�ė���΂悲���񂷁B
+	や、別にええっす。
+	http://www.yatex.org/ のソースアーカイブリンク
+	のなかに、"yahtml" で始まるファイルがあるので次からはそれを持っ
+	て来ればよござんす。
 	
-���J�X�^�}�C�Y�֘A
-�Efont-lock���Ďg���܂���?
+■カスタマイズ関連
+・font-lockって使えますか?
 	
-	�͂��Byahtml-1.69����g���܂��B���炩���� font-lock �����[�h���Ă�
-	���܂��傤�B�ȑO�Ayahtml �� font-lock �ɑΉ�����O��
+	はい。yahtml-1.69から使えます。あらかじめ font-lock をロードしてお
+	きましょう。以前、yahtml が font-lock に対応する前に
 	
 		(put 'yahtml-mode 'font-lock-defaults 'another-html-mode)
 	
-	�Ȃǂ� ~/.emacs �ɏ������l�́A���̐ݒ���폜���ĉ������B
+	などを ~/.emacs に書いた人は、その設定を削除して下さい。
 	
-�E������ EUC �ɂ��Ă��܂� JIS �R�[�h�̃t�@�C������肽���񂾂��ǁB
+・いつもは EUC にしてたまに JIS コードのファイルを作りたいんだけど。
 	
-	~/.emacs ��
-	(setq yahtml-kanji-code 3) ;3��EUC
-	���Ă����Ε��i��html�R�[�h��EUC�ɂȂ�܂��B�ŋǏ��I�ɕς�����@�B
-	�T�[�o�[��Apache�ł���? �Ȃ炻�̃f�B���N�g���� .htaccess �Ƃ���
-	�t�@�C����p�ӂ��āA
+	~/.emacs で
+	(setq yahtml-kanji-code 3) ;3はEUC
+	しておけば普段のhtmlコードはEUCになります。で局所的に変える方法。
+	サーバーはApacheですね? ならそのディレクトリに .htaccess という
+	ファイルを用意して、
 	
 		AddType "text/html; charset=iso-2020-jp" .html
 	
-	�Ƃ����s�������܂��傤�B�����Apache�N�͂��̃f�B���N�g����html�t�@
-	�C�����uiso-2022-jp(������JIS)����[�v�Ƃ��q����ɂ��炩���ߓ`
-	����悤�ɂȂ�܂��Byahtml������ɏ]���A���̃f�B���N�g���ȉ��̃t�@
-	�C���͊����R�[�h��JIS�ɐݒ肵�܂��B
+	という行を書きましょう。するとApache君はそのディレクトリのhtmlファ
+	イルを「iso-2022-jp(いわゆるJIS)だよー」とお客さんにあらかじめ伝
+	えるようになります。yahtmlもこれに従い、そのディレクトリ以下のファ
+	イルは漢字コードをJISに設定します。
 	
-	�ȂɁAapache�ł͂Ȃ��ƂȁB�Ȃ疾���I��html�\�[�X�̂��K�ɁA
+	なに、apacheではないとな。なら明示的にhtmlソースのお尻に、
 	
 	<!-- Local Variables: -->
 	<!-- file-coding-system: *junet* -->
 	<!-- End: -->
 	
-	�Ə����Ă����΂��̃t�@�C������JIS�ɂȂ�܂��B
-	�������AEmacs-20 �� XEmacs �̏ꍇ�A�����R�[�h�̃V���{���̗��[��*
-	�͕t���܂���B
+	と書いておけばそのファイルだけJISになります。
+	ただし、Emacs-20 や XEmacs の場合、漢字コードのシンボルの両端の*
+	は付きません。
 	
-�E<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=x-sjis">��
-  �F�����Ċ����R�[�h��ݒ肵�ė~�����ȁ[�B
+・<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=x-sjis">を
+  認識して漢字コードを設定して欲しいなー。
 	
-	�����̒��Ƀt�@�C���̃G���R�[�h�@�������Ă�������������META�Ȃ񂿂�
-	���ǂ߂Ȃ��\��������̂� charset ��META�Ŏw�肷��͖̂{����
-	���҂����ʂ�ɂ͋@�\���܂���B���Ƃ��΁A�����ꕶ���������K�v���o
-	���Ƃ��܂��B����ƍ��̂Ƃ���UTF-7�ŃG���R�[�h����̂���Ԗ����
-	���傤�BNetscape�ł�IE�ł�UTF-7�͂����Ɠǂނ��Ƃ��ł��܂��B��
-	�������ƂŁA�t�@�C�����J���ău���E�U��������UTF-7�ƔF�������
-	���ɁAHTML�����̐擪�Ɏ��̂悤�ɏ����܂����B
+	文書の中にファイルのエンコード法を書いてもそもそもそのMETAなんちゃ
+	らを読めない可能性があるので charset をMETAで指定するのは本当に
+	期待した通りには機能しません。たとえば、多国語文書を書く必要が出
+	たとします。すると今のところUTF-7でエンコードするのが一番無難で
+	しょう。NetscapeでもIEでもUTF-7はちゃんと読むことができます。と
+	ういことで、ファイルを開いてブラウザがちゃんとUTF-7と認識するよ
+	うに、HTML文書の先頭に次のように書きました。
 	
 	<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-7">
 	
-	���̂悤�ɏ��������̂� 
-	http://www.yatex.org/charset/hello-meta.file �ɂ���܂��B
-	Netscape��IE�Ȃ�UTF-7�͓ǂ߂�͂��Ȃ̂ŁA�ǂ��炩�ŃA�N�Z�X����
-	�݂܂��傤�B�ǂ߂܂���? �ǂ߂܂���ˁBIE�̏ꍇ��UTF-7�̕�������
-	�����ʂ���̂ŁA�ꌩ�ǂ߂Ă�悤�Ɍ����܂���text/html �Ƃ͉��߂�
-	��Ă��炸�A����META�����ʂł��Ȃ��������Ƃ�������܂��B�܂�A
-	�Ⴄ�G���R�[�h�@�𗘗p����ꍇ�A<META...> �̕����������T�[�o�ɉ�
-	�ߕs�\�ȏ�ԂɂȂ蓾��̂ŁA�����̒���charset�w��𖄂ߍ��ނ̂�
-	�������@�ł͂���܂���B
+	このように書いたものが 
+	http://www.yatex.org/charset/hello-meta.file にあります。
+	NetscapeとIEならUTF-7は読めるはずなので、どちらかでアクセスして
+	みましょう。読めますか? 読めませんね。IEの場合はUTF-7の部分を自
+	動判別するので、一見読めてるように見えますがtext/html とは解釈さ
+	れておらず、結局METAが判別できなかったことが分かります。つまり、
+	違うエンコード法を利用する場合、<META...> の部分さえもサーバに解
+	釈不能な状態になり得るので、文書の中にcharset指定を埋め込むのは
+	賢い方法ではありません。
 	
-	�����ɁA��L�Ő������� .htaccess �𗘗p���܂��傤�B*.utf7 �Ƃ�
-	���g���q�����t�@�C���́AUTF-7 �ŃG���R�[�h����HTML�����ł���A
-	�Ƃ�����`�́A�ȉ��̂悤�ɏ����܂��B
+	かわりに、上記で説明した .htaccess を利用しましょう。*.utf7 とい
+	う拡張子を持つファイルは、UTF-7 でエンコードしたHTML文書である、
+	という定義は、以下のように書けます。
 	
 		AddType "text/html; charset=utf-7"	.utf7
 	
-	.htaccess �t�@�C���ɂ��̂悤�ɒ�`���Ă����΁A���ʂ�<META�`
-	charset�`>�ȂǒԂ�Ȃ��Ă���������ƃT�[�o���G���R�[�f�B���O��
-	���ł��܂��B���̂悤�ɂ��ď����ꂽ UTF-7 ��HTML������
+	.htaccess ファイルにこのように定義しておけば、無駄な<META〜
+	charset〜>など綴らなくてもしっかりとサーバがエンコーディングを理
+	解できます。このようにして書かれた UTF-7 のHTML文書が
 	http://www.yatex.org/charset/hello.utf7
-	�ɂ���܂��̂ŁA������Netscape��IE�œǂ�ł݂܂��傤�B
+	にありますので、同じくNetscapeかIEで読んでみましょう。
 	
-	AddType��~/public_html �Ȃǂɒu���΂���ȉ��� *.utf7 �Ƃ����g��
-	�q�S�ĂɓK�p�ł��܂��B�����AddType�����������ł����̂ł��B
+	AddTypeは~/public_html などに置けばそれ以下の *.utf7 という拡張
+	子全てに適用できます。一個だけAddTypeを書くだけでいいのです。
 	
-	HTML���ł́A�C�x�ߒ��x�ɂ����Ȃ�Ȃ�META�ɂ��charset�w��𐄏�
-	���Ȃ�����I�т܂����B�����ɁA�����Ɗm���ŊȒP�� .htaccess ��
-	���G���R�[�f�B���O�w��𐄏����邽�߂ɁA��������T�|�[�g���܂��B
+	HTML屋では、気休め程度にしかならないMETAによるcharset指定を推奨
+	しない事を選びました。かわりに、もっと確実で簡単な .htaccess に
+	よるエンコーディング指定を推奨するために、そちらをサポートします。
 	
-	�֌W����܂��񂪍�(2000�N����)�ł� x-sjis����Ȃ��āAShift_JIS 
-	�ƒԂ邱�ƂɂȂ��Ă܂�:-p
+	関係ありませんが今(2000年現在)では x-sjisじゃなくて、Shift_JIS 
+	と綴ることになってます:-p
 		
-�E<li>�̒���ɋ󔒓����htmllint�ɓ{���邩��󔒂Ȃ��ɂ������񂾂��ǁc
+・<li>の直後に空白入るとhtmllintに怒られるから空白なしにしたいんだけど…
 	
-	����Ahtmllint����肷���Ȃ�ł��B�^�O����̋󔒂ɑ΂��ĕ��傢��
-	�̂�
+	それ、htmllintがやりすぎなんです。タグ直後の空白に対して文句いう
+	のは
 	http://www.cre.canon.co.uk/%7Eneilb/weblint/www5-paper.html
-	�ɂ��ƁA�󔒂����邱�Ƃŕςȃ��C�A�E�g�ɂȂ��Ă��܂��ւڃu���E
-	�U�ւ̔z���ɂ����̂Ȃ̂�HTML�I�ɂ͂܂�Ŗ��Ȃ���ł��B�Ƃ���
-	htmllint���g����htmllint�ɓ{���Ȃ����Ǝ��̂��ړI�ƂȂ肪���ł�
-	���A�킽���͂���͖{���]�|�ł���Ǝv���܂��B
+	によると、空白があることで変なレイアウトになってしまうへぼブラウ
+	ザへの配慮によるものなのでHTML的にはまるで問題ないんです。とかく
+	htmllintを使うとhtmllintに怒られないこと自体が目的となりがちです
+	が、わたしはそれは本末転倒であると思います。
 	
-�E<a href="...">�̓r���� auto-fill ���ꂿ�Ⴄ�Ɣ߂���
+・<a href="...">の途中で auto-fill されちゃうと悲しい
 	
-	�g���Ă���̂�Mule2(Emacs-19)�ȍ~�Ȃ� auto-fill-inhibit-regexp
-	�Ƃ����ϐ��ŃR���g���[���ł��܂��B yahtml-mode-hook ���g���Ĉȉ�
-	�̂悤�ɐݒ肵�܂��傤�B
+	使っているのがMule2(Emacs-19)以降なら auto-fill-inhibit-regexp
+	という変数でコントロールできます。 yahtml-mode-hook を使って以下
+	のように設定しましょう。
 	
 	(add-hook 'yahtml-mode-hook
 	          '(lambda ()
 		     (setq auto-fill-inhibit-regexp
 			   "^[       ]*\\(<a href\\|<img src=\\)")))
 	
-���ǂ��ɂ��Ȃ�񂩂Ȃ��֘A
-�E���������̉��̕����ƃC���f���g���߂���x���񂾂��ǁB
+■どうにかならんかなあ関連
+・長い文書の下の方だとインデントがめちゃ遅いんだけど。
 	
-	���͒����Ă�͂��ł��c�B
+	今は直ってるはずです…。
 	
-�E�������^�Ƃ��Ďg���Ă��� template.html ���ȒP�ɓ��ꂽ��
+・いつも雛型として使っている template.html を簡単に入れたい
 	
-	autoinsert.el (Emacs19/Mule2�t��)���g���܂��傤�B�������́A����
-	�̋@�\������ auto-insert-tkld ���g���܂��傤�B��҂́A
+	autoinsert.el (Emacs19/Mule2付属)を使いましょう。もしくは、それ
+	の機能強化版 auto-insert-tkld を使いましょう。後者は、
 	ftp://ftp.ae.keio.ac.jp/pub/emacs-lisp/util/auto-inset-tkld.tar.Z
-	�œ���ł��܂��B
+	で入手できます。
 	http://namazu.org/~tsuchiya/elisp/yahtml-mode.html
-	�ɐݒ�Ⴊ�����Ă���܂��B
+	に設定例が書いてあります。
 	
-�����̑�
-�Eyahtml���ĂȂ�Ă�ނ�?
+■その他
+・yahtmlってなんてよむの?
 	
-	���[��A�ǂ�������܂��B
-	��҂��ǂ��������Ă܂���B���ւ�B
-	�Ƃ����������傢���ǂݕ����v�������΂Ȃ����̂ŁB
-	�Ȃ񂩂����ǂݕ��Ȃ�����?
-	�ˑR�v���t���܂����B�������ď̂�
+	がーん、良く聞かれます。
+	作者も良く分かってません。えへん。
+	というかかちょいい読み方が思い浮かばないもので。
+	なんかいい読み方ないすか?
+	突然思い付きました。正しい呼称は
 	
-		�wHTML���x
+		『HTML屋』
 	
-	�Ƃ��܂��B
+	とします。
 	
-�E���C�����O���X�g�͂Ȃ���ł���?
+・メイリングリストはないんですか?
 	
-	���Ă������⍀�ڂ����邭�炢�����炠��܂��B�uyahtml�v����т���Vz
-	�ւ̈ڐA�Łulaihtml�v(by KATSURAGAWA, Naoki)�AWz�ւ̈ڐA��
-	�uhackhtml�v(by TAKENAKA, Hiroshi) �Ɋւ����������
-	���߂̃��C�����O���X�g�ufj�쒹�̉�v������ł��B
+	っていう質問項目があるくらいだからあります。「yahtml」およびそのVz
+	への移植版「laihtml」(by KATSURAGAWA, Naoki)、Wzへの移植版
+	「hackhtml」(by TAKENAKA, Hiroshi) に関する情報交換の
+	ためのメイリングリスト「fj野鳥の会」がそれです。
 	
 		To: yatex@yatex.org
 		Subject: subscribe
 		-----
-		�����Ł[���B�����܂��Ă��߂łƂ��������܁[���B
+		たぐでーし。明けましておめでとうございまーす。
 	
-	�̂悤�Ƀ��C���𑗂�Ή����ł��܂��B���̎��{���ɏ��������e���v��
-	�t�B�[���Ƃ��ēo�^����܂�(�ύX��)�B�葱���͑S�Ď����ōs���A�o
-	�^����������Ɗm�F�ƂƂ��ɁA�Q��/�x�~/�E��̐���R�}���h�̗��p
-	���@���ԑ�����܂��B����Q�����Ĉꏏ�ɖ쒹/����/��������ĂĂ���
-	�����B
+	のようにメイルを送れば加入できます。この時本文に書いた内容がプロ
+	フィールとして登録されます(変更可)。手続きは全て自動で行われ、登
+	録が完了すると確認とともに、参加/休止/脱会等の制御コマンドの利用
+	方法が返送されます。是非参加して一緒に野鳥/雷鳥/白鳥を育ててくだ
+	さい。
 	
-�Eyahtml�̍ŐV����?
+・yahtmlの最新情報は?
 	
-	�������Ȃ����AWWW�ɃA�N�Z�X�ł���Ȃ�A
+	もしあなたが、WWWにアクセスできるなら、
 	http://www.yatex.org/
-	��`���Ă݂ĉ������B���̂Ȃ��́A�uyatex-current�v�Ƃ��������N��
-	���ǂ�ƍŐV�ł̖쒹����肷�邱�Ƃ��ł��܂��B�������A���������[
-	�X�łł͂Ȃ��A��҂��f�o�b�O���������肵�Đ���ɓ��삵�Ȃ��\��
-	������̂ŁAcurrent�łɊւ���₢���킹�͎󂯂��˂܂��̂ł�����
-	�������B
+	を覗いてみて下さい。このなかの、「yatex-current」というリンクを
+	たどると最新版の野鳥を入手することができます。ただし、正式リリー
+	ス版ではなく、作者がデバッグ中だったりして正常に動作しない可能性
+	があるので、current版に関する問い合わせは受けかねますのでご注意
+	下さい。
 	
-�E�Ƃɂ����킩��܂��[��!
+・とにかくわかりませーん!
 	
-	�񓚂𓾂�܂ł̑�������
+	回答を得るまでの早い順に
 
-	�E�߂��ɂ���ڂ����l�ɕ���
-	�E���C�����O���X�g�Ɏ�����o��
-	�Eyuuji@yatex.org �Ɏ�����o��
+	・近くにいる詳しい人に聞く
+	・メイリングリストに質問を出す
+	・yuuji@yatex.org に質問を出す
 	
-	�ł��傤���B���D���ȕ��@�łǂ����B
+	でしょうか。お好きな方法でどうぞ。
 	
 
 Local Variables:

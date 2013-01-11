@@ -81,7 +81,7 @@ And you will have the local dictionary.")
 (defvar YaTeX-use-italic-bold (string< "20" emacs-version)
   "*Non-nil tries to find italic/bold fontset.
 This variable is effective when font-lock is used.
-\it, \bf “à•”‚Å‚Ì“ú–{Œê‚ª ‚É‚È‚Á‚Ä‚µ‚Ü‚¤ê‡‚Í‚±‚ê‚ğnil‚É‚µ‚Ä‰º‚³‚¢B")
+\it, \bf å†…éƒ¨ã§ã®æ—¥æœ¬èªãŒâ–¡ã«ãªã£ã¦ã—ã¾ã†å ´åˆã¯ã“ã‚Œã‚’nilã«ã—ã¦ä¸‹ã•ã„ã€‚")
 
 ;----------- work variables ----------------------------------------
 (defvar YaTeX-minibuffer-completion-map nil
@@ -232,7 +232,7 @@ YaTeX-user-completion-table."
 	(message
 	 (cond
 	  (YaTeX-japan
-	   "`%s'‚Ì“o˜^æ: U)ƒ†[ƒU«‘ L)ƒ[ƒJƒ‹«‘ N)ƒƒ‚ƒŠ D)‚µ‚È‚¢")
+	   "`%s'ã®ç™»éŒ²å…ˆ: U)ãƒ¦ãƒ¼ã‚¶è¾æ›¸ L)ãƒ­ãƒ¼ã‚«ãƒ«è¾æ›¸ N)ãƒ¡ãƒ¢ãƒª D)ã—ãªã„")
 	  (t
 	   "Register `%s' into: U)serDic L)ocalDic N)one D)iscard"))
 	 (if (> (length car-v) 23)
@@ -1379,11 +1379,11 @@ Optional argument OBJECT is the string or buffer containing the text."
       (momentary-string-display
       (cond
        (YaTeX-japan
-	(concat mode " ‚ÍAŠù‚É font-lock ‚É‘Î‰‚µ‚Ü‚µ‚½B\n"
-		"~/.emacs ‚È‚Ç‚É‚ ‚é\n"
+	(concat mode " ã¯ã€æ—¢ã« font-lock ã«å¯¾å¿œã—ã¾ã—ãŸã€‚\n"
+		"~/.emacs ãªã©ã«ã‚ã‚‹\n"
 		"\t(put 'yatex-mode 'font-lock-keywords 'tex-mode)\n"
 		"\t(put 'yahtml-mode 'font-lock-keywords 'html-mode)\n"
-		"‚È‚Ç‚ÌŠÔ‚É‡‚í‚¹‚Ì‹Lq‚Í‚à‚Í‚â•s—v‚Å‚·B"))
+		"ãªã©ã®é–“ã«åˆã‚ã›ã®è¨˜è¿°ã¯ã‚‚ã¯ã‚„ä¸è¦ã§ã™ã€‚"))
        (t
 	(concat mode " now supports the font-lock by itself.\n"
 		"So you can remove the descriptions such as\n"

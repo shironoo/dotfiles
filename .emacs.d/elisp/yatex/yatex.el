@@ -1,5 +1,5 @@
 ;;; -*- Emacs-Lisp -*-
-;;; Yet Another tex-mode for emacs - //–ì’¹//
+;;; Yet Another tex-mode for emacs - //é‡é³¥//
 ;;; yatex.el rev. 1.74
 ;;; (c)1991-2009 by HIROSE Yuuji.[yuuji@yatex.org]
 ;;; Last modified Mon Sep 28 10:44:35 2009 on firestorm
@@ -113,9 +113,9 @@ process.")
 More precisely, setting t to this variables inhibits inter-word break on
 typeset document by line-break of source text.  That is, YaTeX automatically
 put % after each line at filling.
-‰üs+ƒCƒ“ƒfƒ“ƒg‚É‚æ‚Á‚ÄAƒ^ƒCƒvƒZƒbƒgŒã‚ÌšŠÔ‚ª‹ó‚¢‚Ä‚µ‚Ü‚¤‚Ì‚ğ—}§‚·‚éê‡‚É
-t‚É‚·‚é(ŒÃ‚¢NTT-jTeX‚ÅŒ°’˜‚ÉŒ»‚ê‚é)B‹ï‘Ì“I‚É‚ÍAfill‚·‚é‚Æ‚«‚ÉŠes‚ÌI‚í‚è‚É
-%‚ğ•t‰Á‚·‚éB")
+æ”¹è¡Œ+ã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆã«ã‚ˆã£ã¦ã€ã‚¿ã‚¤ãƒ—ã‚»ãƒƒãƒˆå¾Œã®å­—é–“ãŒç©ºã„ã¦ã—ã¾ã†ã®ã‚’æŠ‘åˆ¶ã™ã‚‹å ´åˆã«
+tã«ã™ã‚‹(å¤ã„NTT-jTeXã§é¡•è‘—ã«ç¾ã‚Œã‚‹)ã€‚å…·ä½“çš„ã«ã¯ã€fillã™ã‚‹ã¨ãã«å„è¡Œã®çµ‚ã‚ã‚Šã«
+%ã‚’ä»˜åŠ ã™ã‚‹ã€‚")
 
 
 (defvar YaTeX-item-regexp
@@ -640,7 +640,7 @@ more features are available and they are documented in the manual.
   (interactive)
   (kill-all-local-variables)
   (setq major-mode 'yatex-mode)
-  (setq mode-name (if YaTeX-japan "‚â‚Ä‚Ó" "YaTeX"))
+  (setq mode-name (if YaTeX-japan "ã‚„ã¦ãµ" "YaTeX"))
   (mapcar 'make-local-variable
 	  '(dvi2-command fill-column fill-prefix
 	    tmp-env-table tmp-section-table tmp-fontsize-table
@@ -709,10 +709,10 @@ more features are available and they are documented in the manual.
 (defvar YaTeX-struct-name-regexp "[^}]+"
   "Environment name regexp.")
 (defvar YaTeX-TeX-token-regexp
-  (cond (YaTeX-japan "[A-Za-z*‚Ÿ-‚ñˆŸ-ê]+")
+  (cond (YaTeX-japan "[A-Za-z*ã-ã‚“äºœ-é¾ ]+")
 	(t "[A-Za-z*]+"))
   "Regexp of characters which can be a member of TeX command's name.")
-(defvar YaTeX-kanji-regexp "[‚Ÿ-‚ñˆŸ-ê]"
+(defvar YaTeX-kanji-regexp "[ã-ã‚“äºœ-é¾ ]"
   "Generic regexp of Japanese Kanji (and symbol) characters.")
 (defvar YaTeX-command-token-regexp YaTeX-TeX-token-regexp
   "Regexp of characters which can be a member of current mark up language's command name.")
@@ -861,15 +861,15 @@ you can put REGION into that environment between \\begin and \\end."
 	  (if YaTeX-use-LaTeX2e "documentclass" "documentstyle"))
 	 ((progn
 	    (if (= (char-after (1- (point))) ?~) (forward-char -1))
-	    (forward-char -1) (looking-at "•\\\|}\\|®\\|‘æ"))
+	    (forward-char -1) (looking-at "è¡¨\\|å›³\\|å¼\\|ç¬¬"))
 	  "ref")
 	 ((and (looking-at "[a-z \t]")
 	       (progn (skip-chars-backward "a-z \t")
 		      (looking-at "table\\|figure\\|formula")))
 	  "ref")
 	 ((save-excursion
-	    (skip-chars-backward "[^ƒA-ƒ“]")
-	    (looking-at "ƒvƒƒOƒ‰ƒ€\\|ƒŠƒXƒg"))
+	    (skip-chars-backward "[^ã‚¢-ãƒ³]")
+	    (looking-at "ãƒ—ãƒ­ã‚°ãƒ©ãƒ \\|ãƒªã‚¹ãƒˆ"))
 	  "ref")
 	 ((YaTeX-re-search-active-backward
 	   (concat YaTeX-ec-regexp "begin{\\([^}]+\\)}")
@@ -1169,7 +1169,7 @@ into {\\xxx } braces.
 	 (bobp)
 	 (string-match
 	  (regexp-quote (char-to-string (preceding-char)))
-	  "ABCDHIuvwxyz()"))
+	  "ã€ã€‚ï¼Œï¼ï¼Ÿï¼ã€Œã€ã€ã€ã€ã€‘()"))
      "``")
     (t  "''"))))
 
@@ -1232,7 +1232,7 @@ into {\\xxx } braces.
 	"{"
 	(cond
 	 (YaTeX-japan
-	  (format "¡“x‚©‚ç‚Í‚¿‚á‚ñ‚Æ %s b ‚ğg‚¢‚Ü‚µ‚å‚¤" YaTeX-prefix))
+	  (format "ä»Šåº¦ã‹ã‚‰ã¯ã¡ã‚ƒã‚“ã¨ %s b ã‚’ä½¿ã„ã¾ã—ã‚‡ã†" YaTeX-prefix))
 	 (t (format "You don't understand Zen of `%s b':p" YaTeX-prefix)))
 	"}")
        (point))
@@ -1436,7 +1436,7 @@ into {\\xxx } braces.
   (interactive)
   (message
    (concat "Yet Another tex-mode "
-	   (if YaTeX-japan "u–ì’¹v" "`Wild Bird'")
+	   (if YaTeX-japan "ã€Œé‡é³¥ã€" "`Wild Bird'")
 	   " Revision "
 	   YaTeX-revision-number)))
 
@@ -1696,15 +1696,15 @@ matching group is sent to (image) processor defined by the variable
 YaTeX-file-processor-alist. See also the documentation of
 YaTeX-file-processor-alist.
 
-ª‚¶‚á—Ç‚­‚í‚©‚ñ‚È‚¢‚·‚ËB—á‚¦‚Î tgif hoge.obj ‚µ‚Ä hoge.eps ‚ğ
-\\epsfile{file=hoge.eps} ‚ÅƒCƒ“ƒNƒ‹[ƒh‚µ‚Ä‚¢‚é‚Æ‚µ‚æ‚¤B‚»‚Ìs‚Å
-\[prefix\] g ‚ğ‰Ÿ‚µ‚½‚É tgif ‚ğ‹N“®‚µ‚Ä—~‚µ‚©‚Á‚½‚çA‚Ü‚¸ã‚Ì‚æ‚¤‚È
-³‹K•\Œ»‚ğİ’è‚·‚éB\\\\(‚Æ\\\\)‚ÅˆÍ‚ñ‚¾‚Æ‚±‚ë‚ªƒtƒ@ƒCƒ‹–¼‚É‚È‚é‚æ‚¤‚É
-’ˆÓ‚·‚éB‚Åƒtƒ@ƒCƒ‹–¼•”•ª‚ª‰½”Ô–Ú‚Ì\\\\(\\\\)‚É‚È‚é‚©‚ğƒŠƒXƒg‚Ì2”Ô–Ú‚É‘‚­B
-‚·‚é‚ÆA‚»‚Ì•”•ª‚ª•Ï” YaTeX-file-processor-alist ‚Å’è‹`‚³‚ê‚½
-ˆ—ƒvƒƒOƒ‰ƒ€‚É“n‚³‚ê‚éB‚Æ‚¢‚¤‚í‚¯B
-‚ñ`‚â‚Á‚Ï‚è‚Ş‚¸‚©‚µ‚¢‚ËB•ª‚©‚ç‚È‚¢‚Í—×‚Ì Lisper ‚É•·‚­‚©A
-fj–ì’¹‚Ì‰ï‚Å•·‚±‚¤!
+â†‘ã˜ã‚ƒè‰¯ãã‚ã‹ã‚“ãªã„ã™ã­ã€‚ä¾‹ãˆã° tgif hoge.obj ã—ã¦ hoge.eps ã‚’
+\\epsfile{file=hoge.eps} ã§ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰ã—ã¦ã„ã‚‹ã¨ã—ã‚ˆã†ã€‚ãã®è¡Œã§
+\[prefix\] g ã‚’æŠ¼ã—ãŸæ™‚ã« tgif ã‚’èµ·å‹•ã—ã¦æ¬²ã—ã‹ã£ãŸã‚‰ã€ã¾ãšä¸Šã®ã‚ˆã†ãª
+æ­£è¦è¡¨ç¾ã‚’è¨­å®šã™ã‚‹ã€‚\\\\(ã¨\\\\)ã§å›²ã‚“ã ã¨ã“ã‚ãŒãƒ•ã‚¡ã‚¤ãƒ«åã«ãªã‚‹ã‚ˆã†ã«
+æ³¨æ„ã™ã‚‹ã€‚ã§ãƒ•ã‚¡ã‚¤ãƒ«åéƒ¨åˆ†ãŒä½•ç•ªç›®ã®\\\\(\\\\)ã«ãªã‚‹ã‹ã‚’ãƒªã‚¹ãƒˆã®2ç•ªç›®ã«æ›¸ãã€‚
+ã™ã‚‹ã¨ã€ãã®éƒ¨åˆ†ãŒå¤‰æ•° YaTeX-file-processor-alist ã§å®šç¾©ã•ã‚ŒãŸ
+å‡¦ç†ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã«æ¸¡ã•ã‚Œã‚‹ã€‚ã¨ã„ã†ã‚ã‘ã€‚
+ã‚“ã€œã‚„ã£ã±ã‚Šã‚€ãšã‹ã—ã„ã­ã€‚åˆ†ã‹ã‚‰ãªã„æ™‚ã¯éš£ã® Lisper ã«èãã‹ã€
+fjé‡é³¥ã®ä¼šã§èã“ã†!
 ")
 
 (defvar YaTeX-processed-file-regexp-alist-default
@@ -2667,7 +2667,7 @@ Optional second argument THISENV omits calling YaTeX-inner-environment."
 		    lenlist (cons 1 lenlist))
 	      (replace-match "_")
 	      (set-marker (car poslist) (match-beginning 0))))
-	  ;; Second, replace "•\~\ref{...}" to "\\\ref{...}"
+	  ;; Second, replace "è¡¨~\ref{...}" to "\\\ref{...}"
 	  (goto-char (point-min))
 	  (while (YaTeX-re-search-active-forward
 		  tilderex YaTeX-comment-prefix (point-max) t)

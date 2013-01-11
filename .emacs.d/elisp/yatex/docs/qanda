@@ -1,107 +1,107 @@
 %%
 %% Q and A on YaTeX
 %%
-%% C-u C-x $ �Ƃ���Ǝ��⍀�ڂ����\������܂��BC-x $ �Ō��ɖ߂�܂��B
+%% C-u C-x $ とすると質問項目だけ表示されます。C-x $ で元に戻ります。
 %%
 
-(�V����:�ERefTeX�͎g���܂���?
-	�E�����Œ�`�����J�E���^��\ref�⊮�ł̃��x�����ΏۂƂ��ĔF����������
-	�Efont-lock �͂ǂ�����Ďg���΂�����ł���?
-	�EXEmacs�ł��F�͒����܂���?
-	�E{\it }�����ł͎Α̂� {\bf }�ł͑����ɂȂ�Ƃ����\�𕷂�����ł����c)
+(新項目:・RefTeXは使えますか?
+	・自分で定義したカウンタを\ref補完でのラベル候補対象として認識させたい
+	・font-lock はどうやって使えばいいんでしょ?
+	・XEmacsでも色は着きますか?
+	・{\it }内部では斜体に {\bf }では太字になるという噂を聞いたんですが…)
 
-���C���X�g�[���֘A
-�E�}�j���A���̃C���X�g�[��
+■インストール関連
+・マニュアルのインストール
 	
-	Emacs�̃C���X�g�[������Ă���ꏊ�� info �f�B���N�g����yatexj �t�@
-	�C�����R�s�[���A�����f�B���N�g���ɂ��� dir �Ƃ����t�@�C���Ɏ���
-	�s�𑫂��܂��B
+	Emacsのインストールされている場所の info ディレクトリにyatexj ファ
+	イルをコピーし、同じディレクトリにある dir というファイルに次の
+	行を足します。
 	
 	* YaTeX: (yatexj). Yet Another tex-mode for Emacs. (Japanese).
 	
-	(���Ƃ� M-x info �Ƃ��� m yatex �Ŗ쒹�̃}�j���A����I�����ēǂ�
-	 �܂��B?�������� info �̎g�������o�ė��܂��B)
+	(あとは M-x info として m yatex で野鳥のマニュアルを選択して読み
+	 ます。?を押すと info の使い方が出て来ます。)
 	
-�EMeadow���Ă�񂷂� make ���Ē@���Ă������N���Ȃ��ł��`
+・Meadowつこてるんすが make って叩いても何も起きないです〜
 	
-	make�̓o�C�g�R���p�C���̂��߂ɗ��p���Ă��邾���Ȃ̂ł��Ȃ��Ă�
-	�\���܂���Bmake�̂Ȃ�Meadow���[�U�̍ŒZ�C���X�g�[���͈ȉ��̒ʂ�
-	�ł��B
-	  1 Meadow��site-lisp�f�B���N�g���� yatex*.tar.gz ��W�J��
-	    ��B�����ǂ�ł�i�K�ł͕ʂ̃f�B���N�g���ɓW�J���Ă���\
-	    ���������̂ŁA���̏ꍇ�̓f�B���N�g�����ƈړ����Ă��܂��ĉ���
-	    ���B
-	  2 install �t�@�C���ɏ����Ă���悤�� ~/.emacs ��autoload��
-	    load-path, auto-mode-alist �̐ݒ�������B
+	makeはバイトコンパイルのために利用しているだけなのでやらなくても
+	構いません。makeのないMeadowユーザの最短インストールは以下の通り
+	です。
+	  1 Meadowのsite-lispディレクトリに yatex*.tar.gz を展開す
+	    る。これを読んでる段階では別のディレクトリに展開している可能
+	    性が高いので、その場合はディレクトリごと移動してしまって下さ
+	    い。
+	  2 install ファイルに書いてあるように ~/.emacs にautoloadと
+	    load-path, auto-mode-alist の設定を書く。
 	
-�E�܂��������ςȂ̂� Info �f�B���N�g���ɏ������ތ������Ȃ��������c
+・まだしたっぱなので Info ディレクトリに書き込む権利がないっすう…
 	
-	root�ɂ��Ă��炢�܂��傤�B���ꂪ���߂ȂƂ��� Mule2 ���C���X�g�[
-	�����Ă��炢�܂��傤�B���Ă���Ȃ����́A�z�[���f�B���N�g���ɃC��
-	�X�g�[�����āA�ف[��f�B�X�N�̖��ʌ�������`��Ƃ����ċ����Γ���
-	�Ă����͂��ł��BMule2 �Ȃ�A~/.emacs ��
+	rootにしてもらいましょう。それがだめなときは Mule2 をインストー
+	ルしてもらいましょう。してくれない時は、ホームディレクトリにイン
+	ストールして、ほーらディスクの無駄遣いだよ〜んといって脅せば入れ
+	てくれるはずです。Mule2 なら、~/.emacs に
 	
 		(setq Info-default-directory-list
-		      (cons "������Info�f�B���N�g��"
+		      (cons "自分のInfoディレクトリ"
 			    Info-default-directory-list))
 	
-	�Ə������ƂŁAinfo ���N���������Ɍl�p�̃t�@�C�������j���[�ɉ�
-	���܂��B����ł�Mule2���Ȃ��Ȃ�����Ă���Ȃ����́A�V����info
-	�t�@�C�����E���ė��邽�тɊǗ��҂Ɂu����Ă������[���B���A���݂�
-	���[�񖈓x�B�ł�Mule2�Ȃ玩���̃f�B���N�g����ǉ��ł����ł���
-	�ǂ˂��c�v���J��Ԃ��܂��傤�B
+	と書くことで、info を起動した時に個人用のファイルもメニューに加
+	わります。それでもMule2をなかなか入れてくれない時は、新しいinfo
+	ファイルを拾って来るたびに管理者に「入れてくださーい。あ、すみま
+	せーん毎度。でもMule2なら自分のディレクトリを追加できるんですけ
+	どねぇ…」を繰り返しましょう。
 	
-�ELaTeX�̃w���v�t�@�C�����Ȃ��Ƃ�����B
+・LaTeXのヘルプファイルがないといわれる。
 	
-	Nemacs, Mule1 �ł� $EMACS/etc/, Mule2 �ł� $EMACS/site-lisp/ ��
-	�u����Ă���Ƃ݂Ȃ��悤�ɂȂ��Ă��܂��B���������̏ꏊ�ɒu������
-	���Ȃ����́A�z�[���f�B���N�g���̉��̂ǂ����ɒu���āA�ϐ� 
-	YaTeX-help-file �ɂ��̃t�@�C������ݒ肵�ĉ������B
+	Nemacs, Mule1 では $EMACS/etc/, Mule2 では $EMACS/site-lisp/ に
+	置かれているとみなすようになっています。もし公共の場所に置く権限
+	がない時は、ホームディレクトリの下のどこかに置いて、変数 
+	YaTeX-help-file にそのファイル名を設定して下さい。
 	
-�ENemacs�� info ���ǂ߂Ȃ��B
+・Nemacsで info が読めない。
 	
-	Mule��format���Ă���̂ŁA�������{�ꏈ���̈قȂ�Nemacs(�܂���
-	Nemacs�x�[�X��Demacs)�ł�(�o�C�g��������邽��)�������ǂނ��Ƃ�
-	�ł��܂���BMule�Ō䗗���������B�Ȃ��ATexinfo�t�@�C���̃t�H�[�}�b
-	�g�ɂ� texinfo-3.1.tar.gz �ɂ��� Emacs-Lisp �t�@�C����p���Ă���
-	�����B
+	Muleでformatしているので、内部日本語処理の異なるNemacs(または
+	NemacsベースのDemacs)では(バイト数がずれるため)正しく読むことが
+	できません。Muleで御覧ください。なお、Texinfoファイルのフォーマッ
+	トには texinfo-3.1.tar.gz にある Emacs-Lisp ファイルを用いてくだ
+	さい。
 	
-	�܂��A��B��w�̈�コ��ɂ��ƁAInfo �� dir ��ʂŁCM-x
-	Info-tagify �Ƃ��� info �t�@�C���̃R���o�[�g���ł��邻���ł��B
+	また、九州大学の井上さんによると、Info の dir 画面で，M-x
+	Info-tagify とやると info ファイルのコンバートができるそうです。
 	
-������֘A
-�E�Ԉ���ĕς�LaTeX�R�}���h���w�K�����Ă��܂����B
+■操作関連
+・間違って変なLaTeXコマンドを学習させてしまった。
 	
-	�z�[���f�B���N�g���A�܂��̓J�����g�f�B���N�g���ɂł��Ă��� 
-	.yatexrc �ɊԈ���Ċw�K�����R�}���h���܂ލs������͂��ł�����A
-	���̍s���폜�A���邢�͐������R�}���h�ɏ��������Ă��� C-x C-s �� 
-	.yatexrc ���Z�[�u���AC-x k �ŃN���[�Y���܂��B����LaTeX�ҏW�o�b�t�@
-	�ɖ߂������Ƃ��m�F���Ă��� M-x YaTeX-reload-dictionary �Ƃ���
-	�ƁA���������� .yatexrc �����݂̃o�b�t�@�ɔ��f����܂��B
+	ホームディレクトリ、またはカレントディレクトリにできている 
+	.yatexrc に間違って学習したコマンドを含む行があるはずですから、
+	その行を削除、あるいは正しいコマンドに書き直してから C-x C-s で 
+	.yatexrc をセーブし、C-x k でクローズします。元のLaTeX編集バッファ
+	に戻ったことを確認してから M-x YaTeX-reload-dictionary とする
+	と、書き換えた .yatexrc が現在のバッファに反映されます。
 	
-�E���W�������w�肵�ăR�����g�A�E�g���悤�Ƃ����̂ɂ��܂������Ȃ��B
+・リジョンを指定してコメントアウトしようとしたのにうまくいかない。
 	
-	�����炭�J�[�\���� \begin{}, \end{} �̍s�ɏ���Ă���̂��Ǝv����
-	���B��s�ォ���ɂ悯�� C-c > ���Ă��������B
+	おそらくカーソルが \begin{}, \end{} の行に乗っているのだと思いま
+	す。一行上か下によけて C-c > してください。
 	
-�E�^�C�v�Z�b�g�̎��ɐe�t�@�C���𕷂���āA���̎��ɊԈႦ�Ă��܂����B
+・タイプセットの時に親ファイルを聞かれて、その時に間違えてしまった。
 	
-	C-x C-v RET �ł�����x�q�t�@�C����ǂݒ������A
-	C-u C-c ^ �Őe�t�@�C����������x���͂��Ă��������B
+	C-x C-v RET でもう一度子ファイルを読み直すか、
+	C-u C-c ^ で親ファイルをもう一度入力してください。
 	
-�EDemacs�Ń^�C�v�Z�b�g�G���[���ł�����typeset�o�b�t�@�����܂��\������Ȃ��B
+・Demacsでタイプセットエラーがでた時にtypesetバッファがうまく表示されない。
 	
-	Demacs 1.2.0 �Ŏq�v���Z�X��1�ȏ�� errorlevel ��Ԃ����ꍇ�A����
-	�悤�ȏǏ󂪋N���鎖������܂��Bjlatex ���o�b�`�t�@�C������Ă�
-	�悤�ɂ��A���̖����ŕK�� errorlevel 0 ��Ԃ��_�~�[�̃R�}���h����
-	�Ԃ悤�ɂ��܂��B
+	Demacs 1.2.0 で子プロセスが1以上の errorlevel を返した場合、この
+	ような症状が起きる事があります。jlatex をバッチファイルから呼ぶ
+	ようにし、その末尾で必ず errorlevel 0 を返すダミーのコマンドを呼
+	ぶようにします。
 	
-�E�u\underline{\makebox[4em][l]{x y}{\tt z}}�v �Ȃǂ���y�ɓ��͂������B
+・「\underline{\makebox[4em][l]{x y}{\tt z}}」 などを手軽に入力したい。
 	
-	section�^�⊮�̈������~�j�o�b�t�@�œ��͂��鎞�ɂ��ċA�I�Ɏ�X��
-	�⊮�@�\���g���܂��B�\��̃R�}���h���⊮���͂������̂��ȉ��̗�
-	�ł��B
-	�v�����v�g				    �L�[����
+	section型補完の引数をミニバッファで入力する時にも再帰的に種々の
+	補完機能が使えます。表題のコマンド列を補完入力したものが以下の例
+	です。
+	プロンプト				    キー入力
 						    C-c s und SPC RET
 	\underline{???}:				C-c s makeb SPC RET
 	Width:						    4em RET
@@ -110,213 +110,213 @@
 	\underline{???}: \makebox[4em][l]{x y}		C-c l tt RET
 	\underline{???}: \makebox[4em][l]{x y}{\tt }	z RET
 	
-�E�u\footnote{�ق��ق�}�v�Ə���������\footnote{}����蕥�������B
+・「\footnote{ほげほげ}」と書いたけど\footnote{}を取り払いたい。
 	
-	\footnote �̕����ɃJ�[�\�������킹�� C-c k �Ƃ��Ă��������B
-	\footnote{} �̕��������I��ŏ������܂��B
-	�S������Ȃ��ꍇ�� C-u C-c k �Ƃ��܂��B
+	\footnote の部分にカーソルを合わせて C-c k としてください。
+	\footnote{} の部分だけ選んで消去します。
+	全部いらない場合は C-u C-c k とします。
 	
-�E�u�قɂ���v�̕�����\footnote�ɂ������B
+・「ほにゃらら」の部分を\footnoteにしたい。
 	
-	�u�قɂ���v�̕������}�[�N���� C-c S footnote RET �ȂǂƂ��܂��B
-	(S�͑啶��)
+	「ほにゃらら」の部分をマークして C-c S footnote RET などとします。
+	(Sは大文字)
 	
-�E���܂��� verbatim ���� verbatim* ���ɂ������B
+・いまある verbatim 環境を verbatim* 環境にしたい。
 	
-	\begin{verbatim} �� \end{verbatim} �̍s�ŁAC-c c ���܂��B
+	\begin{verbatim} か \end{verbatim} の行で、C-c c します。
 	
-�E�w��̈�� \verb �ň݂͂����B
+・指定領域を \verb で囲みたい。
 	
-	�c�O�Ȃ��� \verb �� maketitle �^�Ȃ̂ŊY������@�\�͂���܂���B
-	���� C-c $ ���̈�� $ �Ŋ��鎖�𗘗p���Ď��̂悤�ɂł��܂��B
+	残念ながら \verb は maketitle 型なので該当する機能はありません。
+	ただ C-c $ が領域を $ で括る事を利用して次のようにできます。
 	     .              .
-	     �������炱���܂ł� \verb �ɂ���
-	     \verb�������炱���܂ł� \verb �ɂ���    (\verb������)
-	          ��(C-@)			     (�u���v�̈ʒu�Ń}�[�N)
-	     \verb�������炱���܂ł� \verb �ɂ���    ($�ł�����)
-				��C-c $
-	     \verb$�������炱���܂�$�� \verb �ɂ���  (����)
+	     ここからここまでを \verb にする
+	     \verbここからここまでを \verb にする    (\verbを入れる)
+	          ↑(C-@)			     (「こ」の位置でマーク)
+	     \verbここからここまでを \verb にする    ($でくくる)
+				↑C-c $
+	     \verb$ここからここまで$を \verb にする  (完成)
 	
-�E�q�t�@�C����ҏW���Ă��� typeset-region ����鎞�Ɏq�t�@�C���̏�̕���
-  ��`���Ă���R�}���h���ǂ�ŗ~�����B
+・子ファイルを編集していて typeset-region をやる時に子ファイルの上の方で
+  定義してあるコマンドも読んで欲しい。
 	
-	�͖��ɕ��������o�[�Ńt�@�C����ҏW���鎞�Ɏq�t�@�C�������Œʗp��
-	��}�N�����q�t�@�C���̏�̕��Œ�`���Ă���ꍇ�ɂ́Atypeset
-	region �����鎞�ɂ����̍s���K�v�ɂȂ��ė��܂��B���������ꍇ�́A
-	�q�t�@�C���̃}�N����`�̍s�̖����� %#REQUIRE �����邱�ƂŗՎ�
-	�^�C�v�Z�b�g�t�@�C���̐擪�ɂ��̍s���R�s�[����܂��B
+	章毎に複数メンバーでファイルを編集する時に子ファイルだけで通用す
+	るマクロを子ファイルの上の方で定義している場合には、typeset
+	region をする時にそれらの行も必要になって来ます。こういう場合は、
+	子ファイルのマクロ定義の行の末尾に %#REQUIRE をつけることで臨時
+	タイプセットファイルの先頭にその行がコピーされます。
 	
-	����ɑ��t�@�C�����������ꍇ���l���Ă݂܂��傤�B
+	さらに孫ファイルがあった場合を考えてみましょう。
 	+-- main.tex --+  +---- sub.tex ----+  +-- subsub.tex --+
 	| :            |  |%#jlatex main    |  |%#jlatex main   |
 	|\include{sub} |  |\include{macros} |  |.....           |
-	| :            |��| :               |��|%#BEGIN         |
-	| :            |  | :               |  |���̕ӂ�        |
-	| :            |  +-----------------+  |�^�C�v�Z�b�g    |
-	+--------------+          ��           |������          |
+	| :            |←| :               |←|%#BEGIN         |
+	| :            |  | :               |  |この辺を        |
+	| :            |  +-----------------+  |タイプセット    |
+	+--------------+          ↑           |したい          |
 	                  +-- macros.tex ---+  |%#END           |
 			  |\def\foo{bar}    |  |:               |
 			  |\def\hoge{hero}  |  +----------------+
 			  +-----------------+
 	
-	���̂悤�ȏꍇ sub.tex �� \include{macros} �̍s���ȉ��̂悤�ɕ�
-	���܂��B
+	このような場合 sub.tex の \include{macros} の行を以下のように変
+	えます。
 		\include{macros} %#REQUIRE
 	
-	����� subsub.tex �̂ǂ����Ɉȉ��̂悤�ȍs�������܂��B
+	さらに subsub.tex のどこかに以下のような行を加えます。
 	
 		%#REQUIRE \include{macros}
 	
-	%#REQUIRE ���s���ɂ��鎞�͂�������̕������Վ��t�@�C���ɃR�s�[
-	����܂��B����ɂ��A�S�̂��^�C�v�Z�b�g���鎞�A�܂��� sub.tex,
-	subsub.tex �����ꂩ�� typeset-region ���鎞�ǂ���ɂ����Ă�����
-	�炸��x���� macros.tex ���C���N���[�h����邱�ƂɂȂ�܂��B
+	%#REQUIRE が行頭にある時はそれより後ろの部分が臨時ファイルにコピー
+	されます。これにより、全体をタイプセットする時、または sub.tex,
+	subsub.tex いずれかを typeset-region する時どちらにおいてもかな
+	らず一度だけ macros.tex がインクルードされることになります。
 	
-�E���O�ɓ��ꂽ \foo{��������} �́u��������v���������g�������B
+・直前に入れた \foo{引数だよ} の「引数だよ」をもう一回使いたい。
 	
-	gmhist �Ƃ����p�b�P�[�W�𓱓����܂��傤�B�쒹�� gmhist �ɑΉ���
-	�Ă��܂��B�~�j�o�b�t�@�� \foo{???}: �ƕ����ꂽ���� M-p (ESC p)��
-	�����ƍ��܂œ��͂��������̗������t�����ɂ��ǂ��ĕ\�����܂��BM-n 
-	�Ɖ����Ə������ɂ��ǂ�܂��B�����̓��͗����� begin �^�⊮�A
-	section �^�⊮�A�v�������[�A�N���A�v�����g�A�E�g�R�}���h�N������
-	����ɑ΂��Ɨ��ɐݒ肳��܂��B
+	gmhist というパッケージを導入しましょう。野鳥は gmhist に対応し
+	ています。ミニバッファで \foo{???}: と聞かれた時に M-p (ESC p)を
+	押すと今まで入力した文字の履歴を逆方向にたどって表示します。M-n 
+	と押すと順方向にたどります。これらの入力履歴は begin 型補完、
+	section 型補完、プレヴューア起動、プリントアウトコマンド起動それ
+	ぞれに対し独立に設定されます。
 	
-	gmhist �͑����� Emacs-Lisp �A�[�J�C�u�T�C�g�ɒu���Ă���܂��B
+	gmhist は多くの Emacs-Lisp アーカイブサイトに置いてあります。
 	ftp.ae.keio.ac.jp:pub/emacs-lisp/util/gmhist.tar.gz
-	�ɂ�����܂��B
+	にもあります。
 
-	�������AMule2 �ȍ~��p���Ă���ꍇ�́Agmhist��p���Ȃ��Ă��~�j�o�b
-	�t�@�ł̃q�X�g�����g���܂��B
+	ただし、Mule2 以降を用いている場合は、gmhistを用いなくてもミニバッ
+	ファでのヒストリが使えます。
 	
-�Eref����label�ԃW�����v�ő��݂���͂���ref/label�ɃW�����v���Ȃ��B
+・ref←→label間ジャンプで存在するはずのref/labelにジャンプしない。
 	
-	C-c g �Ƃ����łƑΉ�����ref/label�̑O����������n�߂܂��B
-	C-u C-c g �Ƒłƌ����������n�߂܂��B������ \ref �����������
-	���ȏꍇ�� C-s (C-r) ���񑱂��ĉ����C���N�������^���T�[�`�̘A
-	�������@�\�𗘗p���܂��B�����W�����v�悪�ʃt�@�C���ɂ��鎞�́A��
-	�̃t�@�C�������炩���߃I�[�v�����Ă����K�v������܂��BC-c d �� 
-	YaTeX-display-hierarchy �͑S�Ẵt�@�C������C�ɃI�[�v�����邽��
-	�ɂ��g���܂��B
+	C-c g とだけ打つと対応するref/labelの前方検索から始めます。
+	C-u C-c g と打つと後方検索から始めます。続けて \ref を検索するよ
+	うな場合は C-s (C-r) を二回続けて押しインクリメンタルサーチの連
+	続検索機能を利用します。もしジャンプ先が別ファイルにある時は、そ
+	のファイルをあらかじめオープンしておく必要があります。C-c d の 
+	YaTeX-display-hierarchy は全てのファイルを一気にオープンするため
+	にも使えます。
 	
-�Efill-paragraph �� auto-fill �ōs����%���t�����Ⴄ�B
+・fill-paragraph や auto-fill で行末に%が付いちゃう。
 	
-	TeX version 2 �x�[�X��NTT-jTeX�ł͓��{��̃p���O���t�̊e�s�����C
-	���f���g���ď����Ƃ��̕��X�y�[�X���]�v�ɓ���������C���[�W�ɂȂ�
-	�Ă��܂��܂��B�����������邽�߂ɍs���� % ��t����K�v�������
-	���B�쒹�ł̓C���f���g���ꂽ�e�L�X�g��NTT�łł����͂ł���悤��
-	�u�s��%�v�̖ʓ|���݂Ă��܂��B�ł��o�O���Ă�\�����肠��Ȃ̂ŁA
-	�s���ȊO�� % ���o��Ȃǂ̌��ۂ𔭌������炲�A�����������B
+	TeX version 2 ベースのNTT-jTeXでは日本語のパラグラフの各行頭をイ
+	ンデントして書くとその分スペースが余計に入った印刷イメージになっ
+	てしまいます。それを回避するために行末に % を付ける必要がありま
+	す。野鳥ではインデントされたテキストをNTT版でも入力できるように
+	「行末%」の面倒をみています。でもバグってる可能性ありありなので、
+	行末以外に % が出るなどの現象を発見したらご連絡ください。
 		
-�Eitemize���̒���itemize�̃C���f���g���[�����₵�܂���?
+・itemize環境の中のitemizeのインデントが深すぎやしませんか?
 	
-	�ł���? �^K�N�����̂ق����������Č����āATAB��ł��Ă͈�l������
-	��Ă���̂ł̂ŁA����������ł����A���͋C�ɓ���܂���(���܂���
-	�Ɏ����Ă�)�B�u�[������!�v�Ƃ������́A������\begin{itemize} �̍s
-	����TAB��ł��Ă��������B�ȂʁA���x�͐󂷂���? ���ăg�C���s���B
+	でしょ? 某K君があのほうがいいって言って、TABを打っては一人酔いし
+	れているのでので、そうしたんですが、私は気に入りません(←まだ根
+	に持ってる)。「深すぎる!」という方は、内側の\begin{itemize} の行
+	末でTABを打ってください。なぬ、今度は浅すぎる? さてトイレ行こ。
 	
-�E�������^�Ƃ��Ďg���Ă��� template.tex ���ȒP�ɓ��ꂽ��
+・いつも雛型として使っている template.tex を簡単に入れたい
 	
-	autoinsert.el (Emacs19/Mule2�t��)���g���܂��傤�B�������́A����
-	�̋@�\������ auto-insert-tkld ���g���܂��傤�B��҂́A
+	autoinsert.el (Emacs19/Mule2付属)を使いましょう。もしくは、それ
+	の機能強化版 auto-insert-tkld を使いましょう。後者は、
 	ftp://ftp.ae.keio.ac.jp/pub/emacs-lisp/util/auto-inset-tkld.tar.Z
-	�œ���ł��܂��B
+	で入手できます。
 	
-�Ebibtex��latex�Ƃ������݂ɂ�����̂��ʓ|�Ȃ�ł�����
+・bibtexとlatexとかを交互にかけるのが面倒なんですけど
 	
-	latexmk �Ƃ����X�O�����̂̃c�[��������܂��B����́A.tex,
-	.bib, .idx �Ȃǂ̃t�@�C���Ԃ̈ˑ��֌W���h�L�������g�𑖍����Ē�
-	�ׁA�����I�� bibtex, makeindex, jlatex �Ȃǂ�K�v�ȏ����ŕK�v��
-	�񐔋N�����Ă���܂��B������C���X�g�[�����A�e�h�L�������g�̐擪
-	��
+	latexmk というスグレもののツールがあります。これは、.tex,
+	.bib, .idx などのファイル間の依存関係をドキュメントを走査して調
+	べ、自動的に bibtex, makeindex, jlatex などを必要な順序で必要な
+	回数起動してくれます。これをインストールし、各ドキュメントの先頭
+	に
 		%#!latexmk
 	
-	�ȂǂƏ����ă^�C�v�Z�b�^�Ƃ��� latexmk ���w�肷��Ε��G�Ȉˑ���
-	�W�ɔY�񂾓��X�Ƃ͂�����΂ł��B�Ȃ��Alatexmk �� CTAN �T�C�g��
-	support/latexmk/ �f�B���N�g���ɒu���Ă���܂��B
-	(�Ⴆ�� ftp.kdd.lab.kdd.co.jp:/CTAN/)
+	などと書いてタイプセッタとして latexmk を指定すれば複雑な依存関
+	係に悩んだ日々とはおさらばです。なお、latexmk は CTAN サイトの
+	support/latexmk/ ディレクトリに置いてあります。
+	(例えば ftp.kdd.lab.kdd.co.jp:/CTAN/)
 	
-�E�^�C�v�Z�b�g�ƃv�������[�ŃL�[���Ⴄ�̂��ʓ|�ł���?
+・タイプセットとプレヴューでキーが違うのが面倒ですね?
 	
-	�����������Ƃ�������Ƃ������Ƃ́A���������āA�v�������[�A���N��
-	���Ċm�F�����̂��ɁA���������v�������[�A���I���������肵�Ă܂���?
-	UNIX�ł�Windows�ł�����Ȃ��Ƃ͕��ʂ��Ȃ��Ă�����ł��B��x�N��
-	�����v�������[�A�͏풓�����Ă����΁A�\��LaTeX�\�[�X���^�C�v�Z�b
-	�g����΁A����v���r���[�A�̑���I�������Ƃ��ɏ���Ƀ����[�h����
-	����܂��B�v���r���[�A�𖈉�I��������ƃt�H���g�̃��[�h�ȂǃI�[
-	�o�[�w�b�h���傫���̂ŁA����풓�����܂��傤�B�ӊO�ɂ��̂��Ƃ���
-	���Ă�����ĂȂ��l������悤�Ȃ̂ŏ����Ă݂܂����B
+	そういうことを感じるということは、もしかして、プレヴューアを起動
+	して確認したのちに、いちいちプレヴューアを終了させたりしてますか?
+	UNIXでもWindowsでもそんなことは普通しなくていいんです。一度起動
+	したプレヴューアは常駐させておけば、表でLaTeXソースをタイプセッ
+	トすれば、次回プレビューアの窓を選択したときに勝手にリロードして
+	くれます。プレビューアを毎回終了させるとフォントのロードなどオー
+	バーヘッドが大きいので、是非常駐させましょう。意外にそのことを教
+	えてもらってない人がいるようなので書いてみました。
 	
-	���ǂ̂Ƃ���قƂ�� [prefix] tj �̃^�C�v�Z�b�g�݂̂ŗp���͏I��
-	��܂��B�܂��A����bibtex�ȂǁA���̊֘A�R�}���h���J��Ԃ����p����
-	�悤�ȏꍇ�́A�O���ŏЉ�� latexmk �R�}���h�𗘗p����Ƃ�����
-	���X�}�[�g�ȉ�����ł��B���ǂ̂Ƃ���A�قƂ�� [prefix] tj �Ƒł�
-	�Ďd����i�߂邱�ƂɂȂ�܂��B
+	結局のところほとんど [prefix] tj のタイプセットのみで用件は終わ
+	ります。また、もしbibtexなど、他の関連コマンドを繰り返し利用する
+	ような場合は、前項で紹介した latexmk コマンドを利用するというの
+	がスマートな解決策です。結局のところ、ほとんど [prefix] tj と打っ
+	て仕事を進めることになります。
 	
-�Efill�����܂��s���Ȃ��Ȃ�
+・fillがうまく行かないなあ
 	
-	�f�t�H���g�̃C���f���e�[�V����(TAB�������ƈړ�����J����)�ƈႤ
-	�p���O���t��fill���悤�Ƃ���Ƃ��܂��s���܂���Bauto-fill ��ON��
-	���ĕ��͂���͂��Ă���΂��̖��͋N���Ȃ��͂��ł��B�����A���̂�
-	���납��R�s�[�����i���ŁA�f�t�H���g�̃C���f���e�[�V�����ƈႤ�i
-	�����ł��Ă��܂����ꍇ�́A
+	デフォルトのインデンテーション(TABを押すと移動するカラム)と違う
+	パラグラフをfillしようとするとうまく行きません。auto-fill をONに
+	して文章を入力していればこの問題は起きないはずです。もし、他のと
+	ころからコピーした段落で、デフォルトのインデンテーションと違う段
+	落ができてしまった場合は、
 	
-		(1)�s���� C-x .   (fill-prefix���L�����Z������)
-		(2)�C���f���e�[�V�����𑵂������͈͂��}�[�N����
-		(3)M-C-\ ����B
+		(1)行頭で C-x .   (fill-prefixをキャンセルする)
+		(2)インデンテーションを揃えたい範囲をマークする
+		(3)M-C-\ する。
 	
-	�Ƃ�������Ńf�t�H���g�̃C���f���e�[�V�����ɑ����邱�Ƃ��ł��܂��B
-	�����A�f�t�H���g�Ƃ͈Ⴄ�[����fill�������ꍇ�́A�s�̍ŏ��̔��
-	�����ɃJ�[�\�������킹�� M-q ���Ă��������B
+	という操作でデフォルトのインデンテーションに揃えることができます。
+	もし、デフォルトとは違う深さでfillしたい場合は、行の最初の非空白
+	文字にカーソルを合わせて M-q してください。
 	
-�EWin95/WinNT�Ń^�C�v�Z�b�^�ȂǊO���v���Z�X���ĂׂȂ�
+・Win95/WinNTでタイプセッタなど外部プロセスが呼べない
 	
-	shell��ύX���Ă��Ȃ��Ȃ�Ƃ肠�����A
+	shellを変更していないならとりあえず、
 	(setq shell-command-option "\\/c")
-	�� .emacs �ɓ���Ă݂܂��傤�B
+	を .emacs に入れてみましょう。
 	
-	UNIX�n��shell(sh, bash, tcsh, zsh��)���g���Ă���ꍇ�́A
+	UNIX系のshell(sh, bash, tcsh, zsh等)を使っている場合は、
 	(setq shell-command-option "-c")
-	�� .emacs �ɓ���Ă݂܂��傤�B
+	を .emacs に入れてみましょう。
 	
 	
-�ERefTeX�͎g���܂���?
+・RefTeXは使えますか?
 	
-	�g���Ă���l�͂���݂����ł�����g����񂶂�Ȃ��ł��傤���B�ł�
-	�ł��ˁA�쒹�� \ref �⊮������΁ARefTeX�Ȃ񂼗v��Ȃ��Ǝv���܂�
-	��B���ꂩ���\label{}�͂������������ł͍�炸�ɂ����Ȃ�[prefix]
-	s �� \ref ��ł����݂܂��傤�B����Ƀ��x����łĂ����ȂƂ����T
-	���ď���Ƀ��x����ł��Ă��̖��O��\ref�ɓ���Ă���܂��B\ref�⊮
-	�� \label{} �� \ref{} ���������ɕ⊮���͂��܂��B
+	使っている人はいるみたいですから使えるんじゃないでしょうか。でも
+	ですね、野鳥の \ref 補完があれば、RefTeXなんぞ要らないと思います
+	よ。これからは\label{}はいちいち自分では作らずにいきなり[prefix]
+	s で \ref を打ち込みましょう。勝手にラベルを打てそうなところを探
+	して勝手にラベルを打ってその名前を\refに入れてくれます。\ref補完
+	は \label{} と \ref{} 両方同時に補完入力します。
 	
-	�łł��ˁA\ref�⊮�̕�������ڂ��Ǝv���Ȃ���ǂ��܂���B�uRefTeX
-	�̕����F�����Ă������傦���v�Ƃ������ȊO�Ȃ炷���Ɋ撣��܂��B
+	でですね、\ref補完の方がしょぼいと思うなら改良しますよ。「RefTeX
+	の方が色がついてかっちょええ」という問題以外ならすぐに頑張ります。
 	
-�E�����Œ�`�����J�E���^��\ref�⊮�ł̃��x�����ΏۂƂ��ĔF����������
+・自分で定義したカウンタを\ref補完でのラベル候補対象として認識させたい
 	
-	�����A����͍��x�Ȏ���ł������B���݂������ˁB���A����̈Ӗ���
-	�������? ����LaTeX�̂��ׂ񂫂�[����B
+	おお、これは高度な質問でござるよ。ちみすごいね。え、質問の意味が
+	分からん? じゃLaTeXのおべんきょーから。
 	
-	���Ƃ��΁A�v���O�������X�g�Ȃ񂩂ɂ͐}�\�Ɠ����悤�ɔԍ���t����
-	���B����Ƃ����������B���������Ƃ��ɂ͒藝�^���� newtheorem 
-	�Œ�`����ł���B���Ƃ��΁A�Z�N�V�����ԍ��ɘA�����Ă��悤�ȃv
-	���O�������X�g������肽���Ƃ��܂���|�B�������炱�����܂��B
+	たとえば、プログラムリストなんかには図表と同じように番号を付けた
+	い。そゆときあるっしょ。そういうときには定理型環境を newtheorem 
+	で定義するですよ。たとえば、セクション番号に連動してつくようなプ
+	ログラムリスト環境を作りたいとしましょ−。そしたらこうします。
 	
-	\newtheorem{Program}{���X�g}[section]
+	\newtheorem{Program}{リスト}[section]
 	
-	��������� \begin{Program} ... \end{Program} �Ƃ���ƃ^�C�v�Z�b
-	�g���ʂ�
+	こうすると \begin{Program} ... \end{Program} とするとタイプセッ
+	ト結果が
 	
-		���X�g 2.4.1 ...
+		リスト 2.4.1 ...
 	
-	�Ȃ�ĂȂ�킯�ł��ȁB�������傦�[�B���āA���̂܂܂��Ƃ���2.4.1 
-	�Ƃ����ԍ���\ref�ň������邽�߂ɂ�\label�����Ȃ��Ƃ�����킯��
-	����B�ł��ǂ��������Ŋ����`����Ȃ�label�������I�ɒ�`������
-	���悤�ȃ}�N�����`���������������֗��Ȃ킯�ł���B �����Ƃ�
-	���ƓƎ��ɒ�`�����J�E���^�̂ǂ̈ʒu�� \label ��ł����邩��쒹
-	�ɔ��f�����邽�߂̃p�^�[���������̂͂��̂������ނ��������̂ŁA��
-	�x�����`���邽�߂̃}�N���̃p�^�[�����������������₷���킯��
-	���B�Ƃ������ƂŁA�ÖقŃ��x�����ł�����悤�Ȋ����`����ƁA
-	����Ȋ����B
+	なんてなるわけですな。かっちょえー。さて、このままだとこの2.4.1 
+	という番号を\refで引っ張るためには\labelを作らないとあかんわけで
+	すよ。でもどうせ自分で環境を定義するならlabelも自動的に定義しちゃ
+	うようなマクロを定義しちゃった方が御便利なわけですよ。 もっとい
+	うと独自に定義したカウンタのどの位置に \label を打たせるかを野鳥
+	に判断させるためのパターンを書くのはものすごくむずかしいので、ラ
+	ベルを定義するためのマクロのパターンを教えた方がやりやすいわけで
+	す。ということで、暗黙でラベルも打たせるような環境を定義すると、
+	こんな感じ。
 
 	\newenvironment{program}[1]{
 	\begin{table}[tbp]
@@ -328,7 +328,7 @@
 	\end{table}
 	}
 	
-	���̏����� program ����
+	この小文字 program 環境は
 	
 	\begin{program}{foo.c}
 	\begin{verbatim}
@@ -336,178 +336,178 @@
 	\end{verbatim}
 	\end{program}
 	
-	�݂����ɂ���ƃ^�C�v�Z�b�g���ʂ�
+	みたいにするとタイプセット結果が
 	
-		���X�g 2.4.1 foo.c
-		��������������������������������
-		��#include <stdio.h>          ��
-		��������������������������������
+		リスト 2.4.1 foo.c
+		┌──────────────┐
+		│#include <stdio.h>          │
+		└──────────────┘
 	
-	�Ăȋ�ɂȂ�킯�ł���B���������傦���B���āA������program��
-	���̃}�N����`��ǂ�����Ɗ��ɓn���� foo.c �͂��̂܂�
-	\label{#1} �Ń��x���Ƃ��Ď����I�ɑł���邱�ƂɂȂ�B���ApLaTeX 
-	�̃��x���͓��{���OK��B�ŁA���̈Öق̂����ɑł��ꂽ���x�������
-	���ɋ�����Ƃ����̂��X�}�[�g�Ȃ����ł��B������`����̂��ϐ�
-	YaTeX::ref-labeling-regexp-alist-private �Ȃ�B����ɂ�
+	てな具合になるわけですよ。おおかちょええ。さて、小文字program環
+	境のマクロ定義を良く見ると環境に渡した foo.c はそのまま
+	\label{#1} でラベルとして自動的に打たれることになる。あ、pLaTeX 
+	のラベルは日本語もOKよ。で、その暗黙のうちに打たれたラベル名を野
+	鳥に教えるというのがスマートなやり方です。これを定義するのが変数
+	YaTeX::ref-labeling-regexp-alist-private なり。これには
 	
-	(���K�\�� . ���x�����̃O���[�v�ԍ�)
+	(正規表現 . ラベル名のグループ番号)
 	
-	�Ƃ����g(cons�Z��)����������W�܂������X�g���`����B���Ƃ��΁A
-	��L��program���̑�1�������E�킹��ɂ�
+	という組(consセル)がたくさん集まったリストを定義する。たとえば、
+	上記のprogram環境の第1引数を拾わせるには
 	
 	(setq YaTeX::ref-labeling-regexp-alist-private
 	      '(("\\\\begin{program}{\\([^}]+\\)}" . 1)))
 	
-	�Ƃ��܂��Bprogram���̑������̕����̐��K�\����
+	とします。program環境の第一引数の部分の正規表現が
 	
 		{\\([^}]+\\)}
 	
-	�̕����ŁA\\( \\) �̃O���[�v�����ꂽ���K�\�� [^}]+ �܂�A��
-	�����ʈȊO�̕����������Ƃ���A�����x�����Ƃ��Ď��o����킯�ł��B
-	�Ƃ������ƂŁA��L�̂悤��LaTeX�}�N���̒�`��
-	YaTeX::ref-labeling-regexp-alist-private �̒�`�Ŗ����A�����Ȃ�
-	�̃J�E���^�Ƃ��̃��x������\ref�⊮�Ɏ�荞�߂�킯�ł��B�ŏ��͖�
-	�|�L�����ǁA��x��`�����Ⴆ�Έꐶ���m�ł���!
+	の部分で、\\( \\) のグループ化された正規表現 [^}]+ つまり、閉じ
+	中括弧以外の文字が続くところ、がラベル名として取り出せるわけです。
+	ということで、上記のようなLaTeXマクロの定義と
+	YaTeX::ref-labeling-regexp-alist-private の定義で無事、自分なり
+	のカウンタとそのラベル名を\ref補完に取り込めるわけです。最初は面
+	倒臭いけど、一度定義しちゃえば一生モノでっせ!
 	
-��Mule2 �֘A
-�EMule2+hilit19���g���Ă��鎞�ɐ������Â��ėǂ��ǂ߂Ȃ��B
+■Mule2 関連
+・Mule2+hilit19を使っている時に数式が暗くて良く読めない。
 	
-	hilit19.el �̃f�t�H���g�̃J���[�����O���Â����邹���ł��B
-	�ȉ��̃R�[�h�� ~/.emacs �� yatexhks.el �Ȃǂɓ���Ă��������B
+	hilit19.el のデフォルトのカラーリングが暗すぎるせいです。
+	以下のコードを ~/.emacs や yatexhks.el などに入れてください。
 	(if (and (featurep 'hilit19) (eq hilit-background-mode 'dark))
 	       (hilit-translate
 	     string 'mediumspringgreen
 	     formula 'khaki
 	     label 'yellow-underlined))
 	
-�Efont-lock �͂ǂ�����Ďg���΂�����ł���?
+・font-lock はどうやって使えばいいんでしょ?
 	
-	1.69�ȍ~�ł́AXEmacs-21, Emacs-21, Emacs-20 �ɂ����ė��p�ł��܂��B
-	�쒹�N���O�� (require 'font-lock) ���Ă����Ă��������B
-	�������Afont-lock �̃h�L�������g���݂�Ɓu�p�^�[���͈�s���Ŏw�肵
-	�Ăˁv�Ƃ���̂Ŗ{���s�Ƃ͖��֌W�Ș_���I�\���͈͂ŐF�t���s�Ȃ�����
-	�ɂ͐݌v����Ă��܂���B�����������邽�߁A�쒹�ł͎d�l�O�̃p�^�[
-	���w����s�Ȃ��_���\���͈͂ł̐F�t�������Ă��܂��B���������āA���� 
-	font-lock ���d�l��ς�����ȒP�ɐF�t�����܂��s���Ȃ��Ȃ�\�����
-	���Ɏ����Ă��܂��Bhilit19����̏�芷�����l���Ă���ꍇ�́A����
-	�����ɖ߂��悤�ɂ��Ă����������悢��������܂���B
+	1.69以降では、XEmacs-21, Emacs-21, Emacs-20 において利用できます。
+	野鳥起動前に (require 'font-lock) しておいてください。
+	ただし、font-lock のドキュメントをみると「パターンは一行内で指定し
+	てね」とあるので本来行とは無関係な論理的構造範囲で色付を行なうため
+	には設計されていません。これを回避するため、野鳥では仕様外のパター
+	ン指定を行ない論理構造範囲での色付をさせています。したがって、将来 
+	font-lock が仕様を変えたら簡単に色付がうまく行かなくなる可能性を大
+	いに持っています。hilit19からの乗り換えを考えている場合は、いつで
+	も元に戻れるようにしておいた方がよいかもしれません。
 	
-�EXEmacs�ł��F�͒����܂���?
+・XEmacsでも色は着きますか?
 	
-	font-lock �𗘗p���ĉ������B�쒹�N���O�ɂ��炩���� font-lock �����[
-	�h���Ă����܂��B
-	�ȑO�A�쒹�� font-lock ���Ή�����������ɓ��ꂽ
+	font-lock を利用して下さい。野鳥起動前にあらかじめ font-lock をロー
+	ドしておきます。
+	以前、野鳥が font-lock 未対応だった時代に入れた
 	
 		(put 'yatex-mode 'font-lock-defaults 'tex-mode)
 	
-	�Ƃ����L�q�� **�폜** ���Ă��������B�쒹�Ǝ��̐F�Â��K���ɂ��A���[
-	�U�[�����ɓo�^���Ă���}�N����Asection�^�}�N���̈����𐔂��Č���
-	����Ȃǂ̓���������܂��B
+	という記述は **削除** してください。野鳥独自の色づけ規則により、ユー
+	ザー辞書に登録してあるマクロや、section型マクロの引数を数えて光ら
+	せるなどの特長があります。
 	
-�EMeadow�ł� font-lock �ȐF�͒����܂���?
+・Meadowでも font-lock な色は着きますか?
 	
-	�����Ƃ͂���ł����A2000�N���݂̌�����Meadow-1.10�͂ł�
-	���肻����LaTeX�}�N������œ��͂���ƌ���͈͂̌��o�����������Ȃ�
-	�ăG���[���������邱�Ƃ�����܂��B�V���� Meadow �ł͖{��Emacs��
-	���l���ʂɓ����ł��낤���Ƃ����҂��āA���̌��Ɋւ��Ă͑Ώ����܂�
-	��B����Ȃ������Ŏ��Q�͂Ȃ��̂ŁA�C�ɂ��Ȃ����A���邢�͎���
-	Meadow ���o�ꂷ��܂� hilit19 �𗘗p���ĉ������B
+	つくことはつくんですが、2000年現在の公式版Meadow-1.10はでは
+	光りそうなLaTeXマクロを手で入力すると光る範囲の検出がおかしくなっ
+	てエラーが発生することがあります。新しい Meadow では本家Emacsと
+	同様普通に動くであろうことを期待して、この件に関しては対処しませ
+	ん。光らないだけで実害はないので、気にしないか、あるいは次の
+	Meadow が登場するまで hilit19 を利用して下さい。
 	
-�E���j���[�o�[�� YaTeX ���N���b�N�������Ƀn���O�������Ǝv���قǒx���B
+・メニューバーの YaTeX をクリックした時にハングしたかと思うほど遅い。
 	
-	�킩��܂���AEmacs �̂����ł��B�䖝���Ă��������B���ڂ���͒x
-	������܂���B�ӂ`���j���[�Ȃ񂩎g��Ȃ��ł���? �T���̂悤�Ƀ�
-	�j���[�o�[���g���F�B�ɖ쒹�����߂Ă͂����܂���B���������ł����A
-	���߂�Ȃ������߂�Ȃ����B
+	わかりません、Emacs のせいです。我慢してください。二回目からは遅
+	くありません。ふつ〜メニューなんか使わないでしょ? サルのようにメ
+	ニューバーを使う友達に野鳥を勧めてはいけません。言いすぎでした、
+	ごめんなさいごめんなさい。
 	
-�E\it ���C�^���b�N�\���ł��܂���?(Mule2)
+・\it をイタリック表示できませんか?(Mule2)
 	
-	�܂��A���i�g�p���Ă���T�C�Y�̎Α̃t�H���g��T���܂��B
-	*scratch* �o�b�t�@�ŁA
+	まず、普段使用しているサイズの斜体フォントを探します。
+	*scratch* バッファで、
 	  (set-face-font 'italic "-*-*-medium-i-*--*-*-*-*-*-*-*-*")
-	�Ƒł� C-j ���Ă݂�(���Ȃ莞�Ԃ�������!!)�BNo matches found �Ȃ�
+	と打ち C-j してみる(かなり時間がかかる!!)。No matches found なら
 	  (set-face-font 'italic "-*-*-medium-o-*--*-*-*-*-*-*-*-*")
-	�������܂��B
-	�ǂ���ł��}�b�`������̂��Ȃ������炠����߂܂��傤�B(;_;)/~
-	�����t�H���g�����o�ė���͂��ł��B�Ⴆ�΁A16dot�t�H���g��
-	�g���Ă���ꍇ�ł���΁A
+	を試します。
+	どちらでもマッチするものがなかったらあきらめましょう。(;_;)/~
+	大抵何かフォント名が出て来るはずです。例えば、16dotフォントを
+	使っている場合であれば、
 	  "-schumacher-clean-medium-i-normal--8-80-75-75-c-80-iso8859-1"
-	���A14dot�t�H���g���g���Ă���ꍇ�Ȃ�A
+	が、14dotフォントを使っている場合なら、
 	  "-adobe-courier-medium-i-normal--12-120-75-75-m-0-iso8859-1"
-	�Ȃǂ��Ԃ��ė���̂ŁA�����p����
+	などが返って来るので、これを用いて
 	  (set-face-font 'italic
 	    "-schumacher-clean-medium-i-normal--8-80-75-75-c-80-iso8859-1")
-	���邢��
+	あるいは
 	  (set-face-font 'italic
 	    "-adobe-courier-medium-i-normal--12-120-75-75-m-0-iso8859-1")
-	�̂悤�ȋL�q�� yatexhks.el �Ȃǂɓ���܂��B
+	のような記述を yatexhks.el などに入れます。
 
-	�ȏ�� \it, \em, \sl �̒��g���Α̕\�������͂��ł��B�������A16
-	�h�b�g�t�H���g�̏ꍇ�Apixel�T�C�Y��16�̂��̂��Ȃ��\����������
-	�ŁA���͂����Ă��Ă������16�h�b�g�t�H���g��肸���Ԃ񏬂�������
-	���\�������ꍇ���قƂ�ǂł��B14�h�b�g�t�H���g��p���Ă���ꍇ
-	�͂��Ȃ�܂��ł��B
+	以上で \it, \em, \sl の中身が斜体表示されるはずです。ただし、16
+	ドットフォントの場合、pixelサイズが16のものがない可能性が高いの
+	で、幅はあっていても周りの16ドットフォントよりずいぶん小さいもの
+	が表示される場合がほとんどです。14ドットフォントを用いている場合
+	はかなりましです。
 	
-���J�X�^�}�C�Y�֘A
-�EC-c b i �Ƃ��͖ő��Ɏg��Ȃ��̂� C-c b �����ŕ⊮���͂ɂȂ��ė~�����B
+■カスタマイズ関連
+・C-c b i とかは滅多に使わないので C-c b だけで補完入力になって欲しい。
 	
-	~/.emacs �Ȃǂ� (setq YaTeX-no-begend-shortcut t) �Ƃ��ĉ������B
+	~/.emacs などで (setq YaTeX-no-begend-shortcut t) として下さい。
 	
-�E�J�����ʂ�����Ə���ɕ���ꂿ�Ⴄ�̂����q�����B
+・開き括弧を入れると勝手に閉じられちゃうのが調子悪い。
 	
-	���΂炭�g���Ƃ�����̕����֗����Ɗ�����Ǝv���܂��B��������ł�
-	���ɍ���Ȃ����́AC-c w m �ŏ�ɏC�����[�h��ON�ɂ��Ďg���ĉ������B
-	�ϐ� YaTeX-close-paren-always �̒l�� nil �ɃZ�b�g����ƋN������
-	�犇�ʂ̎����N���[�Y��OFF�ɂ��܂��B
+	しばらく使うとこちらの方が便利だと感じると思います。もしそれでも
+	肌に合わない時は、C-c w m で常に修正モードをONにして使って下さい。
+	変数 YaTeX-close-paren-always の値を nil にセットすると起動時か
+	ら括弧の自動クローズをOFFにします。
 	
-�E; �������ƕςȂ̂��łė����肷��B
+・; を押すと変なのがでて来たりする。
 	
-	�J�[�\���ʒu���������ł���Ɣ��肳��āA�������p�C���[�W�⊮
-	���N�����Ă��܂��B����TeX�ŃG���[���o�Ȃ�������g��ł���ɂ���
-	����炸�쒹�� ; ����������������悤�Ȃ�A��҂܂Ō�A����
-	�����B�Ȃ��A�딻�肪�N�����ꍇ�A; ���g����͂���ɂ� ; ����
-	���A; ���C���[�W�⊮prefix�Ƃ��ē��삳����ɂ� C-u ; �Ɖ����܂��B
+	カーソル位置が数式環境であると判定されて、数式環境用イメージ補完
+	が起動しています。もしTeXでエラーが出ない数式を組んでいるにもか
+	かわらず野鳥の ; が数式環境判定を誤るようなら、作者まで御連絡下
+	さい。なお、誤判定が起きた場合、; 自身を入力するには ; を二回押
+	し、; をイメージ補完prefixとして動作させるには C-u ; と押します。
 	
-�Enewenvironment�������̃I�v�V������������͂��������B
+・newenvironmentした環境のオプション引数を入力させたい。
 	
-	yatexadd.doc ���Q�Ƃ��Ă��������B����ł�����s���Ɨ��Ȃ�����
-	yatexgen.doc ���Q�Ƃ��AM-x YaTeX-generate �Ȃǂ𗘗p���Ă��������B
+	yatexadd.doc を参照してください。それでも今一つピンと来ない時は
+	yatexgen.doc を参照し、M-x YaTeX-generate などを利用してください。
 	
-�E\foo ���ŏ�3�̈������Ƃ�}�N���Ƃ��Ē�`���A���Ƃ�4�ɕς����̂ɁA
-  section�^�⊮�� \foo �̕⊮����3�܂ł��������𕷂��Ă���Ȃ��B
+・\foo を最初3個の引数をとるマクロとして定義し、あとで4個に変えたのに、
+  section型補完は \foo の補完時に3個までしか引数を聞いてくれない。
 	
-  	C-u 4 C-c s ��4�̈����ł���ƌ�������^���Ă��������B������
-	�����͂��ł��ύX�\�ł��B
+  	C-u 4 C-c s と4個の引数であると言う情報を与えてください。引数の
+	個数情報はいつでも変更可能です。
 	
-�E�A�h�C���֐�(�����^)��������̂�2�ڈȍ~�̈����̕⊮�֐����Ă΂�Ȃ��B
+・アドイン関数(引数型)を作ったのに2個目以降の引数の補完関数が呼ばれない。
 	
-	\foo{x}{y}{z}�̂悤��3�̈������Ƃ�R�}���h�̈����^�A�h�C���֐�
-	��������Ƃ���ƁA��x C-u 3 C-c s foo �Ƃ��� \foo �̈�����3��
-	���邱�Ƃ������Ɋw�K������K�v������܂��B
+	\foo{x}{y}{z}のような3個の引数をとるコマンドの引数型アドイン関数
+	を作ったとすると、一度 C-u 3 C-c s foo として \foo の引数が3個で
+	あることを辞書に学習させる必要があります。
 	
-�E����̃A�h�C���֐���yatexadd�ɏ㏑������Ă��܂��B
+・自作のアドイン関数がyatexaddに上書きされてしまう。
 	
-	�ȑO�͌l�̃A�h�C���֐����l��yatexadd.el�ɓ���邱�Ƃɂ��Ă�
-	�܂������A���݂͌l�̃A�h�C���֐���yatexhks.el�ɓ���邱�Ƃ�O
-	��Ƃ��Ă��܂��Byatexhks.el�͖쒹�������̍Ō�ɓǂݍ��܂�邽�߁A
-	�W����yatexadd.el�̒�`�Ȃǂ��㏑�����邱�Ƃ��ł��܂��B
+	以前は個人のアドイン関数を個人のyatexadd.elに入れることにしてい
+	ましたが、現在は個人のアドイン関数はyatexhks.elに入れることを前
+	提としています。yatexhks.elは野鳥初期化の最後に読み込まれるため、
+	標準のyatexadd.elの定義などを上書きすることができます。
 	
-�Enewenvironment����mylist���ł��܂������s���g�������B
+・newenvironmentしたmylist環境でおまかせ改行を使いたい。
 	
-	info�}�j���A���̂��܂������s�̂Ƃ�������ĉ������B��{�I�ɂ�
-	YaTeX-intelligent-newline-mylist �Ƃ������O�̊֐����`�����OK
-	�ł��B�����Ⴆ�΁A\item ������}���������A�܂�itemize���̂�
-	�܂������s�ƑS�������ŗǂ��Ƃ����̂Ȃ�A
+	infoマニュアルのおまかせ改行のところを見て下さい。基本的には
+	YaTeX-intelligent-newline-mylist という名前の関数を定義すればOK
+	です。ただ例えば、\item だけを挿入したい、つまりitemize環境のお
+	まかせ改行と全く同じで良いというのなら、
 	
 	(fset 'YaTeX-intelligent-newline-mylist
 	      'YaTeX-intelligent-newline-itemize)
 	
-	�Ə����ƌ����I�ł��B
+	と書くと効率的です。
 	
-�E�������[�h��skk������off�ɂ���ɂ�?
+・数式モードでskkを自動offにするには?
 	
-	canna �� wnn �ł́A$�␔������⊮���͂������ɓ��{����̓��[�h
-	��off�ɂȂ�܂��Bskk�ł����l�̋@�\�𐶂����������ɂ́A
+	canna や wnn では、$や数式環境を補完入力した時に日本語入力モード
+	がoffになります。skkでも同様の機能を生かしたい時には、
 	
 	   (setq skk-mode-hook
 		 '(lambda ()
@@ -517,26 +517,26 @@
 		    (define-key skk-map "\C-x$"
 		      'skk-display-code-for-char-at-point)))
 	
-	�� .emacs �Ȃǂɓ���Ă����ĉ������B
+	を .emacs などに入れておいて下さい。
 	
-�E{\it }�����ł͎Α̂� {\bf }�ł͑����ɂȂ�Ƃ����\�𕷂�����ł����c
+・{\it }内部では斜体に {\bf }では太字になるという噂を聞いたんですが…
 	
-	GNU Emacs20 (on X)�ł͊ȒP�ɐݒ�ł��܂��B
-	(�����炭XEmacs�ł��L��)
+	GNU Emacs20 (on X)では簡単に設定できます。
+	(おそらくXEmacsでも有効)
 	
-	X�̃f�t�H���g����16�h�b�g���g���Ă���l�������̂ł����A���̂��p
-	���t�H���g��16�h�b�g���[�����Ă����A�����Ƃ����Α̎��t�H���g��
-	����܂���B�Ƃ������Ƃł��̂܂܂ł͉��K�ȃt�H���g����������܂�
-	��B�K�� Mule �̑��{�R�ł���d�����ł����̃t�H���g��p�ӂ��Ă�
-	��Ă���̂ŁA����𗘗p���܂��傤�B��Ԋy�Ȃ̂�16�h�b�g�̊O����
-	�t�H���g���C���X�g�[�������ł��傤����A����ɂ��Đ������܂��B
+	Xのデフォルトだと16ドットを使っている人が多いのですが、何故か英
+	字フォントは16ドットが充実していず、ちゃんとした斜体字フォントが
+	ありません。ということでそのままでは快適なフォント生活が送れませ
+	ん。幸い Mule の総本山である電総研でこれらのフォントを用意してく
+	れているので、これを利用しましょう。一番楽なのは16ドットの外国語
+	フォントをインストールする手でしょうから、これについて説明します。
 	
-	�܂��Aftp.etl.go.jp �� /pub/mule �ȉ��ɂ��� intlfonts-<VERSION>
-	�Ƃ����t�@�C����T���܂��B���ꂪ�e����̃t�H���g�ł��B
-	intlfonts-<VERSION>split/ �Ƃ����f�B���N�g��������A�����ɂ̓t�H
-	���g�T�C�Y�ɂ���ăt�@�C�����܂Ƃ߂��A�[�J�C�u���u���Ă���̂ŁA
-	�Ⴆ�� 16dots.tar.gz ��GET���܂��B�����Ĉȉ��̂悤�ɃC���X�g�[��
-	���܂��B
+	まず、ftp.etl.go.jp の /pub/mule 以下にある intlfonts-<VERSION>
+	というファイルを探します。これが各国語のフォントです。
+	intlfonts-<VERSION>split/ というディレクトリがあり、ここにはフォ
+	ントサイズによってファイルをまとめたアーカイブが置いてあるので、
+	例えば 16dots.tar.gz をGETします。そして以下のようにインストール
+	します。
 		% tar zxpf 16dots.tar.gz
 		% cd intlfonts-<VERSION>
 		% ./configure --prefix=/usr/local/emacs \
@@ -544,9 +544,9 @@
 		# make install
 		% xset fp+ /usr/local/emacs/share/emacs/fonts
 	
-	configure�ɓn���C���X�g�[��PATH��prefix�Ȃǂ̃I�v�V�����͊���
-	���킹�K�X�ύX���ĉ������B�����āAX�̃��\�[�X��`�t�@�C��
-	(.Xdefauts�܂���.Xresources)�ɁA
+	configureに渡すインストールPATHのprefixなどのオプションは環境に
+	合わせ適宜変更して下さい。続いて、Xのリソース定義ファイル
+	(.Xdefautsまたは.Xresources)に、
 	
 	Emacs.Fontset-0: -*-fixed-medium-r-normal--16-*-*-*-*-*-fontset-normal
 	Emacs.Fontset-1: -*-fixed-bold-r-normal--16-*-*-*-*-*-fontset-normal
@@ -554,25 +554,25 @@
 	Emacs.Fontset-3: -*-fixed-bold-i-normal--16-*-*-*-*-*-fontset-normal
 	Emacs.Font: fontset-normal
 	
-	�Ə����܂��傤�B����ŁAEmacs20�ŎΆA�������g����悤�ɂȂ��
-	���B�����A�����̃t�H���g�����p�ł���悤�Ȃ�쒹�͂����������
-	�o�� \it, \bf �̓����̃t�H���g�Ƃ��܂��B�������A����͉p���݂̂�
-	���B
+	と書きましょう。これで、Emacs20で斜体、太字が使えるようになりま
+	す。もし、これらのフォントが利用できるようなら野鳥はこれを自動検
+	出し \it, \bf の内部のフォントとします。ただし、これは英字のみで
+	す。
 	
-�E�ł�{\it }�Ƃ�{\bf }�Ŋ����̌��h����ς���͖̂����Ȃ�ł���?
+・では{\it }とか{\bf }で漢字の見栄えを変えるのは無理なんですか?
 	
-	�\�ł�(Emacs20 & Emacs21 on X)�B
+	可能です(Emacs20 & Emacs21 on X)。
 	
-	���{��̏ꍇ�� intlfonts �����łȂ��AX-TT�Ȃǂ�TrueType�t�H���g
-	�h���C�o���K�v�ɂȂ�܂��BXFree86 4.0 �ȍ~�̏ꍇ�͂����炭���̂�
-	�ܗ��p�ł��Ă��邱�Ƃł��傤�BXF86 3 �̏ꍇ�� 
-	http://X-TT.dsl.gr.jp/index-ja.html �Ȃǂ��Q�Ƃ��� X-TT ���C���X
-	�g�[�����܂��傤�B�t���[�̓��{��t�H���g�A�n�Ӄt�H���g(����)�A�a
-	�c���t�H���g(�S�V�b�N)��TrueType�`���ɕϊ��������̂�����̂ŁA��
-	�����C���X�g�[�����܂��B���R�[��DynaLab�Ȃǂ̏��p�t�H���g���w
-	�����Ă����p�ł��܂��B�����ł͂��̎菇�͏ȗ����A����X���
-	TrueType �t�H���g�����p�ł�����������Ă���Ɖ��肵�܂��BX�̃�
-	�\�[�X��`�t�@�C�����ȉ��̂悤�ɏC�����܂��B
+	日本語の場合は intlfonts だけでなく、X-TTなどのTrueTypeフォント
+	ドライバが必要になります。XFree86 4.0 以降の場合はおそらくそのま
+	ま利用できていることでしょう。XF86 3 の場合は 
+	http://X-TT.dsl.gr.jp/index-ja.html などを参照して X-TT をインス
+	トールしましょう。フリーの日本語フォント、渡辺フォント(明朝)、和
+	田研フォント(ゴシック)をTrueType形式に変換したものがあるので、こ
+	れらもインストールします。リコーやDynaLabなどの商用フォントを購
+	入しても利用できます。ここではその手順は省略し、既にX上で
+	TrueType フォントが利用できる環境が整っていると仮定します。Xのリ
+	ソース定義ファイルを以下のように修正します。
 	
 	Emacs.Fontset-0: -*-fixed-medium-r-normal--16-*-*-*-*-*-fontset-tt,\
 	  japanese-jisx0208:-*-fixed-medium-r-normal-*-16-*-jisx0208*
@@ -584,135 +584,135 @@
 	  japanese-jisx0208:-wadalab-*-bold-i-normal-*-0-*-jisx0208*
 	Emacs.Font: fontset-tt
 	
-	����ɂ��A��͂�쒹�������I�ɘa�� italic, bold �t�H���g������
-	���A��ʕ\����̌��f����ς���悤�ɂ��Ă���܂��B
+	これにより、やはり野鳥が自動的に和文 italic, bold フォントを検索
+	し、画面表示上の見映えを変えるようにしてくれます。
 	
-	Windows�ł͂����ƃt�H���g�����[�����Ă���̂ł��ȒP�ɐݒ��
-	����̂ł͂Ȃ����Ǝv���܂����A���͂��̂�����m��܂���B�����m
-	�̕������炵���狳���Ē�����΍K���ł��B
+	Windowsではもっとフォント環境が充実しているのでより簡単に設定で
+	きるのではないかと思いますが、私はそのやり方を知りません。ご存知
+	の方がいらしたら教えて頂ければ幸いです。
 	
-�����̑�
-�EAUC�ق��ق����g���Ă�F�B�����@���������̂ł����c�B
+■その他
+・AUCほげほげを使ってる友達を改宗させたいのですが…。
 	
-	�܂��������A������Ƃ��炢�s�ւł��l�ԂȂ�Ƃ��䖝�ł��܂��B
-	�Ȃɂ���ł����@���������ƂȁB���������Ƃ����������B
-	���Ⴀ�A���̂悤�ȃf���������܂��傤�B
-	(���炩���� ~/.emacs �� (setq YaTeX-create-file-prefix-g t)
-	 ���Ă����ĉ�����)
+	まあええやん、ちょっとぐらい不便でも人間なんとか我慢できます。
+	なにそれでも改宗させたいとな。嬉しいことをおっしゃる。
+	じゃあ、次のようなデモを見せましょう。
+	(あらかじめ ~/.emacs で (setq YaTeX-create-file-prefix-g t)
+	 しておいて下さい)
 	* \begin{itemize}
-	   \item �ق��ق�
+	   \item ほげほげ
 	  \end{itemize}
-	  �Ƃ�����������Ă����āA
-	  �u���`��A�����enumerate�������ȁA�����v�Ƃ�����
-	  �J�[�\����\begin��\end�ɍ��킹�� [prefix] c �� enumerate �ɕ�
-	  �X���܂��B�����āA
-	  �u����ς肱���̓Z���^�����O�ł���A�����v�Ƃ�����
-	  ���S�̂��}�[�N(ESC C-@)���� [prefix] B(�啶��) ����center��
-	  ���Ɋ������܂��B
-	  �u���Ⴀpreview���Ă݂�����A�ł����̕��������ł�����ˁv��
-	  �����Ă����؂�center���S�̂��}�[�N(ESC C-@)����
-	  [prefix] % b ����center���� %#BEGIN�`%#END�Ŋ����Ă���
-	  �̈�^�C�v�Z�b�g���܂��B[prefix] t r�B
-	  �u����preview����v
-	  �Ƃ����� [prefix] t p ���܂��B
-	  �u�قق��A�悵�A�\���������v�ƌ����āA
-	  enumerate���̌���tabular�������܂��B
-	  �u�܂�3�񂭂炢���ȁv�Ƃ����f�t�H���g�̎���ɂ͑S�ă��^�[
-	  �������œ����܂��B����� & & \\ ������ɑ}�������̂œK���ɖ�
-	  �߂܂��B
-	  �u�͂��A���̍s�v
-	  �ƌ����Ȃ��� ESC RET ���܂��B�܂��K���ɖ��߂�
-	  �̈�^�C�v�Z�b�g���� xdvi ��raise���܂��Bmule�ɖ߂�center��
-	  �̊O�Ɂw���̕\�͏d�v�l�`�x�Ə����܂��B
-	  �u���ށA�w�d�v�x�ɂ̓A���_�[���C�����������v
-	  �Ƃ����āw�d�v�x�����W�����w�肵�� [prefix] S(�啶��) ��
-	  underline ��⊮���͂��A�܂�preview���܂��B
-	  �u����σA���_�[���C���͂�߁v�ƌ����Ȃ���
-	  \underline �܂��� { �� } �ɃJ�[�\�������킹�� [prefix] k ����
-	  \underline{} �������܂��B�܂�preview���āA
-	  �u����σZ���^�����O�͗v��񂩂������Ȃ��c�v�ƌ�����
-	  \end{center} �ɃJ�[�\�������킹�� [prefix] . �������܂��B
-	  ����� \begin{center}, \end{center} �� % �����̂ł܂�
-	  preview���܂��B
-	  �u���ށA����ς�Z���^�����O�͂ۂ����v�ƌ�����
-	  \end{center}�̍s�� [prefix] k �������� begin/end �΂������܂��B
-	  �u���āA�t�@�C�����ł����Ȃ��ė����̂ŕ������邩�v�ƌ�����
-	  \include{foo} �Ȃǂ�⊮���͂��܂��B
-	  �u���Ⴀ foo.tex �����Ȃ���c�v�ƌ����� [prefix] g ���܂��B
-	  foo.tex ������ɍ����̂œK���ɂ����Ⴒ���Ꮡ����
-	  [prefix] t j �Ń^�C�v�Z�b�g���܂��B
-	  �u�ف`��Afoo.tex �̐e�t�@�C�����������̃t�@�C�������ĕ�������
-	  ��ł���?�v�Ɛ������܂��B[prefix] ^ �Őe�t�@�C���ɖ߂�܂��B
-	  �u���`��A���ꂱ�̃\�[�X�������ɕ������Ă��񂾂���?�v
-	  �Ƃ����Ƃڂ��Ȃ��� [prefix] d ��include�c���[��\��������
-	  n �� p �ł����Ⴒ������܂��B
+	  という環境を作っておいて、
+	  「う〜ん、やっぱenumerateがいいな、うりゃ」といって
+	  カーソルを\beginか\endに合わせて [prefix] c で enumerate に変
+	  更します。続いて、
+	  「やっぱりここはセンタリングでしょ、おりゃ」といって
+	  環境全体をマーク(ESC C-@)して [prefix] B(大文字) してcenter環
+	  境に括り入れます。
+	  「じゃあpreviewしてみよっか、でもこの部分だけでいいやね」と
+	  いってもっぺんcenter環境全体をマーク(ESC C-@)して
+	  [prefix] % b してcenter環境を %#BEGIN〜%#ENDで括ってから
+	  領域タイプセットします。[prefix] t r。
+	  「さてpreviewじゃ」
+	  といいつつ [prefix] t p します。
+	  「ほほう、よし、表を書こう」と言って、
+	  enumerate環境の後ろにtabular環境を作ります。
+	  「まあ3列くらいかな」といいつつデフォルトの質問には全てリター
+	  ンだけで答えます。すると & & \\ が勝手に挿入されるので適当に埋
+	  めます。
+	  「はい、次の行」
+	  と言いながら ESC RET します。また適当に埋めて
+	  領域タイプセットして xdvi をraiseします。muleに戻りcenter環境
+	  の外に『この表は重要ネ〜』と書きます。
+	  「うむ、『重要』にはアンダーラインを引こう」
+	  といって『重要』をリジョン指定して [prefix] S(大文字) で
+	  underline を補完入力し、またpreviewします。
+	  「やっぱアンダーラインはやめ」と言いながら
+	  \underline または { か } にカーソルを合わせて [prefix] k して
+	  \underline{} を消します。またpreviewして、
+	  「やっぱセンタリングは要らんかもしれんなあ…」と言いつつ
+	  \end{center} にカーソルを合わせて [prefix] . を押します。
+	  すると \begin{center}, \end{center} に % がつくのでまた
+	  previewします。
+	  「うむ、やっぱりセンタリングはぽいっ」と言って
+	  \end{center}の行で [prefix] k をおして begin/end 対を消します。
+	  「さて、ファイルがでかくなって来たので分割するか」と言って
+	  \include{foo} などを補完入力します。
+	  「じゃあ foo.tex を作らなきゃ…」と言って [prefix] g します。
+	  foo.tex が勝手に作られるので適当にごちゃごちゃ書いて
+	  [prefix] t j でタイプセットします。
+	  「ほ〜ら、foo.tex の親ファイルがさっきのファイルだって分かって
+	  るでしょ?」と説明します。[prefix] ^ で親ファイルに戻ります。
+	  「あ〜れ、おれこのソースをいくつに分割してたんだっけ?」
+	  とすっとぼけながら [prefix] d でincludeツリーを表示させて
+	  n や p でごちゃごちゃやります。
 	
-	����Ȋ����ł����ˁB
-	���Ƃ́A�C���[�W�⊮�A�������[�h��������A����usepackage�Ȃ��
-	�̂�AUC�ɂ͂���܂���B
+	こんな感じですかね。
+	あとは、イメージ補完、数式モード自動判定、先回りusepackageなんて
+	のもAUCにはありません。
 	
-�E�Ȃ�ō\���t�@�C�������܂���SJIS�Ȃ�? �������[�B
+・なんで構成ファイルがいまさらSJISなの? だっせー。
 	
-	���̃t�@�C����SJIS�ŏ�����Ă���Ƃ������Ƃ������邠�Ȃ��́A�쒹
-	�̍\���t�@�C����JIS���낤��EUC���낤���Ώ��ł���͂��ł��B������
-	SJIS�Ő������Ă���l�ɂ͕�����܂���BMeadow�� Mule for win32 ��
-	��EUC�ł��ǂ߂�񂶂�Ȃ���? �Ɗ����邩������܂��񂪁AMeadow ��
-	�ǂ��g���͂��߂��l�̒�����́A�upLaTeX+�쒹���֗��������v�Ƃ���
-	���Ƃ����������ɂȂ��Ă���Ƃ����������񍐂������܂��B���������l
-	�ɂƂ���EUC��JIS�͓��̂̒m��Ȃ���Ԃ̂�����ʓ|�ȃt�@�C���ł���
-	����܂���B�ނ炪TeX��Emacs�Ȃǂ̑f���炵�����E�ɐG���ڑO�ŉ�
-	�����Ă��܂��\�����l����ƁA��͂�쒹��SJIS�ł��葱����ׂ���
-	�Ǝv���܂��B
+	このファイルがSJISで書かれているということが分かるあなたは、野鳥
+	の構成ファイルがJISだろうがEUCだろうが対処できるはずです。しかし
+	SJISで生活している人には分かりません。Meadowや Mule for win32 な
+	らEUCでも読めるんじゃないの? と感じるかもしれませんが、Meadow な
+	どを使いはじめた人の中からは、「pLaTeX+野鳥が便利そうだ」という
+	ことがきっかけになっているという嬉しい報告も聞きます。そういう人
+	にとってEUCやJISは得体の知れない手間のかかる面倒なファイルでしか
+	ありません。彼らがTeXやEmacsなどの素晴らしい世界に触れる目前で遠
+	慮してしまう可能性を考えると、やはり野鳥はSJISであり続けるべきだ
+	と思います。
 	
-	���������킯�ŁA�쒹�ł̓_�T���Ă������ł��ASJIS���g���܂��B
+	そういうわけで、野鳥ではダサくても嫌いでも、SJISを使います。
 	
-�E���C�����O���X�g�͂Ȃ���ł���?
+・メイリングリストはないんですか?
 	
-	���Ă������⍀�ڂ����邭�炢�����炠��܂��B�u�쒹�v����т���Vz 
-	�ւ̈ڐA�Łu�����v(by KATSURAGAWA, Naoki)�AWz�ւ̈ڐA�Łu�����v
-	(by TAKENAKA, Hiroshi)�AHidemaru�ւ̈ڐA�u�򒹁v(by YASUDA
-	Haruyuki)�Axyzzy�ւ̈ڐA�Łu�Ԓ��v(by MAEDA Manabu) �Ɋւ�����
-	�����̂��߂̃��C�����O���X�g�ufj�쒹�̉�v������ł��B
+	っていう質問項目があるくらいだからあります。「野鳥」およびそのVz 
+	への移植版「雷鳥」(by KATSURAGAWA, Naoki)、Wzへの移植版「白鳥」
+	(by TAKENAKA, Hiroshi)、Hidemaruへの移植板「飛鳥」(by YASUDA
+	Haruyuki)、xyzzyへの移植版「花鳥」(by MAEDA Manabu) に関する情報
+	交換のためのメイリングリスト「fj野鳥の会」がそれです。
 	
 		To: yatex@yatex.org
 		Subject: subscribe
 		-----
-		�����Ł[���B
-		�����܂��Ă��߂łƂ��������܁[���B
+		たぐでーし。
+		明けましておめでとうございまーす。
 
-	�̂悤�Ƀ��C���𑗂�Ή����ł��܂��B�葱���͑S�Ď����ōs���A�o
-	�^����������Ɗm�F�ƂƂ��ɁA�Q��/�x�~/�E��̐���R�}���h�̗��p
-	���@���ԑ�����܂��B����Q�����Ĉꏏ�ɖ쒹/����/����/�򒹂����
-	�Ă��������B�Ȃ��A���ȏЉ�̕��������ꍇ�ꌩ���������悤�Ɍ�����
-	�����A�����I�ɓo�^�������܂��̂Ō䒍�Ӊ������B
+	のようにメイルを送れば加入できます。手続きは全て自動で行われ、登
+	録が完了すると確認とともに、参加/休止/脱会等の制御コマンドの利用
+	方法が返送されます。是非参加して一緒に野鳥/雷鳥/白鳥/飛鳥を育て
+	てください。なお、自己紹介の文が無い場合一見加入したように見えま
+	すが、自動的に登録解除しますので御注意下さい。
 	
-�E�쒹�̍ŐV����?
+・野鳥の最新情報は?
 	
-	�������Ȃ����AWWW�ɃA�N�Z�X�ł���Ȃ�A
+	もしあなたが、WWWにアクセスできるなら、
 	http://www.yatex.org/
-	��`���Ă݂ĉ������B���̂Ȃ��́A�uyatex-current�v�Ƃ��������N��
-	���ǂ�ƍŐV�ł̖쒹����肷�邱�Ƃ��ł��܂��B�������A���������[
-	�X�łł͂Ȃ��A��҂��f�o�b�O���������肵�Đ���ɓ��삵�Ȃ��\��
-	������̂ŁAcurrent�ł̗��p�͂Ƃ��Ɂu�f�o�b�O�ɋ��͂���v�Ƃ���
-	�S�\���ł̗��p�����肢���܂��B
+	を覗いてみて下さい。このなかの、「yatex-current」というリンクを
+	たどると最新版の野鳥を入手することができます。ただし、正式リリー
+	ス版ではなく、作者がデバッグ中だったりして正常に動作しない可能性
+	があるので、current版の利用はとくに「デバッグに協力する」という
+	心構えでの利用をお願いします。
 	
-�E�Ƃɂ����킩��܂��[��!
+・とにかくわかりませーん!
 	
-	�܂�����̑O�� yatex-current(��q) �������Ă݂ĉ������B���ɒ���
-	������肪��������Ă��邩������܂���B����ł����߂Ȃ玿�₵��
-	���傤�B
-	�񓚂𓾂�܂ł̑�������
+	まず質問の前に yatex-current(上述) を試してみて下さい。既に直面
+	した問題が解決されているかもしれません。それでもだめなら質問しま
+	しょう。
+	回答を得るまでの早い順に
 
-	�E�߂��ɂ���ڂ����l�ɕ���
-	�E���C�����O���X�g�Ɏ�����o��
+	・近くにいる詳しい人に聞く
+	・メイリングリストに質問を出す
 	
-	�ł��傤���B���D���ȕ��@�łǂ����B
+	でしょうか。お好きな方法でどうぞ。
 	
-�E���̃t�@�C���� C-u C-x $ ����Q�𒭂߂č��ڑI��� C-x $ ���Ă��ςȏ��ɂ����B
+・このファイルを C-u C-x $ してQを眺めて項目選んで C-x $ しても変な所にいく。
 	
-	���Ȃ����Ⴂ�܂����? �Ƃ肠����Question�̂Ƃ���� mark ���Ă���
-	�� C-x $ �������� C-x C-x ���Ă܂���(mule2���Ƃ���ȋ�J���Ȃ���
-	�ςނ悤�ł�)�B
+	↑なっちゃいますよね? とりあえずQuestionのところで mark しておい
+	て C-x $ したあと C-x C-x してますが(mule2だとこんな苦労しなくて
+	済むようです)。
 
 Local Variables:
 mode: indented-text

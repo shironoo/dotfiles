@@ -1723,7 +1723,7 @@ instead.
 
 includegraphics
 \usepackage{graphicx}  ... \includegraphics[Options]{graphicfile.eps}
-Include graphics$B!#(BRequires `graphicx' package.
+Include graphics。Requires `graphicx' package.
 Possible [Options] are as follows.
 scale=X
 width=W
