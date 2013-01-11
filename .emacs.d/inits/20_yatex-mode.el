@@ -14,3 +14,12 @@
 ; 3 = EUC-JP
 ; 4 = UTF-8
 (setq YaTeX-kanji-code 4)
+
+; RefTex
+(add-hook 'yatex-mode-hook
+          '(lambda ()
+             (reftex-mode 1)
+             (define-key reftex-mode-map
+               (concat YaTeX-prefix ">") 'YaTeX-comment-region)
+             (define-key reftex-mode-map
+               (concat YaTeX-prefix "<") 'YaTeX-uncomment-region)))
