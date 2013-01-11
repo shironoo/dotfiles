@@ -35,18 +35,11 @@ alias pu="pushd"
 alias po="popd"
 alias pp="dirs"
 
-alias ew2="emacs23"
-alias em2="emacs23 -nw"
-alias emacs="emacsclient"
-alias e="emacs"
-alias en="emacs -n"
-alias ew="emacs -nc"
-alias em="emacs -tc"
+#alias emacs="emacsclient"
+alias e="emacsclient -tc"
+alias ew="emacs"
+alias em="emacs -nw"
 alias lv="lv -c"
-
-if which lv > /dev/null; then
-   alias less='lv'
-fi
 
 alias mozc-config="/usr/lib/mozc/mozc_tool -mode=config_dialog"
 alias mozc-dict="/usr/lib/mozc/mozc_tool --mode=dictionary_tool"
