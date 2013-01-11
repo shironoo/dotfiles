@@ -11,7 +11,7 @@
 	      (setq default-buffer-file-coding-system 'utf-8))))
 
 ;; C-x bでバッファリストをミニバッファに表示する。超便利。
-(iswitchb-mode 1)
+; (iswitchb-mode 1)
 
 ;; バックアップファイルとオートセーブファイルの置場所
 (add-to-list 'backup-directory-alist
