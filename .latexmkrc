@@ -1,6 +1,6 @@
 $latex = 'platex';
 $pdflatex = 'pdfplatex';
-$bibtex = 'jbibtex';
+$bibtex = 'pbibtex';
 $makeindex = 'mendex';
 $dvipdf = 'dvipdfmx';
 $dvips = 'dvipsk';
