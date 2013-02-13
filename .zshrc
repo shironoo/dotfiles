@@ -15,7 +15,8 @@ bindkey -e # emacsライクなキーバインド
 eval `dircolors -b`
 zstyle ':completion:*' list-colors di=34 fi=0
 
-export LANG=ja_JP.UTF-8 # 日本語環境
+#export LANG=ja_JP.UTF-8 # 日本語環境
+export LANG=en_US.UTF-8
 export EDITOR=emacs # エディタはemacs
 export TERM=xterm-256color
 
