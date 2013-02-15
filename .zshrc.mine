@@ -22,19 +22,6 @@ export PIP_DOWNLOAD_CACHE=${HOME}/.pip_cache
 export PIP_RESPECT_VIRTUALENV=true
 PIP_REQUIRE_VIRTUALENV=true
 
-# autojump
-if [ -f /usr/share/autojump/autojump.sh ]; then
-   . /usr/share/autojump/autojump.sh
-fi
-
-#=============================
-# source auto-fu.zsh
-#=============================
-# if [ -f ~/.zsh/auto-fu.zsh ]; then
-#     source ~/.zsh/auto-fu.zsh
-#     function zle-line-init () {
-#         auto-fu-init
-#     }
-#     zle -N zle-line-init
-#     zstyle ':completion:*' completer _oldlist _complete
-# fi
+# z
+export _Z_CMD=j
+source ~/.zsh.d/z/z.sh
