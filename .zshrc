@@ -17,7 +17,8 @@ zstyle ':completion:*' list-colors di=34 fi=0
 
 #export LANG=ja_JP.UTF-8 # 日本語環境
 export LANG=en_US.UTF-8
-export EDITOR=emacs # エディタはemacs
+#export EDITOR=emacs # エディタはemacs
+export EDITOR=vi
 export TERM=xterm-256color
 
 autoload -U compinit # 強力な補完機能
