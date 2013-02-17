@@ -1,7 +1,6 @@
 #alias
 
 alias ls='ls --color=auto'
-#alias vdir='vdir --color=auto'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
@@ -18,10 +17,10 @@ alias ll="ls -l"
 alias sl='sl -e'
 
 alias du="du -h"
-alias df="df -h"
+alias df="df -hT"
 
 alias su="su -l"
-alias sudo='sudo '
+alias sudo='sudo -E '
 
 alias tree="tree -NC"
 
@@ -35,11 +34,14 @@ alias pu="pushd"
 alias po="popd"
 alias pp="dirs"
 
-#alias emacs="emacsclient"
 alias e="emacsclient -tc"
 alias ew="emacs"
 alias em="emacs -nw"
 alias lv="lv -c"
+
+which vim > /dev/null 2>&1 && alias vi="vim"
+
+alias pacman="yaourt"
 
 alias mozc-config="/usr/lib/mozc/mozc_tool -mode=config_dialog"
 alias mozc-dict="/usr/lib/mozc/mozc_tool --mode=dictionary_tool"
