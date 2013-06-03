@@ -1,10 +1,10 @@
-;;; -*- Emacs-Lisp -*-
-;;; YaTeX hierarchy browser.
-;;; yatexhie.el
-;;; (c)1995 by HIROSE Yuuji [yuuji@yatex.org]
-;;; Last modified Fri Jun 27 12:09:49 2003 on firestorm
-;;; $Id: yatexhie.el,v 1.72 2003/12/25 04:10:54 yuuji Rel $
+;;; yatexhie.el --- YaTeX hierarchy browser
+;;; 
+;;; (c)1995-2013 by HIROSE Yuuji [yuuji@yatex.org]
+;;; Last modified Mon Apr  1 22:43:34 2013 on firestorm
+;;; $Id: yatexhie.el,v 1.77 2013/04/01 13:53:45 yuuji Rel $
 
+;;; Code:
 ;; ----- Customizable variables -----
 (defvar YaTeX-hierarchy-ignore-heading-regexp
   "\\$[A-Z][a-z]+: .* \\$\\|-\\*- .* -\\*-"
@@ -151,7 +151,7 @@ LEVEL is including depth."
 		   win:current-config)))
   (let*((b-in (YaTeX-get-builtin "!"))
 	default)
-    ;;むーん↓このへんの仕様どうしたらいいか良く分からん...
+    ;;$B$`!<$s"-$3$N$X$s$N;EMM$I$&$7$?$i$$$$$+NI$/J,$+$i$s(B...
     (if default (setq default (expand-file-name default)))
     (YaTeX-visit-main t)		;move to parent file
     (setq default buffer-file-name)

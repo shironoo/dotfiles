@@ -1,10 +1,10 @@
-;;; -*- Emacs-Lisp -*-
-;;; YaTeX sectioning browser.
-;;; yatexsec.el
-;;; (c) 1994,1998,1999,2003 by HIROSE Yuuji [yuuji@yatex.org]
-;;; Last modified Fri Jun 27 12:10:34 2003 on firestorm
-;;; $Id: yatexsec.el,v 1.72 2003/12/25 04:10:54 yuuji Rel $
+;;; yatexsec.el --- YaTeX sectioning browser
+;;; 
+;;; (c) 1994-2013 by HIROSE Yuuji [yuuji@yatex.org]
+;;; Last modified Mon Apr  1 22:46:28 2013 on firestorm
+;;; $Id: yatexsec.el,v 1.77 2013/04/01 13:53:45 yuuji Rel $
 
+;;; Code:
 (defvar YaTeX-sectioning-level
   '(("part" . 0)
     ("chapter" . 1)
@@ -133,7 +133,8 @@ This must be the heighest number in YaTeX-sectioning-level.")
 	  (or
 	   (and ln (string< "" ln)
 		(progn
-		  (goto-line (max 1 (1- (string-to-int ln))))
+		  (goto-char (point-min))
+		  (forward-line (max 0 (- (string-to-int ln) 2)))
 		  (and
 		   (search-forward ptn nil t)
 		   (goto-char (match-beginning 0)))))
@@ -180,7 +181,7 @@ If optional argument KEEP is non-nil, only shows the line."
 (defun YaTeX-sectioning-hide ()
   "Call YaTeX-sectioning-hide-under with argument according to pressed key."
   (interactive)
-  (YaTeX-sectioning-hide-under (- last-command-char ?0)))
+  (YaTeX-sectioning-hide-under (- (YaTeX-last-key) ?0)))
 
 (defun YaTeX-sectioning-help ()
   "Show help of sectioning."

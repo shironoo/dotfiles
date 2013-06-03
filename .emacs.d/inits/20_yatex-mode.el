@@ -22,4 +22,7 @@
              (define-key reftex-mode-map
                (concat YaTeX-prefix ">") 'YaTeX-comment-region)
              (define-key reftex-mode-map
-               (concat YaTeX-prefix "<") 'YaTeX-uncomment-region)))
+               (concat YaTeX-prefix "<") 'YaTeX-uncomment-region)
+(define-key YaTeX-mode-map "\C-q" 'YaTeX-fill-paragraph)
+))
+(setq YaTeX-fill-column 120)

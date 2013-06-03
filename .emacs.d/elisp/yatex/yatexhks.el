@@ -1,8 +1,8 @@
 ;;; -*- Emacs-Lisp -*-
 ;;; Hooks for YaTeX
 
-;;; 野鳥に関連する記述(たとえばアドイン関数)は yatexhks.el という名前の
-;;; ファイルに入れてください。起動時に自動的にロードします。
+;;; �쒹�Ɋ֘A����L�q(���Ƃ��΃A�h�C���֐�)�� yatexhks.el �Ƃ������O��
+;;; �t�@�C���ɓ���Ă��������B�N�����Ɏ����I�Ƀ��[�h���܂��B
 
 ;;; All the private definitions for YaTeX can be stuffed into the file
 ;;; named `yatexhks.el'.  The file `yatexhks.el' will be automatically

@@ -1,10 +1,11 @@
-;;; -*- Emacs-Lisp -*-
-;;; Sample startup file to invoke yatex-mode with outline-minor mode.
-;;; (c)1993 by HIROSE Yuuji [yuuji@yatex.org]
-;;; Last modified Fri Jun 27 12:10:15 2003 on firestorm
+;;; yatexm-o.el --- Sample to invoke yatex-mode with outline-minor mode
 
+;;; (c)1993 by HIROSE Yuuji [yuuji@yatex.org]
+;;; Last modified Sat Sep  1 08:12:40 2012 on firestorm
+
+;;; Code:
 ;;;
-;; outline-minor-mode(ä½¿ç”¨ã—ãªã„å ´åˆã¯ä¸è¦ã§ã™)
+;; outline-minor-mode(g—p‚µ‚È‚¢ê‡‚Í•s—v‚Å‚·)
 ;;; 
 (autoload 'outline-minor-mode "min-out" t)
 (make-variable-buffer-local 'outline-prefix-char)
@@ -23,7 +24,7 @@
 ;;;
 (setq auto-mode-alist (cons '("\\.tex$" . yatex-mode) auto-mode-alist))
 (autoload 'yatex-mode "yatex" "Yet Another LaTeX mode" t)
-;;â†“min-outã‚’ä½¿ç”¨ã—ãªã„å ´åˆã€;;@ ã®è¡Œã¯ä¸è¦ã§ã™ã€‚
+;;«min-out‚ğg—p‚µ‚È‚¢ê‡A;;@ ‚Ìs‚Í•s—v‚Å‚·B
 (defvar yatex-mode-hook
   '(lambda ()
      (setq outline-regexp LaTeX-outline-regexp)			    ;;@
@@ -33,9 +34,9 @@
   '(lambda ()
      (setq-default outline-prefix-char (concat YaTeX-prefix "\C-o"));;@
      (require 'min-out)						    ;;@
-     ;;auctex ä»˜å±ã® min-out.el ã®å ´åˆã“ã‚Œâ†“
+     ;;auctex •t‘®‚Ì min-out.el ‚Ìê‡‚±‚ê«
      ;(define-key outline-minor-keymap "\C-?" 'hide-subtree)	    ;;@
-     ;;Emacs ä»˜å±ã® outline.el ã®å ´åˆã“ã‚Œâ†“
+     ;;Emacs •t‘®‚Ì outline.el ‚Ìê‡‚±‚ê«
      (define-key outline-mode-prefix-map "\C-?" 'hide-subtree)
      (YaTeX-define-begend-key "ba" "abstract")
      ))

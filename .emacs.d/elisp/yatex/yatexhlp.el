@@ -1,10 +1,10 @@
-;;; -*- Emacs-Lisp -*-
-;;; YaTeX helper with LaTeX commands and macros.
-;;; yatexhlp.el
+;;; yatexhlp.el --- YaTeX helper with LaTeX commands and macros
+;;; 
 ;;; (c)1994,1998,2004 by HIROSE Yuuji.[yuuji@yatex.org]
-;;; Last modified Tue Oct 19 01:13:21 2004 on firestorm
-;;; $Id: yatexhlp.el,v 1.73 2006/12/24 06:17:15 yuuji Rel $
+;;; Last modified Sat Sep  1 08:11:14 2012 on firestorm
+;;; $Id: yatexhlp.el,v 1.77 2013/04/01 13:53:45 yuuji Rel $
 
+;;; Code:
 (let ((help-file (concat "YATEXHLP."
 			 (cond (YaTeX-japan "jp")
 			       (t "eng"))))
@@ -32,11 +32,11 @@
 (defvar YaTeX-help-saved-config nil
   "Holds window configruation before the editing of manual.")
 (defvar YaTeX-help-synopsis
-  (cond (YaTeX-japan "ã€æ›¸å¼ã€‘")
+  (cond (YaTeX-japan "y‘®z")
 	(t "[[ Synopsis ]]"))
   "Section header of synopsis.")
 (defvar YaTeX-help-description
-  (cond (YaTeX-japan "ã€èª¬æ˜ã€‘")
+  (cond (YaTeX-japan "yà–¾z")
 	(t "[[ Description ]]"))
   "Section header of description.")
 
@@ -240,7 +240,7 @@ Where:	<DELIM> is the value of YaTeX-help-delimiter.
     (define-key YaTeX-help-entry-map "\r" 'YaTeX-help-newline)
     (use-local-map YaTeX-help-entry-map)
     (message
-     (cond (YaTeX-japan "å…¥åŠ›ã‚’çµ‚ãˆãŸã‚‰ . ã®ã¿å…¥åŠ›ã—ã¦RET")
+     (cond (YaTeX-japan "“ü—Í‚ğI‚¦‚½‚ç . ‚Ì‚İ“ü—Í‚µ‚ÄRET")
 	   (t "Type only `.' and RET to exit.")))))
 
 (defun YaTeX-enrich-help (command)

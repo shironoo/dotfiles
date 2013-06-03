@@ -1,10 +1,12 @@
-;;; -*- Emacs-Lisp -*-
-;;; (c) 1994-2009 by HIROSE Yuuji [yuuji@yatex.org]
-;;; Last modified Mon Sep 28 10:45:04 2009 on firestorm
-;;; $Id: yahtml.el,v 1.74 2009/09/28 01:54:43 yuuji Rel $
+;;; yahtml.el --- Yet Another HTML mode -*- coding: sjis -*-
+;;; (c) 1994-2013 by HIROSE Yuuji [yuuji(@)yatex.org]
+;;; Last modified Mon Apr  1 22:42:29 2013 on firestorm
+;;; $Id: yahtml.el,v 1.77 2013/04/01 13:53:45 yuuji Rel $
 
-(defconst yahtml-revision-number "1.72"
+(defconst yahtml-revision-number "1.76"
   "Revision number of running yahtml.el")
+
+;;; Commentary:
 
 ;;;[Installation]
 ;;; 
@@ -14,42 +16,44 @@
 ;;; 	(setq auto-mode-alist
 ;;; 		(cons (cons "\\.html$" 'yahtml-mode) auto-mode-alist))
 ;;; 	(autoload 'yahtml-mode "yahtml" "Yet Another HTML mode" t)
-;;; 	(setq yahtml-www-browser "netscape")
-;;;      ;Write your favorite browser.  But netscape is advantageous.
+;;; 	(setq yahtml-www-browser "firefox")
+;;;      ;Write your favorite browser.  But firefox is advantageous.
 ;;; 	(setq yahtml-path-url-alist
 ;;; 	      '(("/home/yuuji/public_html" . "http://www.mynet/~yuuji")
 ;;; 		("/home/staff/yuuji/html" . "http://www.othernet/~yuuji")))
 ;;;      ;Write correspondence alist from ABSOLUTE unix path name to URL path.
 ;;; 
-;;;[ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«æ–¹æ³•]
+;;;[ƒCƒ“ƒXƒg[ƒ‹•û–@]
 ;;;
-;;; yahtml.el, yatexlib.el, yatexprc.el ã‚’ load-path ã®é€šã£ãŸãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆ
-;;; ãƒªã«ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã—ã¦ãã ã•ã„ã€‚ãã®å¾Œã€ä»¥ä¸‹ã‚’å‚è€ƒã« ~/.emacs ã«è¨­å®šã‚’
-;;; è¿½åŠ ã—ã¦ä¸‹ã•ã„ã€‚
+;;; yahtml.el, yatexlib.el, yatexprc.el ‚ğ load-path ‚Ì’Ê‚Á‚½ƒfƒBƒŒƒNƒg
+;;; ƒŠ‚ÉƒCƒ“ƒXƒg[ƒ‹‚µ‚Ä‚­‚¾‚³‚¢B‚»‚ÌŒãAˆÈ‰º‚ğQl‚É ~/.emacs ‚Éİ’è‚ğ
+;;; ’Ç‰Á‚µ‚Ä‰º‚³‚¢B
 ;;;
 ;;; 	(setq auto-mode-alist
 ;;; 		(cons (cons "\\.html$" 'yahtml-mode) auto-mode-alist))
 ;;; 	(autoload 'yahtml-mode "yahtml" "Yet Another HTML mode" t)
-;;; 	(setq yahtml-www-browser "netscape")
-;;;      ;ãŠæ°—ã«å…¥ã‚Šã®ãƒ–ãƒ©ã‚¦ã‚¶ã‚’æ›¸ã„ã¦ä¸‹ã•ã„ã€‚netscapeãŒä¾¿åˆ©ã§ã™ã€‚
+;;; 	(setq yahtml-www-browser "firefox")
+;;;      ;‚¨‹C‚É“ü‚è‚Ìƒuƒ‰ƒEƒU‚ğ‘‚¢‚Ä‰º‚³‚¢Bfirefox‚ª•Ö—˜‚Å‚·B
 ;;; 	(setq yahtml-path-url-alist
 ;;; 	      '(("/home/yuuji/public_html" . "http://www.mynet/~yuuji")
 ;;; 		("/home/staff/yuuji/html" . "http://www.othernet/~yuuji")))
-;;;      ;UNIXã®çµ¶å¯¾ãƒ‘ã‚¹ã¨å¯¾å¿œã™ã‚‹URLã®ãƒªã‚¹ãƒˆã‚’æ›¸ã„ã¦ä¸‹ã•ã„ã€‚
+;;;      ;UNIX‚Ìâ‘ÎƒpƒX‚Æ‘Î‰‚·‚éURL‚ÌƒŠƒXƒg‚ğ‘‚¢‚Ä‰º‚³‚¢B
 ;;; 
-;;; HTMLãƒ•ã‚¡ã‚¤ãƒ«æ¼¢å­—ã‚³ãƒ¼ãƒ‰ãŒæ­£ã—ãåˆ¤åˆ¥ã•ã‚Œã‚‹ã‚ˆã†ã«ãƒ›ãƒ¼ãƒ ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã«
-;;; .htaccess ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½œã‚Šä»¥ä¸‹ã®ã©ã‚Œã‹1è¡Œã‚’é¸ã‚“ã§æ›¸ã„ã¦ä¸‹ã•ã„ã€‚
+;;; HTMLƒtƒ@ƒCƒ‹Š¿šƒR[ƒh‚ª³‚µ‚­”»•Ê‚³‚ê‚é‚æ‚¤‚Éƒz[ƒ€ƒfƒBƒŒƒNƒgƒŠ‚É
+;;; .htaccess ƒtƒ@ƒCƒ‹‚ğì‚èˆÈ‰º‚Ì‚Ç‚ê‚©1s‚ğ‘I‚ñ‚Å‘‚¢‚Ä‰º‚³‚¢B
 ;;; 
-;;;	AddType "text/html; charset=Shift_JIS"	.html	(SJISã®å ´åˆ)
-;;;	AddType "text/html; charset=iso2022-jp"	.html	(JISã®å ´åˆ)
-;;;	AddType "text/html; charset=EUC-JP"	.html	(EUCã®å ´åˆ)
+;;;	AddType "text/html; charset=Shift_JIS"	.html	(SJIS‚Ìê‡)
+;;;	AddType "text/html; charset=iso2022-jp"	.html	(JIS‚Ìê‡)
+;;;	AddType "text/html; charset=EUC-JP"	.html	(EUC‚Ìê‡)
+;;;	AddType "text/html; charset=utf-8"	.html	(UTF-8‚Ìê‡)
 ;;; 
-;;; .htaccess ãŒä½œã‚Œãªã„å ´åˆã¯
+;;; .htaccess ‚ªì‚ê‚È‚¢ê‡‚Í
 ;;;	(setq yahtml-kanji-code 2)
-;;;	;HTMLãƒ•ã‚¡ã‚¤ãƒ«ã®æ¼¢å­—ã‚³ãƒ¼ãƒ‰ã‚’å¤‰æ›´ã™ã‚‹å ´åˆã¯ 1=SJISã€2=JISã€3=EUC
-;;;	;ã§è¨­å®šã—ã¦ä¸‹ã•ã„ã€‚ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ 2 ã§ã™ã€‚
+;;;	;HTMLƒtƒ@ƒCƒ‹‚ÌŠ¿šƒR[ƒh‚ğ•ÏX‚·‚éê‡‚Í
+;;;	;1=SJISA2=JISA3=EUC 4=UTF-8
+;;;	;‚Åİ’è‚µ‚Ä‰º‚³‚¢BƒfƒtƒHƒ‹ƒg‚Í 2 ‚Å‚·B
 ;;; 
-;;; ã‚’é©åˆ‡ã«æ›¸ãæ›ãˆã¦ ~/.emacs ã«è¶³ã—ã¦ä¸‹ã•ã„ã€‚
+;;; ‚ğ“KØ‚É‘‚«Š·‚¦‚Ä ~/.emacs ‚É‘«‚µ‚Ä‰º‚³‚¢B
 ;;; 
 ;;;[Commentary]
 ;;;
@@ -89,7 +93,7 @@
 ;;;  * [prefix] t p	View current html with WWW browser
 ;;; 			(To activate this, never fail to set the lisp
 ;;; 			 variable yahtml-www-browser.  Recommended value
-;;; 			 is "netscape")
+;;; 			 is "firefox")
 ;;;  * [prefix] a	YaTeX's accent mark's equivalent of yahtml.
 ;;;			This function can input $lt, $gt or so.
 ;;;  * [prefix] ;	Translate chars of `>', `<', `&', and `"' to 
@@ -99,76 +103,83 @@
 ;;;  * [prefix] #	Translate unsafe-chars and unreserved-chars to
 ;;;			URLencoded string in the region.
 ;;; 
-;;;[ã‚­ãƒ¼ã®èª¬æ˜]
+;;;[ƒL[‚Ìà–¾]
 ;;; 
-;;; ä»¥ä¸‹ã®èª¬æ˜ã«ãŠã„ã¦ã€ç‰¹ã«ã‚«ã‚¹ã‚¿ãƒã‚¤ã‚ºã‚’ã—ã¦ã„ãªã„é™ã‚Šã€[prefix] ã¯
-;;; C-c ã‚­ãƒ¼ã‚’æ„å‘³ã—ã¾ã™ã€‚
+;;; ˆÈ‰º‚Ìà–¾‚É‚¨‚¢‚ÄA“Á‚ÉƒJƒXƒ^ƒ}ƒCƒY‚ğ‚µ‚Ä‚¢‚È‚¢ŒÀ‚èA[prefix] ‚Í
+;;; C-c ƒL[‚ğˆÓ–¡‚µ‚Ü‚·B
 ;;;
-;;;  * [prefix] b X	`</H1>' ã¨ã„ã£ãŸçµ‚äº†ã‚¿ã‚°ãŒå¿…è¦ã¨ãªã‚‹`H1'ã®ã‚ˆã†
-;;;			ãªç’°å¢ƒã‚’è£œå®Œå…¥åŠ›ã—ã¾ã™ã€‚<a href=foo> ... </a>
-;;;			ã‚‚ã“ã®ã‚°ãƒ«ãƒ¼ãƒ—ã§ã™ã€‚
-;;;			`href=...' ã¨å…¥åŠ›ã—ãŸå¾Œã€TABã‚­ãƒ¼ã‚’æŠ¼ã™ã“ã¨ã§ã€
-;;;			ãƒ•ã‚¡ã‚¤ãƒ«åã‚„ (href="#foo") ã®ã‚ˆã†ãªãƒ©ãƒ™ãƒ«ã‚‚è£œå®Œ
-;;;			ã§ãã¾ã™ã€‚
-;;;  * [prefix] s	ä»¥ä¸‹ã®ã‚ˆã†ãªå®£è¨€ã®è£œå®Œã‚’è¡Œã„ã¾ã™ã€‚
+;;;  * [prefix] b X	`</H1>' ‚Æ‚¢‚Á‚½I—¹ƒ^ƒO‚ª•K—v‚Æ‚È‚é`H1'‚Ì‚æ‚¤
+;;;			‚ÈŠÂ‹«‚ğ•âŠ®“ü—Í‚µ‚Ü‚·B<a href=foo> ... </a>
+;;;			‚à‚±‚ÌƒOƒ‹[ƒv‚Å‚·B
+;;;			`href=...' ‚Æ“ü—Í‚µ‚½ŒãATABƒL[‚ğ‰Ÿ‚·‚±‚Æ‚ÅA
+;;;			ƒtƒ@ƒCƒ‹–¼‚â (href="#foo") ‚Ì‚æ‚¤‚Èƒ‰ƒxƒ‹‚à•âŠ®
+;;;			‚Å‚«‚Ü‚·B
+;;;  * [prefix] s	ˆÈ‰º‚Ì‚æ‚¤‚ÈéŒ¾‚Ì•âŠ®‚ğs‚¢‚Ü‚·B
 ;;;			`<img src="foo.gif">'
 ;;;			`<input name="var" ...>'
-;;;  * [prefix] l	`<i> ... </i>' ã‚„ `<samp> ... </samp>' ã®ã‚ˆã†
-;;;			ãªãƒ†ã‚­ã‚¹ãƒˆã‚¹ã‚¿ã‚¤ãƒ«æŒ‡å®šã®ã‚¿ã‚°ã‚’è£œå®Œã—ã¾ã™ã€‚
-;;;			ã“ã®è£œå®Œæ©Ÿèƒ½ã¯é€šå¸¸ [prefix] b ã§è£œå®Œã§ãã‚‹ã‚‚ã®ã‚’
-;;;			ä¸€è¡Œå†…ã§æ›¸ããŸã„ã¨ãã«ã‚‚ç”¨ã„ã‚‹ã“ã¨ãŒå‡ºæ¥ã¾ã™ã€‚
-;;;  * [prefix] m	`<br>' ã‚„ `<hr> 'ã€`<li>' ç­‰ã®å˜ä½“ã‚¿ã‚°ã®è£œå®Œ
-;;;			ã‚’è¡Œã„ã¾ã™ã€‚
-;;;  * [prefix] p	ã‚«ãƒ¼ã‚½ãƒ«ä½ç½®ã«<p></p>ã‚’æŒ¿å…¥ã—ã¾ã™ã€‚
-;;;  * M-RET		ãŠã¾ã‹ã›æ”¹è¡Œ; ã‚‚ã—ulã€olã€dlç­‰ã®ã‚¿ã‚°(ãƒªã‚¹ãƒˆ)ã‚’
-;;;			ä½¿ã£ã¦ã„ã‚‹å ´åˆã«ã€ç’°å¢ƒã«åˆã‚ã›ã¦æ”¹è¡Œã¨ <li>ã€
-;;;			<dt>ã€<dd>ã‚’å…¥åŠ›ã—ã¾ã™ã€‚
-;;;  * menu-bar yahtml	é¸æŠã—ãŸã‚¢ã‚¤ãƒ†ãƒ ã‚’ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã‚ˆã‚Šè£œå®Œã§ãã¾ã™ã€‚
-;;;			(ç§ã¯ãƒ¡ãƒ‹ãƒ¥ãƒ¼ãŒå«Œã„ãªã‚“ã§ã™ãŒã€htmlã«é–¢ã—ã¦ã¯ãƒ¡
-;;;			ãƒ‹ãƒ¥ãƒ¼ã¯ä¸€ç•ªã‚ã‚ŠãŒãŸã„ã‹ã‚‚)
-;;;  * [prefix] g	å¯¾å¿œã™ã‚‹ã‚¿ã‚°ã€<dl> <-> </dl> ã‚„ href="xxx" ã®
-;;;			ã‚ˆã†ãª TAG ã«ã‚¸ãƒ£ãƒ³ãƒ—ã—ã¾ã™ã€‚
-;;;			<img src=...> ã®å ´åˆã¯ã‚¤ãƒ¡ãƒ¼ã‚¸ãƒ“ãƒ¥ãƒ¼ãƒ¯ã‚’å‘¼ã³å‡º
-;;;			ã—ã¾ã™ã€‚href=hoge.html ã®å ´åˆã¯hoge.htmlã«é£›ã³ã¾
-;;;			ã™ã€‚
-;;;  * [prefix] k	ãƒã‚¤ãƒ³ãƒˆä¸Šã® HTML ã‚¿ã‚°ã‚’æ¶ˆå»ã—ã¾ã™ã€‚
-;;;			ã‚‚ã— universal-argument ã‚’ä»˜ã‘ãŸå ´åˆ(C-uã‚’å…ˆã«æŠ¼
-;;;			ã™)HTMLã‚¿ã‚°ã§å›²ã¾ã‚ŒãŸå†…å®¹ã‚‚åŒæ™‚ã«æ¶ˆå»ã—ã¾ã™ã€‚
-;;;  * [prefix] c	ãƒã‚¤ãƒ³ãƒˆä¸Šã®ã‚¿ã‚°ã‚’å¤‰æ›´ã—ã¾ã™ã€‚
-;;;			`href="xxx"'ã®ä¸Šã§ [prefix] c ã‚’åˆ©ç”¨ã—ãŸå ´åˆã¯ã€
-;;;			å‚ç…§ã—ã¦ã„ã‚‹ãƒªãƒ³ã‚¯ã‚’è£œå®Œæ©Ÿèƒ½ã‚’ä½¿ã„ãªãŒã‚‰å¤‰æ›´ã§
-;;;			ãã¾ã™ã€‚
-;;;  * [prefix] t j	ã‚«ãƒ¬ãƒ³ãƒˆãƒ•ã‚¡ã‚¤ãƒ«ã«å¯¾ã—ã¦ jweblint ã‚’å‘¼ã³å‡ºã—ã¾
-;;;			ã™ã€‚
-;;;  * [prefix] t p	WWW ãƒ–ãƒ©ã‚¦ã‚¶ã§ã‚«ãƒ¬ãƒ³ãƒˆãƒ•ã‚¡ã‚¤ãƒ«ã‚’è¡¨ç¤ºã—ã¾ã™ã€‚
-;;;			(lispå¤‰æ•° yahtml-www-browser ã®è¨­å®šã‚’ãŠå¿˜ã‚Œãª
-;;;			ãã€‚ãŠæ¨ã‚ã¯ "netscape" ã§ã€ã­ã™ã‘ã®å ´åˆæ—¢ã«ã­ã™
-;;;			ã‘ãŒèµ·å‹•ã•ã‚Œã¦ã„ãŸå ´åˆãã®ã­ã™ã‘ã« Reload å‘½ä»¤ã‚’
-;;;			é€ã‚‹ã¨ã„ã†èŠ¸å½“ãŒå‡ºæ¥ã¾ã™)
-;;;  * [prefix] a	YaTeX ã®ã‚¢ã‚¯ã‚»ãƒ³ãƒˆè¨˜å·è£œå®Œã¨åŒã˜ã§ã™ã€‚
-;;;			&lt; &gt; ç­‰ãŒå…¥åŠ›ã§ãã¾ã™ã€‚
-;;;  * [prefix] ;	æŒ‡å®šã—ãŸãƒªã‚¸ãƒ§ãƒ³ä¸­ã® > < & " ã‚’ãã‚Œãã‚Œ
-;;;			&gt; &lt; &amp; &quot; ã«å¤‰æ›ã—ã¾ã™ã€‚
-;;;  * [prefix] :	æŒ‡å®šã—ãŸãƒªã‚¸ãƒ§ãƒ³ä¸­ã§ä¸Šã¨é€†ã®å¤‰æ›ã‚’ã—ã¾ã™ã€‚
-;;;  * [prefix] #	æŒ‡å®šã—ãŸãƒªã‚¸ãƒ§ãƒ³ä¸­ã§%ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰ã®å¿…è¦ãªæ–‡å­—ãŒ
-;;;			ã‚ã‚Œã°ãã‚Œã‚‰ã‚’ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰ã—ã¾ã™ã€‚
-;;;  * [prefix] ESC	yahtml-mode ã‚’æŠœã‘ yahtml-mode ã«å…¥ã‚‹å‰ã«å‹•ä½œã—
-;;;			ã¦ã„ãŸãƒ¡ã‚¸ãƒ£ãƒ¼ãƒ¢ãƒ¼ãƒ‰ã«æˆ»ã‚Šã¾ã™ã€‚
+;;;  * [prefix] l	`<i> ... </i>' ‚â `<samp> ... </samp>' ‚Ì‚æ‚¤
+;;;			‚ÈƒeƒLƒXƒgƒXƒ^ƒCƒ‹w’è‚Ìƒ^ƒO‚ğ•âŠ®‚µ‚Ü‚·B
+;;;			‚±‚Ì•âŠ®‹@”\‚Í’Êí [prefix] b ‚Å•âŠ®‚Å‚«‚é‚à‚Ì‚ğ
+;;;			ˆês“à‚Å‘‚«‚½‚¢‚Æ‚«‚É‚à—p‚¢‚é‚±‚Æ‚ªo—ˆ‚Ü‚·B
+;;;  * [prefix] m	`<br>' ‚â `<hr> 'A`<li>' “™‚Ì’P‘Ìƒ^ƒO‚Ì•âŠ®
+;;;			‚ğs‚¢‚Ü‚·B
+;;;  * [prefix] p	ƒJ[ƒ\ƒ‹ˆÊ’u‚É<p></p>‚ğ‘}“ü‚µ‚Ü‚·B
+;;;  * M-RET		‚¨‚Ü‚©‚¹‰üs; ‚à‚µulAolAdl“™‚Ìƒ^ƒO(ƒŠƒXƒg)‚ğ
+;;;			g‚Á‚Ä‚¢‚éê‡‚ÉAŠÂ‹«‚É‡‚í‚¹‚Ä‰üs‚Æ <li>A
+;;;			<dt>A<dd>‚ğ“ü—Í‚µ‚Ü‚·B
+;;;  * menu-bar yahtml	‘I‘ğ‚µ‚½ƒAƒCƒeƒ€‚ğƒƒjƒ…[‚æ‚è•âŠ®‚Å‚«‚Ü‚·B
+;;;			(„‚Íƒƒjƒ…[‚ªŒ™‚¢‚È‚ñ‚Å‚·‚ªAhtml‚ÉŠÖ‚µ‚Ä‚Íƒ
+;;;			ƒjƒ…[‚Íˆê”Ô‚ ‚è‚ª‚½‚¢‚©‚à)
+;;;  * [prefix] g	‘Î‰‚·‚éƒ^ƒOA<dl> <-> </dl> ‚â href="xxx" ‚Ì
+;;;			‚æ‚¤‚È TAG ‚ÉƒWƒƒƒ“ƒv‚µ‚Ü‚·B
+;;;			<img src=...> ‚Ìê‡‚ÍƒCƒ[ƒWƒrƒ…[ƒ‚ğŒÄ‚Ño
+;;;			‚µ‚Ü‚·Bhref=hoge.html ‚Ìê‡‚Íhoge.html‚É”ò‚Ñ‚Ü
+;;;			‚·B
+;;;  * [prefix] k	ƒ|ƒCƒ“ƒgã‚Ì HTML ƒ^ƒO‚ğÁ‹‚µ‚Ü‚·B
+;;;			‚à‚µ universal-argument ‚ğ•t‚¯‚½ê‡(C-u‚ğæ‚É‰Ÿ
+;;;			‚·)HTMLƒ^ƒO‚ÅˆÍ‚Ü‚ê‚½“à—e‚à“¯‚ÉÁ‹‚µ‚Ü‚·B
+;;;  * [prefix] c	ƒ|ƒCƒ“ƒgã‚Ìƒ^ƒO‚ğ•ÏX‚µ‚Ü‚·B
+;;;			`href="xxx"'‚Ìã‚Å [prefix] c ‚ğ—˜—p‚µ‚½ê‡‚ÍA
+;;;			QÆ‚µ‚Ä‚¢‚éƒŠƒ“ƒN‚ğ•âŠ®‹@”\‚ğg‚¢‚È‚ª‚ç•ÏX‚Å
+;;;			‚«‚Ü‚·B
+;;;  * [prefix] t j	ƒJƒŒƒ“ƒgƒtƒ@ƒCƒ‹‚É‘Î‚µ‚Ä jweblint ‚ğŒÄ‚Ño‚µ‚Ü
+;;;			‚·Bƒtƒ@ƒCƒ‹æ“ª•t‹ß‚É
+;;; 			<!-- #lint ƒRƒ}ƒ“ƒh -->
+;;; 			‚Æ‘‚¢‚Ä‚¨‚­‚Æ‚»‚ÌƒRƒ}ƒ“ƒh‚ğŒÄ‚Ñ‚Ü‚·B
+;;;  * [prefix] t p	WWW ƒuƒ‰ƒEƒU‚ÅƒJƒŒƒ“ƒgƒtƒ@ƒCƒ‹‚ğ•\¦‚µ‚Ü‚·B
+;;;			(lisp•Ï” yahtml-www-browser ‚Ìİ’è‚ğ‚¨–Y‚ê‚È
+;;;			‚­B‚¨„‚ß‚Í "firefox" ‚Å‚·)
+;;;  * [prefix] a	YaTeX ‚ÌƒAƒNƒZƒ“ƒg‹L†•âŠ®‚Æ“¯‚¶‚Å‚·B
+;;;			&lt; &gt; “™‚ª“ü—Í‚Å‚«‚Ü‚·B
+;;;  * [prefix] ;	w’è‚µ‚½ƒŠƒWƒ‡ƒ“’†‚Ì > < & " ‚ğ‚»‚ê‚¼‚ê
+;;;			&gt; &lt; &amp; &quot; ‚É•ÏŠ·‚µ‚Ü‚·B
+;;;  * [prefix] :	w’è‚µ‚½ƒŠƒWƒ‡ƒ“’†‚Åã‚Æ‹t‚Ì•ÏŠ·‚ğ‚µ‚Ü‚·B
+;;;  * [prefix] #	w’è‚µ‚½ƒŠƒWƒ‡ƒ“’†‚Å%ƒGƒ“ƒR[ƒh‚Ì•K—v‚È•¶š‚ª
+;;;			‚ ‚ê‚Î‚»‚ê‚ç‚ğƒGƒ“ƒR[ƒh‚µ‚Ü‚·B
+;;;  * [prefix] }	ƒŠƒWƒ‡ƒ““à‚Ì“Á’è•¶š‹æØ‚è‚ÌƒŒƒR[ƒh‚ğ <td> •À‚Ñ‚É
+;;;			•ÏŠ·‚µ‚Ü‚·BC-u (universal-argument) •t‚«‚Å‹N“®
+;;; 			‚·‚é‚ÆtdˆÈŠO‚Ì”CˆÓ—v‘f‚ÅŠ‡‚è‚Ü‚·Bthd‚ğw’è‚·‚é
+;;; 			‚ÆÅ‰‚Ì1‚Â‚¾‚¯thCc‚è‚·‚×‚Ä‚ğtd‚ÅŠ‡‚è‚Ü‚·B
+;;;  * [prefix] ]	ƒŠƒWƒ‡ƒ““à‚Ì‚·‚×‚Ä‚Ìs‚ğƒtƒB[ƒ‹ƒh‚²‚Æ‚Étd‚ÅŠ‡‚èC
+;;;    			‚³‚ç‚ÉŠes‚ğtr‚ÅŠ‡‚è‚Ü‚·Buniversal-argument ‚ğ
+;;; 			•t‚¯‚é‚ÆƒtƒB[ƒ‹ƒhŠ‡‚è‚ğtdˆÈŠO‚Éw’è‚Å‚«‚Ü‚·B
+;;;  * [prefix] ESC	yahtml-mode ‚ğ”²‚¯ yahtml-mode ‚É“ü‚é‘O‚É“®ì‚µ
+;;;			‚Ä‚¢‚½ƒƒWƒƒ[ƒ‚[ƒh‚É–ß‚è‚Ü‚·B
 ;;; 
-;;; [è¬è¾]
+;;; [Ó«]
 ;;; 
-;;; fjé‡é³¥ã®ä¼šã®çš†ã•ã‚“ã«ã¯è²´é‡ãªåŠ©è¨€ã‚’é ‚ãã¾ã—ãŸã€‚ã¾ãŸã€ä¸‹ã«ç¤ºã™æ–¹ã€…ã«ã¯
-;;; ç‰¹ã«å¤§ããªå”åŠ›ã‚’é ‚ãã¾ã—ãŸã€‚ã‚ã‚ã›ã¦ã“ã“ã«æ„Ÿè¬ç”³ã—ä¸Šã’ã¾ã™ã€‚
+;;; fj–ì’¹‚Ì‰ï‚ÌŠF‚³‚ñ‚É‚Í‹Md‚È•Œ¾‚ğ’¸‚«‚Ü‚µ‚½B‚Ü‚½A‰º‚É¦‚·•ûX‚É‚Í
+;;; “Á‚É‘å‚«‚È‹¦—Í‚ğ’¸‚«‚Ü‚µ‚½B‚ ‚í‚¹‚Ä‚±‚±‚ÉŠ´Ó\‚µã‚°‚Ü‚·B
 ;;; 
-;;;	* æ¨ªç”°å’Œä¹Ÿã•ã‚“(ãƒãƒ„ãƒ€)
-;;;		ãƒãƒ‹ãƒ¥ã‚¢ãƒ«ã®å’Œè¨³ã‚’ã—ã¦é ‚ãã¾ã—ãŸã€‚
-;;;	* å‰ç”°å°šå¿—ã•ã‚“(NTT Data)
-;;;		Mule for Win32 ã§ã®å‹•ä½œã®ã•ã›æ–¹ã‚’æ•™ãˆã¦é ‚ãã¾ã—ãŸã€‚
-;;;		(ã¨ã„ã†ã‹ã»ã¨ã‚“ã©ã‚„ã£ã¦ã‚‚ã‚‰ã£ãŸ ^^;)
+;;;	* ‰¡“c˜a–ç‚³‚ñ(ƒ}ƒcƒ_)
+;;;		ƒ}ƒjƒ…ƒAƒ‹‚Ì˜a–ó‚ğ‚µ‚Ä’¸‚«‚Ü‚µ‚½B
+;;;	* ‹g“c®u‚³‚ñ(NTT Data)
+;;;		Mule for Win32 ‚Å‚Ì“®ì‚Ì‚³‚¹•û‚ğ‹³‚¦‚Ä’¸‚«‚Ü‚µ‚½B
+;;;		(‚Æ‚¢‚¤‚©‚Ù‚Æ‚ñ‚Ç‚â‚Á‚Ä‚à‚ç‚Á‚½ ^^;)
 ;;; 
 
+;;; Code:
 
-;(require 'yatex)
 (require 'yatexlib)
 ;;; --- customizable variable starts here ---
 (defvar yahtml-prefix "\C-c"
@@ -235,14 +246,16 @@ Consult your site's WWW administrator.")
 
 (defvar yahtml-use-css t "*Use stylesheet or not")
 
-(defvar yahtml-image-inspection-bytes 50000 ;256
+(defvar yahtml-image-inspection-bytes 500000
   "*Number of bytes to inspect the image for geometry information")
 (defvar yahtml:img-default-alt-format "%xx%y(%sbytes)"
   "*Default format of img entity's ALT attributes.
 %x: width, %y: height, %s: size in bytes, %c: first comment string,
 %f: filename")
 
-(defvar yahtml-faithful-to-htmllint nil)
+(defvar yahtml-faithful-to-htmllint yahtml-always-/li
+  "*Non-nil doesn't put space after opening tags.")
+
 (defvar yahtml-error-line-regexp
   "^\\(.*\\)(\\([0-9]+\\)):\\|^line \\([0-9]+\\)"
   "*Regexp of error position which is produced by lint program.")
@@ -357,8 +370,7 @@ normal and region mode.  To customize yahtml, user should use this function."
       (yahtml-define-begend-key "bS" "span" map)
       (yahtml-define-begend-key "bp" "pre" map)
       (YaTeX-define-key "b " 'yahtml-insert-begend map)
-      (YaTeX-define-key "B " 'yahtml-insert-begend-region map)
-      )
+      (YaTeX-define-key "B " 'yahtml-insert-begend-region map))
     (YaTeX-define-key "e" 'YaTeX-end-environment map)
     (YaTeX-define-key ">" 'yahtml-comment-region map)
     (YaTeX-define-key "<" 'yahtml-uncomment-region map)
@@ -371,9 +383,10 @@ normal and region mode.  To customize yahtml, user should use this function."
     (YaTeX-define-key ";" 'yahtml-translate-region map)
     (YaTeX-define-key ":" 'yahtml-translate-reverse-region map)
     (YaTeX-define-key "#" 'yahtml-escape-chars-region map)
+    (YaTeX-define-key "}" 'yahtml-td-region map)
+    (YaTeX-define-key "]" 'yahtml-tr-region map)
     ;;;;;(YaTeX-define-key "i" 'yahtml-fill-item map)
-    (YaTeX-define-key "\e" 'yahtml-quit map)
-    )
+    (YaTeX-define-key "\e" 'yahtml-quit map))
   (substitute-all-key-definition
    'fill-paragraph 'yahtml-fill-paragraph yahtml-mode-map)
   (substitute-all-key-definition
@@ -400,8 +413,8 @@ normal and region mode.  To customize yahtml, user should use this function."
 	(make-syntax-table (standard-syntax-table)))
   (modify-syntax-entry ?\< "(>" yahtml-syntax-table)
   (modify-syntax-entry ?\> ")<" yahtml-syntax-table)
-  (modify-syntax-entry ?\n " " yahtml-syntax-table)
-)
+  (modify-syntax-entry ?\n " " yahtml-syntax-table))
+
 (defvar yahtml-command-regexp "[A-Za-z0-9]+"
   "Regexp of constituent of html commands.")
 
@@ -420,7 +433,7 @@ normal and region mode.  To customize yahtml, user should use this function."
     ("DefinitionList" . "dl")
     ("Preformatted" . "pre")
     ("table") ("thead") ("tbody") ("tfoot") ("tr") ("th") ("td")
-    ("address") 
+    ("address") ("button")
     ("h1") ("h2") ("h3") ("h4") ("h5") ("h6")
     ;; ("p") ;This makes indentation screwed up!
     ("style") ("script") ("noscript") ("div") ("object") ("ins") ("del")
@@ -485,8 +498,6 @@ normal and region mode.  To customize yahtml, user should use this function."
 (defvar yahtml-current-completion-type nil
   "Has current completion type.  This may be used in yahtml addin functions.")
 
-;(defvar yahtml-struct-name-regexp
-;  "\\<\\(h[1-6]\\|[uod]l\\|html\\|body\\|title\\|head\\|table\\|t[rhd]\\|pre\\|a\\|form\\|select\\|center\\|blockquote\\)\\b")
 (defvar yahtml-struct-name-regexp
   (concat
    "\\<\\("
@@ -541,10 +552,8 @@ T for static indentation depth")
 	    (setq ldir dir
 		  dir (substring dir 0 (string-match "/$" dir))
 		  dir (file-name-directory dir))))
-      line
-      ))
-   (t nil))
-  )
+      line))
+   (t nil)))
 
 (defun yahtml-dir-default-charset ()
   (let*((fn (file-name-nondirectory (or buffer-file-name "")))
@@ -586,8 +595,7 @@ T for static indentation depth")
 		(setq index-list (cons (substring line 0 x) index-list)
 		      line (substring line (match-end 1)))
 	      (setq index-list (cons line index-list)
-		    line ""))
-	    )
+		    line "")))
 	  (or (nreverse index-list)
 	      (if (listp yahtml-directory-index)
 		  yahtml-directory-index
@@ -651,9 +659,7 @@ T for static indentation depth")
 	      ;;(font-lock-mode -1)
 	      (font-lock-mode 1) ;;Why should I fontify again???
 	      ;; in yatex-mode, there's no need to refontify...
-	      (font-lock-fontify-buffer)
-	      ))
-	))
+	      (font-lock-fontify-buffer)))))
   (set-syntax-table yahtml-syntax-table)
   (use-local-map yahtml-mode-map)
   (YaTeX-read-user-completion-table)
@@ -676,7 +682,7 @@ T for static indentation depth")
   (interactive)
   (message
    (concat "Yet Another HTML-mode "
-	   (if YaTeX-japan "ã€ŒHTMLå±‹ã€" "`yahtml'")
+	   (if YaTeX-japan "uHTML‰®v" "`yahtml'")
 	   " Revision "
 	   yahtml-revision-number)))
 
@@ -754,32 +760,29 @@ T for static indentation depth")
       (strong	"Strong" .
 	(lambda () (interactive) (yahtml-insert-tag nil "STRONG")))
       (VAR	"Variable notation" .
-	(lambda () (interactive) (yahtml-insert-tag nil "VAR")))
-      )))
+	(lambda () (interactive) (yahtml-insert-tag nil "var"))))))
   (setq yahtml-menu-map-typeface (make-sparse-keymap "typeface tags"))
   (YaTeX-define-menu
    'yahtml-menu-map-typeface
    (nreverse
     '((b	"Bold" .
-	  (lambda () (interactive) (yahtml-insert-tag nil "B")))
+	  (lambda () (interactive) (yahtml-insert-tag nil "b")))
       (i	"Italic" .
-	(lambda () (interactive) (yahtml-insert-tag nil "I")))
+	(lambda () (interactive) (yahtml-insert-tag nil "i")))
       (tt	"Typewriter" .
-	(lambda () (interactive) (yahtml-insert-tag nil "TT")))
+	(lambda () (interactive) (yahtml-insert-tag nil "tt")))
       (u	"Underlined" .
-	(lambda () (interactive) (yahtml-insert-tag nil  "U")))
-      )))
+	(lambda () (interactive) (yahtml-insert-tag nil  "u"))))))
   (setq yahtml-menu-map-listing (make-sparse-keymap "listing"))
   (YaTeX-define-menu
    'yahtml-menu-map-listing
    (nreverse
     '((ul	"Unordered" .
-		(lambda () (interactive) (yahtml-insert-begend nil "UL")))
+		(lambda () (interactive) (yahtml-insert-begend nil "ul")))
       (ol	"Ordered" .
-		(lambda () (interactive) (yahtml-insert-begend nil "OL")))
+		(lambda () (interactive) (yahtml-insert-begend nil "ol")))
       (dl	"Definition" .
-		(lambda () (interactive) (yahtml-insert-begend nil "DL")))
-      )))
+		(lambda () (interactive) (yahtml-insert-begend nil "dl"))))))
   (setq yahtml-menu-map-item (make-sparse-keymap "item"))
   (YaTeX-define-menu
    'yahtml-menu-map-item
@@ -789,8 +792,7 @@ T for static indentation depth")
       (dt	"Define term" .
 		(lambda () (interactive) (yahtml-insert-single "dt")))
       (dd	"Description of term" .
-		(lambda () (interactive) (yahtml-insert-single "dd")))
-      )))
+		(lambda () (interactive) (yahtml-insert-single "dd"))))))
   (define-key yahtml-mode-map [menu-bar yahtml]
     (cons "yahtml" yahtml-menu-map))
   (YaTeX-define-menu
@@ -806,16 +808,14 @@ T for static indentation depth")
      (cons (list 'logi "Logical tags")
 	   (cons "logical" yahtml-menu-map-logical))
      (cons (list 'type "Typeface tags")
-	   (cons "typeface" yahtml-menu-map-typeface))
-     )))
+	   (cons "typeface" yahtml-menu-map-typeface)))))
   (if (featurep 'xemacs)
       (add-hook 'yahtml-mode-hook
 		'(lambda ()
 		   (or (assoc "yahtml" current-menubar)
 		       (progn
 			 (set-buffer-menubar (copy-sequence current-menubar))
-			 (add-submenu nil yahtml-menu-map))))))
-  ))
+			 (add-submenu nil yahtml-menu-map))))))))
 
 ;;; ----------- Completion ----------
 (defvar yahtml-last-begend "html")
@@ -837,7 +837,7 @@ T for static indentation depth")
 	  (or (cdr (assoc yahtml-last-begend yahtml-env-table))
 	      yahtml-last-begend))
     (setq cmd yahtml-last-begend)
-    (if yahtml-prefer-upcases (setq cmd (upcase cmd)))
+    (setq cmd (funcall (if yahtml-prefer-upcases 'upcase 'downcase) cmd))
     (if region
 	;; We want to keep region effective for new tagged environment
 	;; to enable continuous regioning by another environment
@@ -854,7 +854,7 @@ T for static indentation depth")
 	(insert "\n")
 	(indent-to-column cc)
 	(insert (format "</%s>" cmd)))
-      (if (string-match "^a\\|p$" cmd)	;aã¨pæ±ºã‚æ‰“ã¡ã£ã¦ã®ãŒç¾ã—ããªã„â€¦
+      (if (string-match "^a\\|p$" cmd)	;a‚ÆpŒˆ‚ß‘Å‚¿‚Á‚Ä‚Ì‚ª”ü‚µ‚­‚È‚¢c
 	  (newline)
 	(yahtml-intelligent-newline nil))
       (yahtml-indent-line))))
@@ -892,18 +892,38 @@ T for static indentation depth")
     (read-from-minibuffer
      (substitute-command-keys
       (if YaTeX-japan
-	  "ã‚¯ãƒ©ã‚¹(è¤‡æ•°æŒ‡å®šã¯\\[quoted-insert] SPCã§åŒºåˆ‡ã‚‹): "
+	  "ƒNƒ‰ƒX(•¡”w’è‚Í\\[quoted-insert] SPC‚Å‹æØ‚é): "
 	"class(or class list delimited by \\[quoted-insert] SPC): "))
      nil YaTeX-minibuffer-completion-map nil)))
   
+(defvar yahtml-newpage-command "newpage.rb"
+  "*Command name to create new HTML file referring to index.html.
+This command should create new HTML file named argument 1 and
+output string like `<a href=\"newfile.html\">anchor tag</a>'.
+This program should take -o option to overwrite existing HTML file.")
+(defun yahtml-newpage (file ov)
+  "Create newpage via newpage script"
+  (interactive
+   (list
+    (let (insert-default-directory)
+      (read-file-name "New webpage file name: " ""))
+    current-prefix-arg))
+  (if (and (file-exists-p file) (not ov))
+      (error "%s already exists.  Call this with universal argument to force overwrite." file))
+  (insert (substring
+	   (YaTeX-command-to-string
+	    (concat yahtml-newpage-command " " (if ov "-o ") file))
+	   0 -1)))
+
 ;;; ---------- Add-in ----------
 (defun yahtml-addin (form)
   "Check add-in function's existence and call it if exists."
    (let ((addin (concat "yahtml:" (downcase form))) s a)
      (concat
       (and (setq a (yahtml-css-get-element-completion-alist form))
-	   (not (equal last-command-char ?\C-j))
+	   (not (equal (YaTeX-last-key) ?\C-j))
 	   (memq yahtml-current-completion-type '(multiline inline))
+	   (not (string-match "#" form))
 	   (yahtml-make-optional-argument ;should be made generic?
 	    "class" (yahtml-read-css a)))
       (if (and (intern-soft addin) (fboundp (intern-soft addin))
@@ -937,16 +957,14 @@ If optional argument FILE is specified collect labels in FILE."
 	      (setq list (cons
 			  (list (concat "#" (YaTeX-match-string 1)))
 			  list))))
-	list)))
-  )
+	list))))
 
 (defvar yahtml-url-completion-map nil "Key map used in URL completion buffer")
 (if yahtml-url-completion-map nil
   (setq yahtml-url-completion-map
 	(copy-keymap minibuffer-local-completion-map))
   (define-key yahtml-url-completion-map "\t"	'yahtml-complete-url)
-  (define-key yahtml-url-completion-map " "	'yahtml-complete-url)
-)
+  (define-key yahtml-url-completion-map " "	'yahtml-complete-url))
 
 (defun yahtml-complete-url ()
   "Complete external URL from history or local file name."
@@ -1007,22 +1025,22 @@ If optional argument FILE is specified collect labels in FILE."
 
 ;
 ; Subject: [yatex:02849] Re: [yahtml] tilda in href tag
-; From: Masayasu Ishikawa <mimasa@sfc.keio.ac.jp>
-; To: yatex@arcadia.jaist.ac.jp
+; From: Masayasu Ishikawa <mimasa<at>sfc.keio.ac.jp>
+; To: yatex<at>arcadia.jaist.ac.jp
 ; Date: Mon, 31 May 1999 21:09:31 +0900
-; RFC 2396 ã® "2.4.3. Excluded US-ASCII Characters" ã«ã‚ˆã‚‹ã¨ã€ä»¥ä¸‹ã®æ–‡å­—
-; ã¯å¿…ãšã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã—ãªã„ã¨ã„ã‘ã¾ã›ã‚“ã€‚
+; RFC 2396 ‚Ì "2.4.3. Excluded US-ASCII Characters" ‚É‚æ‚é‚ÆAˆÈ‰º‚Ì•¶š
+; ‚Í•K‚¸ƒGƒXƒP[ƒv‚µ‚È‚¢‚Æ‚¢‚¯‚Ü‚¹‚ñB
 ;
 ;     control     = <US-ASCII coded characters 00-1F and 7F hexadecimal>
 ;     space       = <US-ASCII coded character 20 hexadecimal>
 ;     delims      = "<" | ">" | "#" | "%" | <">
 ;     unwise      = "{" | "}" | "|" | "\" | "^" | "[" | "]" | "`"
 (defvar yahtml-unsafe-chars-regexp
-  "[][\x0- \x7f <>%\"{}|\\^`]" ;#ã¯é™¤å»ã™ã‚‹
+  "[][\x0- \x7f <>%\"{}|\\^`]" ;#‚Íœ‹‚·‚é
   "Characters regexp which must be escaped in URI.")
 ;
-; ã¾ãŸã€ä»¥ä¸‹ã®æ–‡å­—ã¯äºˆç´„ã•ã‚ŒãŸç”¨æ³•ä»¥å¤–ã«ç”¨ã„ã‚‹å ´åˆã«ã¯ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã—ãªã„ã¨
-; ã„ã‘ãªã„ã“ã¨ã«ãªã£ã¦ã„ã¾ã™ã€‚
+; ‚Ü‚½AˆÈ‰º‚Ì•¶š‚Í—\–ñ‚³‚ê‚½—p–@ˆÈŠO‚É—p‚¢‚éê‡‚É‚ÍƒGƒXƒP[ƒv‚µ‚È‚¢‚Æ
+; ‚¢‚¯‚È‚¢‚±‚Æ‚É‚È‚Á‚Ä‚¢‚Ü‚·B
 ;
 ;     reserved    = ";" | "/" | "?" | ":" | "@" | "&" | "=" | "+" |
 ;                   "$" | ","
@@ -1048,6 +1066,21 @@ Not used yet.")
 	  (setq target (concat target (substring str 0 (1+ p)))))
 	(setq str (substring str (1+ p))))
       (concat target str)))))
+
+(defun yahtml-unescape-string (str)
+  "Untranslate reserved URL-encoded string."
+  (let ((p 0) c (target "") (md (match-data)) (case-fold-search nil))
+    (unwind-protect
+	(progn
+	  (while (string-match "%\\([0-9a-f][0-9a-f]\\)" str p)
+	    (setq target (concat target
+				 (substring str p (1- (match-beginning 1))))
+		  p (match-end 0)
+		  c (YaTeX-hex (substring
+				str (match-beginning 1) (match-end 1)))
+		  target (concat target (format "%c" c))))
+	  (concat target (substring str p)))
+      (store-match-data md))))
 
 (defun yahtml-escape-chars-region (beg end)
   "Translate reserved chars to encoded string in the region."
@@ -1094,8 +1127,7 @@ Not used yet.")
 	       (null (assoc href yahtml-urls-local)))
 	  (YaTeX-update-table
 	   (list href)
-	   'yahtml-urls-private 'yahtml-urls-private 'yahtml-urls-local))
-      )))
+	   'yahtml-urls-private 'yahtml-urls-private 'yahtml-urls-local)))))
 
 (defvar yahtml-parameters-completion-alist
   '(("align" ("top") ("middle") ("bottom") ("left") ("right") ("center"))
@@ -1135,6 +1167,10 @@ Not used yet.")
      ((eq alist 'file)
       (let ((insert-default-directory))
 	(read-file-name prompt "" default nil "")))
+     ((eq alist 'command)
+      (if (fboundp 'read-shell-command)
+	  (read-shell-command prompt)
+	(read-string prompt)))
      ((and alist (symbolp alist))
       (completing-read prompt (symbol-value alist) nil nil default))
      (alist
@@ -1340,8 +1376,7 @@ Returns list of '(WIDTH HEIGHT BYTES DEPTH COMMENTLIST)."
 		      height (yahtml-hex-value 22 4 t)))
 	       (t
 		(setq width (yahtml-hex-value 18 2 t)
-		      height (yahtml-hex-value 20 2 t)))))
-	     ))
+		      height (yahtml-hex-value 20 2 t)))))))
 	(message "")
 	(kill-buffer tmpbuf))
       (list width height bytes depth (nreverse comment)))))
@@ -1349,11 +1384,16 @@ Returns list of '(WIDTH HEIGHT BYTES DEPTH COMMENTLIST)."
 (defun yahtml:form ()
   "Add-in function `form' input format"
   (concat
-   " " (if yahtml-prefer-upcase-attributes "METHOD" "method") "="
+   " " (if yahtml-prefer-upcase-attributes "METHOD" "method") "=\""
    (completing-read "Method: " '(("POST") ("GET")) nil t)
+   "\""
+   (yahtml-make-optional-argument
+    (if yahtml-prefer-upcase-attributes "ENCTYPE" "enctype")
+    (completing-read
+     "Enctype: "
+     '(("application/x-www-form-urlencoded") ("multipart/form-data"))))
    " " (if yahtml-prefer-upcase-attributes "ACTION" "action") "=\""
-   (read-string "Action: ") "\""
-   ))
+   (read-string "Action: ") "\""))
 
 (defun yahtml:select ()
   "Add-in function for `select' input format"
@@ -1364,8 +1404,8 @@ Returns list of '(WIDTH HEIGHT BYTES DEPTH COMMENTLIST)."
 (defun yahtml:ol ()
   "Add-in function for <ol>"
   (setq yahtml-last-single-cmd "li")
-  (let ((start (read-string "start="))
-	(type (completing-read
+  (let ((start (YaTeX-read-string-or-skip "start="))
+	(type (YaTeX-completing-read-or-skip
 	       "type=" '(("1") ("a") ("A") ("i") ("I")) nil t)))
     (concat
      (yahtml-make-optional-argument "start" start)
@@ -1391,19 +1431,18 @@ Returns list of '(WIDTH HEIGHT BYTES DEPTH COMMENTLIST)."
   (let ((size "") name type value checked (maxlength "")
 	(l yahtml-prefer-upcase-attributes))
     (setq name (read-string "name: ")
-	  type (completing-read "type (default=text): "
+	  type (YaTeX-completing-read-or-skip "type (default=text): "
 				yahtml-input-types nil t)
-	  value (read-string "value: "))
+	  value (YaTeX-read-string-or-skip "value: "))
     (if (string-match "text\\|password\\|^$" type)
-	(setq size (read-string "size: ")
-	      maxlength (read-string "maxlength: ")))
+	(setq size (YaTeX-read-string-or-skip "size: ")
+	      maxlength (YaTeX-read-string-or-skip "maxlength: ")))
     (concat
      (if l "NAME" "name") "=\"" name "\""
      (yahtml-make-optional-argument "type" type)
      (yahtml-make-optional-argument "value" value)
      (yahtml-make-optional-argument "size" size)
-     (yahtml-make-optional-argument "maxlength" maxlength)
-    )))
+     (yahtml-make-optional-argument "maxlength" maxlength))))
 
 (defun yahtml:textarea ()
   "Add-in function for `textarea'"
@@ -1481,7 +1520,7 @@ Returns list of '(WIDTH HEIGHT BYTES DEPTH COMMENTLIST)."
   "")
 
 (defun yahtml:link ()
-  "Add-in function for `link' (ã¾ã ã¡ã‚‡ã£ã¨è‰¯ãåˆ†ã‹ã£ã¦ãªã„)"
+  "Add-in function for `link' (‚Ü‚¾‚¿‚å‚Á‚Æ—Ç‚­•ª‚©‚Á‚Ä‚È‚¢)"
   (let (rel rev type href)
     (setq rel (yahtml-read-parameter "rel"))
     (cond
@@ -1490,7 +1529,7 @@ Returns list of '(WIDTH HEIGHT BYTES DEPTH COMMENTLIST)."
 	       "rev" (yahtml-read-parameter "rev"))
 	      (yahtml-make-optional-argument
 	       "href" (yahtml-read-parameter "href")
-	       ;;ä»–ã«è‰¯ãä½¿ã†ã®ã£ã¦ä½•?
+	       ;;‘¼‚É—Ç‚­g‚¤‚Ì‚Á‚Ä‰½?
 	       )))
      ((string-match "stylesheet" rel)
       (concat
@@ -1515,8 +1554,8 @@ Returns list of '(WIDTH HEIGHT BYTES DEPTH COMMENTLIST)."
        (yahtml-make-optional-argument
 	"type" (yahtml-read-parameter "type" "text/css"))
        (yahtml-make-optional-argument
-	"href" (read-from-minibuffer "href: " "" yahtml-url-completion-map))
-       )))))
+	"href"
+	(read-from-minibuffer "href: " "" yahtml-url-completion-map)))))))
 
 (defvar yahtml:meta-names
   '(("name" ("keywords")("author")("copyright")("date")("GENERATOR"))))
@@ -1577,15 +1616,23 @@ Returns list of '(WIDTH HEIGHT BYTES DEPTH COMMENTLIST)."
        (yahtml-make-optional-argument
 	"height" (yahtml-read-parameter "height"))
        (yahtml-make-optional-argument
-	"align" (yahtml-read-parameter "align"))
-       ))
+	"align" (yahtml-read-parameter "align"))))
      (t
-      ""
-      ))))
+      ""))))
 
 (defun yahtml:abbr ()
   "Add-in function for abbr."
   (yahtml-make-optional-argument "title" (yahtml-read-parameter "title")))
+
+(defun yahtml:button ()
+  (concat
+   (yahtml-make-optional-argument
+    "name" (yahtml-read-parameter "name"))
+   (yahtml-make-optional-argument
+    "type" (yahtml-read-parameter
+	    "type" "button" '(("submit")("reset")("button"))))
+   (yahtml-make-optional-argument
+    "value" (yahtml-read-parameter "value"))))
 
 ;;; ---------- Simple tag ----------
 (defun yahtml-insert-tag (region-mode &optional tag)
@@ -1619,7 +1666,6 @@ Returns list of '(WIDTH HEIGHT BYTES DEPTH COMMENTLIST)."
   "Call yahtml-insert-tag with region mode."
   (interactive)
   (yahtml-insert-tag t tag))
-
 
 (defvar yahtml-need-single-closer nil)	;for test
 (defun yahtml-insert-single (cmd)
@@ -1681,16 +1727,17 @@ Returns list of '(WIDTH HEIGHT BYTES DEPTH COMMENTLIST)."
     (format "%s=\"%s\"--" (if (string-match "/" file) "virtual" "file") file)))
 
 (defun yahtml:!--\#exec ()
-  (format "cmd=\"%s\"--" (yahtml-read-parameter "cmd" "" '(("cmd" . file)))))
+  (format "cmd=\"%s\"--"
+	  (yahtml-read-parameter "cmd" "" '(("cmd" . command)))))
 
 ;;; ---------- Jump ----------
 (defun yahtml-on-href-p ()
   "Check if point is on href clause."
   (let ((p (point)) e cmd (case-fold-search t))
     (save-excursion
-      (and ;;(string= (YaTeX-inner-environment t) "a") ;aã§ãªãã¦ã‚‚è¨±å¯ã«ã—ãŸ
+      (and ;;(string= (YaTeX-inner-environment t) "a") ;a‚Å‚È‚­‚Ä‚à‹–‰Â‚É‚µ‚½
 	   (save-excursion
-	     ;;(search-forward "</a>" nil t) ;aã§ãªãã¦ã‚‚è¨±å¯ã«ã—ãŸ
+	     ;;(search-forward "</a>" nil t) ;a‚Å‚È‚­‚Ä‚à‹–‰Â‚É‚µ‚½
 	     (search-forward "[\" \t\n]" nil t)
 	     (setq e (point)))
 	   ;(goto-char (get 'YaTeX-inner-environment 'point))
@@ -1701,8 +1748,7 @@ Returns list of '(WIDTH HEIGHT BYTES DEPTH COMMENTLIST)."
 	     (skip-chars-forward " \t\n")
 	     (looking-at "\"?\\([^\"> \t\n]+\\)\"?"))
 	   (< p (match-end 0))
-	   (YaTeX-match-string 1)
-	   ))))
+	   (yahtml-unescape-string (YaTeX-match-string 1))))))
 
 (defun yahtml-netscape-sentinel (proc mes)
   (cond
@@ -1813,8 +1859,7 @@ Returns list of '(WIDTH HEIGHT BYTES DEPTH COMMENTLIST)."
       (if (and (re-search-backward "<" nil t)
 	       (looking-at
 		;(concat "<\\(/?" yahtml-struct-name-regexp "\\)\\b")
-		"<\\(/?[A-Z][A-Z0-9]*\\)\\b"
-		)
+		"<\\(/?[A-Z][A-Z0-9]*\\)\\b")
 	       (condition-case nil
 		   (forward-list 1)
 		 (error nil))
@@ -1881,7 +1926,8 @@ Optional argument NOERR causes no error for unballanced tag."
   (let ((tag (yahtml-current-tag)) image (p (point)) (case-fold-search t))
     (if (and tag
 	     (string-match "img" tag)
-	     (setq image (yahtml-get-attrvalue "src")))
+	     (setq image
+		   (yahtml-unescape-string (yahtml-get-attrvalue "src"))))
 	(progn
 	  (message "Invoking %s %s..." yahtml-image-viewer image)
 	  (start-process
@@ -1895,7 +1941,7 @@ Optional argument NOERR causes no error for unballanced tag."
   (let ((env (yahtml-current-tag)) s (p (point)))
     (cond
      ((string-match "applet" env)
-      (if (setq s (yahtml-get-attrvalue "code"))
+      (if (setq s (yahtml-unescape-string (yahtml-get-attrvalue "code")))
 	  (progn
 	    (setq s (YaTeX-match-string 1)
 		  s (concat
@@ -1947,8 +1993,7 @@ Optional argument NOERR causes no error for unballanced tag."
    ((yahtml-goto-corresponding-img))
    ((yahtml-goto-corresponding-source other))
    ((yahtml-goto-corresponding-begend))
-   (t (message "I don't know where to go."))
-   ))
+   (t (message "I don't know where to go."))))
 
 (defun yahtml-goto-corresponding-*-other-window ()
   "Go to corresponding object."
@@ -2012,8 +2057,7 @@ Optional argument NOERR causes no error for unballanced tag."
   "Kill current position's HTML tag (set)."
   (interactive "P")
   (cond
-   ((yahtml-kill-begend whole))
-   ))
+   ((yahtml-kill-begend whole))))
 
 
 ;;; ---------- changing ----------
@@ -2161,8 +2205,7 @@ This function should be able to treat white spaces in value, but not yet."
   (interactive)
   (cond
    ((yahtml-change-begend))
-   ((yahtml-change-command))
-  ))
+   ((yahtml-change-command))))
 
 ;;; ---------- commenting ----------
 
@@ -2184,7 +2227,7 @@ This function should be able to treat white spaces in value, but not yet."
 	    (beginning-of-line)
 	  (forward-line 1))
 	(set-marker e (point))
-	;(comment-region beg (point) (if uncom (list 4)))
+	;(comment-region beg (point) (if uncom (list 4)))))
 	))
      (t ;(comment-region (region-beginning) (region-end) (if uncom (list 4)))
       (setq beg (region-beginning))
@@ -2277,6 +2320,92 @@ This function should be able to treat white spaces in value, but not yet."
 	(goto-char (get 'YaTeX-inner-environment 'point))))
     e))
 
+(defun yahtml-untranslate-string (str)
+  "Untranslate entity reference."
+  (let ((md (match-data)) (left "") (right str) b0 ch
+	(ct (append yahtml-entity-reference-chars-alist
+		    yahtml-entity-reference-chars-alist-default))
+	(revrex yahtml-entity-reference-chars-reverse-regexp))
+    (unwind-protect
+	(progn
+	  (while (string< "" right)
+	    (cond
+	     ((string-match revrex right)
+	      (setq ch (YaTeX-rassoc
+			(substring right (match-beginning 1) (match-end 1)))
+		    b0 (substring right 0 (match-beginning 0))
+		    right (substring right (match-end 0))
+		    left (concat left
+				 (substring right 0 (match-beginning 0))
+				 (char-to-string ch))))
+	     ((string-match "\\&#\\(x\\)?\\([0-9a-f]+\\);" right)
+	      (setq ch (substring right (match-beginning 2) (match-end 2))
+		    b0 (substring right 0 (match-beginning 0))
+		    right (substring right (match-end 0))
+		    left (concat left
+				 b0
+				 (char-to-string
+				  (if (match-beginning 1)
+				      (YaTeX-hex ch)
+				    (string-to-number ch))))))
+	     (t (setq left (concat left right)
+		      right ""))))
+	  left)
+      (store-match-data md))))
+
+;;; ---------- table-ize region ----------
+(defun yahtml-td-region (e delim beg end)
+  "Enclose each item in a region with <td>..</td>.
+Interactive prefix argument consults enclosing element other than td."
+  (interactive "P\nsDelimiter(s): \nr")
+  (let ((e (cond
+	    ((null e) "td")
+	    ((stringp e) e)
+	    (t (read-string "Enclose with(`thd' means th td td..): " "th"))))
+	(ws "[ \t]")
+	elm p i)
+    (if (string= delim "") (setq delim " \t\n"))
+    (setq delim (concat "[" delim "]+")
+	  elm (if (string= "thd" e)
+		  (cons "th" "td")
+		(cons e e)))
+    (save-excursion
+      (save-restriction
+	(narrow-to-region beg end)
+	(goto-char (setq p (point-min)))
+	(setq i 0 e (car elm))
+	(while (re-search-forward delim nil t)
+	  (setq e (if (= (setq i (1+ i)) 1) (car elm) (cdr elm)))
+	  (goto-char (match-beginning 0))
+	  (insert "</" e ">")
+	  (save-excursion
+	    (goto-char p)
+	    (insert "<" e ">"))
+	  (setq p (point))
+	  (while (and (not (eobp)) (looking-at ws))
+	    (delete-char 1))
+	  (if (looking-at delim) (delete-char 1)))
+	(insert "<" e ">")
+	(goto-char (point-max))
+	(insert "</" e ">")))))
+
+(defun yahtml-tr-region (e delim beg end)
+  "Enclose lines in a form tab-sv/csv with <tr><td>..</td></tr>."
+  (interactive "P\nsDelimiter(s): \nr")
+  (setq e (if (and e (listp e))
+	      (read-string "Enclose with(td or th, `thd' -> th td td td...: "
+			   "th")))
+  (save-excursion
+    (save-restriction
+      (narrow-to-region (point) (mark))
+      (goto-char (point-min))
+      (while (not (eobp))
+	(insert "<tr>")
+	(yahtml-td-region e delim (point) (point-end-of-line))
+	(end-of-line)
+	(insert "</tr>")
+	(forward-line 1)))))
+	
 ;;; ---------- filling ----------
 (defvar yahtml-saved-move-to-column (symbol-function 'move-to-column))
 (defun yahtml-move-to-column (col &optional force)
@@ -2385,11 +2514,11 @@ This function should be able to treat white spaces in value, but not yet."
       (yahtml-indent-line-real))))
 
 (defun yahtml-this-indent ()
-  (let ((envs "[uod]l\\|table\\|[ht][rhd0-6]\\|select\\|blockquote\\|center\\|menu\\|dir\\|font")
-	(itemizing-envs "^\\([uod]l\\|menu\\|dir\\)$")
+  (let ((envs "[uod]l\\|table\\|[ht][rhd0-6]\\|select\\|blockquote\\|center\\|menu\\|dir\\|d[td]\\|li")
+	(itemizing-envs "^\\([uod]l\\|menu\\|dir\\|li\\|d[td]\\)$")
 	(itms "<\\(dt\\|dd\\|li\\|t[rdh]\\|option\\)\\b")
 	(excludes
-	 "\\(a\\|p\\|span\\|code\\|tt\\|em\\|u\\|i\\|big\\|small\\|font\\)\\b")
+	 "\\b\\(a\\|p\\|span\\|code\\|tt\\|em\\|u\\|i\\|big\\|small\\|font\\)\\b")
 	inenv p col peol (case-fold-search t))
     (save-excursion
       (beginning-of-line)
@@ -2483,9 +2612,9 @@ This function should be able to treat white spaces in value, but not yet."
 ;;; ---------- Lint and Browsing ----------
 ;;; 
 (defun yahtml-browse-menu ()
-  "Browsing menu"
+  "Browsing or other external process invokation menu."
   (interactive)
-  (message "J)weblint p)Browse R)eload...")
+  (message "J)weblint p)Browse R)eload N)ewpage...")
   (let ((c (char-to-string (read-char))))
     (cond
      ((string-match "j" c)
@@ -2493,7 +2622,9 @@ This function should be able to treat white spaces in value, but not yet."
      ((string-match "[bp]" c)
       (yahtml-browse-current-file))
      ((string-match "r" c)
-      (yahtml-browse-reload)))))
+      (yahtml-browse-reload))
+     ((string-match "n" c)
+      (call-interactively 'yahtml-newpage)))))
 
 (if (fboundp 'wrap-function-to-control-ime)
     (wrap-function-to-control-ime 'yahtml-browse-menu t nil))
@@ -2506,10 +2637,12 @@ This function should be able to treat white spaces in value, but not yet."
   (interactive "bCall lint on buffer: ")
   (setq buf (get-buffer buf))
   (YaTeX-save-buffers)
-  (YaTeX-typeset
-   (concat yahtml-lint-program " "
-	   (file-name-nondirectory (buffer-file-name buf)))
-   yahtml-lint-buffer  "lint" "lint"))
+  (let ((bcmd (YaTeX-get-builtin "lint")))
+    (and bcmd (setq bcmd (yahtml-untranslate-string bcmd)))
+    (YaTeX-typeset
+     (concat (or bcmd yahtml-lint-program)
+	     " " (file-name-nondirectory (buffer-file-name buf)))
+     yahtml-lint-buffer  "lint" "lint")))
 
 (defun yahtml-file-to-url (file)
   "Convert local unix file name to URL.
@@ -2520,7 +2653,7 @@ If no matches found in yahtml-path-url-alist, return raw file name."
       (setq file (expand-file-name file)))
     (if (string-match "^[A-Za-z]:/" file)
 	(progn
-	  ;; (aset file 1 ?|) ;ã“ã‚Œã¯è¦ã‚‰ãªã„ã‚‰ã—ã„â€¦
+	  ;; (aset file 1 ?|) ;‚±‚ê‚Í—v‚ç‚È‚¢‚ç‚µ‚¢c
 	  (setq file (concat "///" file))))
     (while list
       (if (string-match (concat "^" (regexp-quote (car (car list)))) file)
@@ -2572,7 +2705,7 @@ If no matches found in yahtml-path-url-alist, return raw file name."
   (yahtml-browse-html (yahtml-file-to-url (buffer-file-name))))
 
 (defun yahtml-browse-reload ()
-  "Send `reload' event to netzscape."
+  "Send `reload' event to netscape."
   (let ((pb "* WWW Browser *") (cb (current-buffer)))
     (cond
      ((string-match "[Nn]etscape" yahtml-www-browser)
@@ -2632,7 +2765,8 @@ If no matches found in yahtml-path-url-alist, return raw file name."
 	  (yahtml-insert-single "dt")
 	  (or yahtml-always-/dt yahtml-faithful-to-htmllint (insert " "))
 	  (setq yahtml-last-single-cmd "dd")))
-      (insert (if yahtml-prefer-upcases "<DT> " "<dt> "))
+      (yahtml-insert-single "dt")
+      (or yahtml-always-/li yahtml-faithful-to-htmllint (insert " "))
       (setq yahtml-last-single-cmd "dd"))
     (yahtml-indent-line)
     (and (string-match yahtml-p-prefered-env-regexp "dl")
@@ -2709,12 +2843,12 @@ If no matches found in yahtml-path-url-alist, return raw file name."
 	(setq p (point)))
       (if (> cols 0)
 	  (message "%s columns found.  %s"
-		   cols (if YaTeX-japan "æ–°ã—ã„tr(N)? å‰ã®trã®è¤‡å†™?(D)?: "
+		   cols (if YaTeX-japan "V‚µ‚¢tr(N)? ‘O‚Ìtr‚Ì•¡Ê?(D)?: "
 			  "New tr?(N) or Duplicate")))
       (cond
        ((and (> cols 0)
 	     (memq (read-char) '(?d ?D))) ;Duplication mode
-	(setq line (YaTeX-buffer-substring (point) cp)))
+	(setq line (YaTeX-buffer-substring (point) (1- cp))))
        (t				;empty cells
 	(setq line "<tr>" i 0)
 	(if (> cols 0)
@@ -2812,10 +2946,11 @@ If no matches found in yahtml-path-url-alist, return raw file name."
 			       (skip-chars-forward "^\"")(point)))))
 		(if (file-exists-p f)
 		    (setq alist
-			  (append alist (yahtml-css-collect-classes-file f)))))
+			  (append alist (yahtml-css-collect-classes-file
+					 f initial)))))
 	    (setq e (point))
 	    (goto-char b)
-	    (while (re-search-forward	;ã¡ã‚‡ã¨ã„ã„åŠ æ¸›ãªREGEXP
+	    (while (re-search-forward	;‚¿‚å‚Æ‚¢‚¢‰ÁŒ¸‚ÈREGEXP
 		    "\\([a-z*][-a-z0-9]*\\)?\\.\\([-a-z0-9][-a-z0-9]*\\)\\>"
 		    e t)
 	      (setq element (YaTeX-match-string 1)
@@ -2828,7 +2963,7 @@ If no matches found in yahtml-path-url-alist, return raw file name."
 		      (setcdr a (cons (list class) (cdr a))))
 		(setq alist (cons (list element (list class)) alist))))
 	    (goto-char (1- e))
-	    (search-forward "}" nil t)
+	    (search-forward "}" nil 1) ;1=move to limit when not found.
 	    (setq b (point))))
 	alist))))
 	    
@@ -2986,17 +3121,6 @@ If no matches found in yahtml-path-url-alist, return raw file name."
   (interactive "P")
   (font-lock-mode -1)			;is stupid, but sure.
   (font-lock-mode 1))
-
-;; (defun yahtml-fontify-to-tagend (lim)
-;;   "*Fontify any tag including < and >.
-;; This is invalid use of font-lock function.  Therefore
-;; this fontifying will loose effectiveness soon or later."
-;;   (let ((start (match-beginning 0))
-;; 	(end (progn (skip-chars-forward "^>") (1+ (point)))))
-;;     (or nil; (font-lock-any-faces-p start end)
-;; 	(font-lock-fillin-text-property
-;; 	 start end 'face 'font-lock font-lock-keyword-face)))
-;;   nil)
 
 (run-hooks 'yahtml-load-hook)
 (provide 'yahtml)

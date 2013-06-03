@@ -1,165 +1,165 @@
 ----------------------------------------------------------------------------
-                                 『野鳥』
-                           クイックリファレンス
+                                 �w�쒹�x
+                           �N�C�b�N���t�@�����X
 ----------------------------------------------------------------------------
 
 
-【注意】
+�y���Ӂz
 
-	  野鳥では、prefix キーをカスタマイズできるため(標準ではC-c)これを
-	[prefix] と表記します。C-c のまま変更していない場合、[prefix] a は
-	C-c a を表わします。
-	  begin型コマンドとは \begin〜\endの形式のコマンド、section型コ
-	マンドとは \section{題}のように引数を取るコマンド、large型コマン
-	ドとは {\tt } のような中括弧で囲まれたフォント/サイズ指定子、
-	maketitle型コマンドとは \maketitle のように引数を伴わないコマン
-	ドを指します。
-
-
-【補完】
-
-	◆アクセント補完		[prefix] a
-	◆begin型補完			[prefix] b SPC
-	◆begin型補完(領域指定)		[prefix] B SPC
-	◆begin型補完(即時)		[prefix] b 環境の頭文字
-	◆begin型補完(〃領域指定)	[prefix] B 環境の頭文字
-	◆end補完			[prefix] e
-	◆large型補完			[prefix] l
-	◆large型補完(領域指定)		[prefix] L
-	◆maketitle型補完		[prefix] m
-	◆section型補完			[prefix] s
-	◆section型補完(領域指定)	[prefix] S
-	◆随時補完			[prefix] SPC
-
-	  即時begin型補完の、環境名の頭文字の対応については、Info マニュ
-	アルをご覧ください。領域指定モードでは、マークした位置とポイント
-	の間を\begin{center}…\end{center} や {\large } などで括ります。
-
-	◆数式記号イメージ補完		;
-	◆ギリシャ文字イメージ補完	:
-
-	  上の2つはTeXの数式環境の中で押した場合のみ有効です。強制的に補
-	完機能を使う場合は、C-u を押してから ; や : を押します。
+	  �쒹�ł́Aprefix �L�[���J�X�^�}�C�Y�ł��邽��(�W���ł�C-c)�����
+	[prefix] �ƕ\�L���܂��BC-c �̂܂ܕύX���Ă��Ȃ��ꍇ�A[prefix] a ��
+	C-c a ��\�킵�܂��B
+	  begin�^�R�}���h�Ƃ� \begin�`\end�̌`���̃R�}���h�Asection�^�R
+	�}���h�Ƃ� \section{��}�̂悤�Ɉ��������R�}���h�Alarge�^�R�}��
+	�h�Ƃ� {\tt } �̂悤�Ȓ����ʂň͂܂ꂽ�t�H���g/�T�C�Y�w��q�A
+	maketitle�^�R�}���h�Ƃ� \maketitle �̂悤�Ɉ����𔺂�Ȃ��R�}��
+	�h���w���܂��B
 
 
-【プロセス起動】
+�y�⊮�z
 
-	◆jbibtex起動			[prefix] tb
-	◆jlatex起動			[prefix] tj
-	◆makeindex起動			[prefix] ti
-	◆jlatexのkill			[prefix] tk	※
-	◆プリントアウト		[prefix] tl
-	◆プリントアウト(全ページ)	C-u [prefix] tl
-	◆プレビューア起動		[prefix] tp
-	◆xdvi上で文字列サーチ		[prefix] ts	※※
-	◆lpq起動			[prefix] tq
-	◆jlatex起動(領域指定)		[prefix] tr
+	���A�N�Z���g�⊮		[prefix] a
+	��begin�^�⊮			[prefix] b SPC
+	��begin�^�⊮(�̈�w��)		[prefix] B SPC
+	��begin�^�⊮(����)		[prefix] b ���̓�����
+	��begin�^�⊮(�V�̈�w��)	[prefix] B ���̓�����
+	��end�⊮			[prefix] e
+	��large�^�⊮			[prefix] l
+	��large�^�⊮(�̈�w��)		[prefix] L
+	��maketitle�^�⊮		[prefix] m
+	��section�^�⊮			[prefix] s
+	��section�^�⊮(�̈�w��)	[prefix] S
+	�������⊮			[prefix] SPC
 
-	  [prefix] t を押せばメニューが出るので、[prefix] t の次に押すキー
-	は覚えなくて構いません。
+	  ����begin�^�⊮�́A�����̓������̑Ή��ɂ��ẮAInfo �}�j��
+	�A�����������������B�̈�w�胂�[�h�ł́A�}�[�N�����ʒu�ƃ|�C���g
+	�̊Ԃ�\begin{center}�c\end{center} �� {\large } �ȂǂŊ���܂��B
 
-	  ※は、MS-DOS では無効です。
-	  ※※は、-remote 機能付きの xdvi でのみ有効です。
+	�������L���C���[�W�⊮		;
+	���M���V�������C���[�W�⊮	:
 
-	  [prefix] tr の領域指定は、文書中の、 %#BEGIN と書いてある行か
-	ら、%#END と書いてある行までです。%#END を省略すると、%#BEGINか
-	ら文書末まで、両方省略するとマークした位置から、ポイントまでが指
-	定領域となります。
-
-
-【カーソルジャンプ】
-
-	◆タイプセットエラー箇所へ	[prefix] '
-
-	  タイプセットエラー発生箇所へ(末尾から)遡って順次ジャンプします。
-	もちろん jlatex でエラーが生じた場合のみ有効です。
-
-	◆対応するオブジェクトジャンプ	[prefix] g
-	◆別ウィンドウで   〃		[prefix] 4g
-
-	  カーソルジャンプは、[prefix] g を押す時のカーソルの位置により、
-	ジャンプすべき場所を判断します。
-
-	・\begin{}, \end{}の上		対応する \end{},\begin{} へ
-	・%#BEGIN, %#END の上		対応する %#BEGIN, %#END へ
-	・\include(only), \input の上   対応するファイルへ
-	・\ref, \label の上             対応する \label, \ref へ
-	・\cite, \bibitem の上          対応する \bibitem, \cite へ
-
-	◆メインファイルへジャンプ	[prefix] ^
-	◆別ウィンドウで   〃		[prefix] 4^
-
-	  メインファイルを野鳥に知らせるために、作成ファイルの任意の位置に、
-			%#!jlatex メインファイル名
-	のような行を書いておいて下さい。
-
-	◆環境の先頭へ			ESC C-a
-	◆環境の末尾へ			ESC C-e
-	◆環境全体をマーク		ESC C-h
+	  ���2��TeX�̐������̒��ŉ������ꍇ�̂ݗL���ł��B�����I�ɕ�
+	���@�\���g���ꍇ�́AC-u �������Ă��� ; �� : �������܂��B
 
 
-【%によるコメントアウト】
+�y�v���Z�X�N���z
 
-	◆領域/環境のコメントアウト	[prefix] >
-	◆領域/環境のコメント除去	[prefix] <
+	��jbibtex�N��			[prefix] tb
+	��jlatex�N��			[prefix] tj
+	��makeindex�N��			[prefix] ti
+	��jlatex��kill			[prefix] tk	��
+	���v�����g�A�E�g		[prefix] tl
+	���v�����g�A�E�g(�S�y�[�W)	C-u [prefix] tl
+	���v���r���[�A�N��		[prefix] tp
+	��xdvi��ŕ�����T�[�`		[prefix] ts	����
+	��lpq�N��			[prefix] tq
+	��jlatex�N��(�̈�w��)		[prefix] tr
 
-	  カーソルが、\begin{} または \end{} の行にある時は、その環境に含
-	まれる文章全てをコメントアウト/除去し、それ以外の時は、マークとポ
-	イント間の文章をコメントアウト/除去します。
+	  [prefix] t �������΃��j���[���o��̂ŁA[prefix] t �̎��ɉ����L�[
+	�͊o���Ȃ��č\���܂���B
 
-	◆段落/環境宣言コメントアウト	[prefix] .
-	◆段落/環境宣言コメント除去	[prefix] ,
+	  ���́AMS-DOS �ł͖����ł��B
+	  �����́A-remote �@�\�t���� xdvi �ł̂ݗL���ł��B
 
-	  カーソルが、\begin{} または \end{} の行にある時は、それら二つの
-	行をコメントアウト/除去し、それ以外の時は、カーソルの属する段落を
-	コメントアウト/除去します。
+	  [prefix] tr �̗̈�w��́A�������́A %#BEGIN �Ə����Ă���s��
+	��A%#END �Ə����Ă���s�܂łł��B%#END ���ȗ�����ƁA%#BEGIN��
+	�當�����܂ŁA�����ȗ�����ƃ}�[�N�����ʒu����A�|�C���g�܂ł��w
+	��̈�ƂȂ�܂��B
 
 
-【その他】
+�y�J�[�\���W�����v�z
+
+	���^�C�v�Z�b�g�G���[�ӏ���	[prefix] '
+
+	  �^�C�v�Z�b�g�G���[�����ӏ���(��������)�k���ď����W�����v���܂��B
+	������� jlatex �ŃG���[���������ꍇ�̂ݗL���ł��B
+
+	���Ή�����I�u�W�F�N�g�W�����v	[prefix] g
+	���ʃE�B���h�E��   �V		[prefix] 4g
+
+	  �J�[�\���W�����v�́A[prefix] g ���������̃J�[�\���̈ʒu�ɂ��A
+	�W�����v���ׂ��ꏊ�𔻒f���܂��B
+
+	�E\begin{}, \end{}�̏�		�Ή����� \end{},\begin{} ��
+	�E%#BEGIN, %#END �̏�		�Ή����� %#BEGIN, %#END ��
+	�E\include(only), \input �̏�   �Ή�����t�@�C����
+	�E\ref, \label �̏�             �Ή����� \label, \ref ��
+	�E\cite, \bibitem �̏�          �Ή����� \bibitem, \cite ��
+
+	�����C���t�@�C���փW�����v	[prefix] ^
+	���ʃE�B���h�E��   �V		[prefix] 4^
+
+	  ���C���t�@�C����쒹�ɒm�点�邽�߂ɁA�쐬�t�@�C���̔C�ӂ̈ʒu�ɁA
+			%#!jlatex ���C���t�@�C����
+	�̂悤�ȍs�������Ă����ĉ������B
+
+	�����̐擪��			ESC C-a
+	�����̖�����			ESC C-e
+	�����S�̂��}�[�N		ESC C-h
+
+
+�y%�ɂ��R�����g�A�E�g�z
+
+	���̈�/���̃R�����g�A�E�g	[prefix] >
+	���̈�/���̃R�����g����	[prefix] <
+
+	  �J�[�\�����A\begin{} �܂��� \end{} �̍s�ɂ��鎞�́A���̊��Ɋ�
+	�܂�镶�͑S�Ă��R�����g�A�E�g/�������A����ȊO�̎��́A�}�[�N�ƃ|
+	�C���g�Ԃ̕��͂��R�����g�A�E�g/�������܂��B
+
+	���i��/���錾�R�����g�A�E�g	[prefix] .
+	���i��/���錾�R�����g����	[prefix] ,
+
+	  �J�[�\�����A\begin{} �܂��� \end{} �̍s�ɂ��鎞�́A�������
+	�s���R�����g�A�E�g/�������A����ȊO�̎��́A�J�[�\���̑�����i����
+	�R�����g�A�E�g/�������܂��B
+
+
+�y���̑��z
 	
-	◆itemの桁揃え			[prefix] i
+	��item�̌�����			[prefix] i
 
-	  \item を使う環境中のみ有効です。\item の項目全体をハングインデ
-	ントします。
+	  \item ���g�������̂ݗL���ł��B\item �̍��ڑS�̂��n���O�C���f
+	���g���܂��B
 
-	◆LaTeXコマンド変更		[prefix] c
+	��LaTeX�R�}���h�ύX		[prefix] c
 
-	  \begin{}, \end{} の行で起動すると環境名を同時に変更します。
-	section型コマンドの上で起動するとコマンドを変更し、コマンドの引
-	数の位置で起動すると引数を変更します。large型コマンドの上で起動
-	するとフォント/サイズ指定子を変更します。イメージ補完で入力した
-	数式モードコマンドの上で起動すると確定直前のイメージ補完操作に戻
-	ります。
+	  \begin{}, \end{} �̍s�ŋN������Ɗ����𓯎��ɕύX���܂��B
+	section�^�R�}���h�̏�ŋN������ƃR�}���h��ύX���A�R�}���h�̈�
+	���̈ʒu�ŋN������ƈ�����ύX���܂��Blarge�^�R�}���h�̏�ŋN��
+	����ƃt�H���g/�T�C�Y�w��q��ύX���܂��B�C���[�W�⊮�œ��͂���
+	�������[�h�R�}���h�̏�ŋN������Ɗm�蒼�O�̃C���[�W�⊮����ɖ�
+	��܂��B
 
-	◆コマンド削除			[prefix] k
+	���R�}���h�폜			[prefix] k
 
-	  \begin{}, \end{} のペア、%#BEGIN, %#END のペア、括弧のペア、ま
-	たはsection型コマンド、フォント/文字サイズ指定子とそれを括る括弧
-	を一挙に削除します。
+	  \begin{}, \end{} �̃y�A�A%#BEGIN, %#END �̃y�A�A���ʂ̃y�A�A��
+	����section�^�R�}���h�A�t�H���g/�����T�C�Y�w��q�Ƃ�������銇��
+	���ꋓ�ɍ폜���܂��B
 
-	◆領域を()で括る		[prefix] )
-	◆領域を{}で括る		[prefix] }
-	◆領域を[]で括る		[prefix] ]
-	◆領域を$$で括る		[prefix] $
+	���̈��()�Ŋ���		[prefix] )
+	���̈��{}�Ŋ���		[prefix] }
+	���̈��[]�Ŋ���		[prefix] ]
+	���̈��$$�Ŋ���		[prefix] $
 
-	◆モード切り替え		[prefix] w
+	�����[�h�؂�ւ�		[prefix] w
 
-	  新規作成/修正モード、数式モードの切り替えメニューが出ます。
+	  �V�K�쐬/�C�����[�h�A�������[�h�̐؂�ւ����j���[���o�܂��B
 
-	◆%# 記法の編集			[prefix] %
-	◆tabular/array桁位置表示	[prefix] &
-	◆オンラインヘルプ		[prefix] ?
-	◆オンラインapropos		[prefix] /
-	◆おまかせ改行			ESC RET
+	��%# �L�@�̕ҏW			[prefix] %
+	��tabular/array���ʒu�\��	[prefix] &
+	���I�����C���w���v		[prefix] ?
+	���I�����C��apropos		[prefix] /
+	�����܂������s			ESC RET
 
-	  「おまかせ改行」は tabular, array, itemize, enumerate, list,
-	description 環境で有効です。
+	  �u���܂������s�v�� tabular, array, itemize, enumerate, list,
+	description ���ŗL���ł��B
 
 
-	◆インクルード構造ブラウズ	[prefix] d
-	◆font-lockし直しメニュー	[prefix] u
+	���C���N���[�h�\���u���E�Y	[prefix] d
+	��font-lock���������j���[	[prefix] u
 
-							       広瀬雄二
+							       �L���Y��
 						       yuuji@yatex.org
 
 Local variables:

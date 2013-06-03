@@ -1,7 +1,12 @@
 Info file: yatexj,    -*-Text-*-
 produced by `texinfo-format-buffer'
 from file `yatexj.tex'
-using `texinfmt.el' version 2.32 of 19 November 1993.
+using `texinfmt.el' version 2.38 of 3 July 1998.
+
+START-INFO-DIR-ENTRY
+* YaTeX: (yatexj).      Yet Another tex-mode for Emacs (Japanese).
+END-INFO-DIR-ENTRY
+
 
 
 
@@ -11,378 +16,408 @@ File: yatexj, Node: Top, Next: Intro, Prev: (dir), Up: (dir)
 
 * Menu:
 
-* Intro::                       はじめに
-* Terminology::                 マニュアル参照上の注意
-* Main features::               主な機能
-* Installation::                インストール
-* Invocation::                  プロセス起動
-* %#notation ::                 %#記法
-* Completion::                  補完入力
-* Local dictionary::            ローカル辞書
-* Commenting out::              コメントアウト
-* Cursor jump::                 カーソルジャンプ
-* Modifying/Deleting::          LaTeXコマンドの変更/削除
-* Filling::                     桁揃え
-* Includeonly::                 勝手に includeonly
-* What column::                 カラム位置ガイド
-* Intelligent newline::         おまかせ改行
-* Usepackage cheker::           先回りusepackage
-* Changing mode of YaTeX::      野鳥動作モード変更
-* Online help::                 LaTeXオンラインヘルプ
-* Inclusion hierarchy browser::  ファイル分割階層構造の表示
-* Cooperation with other packages::  他パッケージとの連携
-* Customizations::              カスタマイズ
-* Etc::                         その他
-* Copying::                     取り扱い
-* Concept Index::               索引
+* Intro::                       �͂��߂�
+* Terminology::                 �}�j���A���Q�Ə�̒���
+* Main features::               ��ȋ@�\
+* Installation::                �C���X�g�[��
+* Invocation::                  �v���Z�X�N��
+* %#notation ::                 %#�L�@
+* Completion::                  �⊮����
+* Local dictionary::            ���[�J������
+* Commenting out::              �R�����g�A�E�g
+* Cursor jump::                 �J�[�\���W�����v
+* Modifying/Deleting::          LaTeX�R�}���h�̕ύX/�폜
+* Filling::                     ������
+* Includeonly::                 ����� includeonly
+* What column::                 �J�����ʒu�K�C�h
+* Intelligent newline::         ���܂������s
+* Usepackage cheker::           ����usepackage
+* Changing mode of YaTeX::      �쒹���샂�[�h�ύX
+* Online help::                 LaTeX�I�����C���w���v
+* Inclusion hierarchy browser::  �t�@�C�������K�w�\���̕\��
+* Cooperation with other packages::  ���p�b�P�[�W�Ƃ̘A�g
+* Customizations::              �J�X�^�}�C�Y
+* Etc::                         ���̑�
+* Copying::                     ��舵��
+* Concept Index::               ����
+
 
 
 
 File: yatexj, Node: Intro, Next: Terminology, Prev: Top, Up: Top
 
-はじめに
+�͂��߂�
 ********
 
-  野鳥は、GNU Emacs で LaTeX 用の文書を作成する時に pLaTeX などのタイプセッ
-トコマンドや、プレヴューアの起動を Emacs 編集画面中から行えるようにすると
-共に、拡張性の高い種々の補完機能によりソーステキストの編集を支援します。さ
-らに LaTeX コマンドのオンラインヘルプによりマニュアルを調べる手間を軽減し
-ます。
+  �쒹�́AGNU Emacs �� LaTeX �p�̕������쐬���鎞�� pLaTeX �Ȃǂ̃^�C�v�Z�b
+�g�R�}���h��A�v�������[�A�̋N���� Emacs �ҏW��ʒ�����s����悤�ɂ����
+���ɁA�g�����̍�����X�̕⊮�@�\�ɂ��\�[�X�e�L�X�g�̕ҏW���x�����܂��B��
+��� LaTeX �R�}���h�̃I�����C���w���v�ɂ��}�j���A���𒲂ׂ��Ԃ��y����
+�܂��B
 
   English manual *Note Top: (yatexe)Top.
+
 
 
 File: yatexj, Node: Terminology, Next: Main features, Prev: Intro, Up: Top
 
-本マニュアル参照上の注意
+�{�}�j���A���Q�Ə�̒���
 ************************
 
-  本マニュアルでは以下の表記を用います。
+  �{�}�j���A���ł͈ȉ��̕\�L��p���܂��B
 
-   * begin型コマンド
+   * begin�^�R�}���h
 
-     `\begin{環境} 〜 \end{環境}'という形式のLaTeXコマンドを指します。
-     begin型コマンドを補完入力することをbegin型補完と呼びます。
+     `\begin{��} �` \end{��}'�Ƃ����`����LaTeX�R�}���h���w���܂��B
+     begin�^�R�}���h��⊮���͂��邱�Ƃ�begin�^�⊮�ƌĂт܂��B
 
-   * section型コマンド
+   * section�^�R�}���h
 
-     `\section{タイトル}'や`\mbox{内容}'のように引数を取るLaTeXコマンドを
-     指します。
+     `\section{�^�C�g��}'��`\mbox{���e}'�̂悤�Ɉ��������LaTeX�R�}���h��
+     �w���܂��B
 
-   * maketitle型コマンド
+   * maketitle�^�R�}���h
 
-     `\maketitle'や`\tableofcontents'のように引数を取らないLaTeXコマンドを
-     指します。
+     `\maketitle'��`\tableofcontents'�̂悤�Ɉ��������Ȃ�LaTeX�R�}���h��
+     �w���܂��B
 
-   * large型コマンド
+   * large�^�R�}���h
 
-     `{\large ...}' や `{\tt ...}' のようなフォント/サイズ指定子を指します。
+     `{\large ...}' �� `{\tt ...}' �̂悤�ȃt�H���g/�T�C�Y�w��q���w���܂��B
 
    * `[prefix]'
 
-     野鳥の機能を呼び出すためのプリフィクスキー。デフォルトでは`C-c'に割り
-     当てられているので、特に変更していない場合本マニュアルの `[prefix]' 
-     という表記は、`C-c' と読み換えてください。
+     �쒹�̋@�\���Ăяo�����߂̃v���t�B�N�X�L�[�B�f�t�H���g�ł�`C-c'�Ɋ���
+     ���Ă��Ă���̂ŁA���ɕύX���Ă��Ȃ��ꍇ�{�}�j���A���� `[prefix]' 
+     �Ƃ����\�L�́A`C-c' �Ɠǂ݊����Ă��������B
+
 
 
 File: yatexj, Node: Main features, Next: Installation, Prev: Terminology, Up: Top
 
-主な機能
+��ȋ@�\
 ********
 
-   * タイプセッタやプレヴューアなどの編集画面からの起動(`C-c t')
-   * カーソル位置によらない固定リジョンの部分タイプセット
-   * \includeonlyのワンタッチ更新
-   * エラー箇所への自動ジャンプ(`C-c '')
-   * `\begin{}, \end{}, \section...' などの LaTeXコマンドの補完入力(`C-c
+   * �^�C�v�Z�b�^��v�������[�A�Ȃǂ̕ҏW��ʂ���̋N��(`C-c t')
+   * �J�[�\���ʒu�ɂ��Ȃ��Œ胊�W�����̕����^�C�v�Z�b�g
+   * \includeonly�̃����^�b�`�X�V
+   * �G���[�ӏ��ւ̎����W�����v(`C-c '')
+   * `\begin{}, \end{}, \section...' �Ȃǂ� LaTeX �R�}���h�̕⊮����(`C-c
      b', `C-c s', `C-c l', `C-c m')
-   * 既に入力したテキストを環境やコマンド引数の中に取り込む括り補完(`C-u'
-     +通常補完キー)
-   * セクション区切り入力時の文書構造アウトライン表示
-   * セクションコマンドの一括シフト (*Note view-sectioning::)
-   * 補完辞書の学習
-   * LaTeX の環境やコマンドに応じたガイド付き引数入力
-   * 野鳥にないガイド付き引数入力関数の自動生成(`yatexgen.el')
-   * LaTeX コマンドの削除/変更(`C-c k', `C-c c')
-   * ファイル間、`\begin'<->`\end'間、
-             `\ref'<->`\label'間、
-             `\cite'<->`\bibitem'ジャンプ(`C-c g')
-   * 一括コメントアウト/アンコメントアウト
-             (`C-c >', `C-c <', `C-c ,', `C-c .')
-   * アクセント記号/数式環境用コマンド/ギリシャ文字の入力支援
-             (`C-c a', `;', `/')
-   * tabular/array環境のカラム位置ガイド
-   * 標準的 LaTeX コマンドのオンラインヘルプ(`C-c ?', `C-c /')
-   * ドキュメントのインクルード構造の視覚的表示とバッファ切り替え(`C-c d')
-   * 補完入力したマクロに応じて必要な \userpackage を入れてくれる先回り
+   * ���ɓ��͂����e�L�X�g������R�}���h�����̒��Ɏ�荞�ފ���⊮(`C-u'
+     +�ʏ�⊮�L�[)
+   * �Z�N�V������؂���͎��̕����\���A�E�g���C���\��
+   * �Z�N�V�����R�}���h�̈ꊇ�V�t�g (*Note view-sectioning::)
+   * �⊮�����̊w�K
+   * LaTeX �̊���R�}���h�ɉ������K�C�h�t����������
+   * �쒹�ɂȂ��K�C�h�t���������͊֐��̎�������(`yatexgen.el')
+   * LaTeX �R�}���h�̍폜/�ύX(`C-c k', `C-c c')
+   * �t�@�C���ԁA`\begin'<->`\end'�ԁA`\ref'<->`\label'�ԁA
+     `\cite'<->`\bibitem'�W�����v(`C-c g')
+   * �ꊇ�R�����g�A�E�g/�A���R�����g�A�E�g(`C-c >', `C-c <', `C-c ,', `C-c
+     .')
+   * �A�N�Z���g�L��/�������p�R�}���h/�M���V�������̓��͎x��(`C-c a',
+     `;', `/')
+   * tabular/array���̃J�����ʒu�K�C�h
+   * �W���I LaTeX �R�}���h�̃I�����C���w���v(`C-c ?', `C-c /')
+   * �h�L�������g�̃C���N���[�h�\���̎��o�I�\���ƃo�b�t�@�؂�ւ�(`C-c d')
+   * �⊮���͂����}�N���ɉ����ĕK�v�� \userpackage �����Ă�������
      userpackage
-   * \labelを打つことはもう忘れよう! refやcite補完入力で自動生成します
+   * \label��ł��Ƃ͂����Y��悤! ref��cite�⊮���͂Ŏ����������܂�
+
 
 
 File: yatexj, Node: Installation, Next: Invocation, Prev: Main features, Up: Top
 
-起動法
+�N���@
 ******
 
-野鳥起動のための設定
+�쒹�N���̂��߂̐ݒ�
 ====================
 
-  ~/.emacsに下の2項目を加えます。
+  ~/.emacs�ɉ���2���ڂ������܂��B
 
      (setq auto-mode-alist
            (cons (cons "\\.tex$" 'yatex-mode) auto-mode-alist))
      (autoload 'yatex-mode "yatex" "Yet Another LaTeX mode" t)
 
-次に野鳥の emacs-lisp ファイル群を置くディレクトリを load-path に加えます。
-たとえば、 `~/src/emacs/yatex'に置くのであれば、
+���ɖ쒹�� emacs-lisp �t�@�C���Q��u���f�B���N�g���� load-path �ɉ����܂��B
+���Ƃ��΁A `~/src/emacs/yatex'�ɒu���̂ł���΁A
 
      (setq load-path (cons (expand-file-name "~/src/emacs/yatex") load-path))
 
-などとします。
+�ȂǂƂ��܂��B
 
-  以上の設定により、拡張子が .tex であるファイルを編集すると自動的に野鳥が
-ロードされます。野鳥が正常に起動できたときはモードラインの表示が「やてふ」
-に変わります。
+  �ȏ�̐ݒ�ɂ��A�g���q�� .tex �ł���t�@�C����ҏW����Ǝ����I�ɖ쒹��
+���[�h����܂��B�쒹������ɋN���ł����Ƃ��̓��[�h���C���̕\�����u��ĂӁv
+�ɕς��܂��B
 
 
-タイプセッタ/プレヴューア環境の設定
+�^�C�v�Z�b�^/�v�������[�A���̐ݒ�
 ===================================
 
-  利用する外部プログラムに関する以下の変数を確認し、必要なら正しい値に変更
-します。
+  ���p����O���v���O�����Ɋւ���ȉ��̕ϐ����m�F���A�K�v�Ȃ琳�����l�ɕύX
+���܂��B
 `tex-command'
-             ... 起動するタイプセッタのコマンド名
+             ... �N������^�C�v�Z�b�^�̃R�}���h��
 `dvi2-command'
-             ... 起動するプレヴューアのコマンド名
+             ... �N������v�������[�A�̃R�}���h��
 `NTT-jTeX'
-             ... 改行+インデントによって、タイプセット後の字間が空いてしま
-             うのを抑制する場合にtにする(古いNTT-jTeXで顕著に現れる)。具体
-     的には、
-             fillするときに各行の終わりに%を付加するようになる。
+             ... ���s+�C���f���g�ɂ���āA�^�C�v�Z�b�g��̎��Ԃ��󂢂Ă���
+     ���̂�}������ꍇ��t�ɂ���(�Â�NTT-jTeX�Ō����Ɍ����)�B��̓I�ɂ́A
+     fill����Ƃ��Ɋe�s�̏I����%��t������悤�ɂȂ�B
 `YaTeX-kanji-code'
-             ... 文書を作成する時の漢字コード
+             ... �������쐬���鎞�̊����R�[�h
 `dviprint-command-format'
-             ... ファイルの印刷に使われるコマンド列の書式
+             ... �t�@�C���̈���Ɏg����R�}���h��̏���
 `makeindex-command'
-             ... makeindexコマンド
+             ... makeindex�R�}���h
 
-これらを変更する場合は、やはり`~/.emacs'にて、たとえば
-     (setq tex-command "bigjlatex")
-のようにしてください。どのような値をセットすれば良いかについては、
-*Note All customizable variables::を参照してください。
+������ύX����ꍇ�́A��͂�`~/.emacs'�ɂāA���Ƃ���(setq tex-command
+"pdflatex") �̂悤�ɂ��Ă��������B�ǂ̂悤�Ȓl���Z�b�g����Ηǂ����ɂ���
+�́A*Note All customizable variables::���Q�Ƃ��Ă��������B
+
 
 
 
 File: yatexj, Node: Invocation, Next: %#notation, Prev: Installation, Up: Top
 
-latexコマンド起動
+latex�R�}���h�N��
 *****************
 
-LaTeXソースの編集中、次のキー入力により、platex などのタイプセットプログラ
-ム(以後タイプセッタと呼ぶ)、プレヴューアなどの起動ができます。
+LaTeX�\�[�X�̕ҏW���A���̃L�[���͂ɂ��Aplatex �Ȃǂ̃^�C�v�Z�b�g�v���O��
+��(�Ȍ�^�C�v�Z�b�^�ƌĂ�)�A�v�������[�A�Ȃǂ̋N�����ł��܂��B
 
 `[prefix] t j'
-             ... タイプセッタ(platex)起動
+             ... �^�C�v�Z�b�^(platex)�N��
 `[prefix] t r'
-             ... タイプセッタ起動(領域指定)
+             ... �^�C�v�Z�b�^�N��(�̈�w��)
+`[prefix] t e'
+             ... �^�C�v�Z�b�^�N��(�|�C���g�ʒu�̊��܂��͐������[�h�̂ݑ�
+     ��)
 `[prefix] t k'
-             ... 動作中のタイプセッタの停止
+             ... ���쒆�̃^�C�v�Z�b�^�̒�~
 `[prefix] t b'
-             ... jbibtex起動
+             ... jbibtex�N��
+`[prefix] t i'
+             ... makeindex�N��
+`[prefix] t d'
+     	... �^�C�v�Z�b�g������dvipdfmx�N��
 `[prefix] t p'
-             ... プレヴューア起動
+             ... �v�������[�A�N��
 `[prefix] t l'
-             ... lpr(プリントアウト用)コマンド起動
+             ... lpr(�v�����g�A�E�g�p)�R�}���h�N��
 `[prefix] t s'
-             ... xdvi -remote でのサーチ
+             ... xdvi -remote �ł̃T�[�`
 
 * Menu:
 
-* Calling typesetter::          タイプセッタ起動
-* Calling previewer::           プレヴューア起動
-* Print out::                   プリントアウト用コマンドの起動
+* Calling typesetter::          �^�C�v�Z�b�^�N��
+* Calling previewer::           �v�������[�A�N��
+* Print out::                   �v�����g�A�E�g�p�R�}���h�̋N��
+
 
 
 File: yatexj, Node: Calling typesetter, Next: Calling previewer, Prev: Invocation, Up: Invocation
 
-タイプセッタ起動
+�^�C�v�Z�b�^�N��
 ================
 
-  タイプセッタを起動すると、編集ウィンドウが2つに分割され、片方のウィンド
-ウにタイプセット画面が表示されます。出力されるメッセージと連動しタイプセッ
-トバッファは自動的にスクロールします。もし、途中でエラーが起こって止まって
-しまった場合にはタイプセットバッファに移り、(`C-x o') タイプセッタの出して
-いる ? プロンプトに対して、`x' (処理の中断)などの指示を送ることができます。
-エラーを修正する場合は、
+  �^�C�v�Z�b�^���N������ƁA�ҏW�E�B���h�E��2�ɕ�������A�Е��̃E�B���h
+�E�Ƀ^�C�v�Z�b�g��ʂ��\������܂��B�o�͂���郁�b�Z�[�W�ƘA�����^�C�v�Z�b
+�g�o�b�t�@�͎����I�ɃX�N���[�����܂��B�����A�r���ŃG���[���N�����Ď~�܂���
+���܂����ꍇ�ɂ̓^�C�v�Z�b�g�o�b�t�@�Ɉڂ�A(`C-x o') �^�C�v�Z�b�^�̏o����
+���� ? �v�����v�g�ɑ΂��āA`x' (�����̒��f)�Ȃǂ̎w���𑗂邱�Ƃ��ł��܂��B
+�G���[���C������ꍇ�́A
 
 `[prefix] ''
-`(prefix+アポストロフィ)'
-             ... 直前のエラー発生行へジャンプ
+`(prefix+�A�|�X�g���t�B)'
+             ... ���O�̃G���[�����s�փW�����v
 
-を入力することにより、タイプセッタがエラーを発生した行に移ることができます。
-また、タイプセッタの出力する overfull hbox などのウォーニング行にも対応し
-ていますので、順次 `[prefix] '' を押すことにより、一つ前のウォーニング発生
-行にジャンプしていきます。
+����͂��邱�Ƃɂ��A�^�C�v�Z�b�^���G���[�𔭐������s�Ɉڂ邱�Ƃ��ł��܂��B
+�܂��A�^�C�v�Z�b�^�̏o�͂��� overfull hbox �Ȃǂ̃E�H�[�j���O�s�ɂ��Ή���
+�Ă��܂��̂ŁA���� `[prefix] '' ���������Ƃɂ��A��O�̃E�H�[�j���O����
+�s�ɃW�����v���Ă����܂��B
 
-  もし、気になるエラー行があった場合は、タイプセットバッファで、エラーの表
-示されている行にカーソルを合わせスペースキーを押すと LaTeX ソースの対応す
-る行にジャンプします。
+  �����A�C�ɂȂ�G���[�s���������ꍇ�́A�^�C�v�Z�b�g�o�b�t�@�ŁA�G���[�̕\
+������Ă���s�ɃJ�[�\�������킹�X�y�[�X�L�[�������� LaTeX �\�[�X�̑Ή���
+��s�ɃW�����v���܂��B
 
 
-領域タイプセット
+�̈�^�C�v�Z�b�g
 ----------------
 
-  ポイントとマークの間、あるいはテキスト中に埋め込んだ `%#BEGIN' と`%#END'
-の間の領域(*Note %#notation::)だけを切り取ってタイプセットすることができま
-す。この場合の documentclass は、単一ファイルの LaTeX ソースの編集時にはそ
-のファイルの documentclass が、別ファイルから include している場合にはメイ
-ンファイルの documentclass が自動的に選択されます。指定領域は、メインファ
-イルのあるディレクトリの`texput.tex'という臨時ファイルに出力されますので、
-上書きには注意してください。
+  �|�C���g�ƃ}�[�N�̊ԁA���邢�̓e�L�X�g���ɖ��ߍ��� `%#BEGIN' ��`%#END'
+�̊Ԃ̗̈�(*Note %#notation::)������؂����ă^�C�v�Z�b�g���邱�Ƃ��ł���
+���B���̏ꍇ���C���t�@�C���̃v���A���u�����ꎞ�t�@�C���̃v���A���u���Ƃ���
+�g���܂��B���������ăv���A���u���ɂȂ��}�N����`���̈���ɂ���ƃG���[��
+�Ȃ�܂��B�̈�^�C�v�Z�b�g���g���ꍇ�A�K���}�N����`�̓v���A���u��
+(`\begin{document}'���O)�ɒu���悤�ɂ��ĉ������B�ꎞ�t�@�C���̓��C���t�@
+�C���̂���f�B���N�g����`texput.tex'�Ƃ������O�ŏo�͂����̂ŁA�㏑���ɂ�
+���ӂ��Ă��������B
+
+
+���^�C�v�Z�b�g
+----------------
+
+  `[prefix] te' �������ƁA�|�C���g�ʒu�̍ł������̊��A�܂��͐������[�h��
+�̏ꍇ�͂��̐������[�h�S�̂������I�ɗ̈�I������āA�̈�^�C�v�Z�b�g���Ă�
+�o���܂��Btabular���␔�����[�h�ŕ��G�Ȃ��̂�����Ă���ꍇ�͊m���߂���
+�����������m�F�ł���̂ŕ֗��ł��B����� `texput.tex' �ɊY�������������o��
+�܂��B�v�������[�A�� `texput.dvi' ���J�����܂܂ɂ��Ă����ΏC���Ɗm�F���f��
+���ł���ł��傤�B
+
 
 
 File: yatexj, Node: Calling previewer, Next: Print out, Prev: Calling typesetter, Up: Invocation
 
-プレヴューア起動
+�v�������[�A�N��
 ================
-  `[prefix] t p' によりプレヴューアの起動ができます。さらに、もしあなたが、-
-remote 機能つきのxdviを利用している場合は `[prefix] t s' を押すことにより
-カーソル位置の文字列を検索してそのページを表示するようにすでに起動中のxdvi
-に命令を送ります。これにより、現在編集中の箇所のタイプセット結果を即座に見
-ることができます。
+  `[prefix] t p' �ɂ��v�������[�A�̋N�����ł��܂��B����ɁA�������Ȃ����A-
+remote �@�\����xdvi�𗘗p���Ă���ꍇ�� `[prefix] t s' ���������Ƃɂ��
+�J�[�\���ʒu�̕�������������Ă��̃y�[�W��\������悤�ɂ��łɋN������xdvi
+�ɖ��߂𑗂�܂��B����ɂ��A���ݕҏW���̉ӏ��̃^�C�v�Z�b�g���ʂ𑦍��Ɍ�
+�邱�Ƃ��ł��܂��B
+
 
 
 
 File: yatexj, Node: Print out, Prev: Calling previewer, Up: Invocation
 
-プリントアウト
+�v�����g�A�E�g
 ==============
 
-  `[prefix] t l'を押してプリントアウトを指示すると、出力開始/終了ページを
-聞いてくるので、それぞれに答えます。これを省略したい時は、
-universal-argument をつけ、
+  `[prefix] t l'�������ăv�����g�A�E�g���w������ƁA�o�͊J�n/�I���y�[�W��
+�����Ă���̂ŁA���ꂼ��ɓ����܂��B������ȗ����������́A
+universal-argument �����A
 
 
 `C-u [prefix] t l'
-             ... ページ確認省略lpr起動
+             ... �y�[�W�m�F�ȗ�lpr�N��
 
-のように起動してください。
+�̂悤�ɋN�����Ă��������B
+
 
 
 File: yatexj, Node: %#notation, Next: Completion, Prev: Invocation, Up: Top
 
-%#記法
+%#�L�@
 ******
 
-  本文中に`%#'ではじまるキーワードを埋め込むことでタイプセッタ起動等の制御
-をすることができます。
+  �{������`%#'�ł͂��܂�L�[���[�h�𖄂ߍ��ނ��ƂŃ^�C�v�Z�b�^�N�����̐���
+�����邱�Ƃ��ł��܂��B
 
 * Menu:
 
-* Changing typesetter::         タイプセット用コマンドの変更
-* Splitting input files::       入力ファイル分割
-* Fix region for typesetting::  領域の固定
-* lpr format::                  プリントアウトコマンド用フォーマット
-* Editing %# notation::         %#記法の編集
+* Changing typesetter::         �^�C�v�Z�b�g�p�R�}���h�̕ύX
+* Splitting input files::       ���̓t�@�C������
+* Fix region for typesetting::  �̈�̌Œ�
+* lpr format::                  �v�����g�A�E�g�R�}���h�p�t�H�[�}�b�g
+* Controlling which command to invoke::  ���̑��̋N���R�}���h����
+* Editing %# notation::         %#�L�@�̕ҏW
+
 
 
 File: yatexj, Node: Changing typesetter, Next: Splitting input files, Prev: %#notation, Up: %#notation
 
-タイプセット用コマンド変更
+�^�C�v�Z�b�g�p�R�}���h�ύX
 ==========================
 
-  起動するコマンドを変えたい時は本文中に次のような行を書きます。
+  �N������R�}���h��ς��������͖{�����Ɏ��̂悤�ȍs�������܂��B
 
 
              %#!jlatex-ntt
 
-NTT jTeX と、ASCII jTeX を使い分けたいような場合に便利でしょう。
+NTT jTeX �ƁAASCII jTeX ���g�����������悤�ȏꍇ�ɕ֗��ł��傤�B
+
 
 
 
 File: yatexj, Node: Splitting input files, Next: Fix region for typesetting, Prev: Changing typesetter, Up: %#notation
 
-入力ファイル分割
+���̓t�@�C������
 ================
 
-また、章毎に別ファイルの .tex を作成している場合で、`main.tex'から 
-`sub.tex'を `\include'しているような時は、`sub.tex'の任意の位置に次のよう
-な行を埋め込みます。
+�܂��A�͖��ɕʃt�@�C���� .tex ���쐬���Ă���ꍇ�ŁA`main.tex'���� 
+`sub.tex' �� `\include'���Ă���悤�Ȏ��́A`sub.tex'�̔C�ӂ̈ʒu�Ɏ��̂悤
+�ȍs�𖄂ߍ��݂܂��B
 
              %#!platex main.tex
 
 
-上の例のようにコマンド名だけでなく引数も書いた場合には、全てをそのまま 
-shell に渡すので次のように書けば、ghostview などをプレヴューアに使う時に便
-利です。
+��̗�̂悤�ɃR�}���h�������łȂ��������������ꍇ�ɂ́A�S�Ă����̂܂� 
+shell �ɓn���̂Ŏ��̂悤�ɏ����΁Aghostview �Ȃǂ��v�������[�A�Ɏg�����ɕ�
+���ł��B
 
 
-             %#!platex main ; dvi2ps main.dvi > main
+             %#!platex main && dvi2ps main.dvi > main
 
-なお、この行の最後の単語のピリオド以前を「メインファイル」のベースネームで
-あると仮定します(上の2つの場合どちらも`main')。この行に記述した、`%f'はメ
-インファイル名に、`%r' はメインファイルの拡張子を取り除いた部分に置換され
-ます。ただし、`%f,%r'を利用した場合、初回タイプセット時に必ずメインファイ
-ル名の入力を促されます。
+�Ȃ��A���̍s�̍Ō�̒P��̃s���I�h�ȑO���u���C���t�@�C���v�̃x�[�X�l�[����
+����Ɖ��肵�܂�(���2�̏ꍇ�ǂ����`main')�B���̍s�ɋL�q�����A`%f'�̓�
+�C���t�@�C�����ɁA `%r' �̓��C���t�@�C���̊g���q����菜���������ɒu������
+�܂��B�������A`%f,%r'�𗘗p�����ꍇ�A����^�C�v�Z�b�g���ɕK�����C���t�@�C
+�����̓��͂𑣂���܂��B
 
-  `[prefix] g' (*Note Cursor jump::参照) でのファイル間ジャンプを有効に機
-能させるため、入力ファイル分割時には次のことに注意して下さい。
+  `[prefix] g' (*Note Cursor jump::�Q��) �ł̃t�@�C���ԃW�����v��L���ɋ@
+�\�����邽�߁A���̓t�@�C���������ɂ͎��̂��Ƃɒ��ӂ��ĉ������B
 
-  1. サブディレクトリを作って、その中にサブファイルを置くことはできるがサ
-     ブディレクトリのサブディレクトリには置けない。
-  2. メインファイルからサブディレクトリ内のファイルを includeする時には、
-     相対パス指定を用いて、`\include{chap1/sub}'のように記述。
-  3. メインファイルが一つ上のディレクトリにある場合も、サブファイルには
-     %#!platex main.tex のように記述する(../mainではない)。
+  1. �T�u�f�B���N�g��������āA���̒��ɃT�u�t�@�C����u�����Ƃ͂ł��邪�T
+     �u�f�B���N�g���̃T�u�f�B���N�g���ɂ͒u���Ȃ��B
+  2. ���C���t�@�C������T�u�f�B���N�g�����̃t�@�C���� include ���鎞�ɂ́A
+     ���΃p�X�w���p���āA`\include{chap1/sub}'�̂悤�ɋL�q�B
+  3. ���C���t�@�C�������̃f�B���N�g���ɂ���ꍇ���A�T�u�t�@�C���ɂ�
+     %#!platex main.tex �̂悤�ɋL�q����(../main�ł͂Ȃ�)�B
+
 
 
 
 
 File: yatexj, Node: Fix region for typesetting, Next: lpr format, Prev: Splitting input files, Up: %#notation
 
-領域の固定
+�̈�̌Œ�
 ==========
 
-  `[prefix] tr' の領域指定のタイプセットでは、とくに指定のないかぎり、 
-`C-SPC'でマークした位置と、ポイント(カーソル位置)の間を領域とみなしますが、
-必ず決まった領域をタイプセットしたい場合は、その領域を
+  `[prefix] tr' �̗̈�w��̃^�C�v�Z�b�g�ł́A�Ƃ��Ɏw��̂Ȃ�������A 
+`C-SPC'�Ń}�[�N�����ʒu�ƁA�|�C���g(�J�[�\���ʒu)�̊Ԃ�̈�Ƃ݂Ȃ��܂����A
+�K�����܂����̈���^�C�v�Z�b�g�������ꍇ�́A���̗̈��
 
              %#BEGIN
-             <渡したい領域>
+             <�n�������̈�>
              %#END
 
-のように`%#BEGIN'と`%#END'で囲み、カーソルを「`%#BEGIN'以降」に置いてくだ
-さい。この時の領域決定規則をまとめると次のようになります。
+�̂悤��`%#BEGIN'��`%#END'�ň͂݁A�J�[�\�����u`%#BEGIN'�ȍ~�v�ɒu���Ă���
+�����B���̎��̗̈挈��K�����܂Ƃ߂�Ǝ��̂悤�ɂȂ�܂��B
 
 
-  1. カーソル位置よりバッファの先頭方向に`%#BEGIN'というキーワードがある場
-     合
+  1. �J�[�\���ʒu���o�b�t�@�̐擪������`%#BEGIN'�Ƃ����L�[���[�h�������
+     ��
 
-       1. `%#BEGIN'よりバッファの末尾方向に`%#END'というキーワードが見つかっ
-          た場合。
-          =>`%#BEGIN' から、その `%#END' のある位置まで。
-       2. `%#END' が見つからなかった場合。=>バッファの最後尾まで。
+       1. `%#BEGIN'���o�b�t�@�̖���������`%#END'�Ƃ����L�[���[�h��������
+          ���ꍇ�B
+          =>`%#BEGIN' ����A���� `%#END' �̂���ʒu�܂ŁB
+       2. `%#END' ��������Ȃ������ꍇ�B=>�o�b�t�@�̍Ō���܂ŁB
 
-  2. カーソル位置よりバッファの先頭方向に `%#BEGIN' というキーワードが
-     見つからなかった場合。
-     =>マーク(`C-SPC'位置)とポイント(カーソル位置)の間の領域。
+  2. �J�[�\���ʒu���o�b�t�@�̐擪������ `%#BEGIN' �Ƃ����L�[���[�h��
+     ������Ȃ������ꍇ�B
+     =>�}�[�N(`C-SPC'�ʒu)�ƃ|�C���g(�J�[�\���ʒu)�̊Ԃ̗̈�B
 
-  tabular 環境を何度も試行錯誤しているような場合は、`\begin'の前の行に 
-`%#BEGIN' と書き、`\end' の次の行に `%#END' と書いておくと簡単に作表結果を
-テストすることができます。また、長い .tex ファイルの後半に `%#BEGIN' を書
-いておけば、前半の部分は無視できます。このBEGINとENDの消し忘れには十分ご注
-意下さい。
+  tabular �������x�����s���낵�Ă���悤�ȏꍇ�́A`\begin'�̑O�̍s�� 
+`%#BEGIN' �Ə����A`\end' �̎��̍s�� `%#END' �Ə����Ă����ƊȒP�ɍ�\���ʂ�
+�e�X�g���邱�Ƃ��ł��܂��B�܂��A���� .tex �t�@�C���̌㔼�� `%#BEGIN' ����
+���Ă����΁A�O���̕����͖����ł��܂��B����BEGIN��END �̏����Y��ɂ͏\����
+���Ӊ������B
+
 
 
 
-File: yatexj, Node: lpr format, Next: Editing %# notation, Prev: Fix region for typesetting, Up: %#notation
+File: yatexj, Node: lpr format, Next: Controlling which command to invoke, Prev: Fix region for typesetting, Up: %#notation
 
-lprフォーマット
+lpr�t�H�[�}�b�g
 ===============
 
-  まず、プリントアウト用コマンド列のフォーマットについて説明します。コマン
-ド列フォーマットは、3つの Lisp 変数によって表現されます。デフォルトの 
-dvi2ps 用のフォーマットを例に説明します。
+  �܂��A�v�����g�A�E�g�p�R�}���h��̃t�H�[�}�b�g�ɂ��Đ������܂��B�R�}��
+�h��t�H�[�}�b�g�́A3�� Lisp �ϐ��ɂ���ĕ\������܂��B�f�t�H���g�� 
+dvi2ps �p�̃t�H�[�}�b�g���ɐ������܂��B
 
 `(1)dviprint-command-format'
      `"dvi2ps %f %t %s | lpr"'
@@ -393,78 +428,100 @@ dvi2ps 用のフォーマットを例に説明します。
 `(3)dviprint-to-format'
      `"-t %e"'
 
-実際にプリントアウトする時は、(1)中の %s がファイル名に置き換えられ、%f が
-(2)の内容、%t が(3)の内容に置き換えられます。その際に(2)の文字列中の %b は
-「出力開始ページ」、(3)の文字列中の %e は「出力終了ページ」に置き換えられ
-ます。もし、ページを指定しない時には、%f, %t 両方とも無視されます。
+���ۂɃv�����g�A�E�g���鎞�́A(1)���� %s ���t�@�C�����ɒu���������A%f ��
+(2)�̓��e�A%t ��(3)�̓��e�ɒu���������܂��B���̍ۂ�(2)�̕����񒆂� %b ��
+�u�o�͊J�n�y�[�W�v�A(3)�̕����񒆂� %e �́u�o�͏I���y�[�W�v�ɒu���������
+�܂��B�����A�y�[�W���w�肵�Ȃ����ɂ́A%f, %t �����Ƃ���������܂��B
 
-  この、dviprint-command-format を臨時に変えたい時は、LaTeX のソーステキス
-ト中の任意の場所に、
+  ���́Adviprint-command-format ��Վ��ɕς��������́ALaTeX �̃\�[�X�e�L�X
+�g���̔C�ӂ̏ꏊ�ɁA
 
              %#LPR dvi2ps %f %t %s | 4up -page 4 | texfix | lpr -Plp2
 
-のように書いて下さい。プリントアウトするページ範囲をいちいち聞かせないよう
-にする時に
+�̂悤�ɏ����ĉ������B�v�����g�A�E�g����y�[�W�͈͂����������������Ȃ��悤
+�ɂ��鎞��
 
              %#LPR dvi2ps %s | lpr
 
-などとするのも便利かもしれません。
+�ȂǂƂ���̂��֗���������܂���B
+
 
 
-File: yatexj, Node: Editing %# notation, Prev: lpr format, Up: %#notation
+File: yatexj, Node: Controlling which command to invoke, Next: Editing %# notation, Prev: lpr format, Up: %#notation
 
-%#記法自体の編集
+���̑��̋N���R�}���h����
+========================
+
+LaTeX �����Ɋ֘A����R�}���h�͈ȉ��� %# �L�@�Ŏw�肷�邱�Ƃ��ł��܂��B
+
+      `%#BIBTEX'
+     
+     	... makeindex���s�Ȃ��R�}���h���C��([prefix] t b)
+      `%#MAKEINDEX'
+     
+     	... bibtex���s�Ȃ��R�}���h���C��([prefix] t i)
+
+�s���������̃L�[���[�h�Ŏn�܂�s��LaTeX�����̐擪�t�߂ɏ����Ă����΁A��
+��Ŏw�肵���R�}���h���N���ł��܂��B
+
+
+
+File: yatexj, Node: Editing %# notation, Prev: Controlling which command to invoke, Up: %#notation
+
+%#�L�@���̂̕ҏW
 ================
 
-以上のような`%#'で始まる各種制御記法を編集するためには
+�ȏ�̂悤��`%#'�Ŏn�܂�e�퐧��L�@��ҏW���邽�߂ɂ�
 
 `[prefix] %'
-             ... `%#'記法編集メニュー
+             ... `%#'�L�@�ҏW���j���[
 
-を押します。
+�������܂��B
 
              !)Edit-%#! B)EGIN-END-region L)Edit-%#LPR
 
-というメニューが出て来るので、`%#!'に続くコマンドを変更したい時には`!'を、
-`%#LPR'で lpr フォーマットを変えたい時は`l'を、あらかじめ設定したリジョン
-を `%#BEGIN' 〜 `%#END' で括りたい時は、`b'を押します。`b'を選んだ時には、
-それまでバッファ中に置かれていた `%#BEGIN', `%#END' が自動的に消去されます。
+�Ƃ������j���[���o�ė���̂ŁA`%#!'�ɑ����R�}���h��ύX���������ɂ�`!'���A
+`%#LPR'�� lpr �t�H�[�}�b�g��ς���������`l'���A���炩���ߐݒ肵�����W����
+�� `%#BEGIN' �` `%#END' �Ŋ��肽�����́A`b'�������܂��B`b'��I�񂾎��ɂ́A
+����܂Ńo�b�t�@���ɒu����Ă���`%#BEGIN', `%#END' �������I�ɏ�������܂��B
+
 
 
 File: yatexj, Node: Completion, Next: Local dictionary, Prev: %#notation, Up: Top
 
-補完入力
+�⊮����
 ********
 
-  LaTeX での環境名などは、野鳥の補完機能を利用して能率的に入力することがで
-きます。
+  LaTeX �ł̊����Ȃǂ́A�쒹�̕⊮�@�\�𗘗p���Ĕ\���I�ɓ��͂��邱�Ƃ���
+���܂��B
 
 * Menu:
 
-* begin型補完::                 
-* section型補完::               
-* large型補完::                 
-* maketitle型補完::             
-* Arbitrary completion::        随時補完
-* end補完::                     
-* Accent mark completion::      アクセント記号補完
-* Image completion::            数式記号イメージ補完
-* Greek letter completion::     ギリシャ文字補完
+* begin�^�⊮::                 
+* section�^�⊮::               
+* large�^�⊮::                 
+* maketitle�^�⊮::             
+* Arbitrary completion::        �����⊮
+* end�⊮::                     
+* Accent mark completion::      �A�N�Z���g�L���⊮
+* Image completion::            �����L���C���[�W�⊮
+* Greek letter completion::     �M���V�������⊮
+
 
 
-File: yatexj, Node: begin型補完, Next: section型補完, Prev: Completion, Up: Completion
+File: yatexj, Node: begin�^�⊮, Next: section�^�⊮, Prev: Completion, Up: Completion
 
-begin型補完
+begin�^�⊮
 ===========
 
-  `\begin{env}...\end{env}'の様な形式の入力の補完をbegin型補完と呼ぶことに
-します。begin 型補完は、
+  `\begin{env}...\end{env}'�̗l�Ȍ`���̓��͂̕⊮��begin�^�⊮�ƌĂԂ��Ƃ�
+���܂��Bbegin �^�⊮�́A
 
 `[prefix] b'
-             ... begin 型補完開始(標準では `C-c b')
+             ... begin �^�⊮�J�n(�W���ł� `C-c b')
 
-で始まります。頻繁に用いられる次の LaTeX 環境の補完は、[prefix] `b'に続く
-次の1文字を入力するだけで、`\begin{xxx}...\end{xxx}'を完成させます。
+�Ŏn�܂�܂��B�p�ɂɗp�����鎟�� LaTeX ���̕⊮�́A[prefix] `b' �ɑ���
+����1��������͂��邾���ŁA`\begin{xxx}...\end{xxx}'�����������܂��B
 
 `[prefix] b c'
              ... `\begin{center}...\end{center}'
@@ -501,328 +558,342 @@ begin型補完
 `[prefix] b V'
              ... `\begin{verse}...\end{verse}'
 
-  上記のもの以外の環境名は Emacs の持つインクリメンタルな補完機能を用いて
-入力します(上記の環境名も以下の補完入力可能)。
+  ��L�̂��̈ȊO�̊����� Emacs �̎��C���N�������^���ȕ⊮�@�\��p����
+���͂��܂�(��L�̊������ȉ��̕⊮���͉\)�B
 
 `[prefix] b SPC'
-             ... begin 型補完入力
+             ... begin �^�⊮����
 
-`[prefix] b SPC' と入力すると、最下行のミニバッファに
+`[prefix] b SPC' �Ɠ��͂���ƁA�ŉ��s�̃~�j�o�b�t�@��
 
-             Begin environment(default document): 
+             Begin environment(default document):
 
-と表示されます。ここで、何も入れずにリターンキーのみ押すと、括弧内に出てい
-るデフォルトの環境名が入力されますが、適当な環境名を入力すると、`\begin{環
-境名} … \end{環境名}'が文書中に挿入されます。ミニバッファで環境名を入力す
-るときに、環境名の頭文字を入力し「スペース」をたたくと、一致する環境名が内
-部テーブルに存在した場合、正しい環境名に補完されるので、入力の手間が省けま
-す。内部テーブルに存在しない環境名を入力した時はユーザ専用のテーブルに登録
-され、さらにそのテーブルを自動的に、ユーザ辞書(デフォルトでは 
-`~/.yatexrc')に保存します。
+�ƕ\������܂��B�����ŁA�������ꂸ�Ƀ��^�[���L�[�̂݉����ƁA���ʓ��ɏo�Ă�
+��f�t�H���g�̊��������͂���܂����A�K���Ȋ�������͂���ƁA`\begin{��
+����} �c \end{����}'���������ɑ}������܂��B�~�j�o�b�t�@�Ŋ�������͂�
+��Ƃ��ɁA�����̓���������͂��u�X�y�[�X�v���������ƁA��v�����������
+���e�[�u���ɑ��݂����ꍇ�A�����������ɕ⊮�����̂ŁA���͂̎�Ԃ��Ȃ���
+���B�����e�[�u���ɑ��݂��Ȃ���������͂������̓��[�U��p�̃e�[�u���ɓo�^
+����A����ɂ��̃e�[�u���������I�ɁA���[�U����(�f�t�H���g�ł� 
+`~/.yatexrc')�ɕۑ����܂��B
 
-さらに、特定の環境を補完入力した時にはその環境で必ず用いられるエントリを自
-動挿入します(例: `itemize'環境における`\item'など)。挿入されたエントリが不
-要な場合にはundoによって消去して下さい。
+����ɁA����̊���⊮���͂������ɂ͂��̊��ŕK���p������G���g������
+���}�����܂�(��: `itemize'���ɂ�����`\item'�Ȃ�)�B�}�����ꂽ�G���g�����s
+�v�ȏꍇ�ɂ�undo�ɂ���ď������ĉ������B
 
 
-既に書いたテキストを環境で括る
+���ɏ������e�L�X�g�����Ŋ���
 ------------------------------
 
-  ところで、最初に書いてしまったブロックを後から、itemize 環境の中に閉じこ
-めたいと思うことがありますが、そのようなときは、あらかじめ閉じこめたい段落
-をマークして、begin 型補完の各コマンドの `[prefix]'の次の『小文字の 'b'』 
-を『大文字』に変えて起動して下さい。(または、`C-u' を先に打ち、universal
-argument をつけても可能です)
+  �Ƃ���ŁA�ŏ��ɏ����Ă��܂����u���b�N���ォ��Aitemize ���̒��ɕ���
+�߂����Ǝv�����Ƃ�����܂����A���̂悤�ȂƂ��́A���炩���ߕ����߂����i��
+���}�[�N���āAbegin �^�⊮�̊e�R�}���h�� `[prefix]' �̎��́w�������� 'b'�x 
+���w�啶���x�ɕς��ċN�����ĉ������B(�܂��́A`C-u' ���ɑł��Auniversal
+argument �����Ă��\�ł�)
 
-  例えばあるパラグラフを description 環境の中に入れたいときは、そのパラグ
-ラフをマークしてから、
+  �Ⴆ�΂���p���O���t�� description ���̒��ɓ��ꂽ���Ƃ��́A���̃p���O
+���t���}�[�N���Ă���A
 
 `[prefix] B D'
-`(または ESC 1 [prefix] b D)'
-`(または  C-u  [prefix] b D など)'
+`(�܂��� ESC 1 [prefix] b D)'
+`(�܂���  C-u  [prefix] b D �Ȃ�)'
 
-とタイプしてください。これは、`[prefix] b SPC'の補完入力にもあてはまり、
-`b' を大文字に変えて、`[prefix] B SPC' とタイプすれば、あらかじめマークし
-ておいたリジョンを、begin と end の環境で括ります。
+�ƃ^�C�v���Ă��������B����́A`[prefix] b SPC'�̕⊮���͂ɂ����Ă͂܂�A
+`b' ��啶���ɕς��āA`[prefix] B SPC' �ƃ^�C�v����΁A���炩���߃}�[�N��
+�Ă��������W�������Abegin �� end �̊��Ŋ���܂��B
+
 
 
-File: yatexj, Node: section型補完, Next: large型補完, Prev: begin型補完, Up: Completion
+File: yatexj, Node: section�^�⊮, Next: large�^�⊮, Prev: begin�^�⊮, Up: Completion
 
-section型補完
+section�^�⊮
 =============
 
-  `\section{目的}' のような形式の入力の補完を section 型補完と呼ぶことにし
-ます。section 型補完は、
+  `\section{�ړI}' �̂悤�Ȍ`���̓��͂̕⊮�� section �^�⊮�ƌĂԂ��Ƃɂ�
+�܂��Bsection �^�⊮�́A
 
 `[prefix] s'
-             ... section 型補完
+             ... section �^�⊮
 
-で実行します。`[prefix] s' を入力するとミニバッファに、
+
+�Ŏ��s���܂��B`[prefix] s' ����͂���ƃ~�j�o�b�t�@�ɁA
 
              (C-v for view-section) \???{} (default documentclass):
 
-というプロンプトが現れるので、そこで `section' のような LaTeX コマンド名を
-入力します。ここでもリターンキーのみで括弧内のデフォルト値が選択されるほか、
-`chapter'などのような頻度の高い名称入力にはスペースキーによる補完機能が有
-効です。 次に、{}の中身の入力を促す、
+�Ƃ����v�����v�g�������̂ŁA������ `section' �̂悤�� LaTeX �R�}���h����
+���͂��܂��B�����ł����^�[���L�[�݂̂Ŋ��ʓ��̃f�t�H���g�l���I�������ق��A
+`chapter'�Ȃǂ̂悤�ȕp�x�̍������̓��͂ɂ̓X�y�[�X�L�[�ɂ��⊮�@�\���L
+���ł��B ���ɁA{}�̒��g�̓��͂𑣂��A
 
              \section{???}:
 
-というプロンプトが現れるので、セクションのタイトルなどを入力します。たとえ
-ば、
+�Ƃ����v�����v�g�������̂ŁA�Z�N�V�����̃^�C�g���Ȃǂ���͂��܂��B���Ƃ�
+�΁A
 
              (C-v for view-section) \???{} (default documentclass): section
-             \section{???}: 目的
+             \section{???}: �ړI
 
-のように入力した場合は、文章中に
+�̂悤�ɓ��͂����ꍇ�́A���͒���
 
-             \section{目的}
+             \section{�ړI}
 
-が挿入され、
+���}������A
 
              (C-v for view-section) \???{} (default section): vspace*
-             \vspace*{???}: 
+             \vspace*{???}:
 
-のように{}の中身を省略したときは、
+�̂悤��{}�̒��g���ȗ������Ƃ��́A
 
              \vspace*{}
 
-だけが挿入され、改行はせずカーソルは自動的に中括弧の内側に移動します。
+�������}������A���s�͂����J�[�\���͎����I�ɒ����ʂ̓����Ɉړ����܂��B
 
 * Menu:
 
-* 2個以上の引数をとる section型コマンド::  
-* Enclose section-type command::  括り補完
-* Recursive completion::        再帰補完
-* view-sectioning::             セクション区切りのアウトライン表示
-* label-generation::            ラベル自動生成
+* 2�ȏ�̈������Ƃ� section�^�R�}���h::  
+* Enclose section-type command::  ����⊮
+* Recursive completion::        �ċA�⊮
+* view-sectioning::             �Z�N�V������؂�̃A�E�g���C���\��
+* label-generation::            ���x����������
+
 
 
-File: yatexj, Node: 2個以上の引数をとる section型コマンド, Next: Enclose section-type command, Prev: section型補完, Up: section型補完
+File: yatexj, Node: 2�ȏ�̈������Ƃ� section�^�R�}���h, Next: Enclose section-type command, Prev: section�^�⊮, Up: section�^�⊮
 
-2個以上の引数をとる section型コマンド
+2�ȏ�̈������Ƃ� section�^�R�}���h
 -------------------------------------
 
-  ところで、`\addtolength{\topmargin}{8mm}' などのように、引数を二つ以上取
-る LaTeX コマンドがあります。このようなコマンドの補完入力には、section 型
-補完呼び出しに引数を付けてください。例えば上の`addtolength' の例であれば、
-引数2を指定します。つまり、
+  �Ƃ���ŁA`\addtolength{\topmargin}{8mm}' �Ȃǂ̂悤�ɁA�������ȏ��
+�� LaTeX �R�}���h������܂��B���̂悤�ȃR�}���h�̕⊮���͂ɂ́A section �^
+�⊮�Ăяo���Ɉ�����t���Ă��������B�Ⴆ�Ώ��`addtolength' �̗�ł���΁A
+����2���w�肵�܂��B�܂�A
 
-             C-u 2 [prefix] s   (または、ESC 2 [prefix] s)
+             C-u 2 [prefix] s   (�܂��́AESC 2 [prefix] s)
 
-と section 型補完を呼び出した後、
+�� section �^�⊮���Ăяo������A
 
              (Ctrl-v for view-section) \???{} (default vspace*): addtolength
              \addtolength{???}: \topmargin
              Argument 2: 8mm
 
-のように入力してください。最初の addtolength の部分と、第一引数である 
-\topmargin の入力は当然スペースによる補完入力が可能です。ユーザ辞書に登録
-される LaTeX コマンドには、この引数の数も学習されるので、最初の補完の時引
-数の数を指定して起動しておけば、以後の補完時には、記憶された個数だけ引数を
-聞いて来るようになります。あとで引数の個数を変えたい時は、再び `C-u' を用
-いて個数を指定し直すことで、自動的に辞書中の引数の個数の部分を更新します。
+�̂悤�ɓ��͂��Ă��������B�ŏ��� addtolength �̕����ƁA�������ł��� 
+\topmargin �̓��͓͂��R�X�y�[�X�ɂ��⊮���͂��\�ł��B���[�U�����ɓo�^
+����� LaTeX �R�}���h�ɂ́A���̈����̐����w�K�����̂ŁA�ŏ��̕⊮�̎���
+���̐����w�肵�ċN�����Ă����΁A�Ȍ�̕⊮���ɂ́A�L�����ꂽ������������
+�����ė���悤�ɂȂ�܂��B���Ƃň����̌���ς��������́A�Ă� `C-u' ��p
+���Č����w�肵�������ƂŁA�����I�Ɏ������̈����̌��̕������X�V���܂��B
+
 
 
 
-File: yatexj, Node: Enclose section-type command, Next: Recursive completion, Prev: 2個以上の引数をとる section型コマンド, Up: section型補完
+File: yatexj, Node: Enclose section-type command, Next: Recursive completion, Prev: 2�ȏ�̈������Ƃ� section�^�R�}���h, Up: section�^�⊮
 
-既に書いたテキストを括る
+���ɏ������e�L�X�g������
 ------------------------
 
-  また、起動コマンドの`s'を大文字に変えて起動すると、あらかじめ書いた文章
-を section 型コマンドの第一引数として括ります。
+  �܂��A�N���R�}���h��`s'��啶���ɕς��ċN������ƁA���炩���ߏ���������
+�� section �^�R�}���h�̑������Ƃ��Ċ���܂��B
+
 
 
-File: yatexj, Node: Recursive completion, Next: view-sectioning, Prev: Enclose section-type command, Up: section型補完
+File: yatexj, Node: Recursive completion, Next: view-sectioning, Prev: Enclose section-type command, Up: section�^�⊮
 
-再帰補完
+�ċA�⊮
 --------
 
-  高度な使い方になるかもしれませんが、section型補完の引数の入力時にさらに
-補完入力を利用することができます(section/large/maketitle型に限る)。section
-型コマンドの引数に更に LaTeX コマンドが来る場合にはミニバッファで野鳥の補
-完キーを再帰的に入力することで引数の入力も効率的に行なえます。
+  ���x�Ȏg�����ɂȂ邩������܂��񂪁Asection�^�⊮�̈����̓��͎��ɂ����
+�⊮���͂𗘗p���邱�Ƃ��ł��܂�(section/large/maketitle�^�Ɍ���)�Bsection 
+�^�R�}���h�̈����ɍX�� LaTeX �R�}���h������ꍇ�ɂ̓~�j�o�b�t�@�Ŗ쒹�̕�
+���L�[���ċA�I�ɓ��͂��邱�Ƃň����̓��͂������I�ɍs�Ȃ��܂��B
+
 
 
-File: yatexj, Node: view-sectioning, Next: label-generation, Prev: Recursive completion, Up: section型補完
+File: yatexj, Node: view-sectioning, Next: label-generation, Prev: Recursive completion, Up: section�^�⊮
 
-セクション区切りのアウトライン表示
+�Z�N�V������؂�̃A�E�g���C���\��
 ----------------------------------
 
-  通常のsection型補完の時にミニバッファで`C-v'を押すと現在存在するセクショ
-ン区切りコマンド全てを `*Sectioning Lines*'というバッファに一覧表示します
-(「<<--」のついている行がもっとも近いセクション区切り)。この時ミニバッファ
-で`C-p', `C-n' を押すと`part', `chapter', ..., `subparagraph' のコマンドが
-論理階層の高さにしたがって上下します。また、`C-v', `M-v' を押すとセクショ
-ン区切り一覧バッファがスクロールし、数字の`0'〜`7'を押すとある高さ以上のセ
-クション区切りだけを選んで表示します(実際にやって見れば分かります)。
+  �ʏ��section�^�⊮�̎��Ƀ~�j�o�b�t�@��`C-v'�������ƌ��ݑ��݂���Z�N�V��
+����؂�R�}���h�S�Ă� `*Sectioning Lines*'�Ƃ����o�b�t�@�Ɉꗗ�\�����܂�
+(�u<<--�v�̂��Ă���s�������Ƃ��߂��Z�N�V������؂�)�B���̎��~�j�o�b�t�@
+��`C-p', `C-n' ��������`part', `chapter', ..., `subparagraph' �̃R�}���h��
+�_���K�w�̍����ɂ��������ď㉺���܂��B�܂��A`C-v', `M-v' �������ƃZ�N�V��
+����؂�ꗗ�o�b�t�@���X�N���[�����A������`0'�``7'�������Ƃ��鍂���ȏ�̃Z
+�N�V������؂肾����I��ŕ\�����܂�(���ۂɂ���Č���Ε�����܂�)�B
 
-`*Sectioning Lines*'バッファは、
+`*Sectioning Lines*'�o�b�t�@�́A
 
 `M-x YaTeX-section-overview'
-             ... セクション区切り一覧バッファを生成
+             ... �Z�N�V������؂�ꗗ�o�b�t�@�𐶐�
 
-で作成することができます。このバッファを選択し任意の行でスペースを押すと、
-該当するセクション区切りのある本文中の場所にジャンプします。さらに、同バッ
-ファで `u' を押すと、ソーステキストの対応するセクションコマンドが一階層上
-がり(例: subsection が section に変わる)、`d'を押すと一階層下がります。
-`*Sectioning Lines*'バッファにあるセクション区切りの行をマークしておいて
-`U'を押すとリジョン内のものに対応するソーステキストのセクションコマンドす
-べてが一階層上がり、`D'を押すと下がります。セクション区切り一覧バッファで
-利用できるキーコマンドには以下のものがあります。
+�ō쐬���邱�Ƃ��ł��܂��B���̃o�b�t�@��I�����C�ӂ̍s�ŃX�y�[�X�������ƁA
+�Y������Z�N�V������؂�̂���{�����̏ꏊ�ɃW�����v���܂��B����ɁA���o�b
+�t�@�� `u' �������ƁA�\�[�X�e�L�X�g�̑Ή�����Z�N�V�����R�}���h����K�w��
+����(��: subsection �� section �ɕς��)�A`d'�������ƈ�K�w������܂��B
+`*Sectioning Lines*'�o�b�t�@�ɂ���Z�N�V������؂�̍s���}�[�N���Ă�����
+`U'�������ƃ��W�������̂��̂ɑΉ�����\�[�X�e�L�X�g�̃Z�N�V�����R�}���h��
+�ׂĂ���K�w�オ��A`D'�������Ɖ�����܂��B�Z�N�V������؂�ꗗ�o�b�t�@��
+���p�ł���L�[�R�}���h�ɂ͈ȉ��̂��̂�����܂��B
 
 `SPC'
-             ... 対応するソース行へジャンプ
+             ... �Ή�����\�[�X�s�փW�����v
 `.'
-             ... 対応するソース行を表示
+             ... �Ή�����\�[�X�s��\��
 `u'
-             ... カーソル位置に対応するセクションコマンドを一階層上げる
+             ... �J�[�\���ʒu�ɑΉ�����Z�N�V�����R�}���h����K�w�グ��
 `d'
-             ... カーソル位置に対応するセクションコマンドを一階層下げる
+             ... �J�[�\���ʒu�ɑΉ�����Z�N�V�����R�}���h����K�w������
 `U'
-             ... マークしたセクションコマンドを一階層上げる
+             ... �}�[�N�����Z�N�V�����R�}���h����K�w�グ��
 `D'
-             ... マークしたセクションコマンドを一階層上げる
-`0〜6'
-             ... レベル n 以下のセクションコマンドを隠して表示
+             ... �}�[�N�����Z�N�V�����R�}���h����K�w�グ��
+`0�`6'
+             ... ���x�� n �ȉ��̃Z�N�V�����R�}���h���B���ĕ\��
+
 
 
 
-File: yatexj, Node: label-generation, Prev: view-sectioning, Up: section型補完
+File: yatexj, Node: label-generation, Prev: view-sectioning, Up: section�^�⊮
 
-ラベル自動生成
+���x����������
 --------------
 
-  `\ref{}' や `\cite{@}' マクロをsection型補完で入れた場合参照先となり得る
-ものを全て探してメニューにして選択できます。参照先には`\label{}'をつけてお
-く必要はありません。もしあれば、そのラベルを使い、なければその場で参照先に
-`\label{}'を作らせてくれます。ラベル名を考えるのは苦痛に感じるものです。全
-てのカウンタにラベルをつけるのもたいへんです。もうラベル名に何をつけるか、
-ラベルをつけるかつけまいか、などということは忘れましょう!
+  `\ref{}' �� `\cite{}' �}�N����section�^�⊮�œ��ꂽ�ꍇ�Q�Ɛ�ƂȂ蓾��
+���̂�S�ĒT���ă��j���[�ɂ��đI���ł��܂��B�Q�Ɛ�ɂ�`\label{}'�����Ă�
+���K�v�͂���܂���B��������΁A���̃��x�����g���A�Ȃ���΂��̏�ŎQ�Ɛ��
+`\label{}'����点�Ă���܂��B���x�������l����̂͋�ɂɊ�������̂ł��B�S
+�ẴJ�E���^�Ƀ��x��������̂������ւ�ł��B�������x�����ɉ������邩�A
+���x�������邩���܂����A�ȂǂƂ������Ƃ͖Y��܂��傤!
+
 
 
-File: yatexj, Node: large型補完, Next: maketitle型補完, Prev: section型補完, Up: Completion
+File: yatexj, Node: large�^�⊮, Next: maketitle�^�⊮, Prev: section�^�⊮, Up: Completion
 
-large型補完
+large�^�⊮
 ===========
 
-  `{\large }' のような形式の補完を large 型補完と呼ぶことにします。
+  `{\large }' �̂悤�Ȍ`���̕⊮�� large �^�⊮�ƌĂԂ��Ƃɂ��܂��B
 
 `[prefix] l'
-             ... large 型補完開始
+             ... large �^�⊮�J�n
 
-がlarge型補完の開始です。`[prefix] l' を押すと、ミニバッファに
+��large�^�⊮�̊J�n�ł��B`[prefix] l' �������ƁA�~�j�o�b�t�@��
 
-             {\??? } (default large): 
-
-と表示されるので、上記のものと同じ要領で補完入力して下さい。補完候補に用意
-されているのは、`footnotesize' や `huge' のような文字サイズ指定子と、`bf'
-や`dg'のようなフォント指定子です。
+             {\??? } (default large):
 
 
-既に書いた文字を括る
+�ƕ\�������̂ŁA��L�̂��̂Ɠ����v�̂ŕ⊮���͂��ĉ������B�⊮���ɗp��
+����Ă���̂́A`footnotesize' �� `huge' �̂悤�ȕ����T�C�Y�w��q�ƁA`bf'
+��`dg'�̂悤�ȃt�H���g�w��q�ł��B
+
+
+���ɏ���������������
 --------------------
 
-  また、begin型補完の時と同様、先に書いてしまった一連の文章の文字のサイズ
-を変えたいと思う時がありますが、そのような時は、サイズや大きさを変えたい文
-字の範囲をマークしてから、呼び出しキーを `[prefix] L' と、大文字の L に変
-えて呼び出せば、そのリジョン全体が、ブレースで囲まれます。
+  �܂��Abegin�^�⊮�̎��Ɠ��l�A��ɏ����Ă��܂�����A�̕��͂̕����̃T�C�Y
+��ς������Ǝv����������܂����A���̂悤�Ȏ��́A�T�C�Y��傫����ς�������
+���͈̔͂��}�[�N���Ă���A�Ăяo���L�[�� `[prefix] L' �ƁA�啶���� L �ɕ�
+���ČĂяo���΁A���̃��W�����S�̂��A�u���[�X�ň͂܂�܂��B
+
 
 
-File: yatexj, Node: maketitle型補完, Next: Arbitrary completion, Prev: large型補完, Up: Completion
+File: yatexj, Node: maketitle�^�⊮, Next: Arbitrary completion, Prev: large�^�⊮, Up: Completion
 
-maketitle型補完
+maketitle�^�⊮
 ===============
 
-  `\maketitle' の形式の補完を maketitle 型補完と呼ぶことにします。
+  `\maketitle' �̌`���̕⊮�� maketitle �^�⊮�ƌĂԂ��Ƃɂ��܂��B
 
 `[prefix] m'
-             ... maketitle 型補完開始
+             ... maketitle �^�⊮�J�n
 
-で、maketitle 型補完を開始します。補完の要領は今までのものとまったく同じで
-す。LaTeX 用のコマンド名が補完候補として用意されています。
+�ŁAmaketitle �^�⊮���J�n���܂��B�⊮�̗v�͍̂��܂ł̂��̂Ƃ܂�����������
+���BLaTeX �p�̃R�}���h�����⊮���Ƃ��ėp�ӂ���Ă��܂��B
+
 
 
-File: yatexj, Node: Arbitrary completion, Next: end補完, Prev: maketitle型補完, Up: Completion
+File: yatexj, Node: Arbitrary completion, Next: end�⊮, Prev: maketitle�^�⊮, Up: Completion
 
-随時補完
+�����⊮
 ========
 
-  さて、今まで述べた典型的な LaTeX コマンド形式の補完入力を用いずに、今入
-力しようとしている LaTeX コマンドを文書中の任意の位置で随時補完することも
-できます。LaTeX コマンド(先頭が\で始まる)を入力している途中で、
+  ���āA���܂ŏq�ׂ��T�^�I�� LaTeX �R�}���h�`���̕⊮���͂�p�����ɁA����
+�͂��悤�Ƃ��Ă��� LaTeX �R�}���h�𕶏����̔C�ӂ̈ʒu�Ő����⊮���邱�Ƃ�
+�ł��܂��BLaTeX �R�}���h(�擪��\�Ŏn�܂�)����͂��Ă���r���ŁA
 
 `[prefix] SPC'
-             ... 随時補完
+             ... �����⊮
 
-を入力すれば、全ての補完候補の中から一致するものが選ばれカーソル位置に挿入
-されます。
+����͂���΁A�S�Ă̕⊮���̒������v������̂��I�΂�J�[�\���ʒu�ɑ}��
+����܂��B
+
 
 
-File: yatexj, Node: end補完, Next: Accent mark completion, Prev: Arbitrary completion, Up: Completion
+File: yatexj, Node: end�⊮, Next: Accent mark completion, Prev: Arbitrary completion, Up: Completion
 
-end補完
+end�⊮
 =======
 
-  現在開いたままの環境名を自動的に検出し、`\end{環境名}'を挿入します。
-begin 型補完を用いれば環境の閉じ忘れはないのですが、時にはついつい手で 
-`\begin{環境名}' を入れてしまい、悲しい思いをすることがあります。そのよう
-な時には気にせず続けて文章を入力し、しかるのちに
+  ���݊J�����܂܂̊����������I�Ɍ��o���A`\end{����}'��}�����܂��B
+begin �^�⊮��p����Ί��̕��Y��͂Ȃ��̂ł����A���ɂ͂������ 
+`\begin{����}' �����Ă��܂��A�߂����v�������邱�Ƃ�����܂��B���̂悤
+�Ȏ��ɂ͋C�ɂ��������ĕ��͂���͂��A������̂���
 
 `[prefix] e'
-             ... end 補完
+             ... end �⊮
 
-とすることで、現在開いている環境名で \end{} が補われます。
+�Ƃ��邱�ƂŁA���݊J���Ă�������� \end{} ������܂��B
+
 
 
-File: yatexj, Node: Accent mark completion, Next: Image completion, Prev: end補完, Up: Completion
+File: yatexj, Node: Accent mark completion, Next: Image completion, Prev: end�⊮, Up: Completion
 
-アクセント記号補完
+�A�N�Z���g�L���⊮
 ==================
 
-  欧文のアクセント記号(`\`{o}'など)を入力する時は、
+  �����̃A�N�Z���g�L��(`\`{o}'�Ȃ�)����͂��鎞�́A
 
 `[prefix] a'
-             ... アクセント記号入力
+             ... �A�N�Z���g�L������
 
-を押すと、ミニバッファに
+�������ƁA�~�j�o�b�t�@��
 
              1:` 2:' 3:^ 4:" 5:~ 6:= 7:. u v H t c d b
 
-というメニューが出て来るので、数字、または対応する記号/英字を入力して下さ
-い。すると編集バッファに、
+�Ƃ������j���[���o�ė���̂ŁA�����A�܂��͑Ή�����L��/�p������͂��ĉ���
+���B����ƕҏW�o�b�t�@�ɁA
 
              \`{}
 
-があらわれ、カーソルが{}内に位置するので、さらに一文字入力する事で、
+�������A�J�[�\����{}���Ɉʒu����̂ŁA����Ɉꕶ�����͂��鎖�ŁA
 
              \`{o}
 
-が完成され、カーソルは{}の外に戻ります。
+����������A�J�[�\����{}�̊O�ɖ߂�܂��B
+
 
 
 File: yatexj, Node: Image completion, Next: Greek letter completion, Prev: Accent mark completion, Up: Completion
 
-数式記号イメージ補完
+�����L���C���[�W�⊮
 ====================
 
-  主に数式モードで使用される、矢印やΣなどの記号を擬似的に表現するキー入力
-で、LaTeX コマンドを入力できます。これは野鳥自身の「数式モード」でのみ動作
-します。野鳥はカーソルがTeXの数式環境の中にある時に`;'や、`:'に特殊な機能
-を持たせます。
+  ��ɐ������[�h�Ŏg�p�����A���⃰�Ȃǂ̋L�����[���I�ɕ\������L�[����
+�ŁALaTeX �R�}���h����͂ł��܂��B����͖쒹���g�́u�������[�h�v�ł̂ݓ���
+���܂��B�쒹�̓J�[�\����TeX�̐������̒��ɂ��鎞��`;'��A`:'�ɓ���ȋ@�\
+���������܂��B
 
-  さて、例えば、←(leftarrow)をASCII文字だけで表現する場合、一般的には「<-」
-のようにしますが、これを利用して、数式記号イメージ入力モードで 
-`\leftarrow'を入力するには、`;'(セミコロン)を打ってから`<-'と入力します。
-同様に、長い矢印←-(long-leftarrow) をASCII文字だけで表現する場合「<--」と
-するので、`\longleftarrow'を入力するためには、`;<--'と入力します。あるいは
-無限大記号をASCII文字だけで表現する時は「oo」のようにすることから、
-`\infty' を入力する時は、`;oo'とキー入力します。
+  ���āA�Ⴆ�΁A��(leftarrow)��ASCII���������ŕ\������ꍇ�A��ʓI�ɂ́u<-�v
+�̂悤�ɂ��܂����A����𗘗p���āA�����L���C���[�W���̓��[�h��`\leftarrow'
+����͂���ɂ́A`;'(�Z�~�R����)��ł��Ă���`<-'�Ɠ��͂��܂��B���l�ɁA����
+���-(long-leftarrow) ��ASCII���������ŕ\������ꍇ�u<--�v�Ƃ���̂ŁA
+`\longleftarrow'����͂��邽�߂ɂ́A`;<--' �Ɠ��͂��܂��B���邢�͖�����L
+����ASCII���������ŕ\�����鎞�́uoo�v�̂悤�ɂ��邱�Ƃ���A`\infty' �����
+���鎞�́A`;oo'�ƃL�[���͂��܂��B
 
-  これらの操作をまとめると次のようになります。
+  �����̑�����܂Ƃ߂�Ǝ��̂悤�ɂȂ�܂��B
 
-     INPUT                   入力される LaTeX コマンド
+     INPUT                   ���͂���� LaTeX �R�}���h
      ; < -                   `\leftarrow'
      ; < - -                 `\longleftarrow'
      ; < - - >               `\longleftrightarrow'
@@ -830,893 +901,927 @@ File: yatexj, Node: Image completion, Next: Greek letter completion, Prev: Accen
      ; o o                   `\infty'
 
 
-  いずれの場合も、イメージ入力を行っている途中で望みのものがバッファに表示
-されたなら、そこでイメージ入力を止めて次の編集動作に移っても構いません。
 
-  数式環境中で`;'自身を入力するには`;;'のようにします。イメージ入力の途中
-でTABを押すと、それまで入力した文字で始まるもの一覧が表示されます。ここで
-目的の LaTeX コマンドまでカーソルを移動し再度TABを押すことでその LaTeX コ
-マンドがバッファに挿入されます。
+  ������̏ꍇ���A�C���[�W���͂��s���Ă���r���Ŗ]�݂̂��̂��o�b�t�@�ɕ\��
+���ꂽ�Ȃ�A�����ŃC���[�W���͂��~�߂Ď��̕ҏW����Ɉڂ��Ă��\���܂���B
 
-  どのキー入力にどの記号が対応しているか全て知りたい時は、`;'を押した直後
-にTABを押してください。以下の例は、`;<'と押した後にTABを押したものです。
+  ����������`;'���g����͂���ɂ�`;;'�̂悤�ɂ��܂��B�C���[�W���͂̓r��
+��TAB�������ƁA����܂œ��͂��������Ŏn�܂���̈ꗗ���\������܂��B������
+�ړI�� LaTeX �R�}���h�܂ŃJ�[�\�����ړ����ēxTAB���������Ƃł��� LaTeX �R
+�}���h���o�b�t�@�ɑ}������܂��B
+
+  �ǂ̃L�[���͂ɂǂ̋L�����Ή����Ă��邩�S�Ēm�肽�����́A`;'������������
+��TAB�������Ă��������B�ȉ��̗�́A`;<'�Ɖ��������TAB�����������̂ł��B
 
      KEY             LaTeX sequence          sign
-     <               \leq                    ≦
-     <<              \ll                     《
-     <-              \leftarrow              ←
+     <               \leq                    ��
+     <<              \ll                     �s
+     <-              \leftarrow              ��
      <=              \Leftarrow              <=
 
-左から[入力キー]、[対応する LaTeX コマンド]、[(擬似)記号図示]、という順で
-メニューが出て来るので、よく使うものを覚えておくと良いでしょう。ものによっ
-てはASCII文字で表現することが困難なので、あまり覚えやすいキー並びではない
-ものがあるでしょうから、そのような場合は \maketitle 型補完で入力するか、以
-下に述べる対応表の設定を行って単純なキー並びのものを設定すると良いでしょう。
+������[���̓L�[]�A[�Ή����� LaTeX �R�}���h]�A[(�[��)�L���}��]�A�Ƃ�������
+���j���[���o�ė���̂ŁA�悭�g�����̂��o���Ă����Ɨǂ��ł��傤�B���̂ɂ��
+�Ă�ASCII�����ŕ\�����邱�Ƃ�����Ȃ̂ŁA���܂�o���₷���L�[���тł͂Ȃ�
+���̂�����ł��傤����A���̂悤�ȏꍇ�� \maketitle �^�⊮�œ��͂��邩�A��
+���ɏq�ׂ�Ή��\�̐ݒ���s���ĒP���ȃL�[���т̂��̂�ݒ肷��Ɨǂ��ł��傤�B
 
-  入力キーと LaTeX コマンド、記号の対応表を個人的に設定したい場合は 
-Emacs-Lisp 変数 `YaTeX-math-sign-alist-private' に定義してください。その内
-容とデフォルトのものを合わせたものが対応表として使用されます(privateの方が
-優先される)。なお、この変数の構造については `yatexmth.el' を参照してくださ
-い。
+  ���̓L�[�� LaTeX �R�}���h�A�L���̑Ή��\���l�I�ɐݒ肵�����ꍇ�� 
+Emacs-Lisp �ϐ� `YaTeX-math-sign-alist-private' �ɒ�`���Ă��������B���̓�
+�e�ƃf�t�H���g�̂��̂����킹�����̂��Ή��\�Ƃ��Ďg�p����܂�(private �̕�
+���D�悳���)�B�Ȃ��A���̕ϐ��̍\���ɂ��Ă� `yatexmth.el' ���Q�Ƃ��Ă���
+�����B
+
 
 
 File: yatexj, Node: Greek letter completion, Prev: Image completion, Up: Completion
 
-ギリシャ文字補完
+�M���V�������⊮
 ================
 
-  もう一つ、数式環境中で`:'を押すとギリシャ文字入力モードに入ります。`:'を
-押した直後に`a'を押すと`\alpha'が、`g' を押すと `\gamma'が、などアルファベッ
-トに対応したギリシャ文字が挿入されます。操作方法は;の数式記号補完とまった
-く同じです。まずは`:'の直後にTABを押してどのアルファベットにどのギリシャ文
-字が対応しているか調べてみてください。
+  ������A����������`:'�������ƃM���V���������̓��[�h�ɓ���܂��B`:'��
+�����������`a'��������`\alpha'���A`g' �������� `\gamma'���A�ȂǃA���t�@�x�b
+�g�ɑΉ������M���V���������}������܂��B������@��;�̐����L���⊮�Ƃ܂���
+�������ł��B�܂���`:'�̒����TAB�������Ăǂ̃A���t�@�x�b�g�ɂǂ̃M���V����
+�����Ή����Ă��邩���ׂĂ݂Ă��������B
 
-  `;'と`:'を数式環境中で押しているにもかかわらず、イメージ補完が働かない場
-合は、`C-u ;'のように universal-argument をつけてキーを押すことにより、強
-制的にイメージ補完に入ることができます。また、この時にどのような状態で数式
-環境内判定に失敗したかをご連絡下さい。
+  `;'��`:'�𐔎������ŉ����Ă���ɂ�������炸�A�C���[�W�⊮�������Ȃ���
+���́A`C-u ;'�̂悤�� universal-argument �����ăL�[���������Ƃɂ��A��
+���I�ɃC���[�W�⊮�ɓ��邱�Ƃ��ł��܂��B�܂��A���̎��ɂǂ̂悤�ȏ�ԂŐ���
+��������Ɏ��s�����������A���������B
+
 
 
 File: yatexj, Node: Local dictionary, Next: Commenting out, Prev: Completion, Up: Top
 
-ローカル辞書
+���[�J������
 ************
 
-  補完入力用の候補は三種類の辞書から構成されています。一つは`yatex.el'に組
-み込まれた「標準辞書」、もう一つはユーザが個人的に常用するコマンドを保存す
-る「ユーザ辞書」、そしてもうひとつはあるディレクトリでのみ有効なコマンドを
-保存する「ローカル辞書」です。
+  �⊮���͗p�̌��͎O��ނ̎�������\������Ă��܂��B���`yatex.el'�ɑg
+�ݍ��܂ꂽ�u�W�������v�A������̓��[�U���l�I�ɏ�p����R�}���h��ۑ���
+��u���[�U�����v�A�����Ă����ЂƂ͂���f�B���N�g���ł̂ݗL���ȃR�}���h��
+�ۑ�����u���[�J�������v�ł��B
 
-  補完入力時に新しい単語を入れた場合に、その単語をどの辞書に入れるか聞いて
-来ます。
+  �⊮���͎��ɐV�����P�����ꂽ�ꍇ�ɁA���̒P����ǂ̎����ɓ���邩������
+���܂��B
 
        `foo' is not in table. Register into: U)serDic L)ocalDic N)one D)iscard
 
-というプロンプトに対し、`u'と答えると「ユーザ辞書」を、`l'と答えるとローカ
-ル辞書を更新し、`n'と答えると辞書ファイルは更新せず現在のEmacsセッションの
-み有効な単語とし、`d'と答えると新たな単語を学習せずに捨てることになります。
+�Ƃ����v�����v�g�ɑ΂��A`u'�Ɠ�����Ɓu���[�U�����v���A`l'�Ɠ�����ƃ��[�J
+���������X�V���A`n'�Ɠ�����Ǝ����t�@�C���͍X�V�������݂�Emacs �Z�b�V����
+�̂ݗL���ȒP��Ƃ��A`d'�Ɠ�����ƐV���ȒP����w�K�����Ɏ̂Ă邱�ƂɂȂ��
+���B
 
-  もし、ローカル辞書の機能はいらず、全てユーザ辞書の更新のみでよいと言う場
-合には`~/.emacs'などで、
+  �����A���[�J�������̋@�\�͂��炸�A�S�ă��[�U�����̍X�V�݂̂ł悢�ƌ�����
+���ɂ�`~/.emacs'�ȂǂŁA
 
              (setq YaTeX-nervous nil)
 
-として下さい。
+�Ƃ��ĉ������B
+
 
 
 File: yatexj, Node: Commenting out, Next: Cursor jump, Prev: Local dictionary, Up: Top
 
-コメントアウト
+�R�����g�A�E�g
 **************
 
 
-  LaTeXの編集には試行錯誤がつきものです。ある部分を一括でコメントアウトし
-たり、コメントを外したりしたいことがあります。
+  LaTeX�̕ҏW�ɂ͎��s���낪�����̂ł��B���镔�����ꊇ�ŃR�����g�A�E�g��
+����A�R�����g���O�����肵�������Ƃ�����܂��B
 
 `[prefix] >'
-             ... リジョンを % でコメントアウト
+             ... ���W������ % �ŃR�����g�A�E�g
 `[prefix] <'
-             ... リジョンの % のコメントを外す
+             ... ���W������ % �̃R�����g���O��
 
-は、あらかじめ設定したリジョンに対しての操作、
+�́A���炩���ߐݒ肵�����W�����ɑ΂��Ă̑���A
 
 `[prefix] .'
-             ... 現在のパラグラフをコメントアウト
+             ... ���݂̃p���O���t���R�����g�A�E�g
 `[prefix] ,'
-             ... 現在のパラグラフのコメントを外す
+             ... ���݂̃p���O���t�̃R�����g���O��
 
-は、カーソルの位置するパラグラフ全体に対しての操作です。なお、ここでいう
-「パラグラフ」は (`mark-paragraph') 関数によりマークされる範囲を指します
-(標準設定で`ESC h'にバインドされている)。なお、既に`%'でコメントアウトされ
-ているパラグラフに対して繰り返しパラグラフのコメントを使用した場合の動作は
-保証しませんので御注意ください。
+�́A�J�[�\���̈ʒu����p���O���t�S�̂ɑ΂��Ă̑���ł��B�Ȃ��A�����ł���
+�u�p���O���t�v�� (`mark-paragraph') �֐��ɂ��}�[�N�����͈͂��w���܂�
+(�W���ݒ��`ESC h'�Ƀo�C���h����Ă���)�B�Ȃ��A����`%'�ŃR�����g�A�E�g����
+�Ă���p���O���t�ɑ΂��ČJ��Ԃ��p���O���t�̃R�����g���g�p�����ꍇ�̓����
+�ۏ؂��܂���̂Ō䒍�ӂ��������B
 
-  さて、文章に対してだけでなく、時には`\begin', `\end' 自体に対してもコメ
-ントアウトの操作をしたいときがあります。このようなときは、`\begin{}' ある
-いは `\end{}' の行にカーソルを合わせ、
+  ���āA���͂ɑ΂��Ă����łȂ��A���ɂ�`\begin', `\end' ���̂ɑ΂��Ă��R��
+���g�A�E�g�̑�����������Ƃ�������܂��B���̂悤�ȂƂ��́A`\begin{}' ����
+���� `\end{}' �̍s�ɃJ�[�\�������킹�A
 
 `[prefix] >'
-             ... `\begin{}'〜`\end{}' 全てコメントアウト
+             ... `\begin{}'�``\end{}' �S�ăR�����g�A�E�g
 `[prefix] <'
-             ... `\begin{}'〜`\end{}' 全てコメントを外す
+             ... `\begin{}'�``\end{}' �S�ăR�����g���O��
 
-とすることで、`\begin〜\end'で囲まれる環境全てに対してコメント操作し、
+�Ƃ��邱�ƂŁA`\begin�`\end'�ň͂܂����S�Ăɑ΂��ăR�����g���삵�A
 
 `[prefix] .'
-             ... `\begin{}' と `\end{}' をコメントアウト
+             ... `\begin{}' �� `\end{}' ���R�����g�A�E�g
 `[prefix] ,'
-             ... `\begin{}' と `\end{}' のコメントを外す
+             ... `\begin{}' �� `\end{}' �̃R�����g���O��
 
-は、対応する `\begin' と `\end' 2行だけを、コメント操作の対象とします。リ
-ジョンをコメントアウトしようとして、マークを設定したのちにカーソルを移動し
-`[preifx] >' を押してもカーソルが `\begin{}' の上にあると`\begin{}'〜
-`\end{}'モードでコメント機能が働いてしまうので注意して下さい。
+�́A�Ή����� `\begin' �� `\end' 2�s�������A�R�����g����̑ΏۂƂ��܂��B��
+�W�������R�����g�A�E�g���悤�Ƃ��āA�}�[�N��ݒ肵���̂��ɃJ�[�\�����ړ���
+`[preifx] >' �������Ă��J�[�\���� `\begin{}' �̏�ɂ����`\begin{}'�`
+`\end{}'���[�h�ŃR�����g�@�\�������Ă��܂��̂Œ��ӂ��ĉ������B
+
 
 
 File: yatexj, Node: Cursor jump, Next: Modifying/Deleting, Prev: Commenting out, Up: Top
 
-カーソルジャンプ
+�J�[�\���W�����v
 ****************
 
 
 * Menu:
 
-* 対応オブジェクトへのジャンプ::  
-* お絵描きツール起動::          
-* メインファイルへのジャンプ::  
-* 環境を単位としたジャンプ::    
-* 最後の補完位置へのジャンプ::  
+* �Ή��I�u�W�F�N�g�ւ̃W�����v::  
+* ���G�`���c�[���N��::          
+* ���C���t�@�C���ւ̃W�����v::  
+* ����P�ʂƂ����W�����v::    
+* �Ō�̕⊮�ʒu�ւ̃W�����v::  
+
 
 
-File: yatexj, Node: 対応オブジェクトへのジャンプ, Next: お絵描きツール起動, Prev: Cursor jump, Up: Cursor jump
+File: yatexj, Node: �Ή��I�u�W�F�N�g�ւ̃W�����v, Next: ���G�`���c�[���N��, Prev: Cursor jump, Up: Cursor jump
 
-対応オブジェクトへのジャンプ
+�Ή��I�u�W�F�N�g�ւ̃W�����v
 ============================
 
-  文書中のいろいろな場所で
+  �������̂��낢��ȏꏊ��
 
 `[prefix] g'
-             ... 対応するオブジェクトにジャンプ
+             ... �Ή�����I�u�W�F�N�g�ɃW�����v
 
-を押すことにより、カーソル位置のLaTeXコマンドに対応する場所にジャンプしま
-す。対応関係が存在すると解釈されるコマンドには以下のものがあります。
+���������Ƃɂ��A�J�[�\���ʒu��LaTeX�R�}���h�ɑΉ�����ꏊ�ɃW�����v����
+���B�Ή��֌W�����݂���Ɖ��߂����R�}���h�ɂ͈ȉ��̂��̂�����܂��B
 
-   * `\begin{}' ←→ `\end{}'
-   * `%#BEGIN' ←→ `%#END'
-   * 画像ファイルの取り込みマクロ → 対応するviewer/お絵かきツール起動
-   * `\label{}' ←→ `\ref{}'
-   * `\include(\input)' → 対応するファイル
-   * `\bibitem{}' ←→ `\cite{}'
+   * `\begin{}' ���� `\end{}'
+   * `%#BEGIN' ���� `%#END'
+   * �摜�t�@�C���̎�荞�݃}�N�� �� �Ή�����viewer/���G�����c�[���N��
+   * `\label{}' ���� `\ref{}'
+   * `\include(\input)' �� �Ή�����t�@�C��
+   * `\bibitem{}' ���� `\cite{}'
 
-  `\begin{}' か `\end{}' の行で`[prefix] g'を押すことにより、対応する
-`end/begin'の行にジャンプします。もちろん対応するものがない場合はエラーに
-なります。またこれは、領域固定のための `%#BEGIN' と `%#END' のペアに対して
-も同様に動作します。なお、`label/ref'や`cite/bibitem'対応するものが別ファ
-イルにある時は、ジャンプ先となるファイルがオープンされていなければなりませ
-ん。*Note %#notation::.  メインの .tex ファイルの `\include{chap1}' などに
-カーソルを合わせ、`[prefix] g' を押すと、`chap1.tex' にジャンプします。
+  `\begin{}' �� `\end{}' �̍s��`[prefix] g'���������Ƃɂ��A�Ή�����
+`end/begin'�̍s�ɃW�����v���܂��B�������Ή�������̂��Ȃ��ꍇ�̓G���[��
+�Ȃ�܂��B�܂�����́A�̈�Œ�̂��߂� `%#BEGIN' �� `%#END' �̃y�A�ɑ΂���
+�����l�ɓ��삵�܂��B�Ȃ��A`label/ref'��`cite/bibitem'�Ή�������̂��ʃt�@
+�C���ɂ��鎞�́A�W�����v��ƂȂ�t�@�C�����I�[�v������Ă��Ȃ���΂Ȃ�܂�
+��B*Note %#notation::.  ���C���� .tex �t�@�C���� `\include{chap1}' �Ȃǂ�
+�J�[�\�������킹�A`[prefix] g' �������ƁA`chap1.tex' �ɃW�����v���܂��B
 
-また、
+�܂��A
 
 `[prefix] 4 g'
-             ... 別ウィンドウで対応オブジェクトにジャンプ
+             ... �ʃE�B���h�E�őΉ��I�u�W�F�N�g�ɃW�����v
 
-を押すと、対応するオブジェクトへのジャンプを別ウィンドウで行います。ただし、
-この機能は `begin/end', `%#BEGIN/%#END' 間のジャンプに対しては(意味がない
-と思われるので)機能しないので注意してください。
+�������ƁA�Ή�����I�u�W�F�N�g�ւ̃W�����v��ʃE�B���h�E�ōs���܂��B�������A
+���̋@�\�� `begin/end', `%#BEGIN/%#END' �Ԃ̃W�����v�ɑ΂��Ă�(�Ӗ����Ȃ�
+�Ǝv����̂�)�@�\���Ȃ��̂Œ��ӂ��Ă��������B
+
 
 
-File: yatexj, Node: お絵描きツール起動, Next: メインファイルへのジャンプ, Prev: 対応オブジェクトへのジャンプ, Up: Cursor jump
+File: yatexj, Node: ���G�`���c�[���N��, Next: ���C���t�@�C���ւ̃W�����v, Prev: �Ή��I�u�W�F�N�g�ւ̃W�����v, Up: Cursor jump
 
-お絵描きツール起動
+���G�`���c�[���N��
 ==================
 
-上記の「画像ファイルの取り込みマクロ」とは、例えば `\epsfile{file=foo}' の
-ような挿絵取り込みコマンドのことで、この行にカーソルを合わせて`[prefix] g'
-を押すとその画像ファイルの元となったファイルを対応するお絵描きツールを起動
-してオープンします。起動するツールの判定は以下のようになされます。
+��L�́u�摜�t�@�C���̎�荞�݃}�N���v�Ƃ́A�Ⴆ�� `\epsfile{file=foo}' ��
+�悤�ȑ}�G��荞�݃R�}���h�̂��ƂŁA���̍s�ɃJ�[�\�������킹��`[prefix] g'
+�������Ƃ��̉摜�t�@�C���̌��ƂȂ����t�@�C����Ή����邨�G�`���c�[�����N��
+���ăI�[�v�����܂��B�N������c�[���̔���͈ȉ��̂悤�ɂȂ���܂��B
 
-  1. カレント行が変数 `YaTeX-processed-file-regexp-alist' に定義されている
-     正規表現のいずれかとマッチしたら、ファイル名に相当する部分を \\(\\)か
-     ら抜き出して覚えておく(何番目の\\(\\)かは変数の各リストの cdr 部に入
-     れておく)。マッチしなければ何もしない。
-  2. 行末に、変数 `YaTeX-file-processor-alist' に登録されているコマンドが
-     「%コマンド」 のように書いてあれば強制的に「コマンド ファイル名.拡張
-     子」を起動。
-  3. なければ、変数 `YaTeX-file-processor-alist' の各リストのcdr部に入って
-     いる拡張子を「ファイル名」の後ろに足したファイルが存在するか順次調べ
-     て、存在した場合car部に入っているコマンドを起動する。
-  4. 以上どれかにマッチしなければあきらめる。
+  1. �J�����g�s���ϐ� `YaTeX-processed-file-regexp-alist' �ɒ�`����Ă���
+     ���K�\���̂����ꂩ�ƃ}�b�`������A�t�@�C�����ɑ������镔���� \\(\\)��
+     �甲���o���Ċo���Ă���(���Ԗڂ�\\(\\)���͕ϐ��̊e���X�g�� cdr ���ɓ�
+     ��Ă���)�B�}�b�`���Ȃ���Ή������Ȃ��B
+  2. �s���ɁA�ϐ� `YaTeX-file-processor-alist' �ɓo�^����Ă���R�}���h��
+     �u%�R�}���h�v �̂悤�ɏ����Ă���΋����I�Ɂu�R�}���h �t�@�C����.�g��
+     �q�v���N���B
+  3. �Ȃ���΁A�ϐ� `YaTeX-file-processor-alist' �̊e���X�g��cdr���ɓ�����
+     ����g���q���u�t�@�C�����v�̌��ɑ������t�@�C�������݂��邩��������
+     �āA���݂����ꍇcar���ɓ����Ă���R�}���h���N������B
+  4. �ȏ�ǂꂩ�Ƀ}�b�`���Ȃ���΂�����߂�B
 
 
-変数 `YaTeX-file-processor-alist' と変数 `YaTeX-file-processor-alist' の設
-定方法についてはそれぞれの変数について describe-variable して説明を読んで
-下さい。うまく設定すると、画像ファイルにかぎらず、任意の形式のファイルを任
-意のプロセッサで処理するコマンドを簡単に呼び出すことができます。
+�ϐ� `YaTeX-file-processor-alist' �ƕϐ� `YaTeX-file-processor-alist' �̐�
+����@�ɂ��Ă͂��ꂼ��̕ϐ��ɂ��� describe-variable ���Đ�����ǂ��
+�������B���܂��ݒ肷��ƁA�摜�t�@�C���ɂ����炸�A�C�ӂ̌`���̃t�@�C����C
+�ӂ̃v���Z�b�T�ŏ�������R�}���h���ȒP�ɌĂяo�����Ƃ��ł��܂��B
+
 
 
-File: yatexj, Node: メインファイルへのジャンプ, Next: 環境を単位としたジャンプ, Prev: お絵描きツール起動, Up: Cursor jump
+File: yatexj, Node: ���C���t�@�C���ւ̃W�����v, Next: ����P�ʂƂ����W�����v, Prev: ���G�`���c�[���N��, Up: Cursor jump
 
-メインファイルへのジャンプ
+���C���t�@�C���ւ̃W�����v
 ==========================
 
-`chap1.tex'のようなサブファイルで、
+`chap1.tex'�̂悤�ȃT�u�t�@�C���ŁA
 
 `[prefix] ^'
-             ... メインファイルにジャンプ
+             ... ���C���t�@�C���ɃW�����v
 `[prefix] 4 ^'
-             ... 別ウィンドウでメインファイルにジャンプ
+             ... �ʃE�B���h�E�Ń��C���t�@�C���ɃW�����v
 
-を押すと、メインファイルの編集バッファに切替えます。もし、メインファイルを
-オープンしていない場合は、カレントディレクトリから探して自動的にオープンし
-ます。
+�������ƁA���C���t�@�C���̕ҏW�o�b�t�@�ɐؑւ��܂��B�����A���C���t�@�C����
+�I�[�v�����Ă��Ȃ��ꍇ�́A�J�����g�f�B���N�g������T���Ď����I�ɃI�[�v����
+�܂��B
+
 
 
-File: yatexj, Node: 環境を単位としたジャンプ, Next: 最後の補完位置へのジャンプ, Prev: メインファイルへのジャンプ, Up: Cursor jump
+File: yatexj, Node: ����P�ʂƂ����W�����v, Next: �Ō�̕⊮�ʒu�ւ̃W�����v, Prev: ���C���t�@�C���ւ̃W�����v, Up: Cursor jump
 
-環境を単位としたジャンプ
+����P�ʂƂ����W�����v
 ========================
 
-さらに現在の環境を単位として機能するコマンドに以下のものがあります。
+����Ɍ��݂̊���P�ʂƂ��ċ@�\����R�}���h�Ɉȉ��̂��̂�����܂��B
 
 `M-C-a'
-             ... 環境の先頭(`\begin')へジャンプ
+             ... ���̐擪(`\begin')�փW�����v
 `M-C-e'
-             ... 環境の末尾(`\end')へジャンプ
+             ... ���̖���(`\end')�փW�����v
 `M-C-@'
-             ... 環境全体をマーク
+             ... ���S�̂��}�[�N
 
-上記のコマンドは通常の`[prefix]'キーではなく`META'キーをプリフィクスとして
-機能するのでご注意下さい。
+��L�̃R�}���h�͒ʏ��`[prefix]'�L�[�ł͂Ȃ�`META'�L�[���v���t�B�N�X�Ƃ���
+�@�\����̂ł����Ӊ������B
+
 
 
-File: yatexj, Node: 最後の補完位置へのジャンプ, Prev: 環境を単位としたジャンプ, Up: Cursor jump
+File: yatexj, Node: �Ō�̕⊮�ʒu�ւ̃W�����v, Prev: ����P�ʂƂ����W�����v, Up: Cursor jump
 
-最後の補完位置へのジャンプ
+�Ō�̕⊮�ʒu�ւ̃W�����v
 ==========================
 
-野鳥は補完入力した位置を常にレジスタ `3'に保存しています。入力途中で如何な
-るファイルの如何なる位置に行ったとしても、`C-x j 3'(`jump-to-register')を
-使って直ちに最後の補完入力位置に戻ることができます。
+�쒹�͕⊮���͂����ʒu����Ƀ��W�X�^ `3'�ɕۑ����Ă��܂��B���͓r���Ŕ@����
+��t�@�C���̔@���Ȃ�ʒu�ɍs�����Ƃ��Ă��A`C-x j 3'(`jump-to-register')��
+�g���Ē����ɍŌ�̕⊮���͈ʒu�ɖ߂邱�Ƃ��ł��܂��B
+
 
 
 File: yatexj, Node: Modifying/Deleting, Next: Filling, Prev: Cursor jump, Up: Top
 
-変更/削除
+�ύX/�폜
 *********
 
-  既に入力されている LaTeX コマンドの変更/削除のために以下の機能が用意され
-ています。
+  ���ɓ��͂���Ă��� LaTeX �R�}���h�̕ύX/�폜�̂��߂Ɉȉ��̋@�\���p�ӂ���
+�Ă��܂��B
 
 `[prefix] c'
-             ... カーソル位置の LaTeX コマンドの変更
+             ... �J�[�\���ʒu�� LaTeX �R�}���h�̕ύX
 `[prefix] k'
-             ... カーソル位置の LaTeX コマンドの削除
+             ... �J�[�\���ʒu�� LaTeX �R�}���h�̍폜
 
-これらのコマンドは、コマンドを起動する場所によって動作を決定するので注意し
-て下さい。
+
+�����̃R�}���h�́A�R�}���h���N������ꏊ�ɂ���ē�������肷��̂Œ��ӂ�
+�ĉ������B
 
 * Menu:
 
-* Changing LaTeX command::      LaTeX コマンドの変更
-* Killing LaTeX command::       LaTeX コマンドの削除
+* Changing LaTeX command::      LaTeX �R�}���h�̕ύX
+* Killing LaTeX command::       LaTeX �R�}���h�̍폜
+
 
 
 File: yatexj, Node: Changing LaTeX command, Next: Killing LaTeX command, Prev: Modifying/Deleting, Up: Modifying/Deleting
 
-LaTeX コマンドの変更
+LaTeX �R�}���h�̕ύX
 ====================
 
-変更したい LaTeX コマンドにカーソルを合わせて `[prefix] c' を押すとそのコ
-マンドを補完入力などを用いて手軽に変えることができます。`[prefix] c' で変
-更できるコマンドには以下のものがあります。
+�ύX������ LaTeX �R�}���h�ɃJ�[�\�������킹�� `[prefix] c' �������Ƃ��̃R
+�}���h��⊮���͂Ȃǂ�p���Ď�y�ɕς��邱�Ƃ��ł��܂��B`[prefix] c' �ŕ�
+�X�ł���R�}���h�ɂ͈ȉ��̂��̂�����܂��B
 
-   * `begin/end' の環境名
-   * section型コマンドのコマンド名
-   * section型コマンドの引数
-   * section型コマンドのオプションパラメータ([]で囲まれたもの)
-   * large型コマンド
-   * (イメージ補完で入力可能な)数式モード専用のmaketitle型コマンド
+   * `begin/end' �̊���
+   * section�^�R�}���h�̃R�}���h��
+   * section�^�R�}���h�̈���
+   * section�^�R�}���h�̃I�v�V�����p�����[�^([]�ň͂܂ꂽ����)
+   * large�^�R�}���h
+   * (�C���[�W�⊮�œ��͉\��)�������[�h��p��maketitle�^�R�}���h
 
-  変えたいsection型コマンドの引数がさらに LaTeX コマンドを含む場合は、その
-引数を囲む中括弧の上で `[prefix] c' を押すことで中のコマンドを変更対象判定
-から除外することができます。
+  �ς�����section�^�R�}���h�̈���������� LaTeX �R�}���h���܂ޏꍇ�́A����
+�������͂ޒ����ʂ̏�� `[prefix] c' ���������ƂŒ��̃R�}���h��ύX�Ώ۔���
+���珜�O���邱�Ƃ��ł��܂��B
+
 
 
 
 File: yatexj, Node: Killing LaTeX command, Prev: Changing LaTeX command, Up: Modifying/Deleting
 
-LaTeX コマンドの削除
+LaTeX �R�}���h�̍폜
 ====================
 
-`[prefix] k' は起動する位置により次のような動作を行います。
+`[prefix] k' �͋N������ʒu�ɂ�莟�̂悤�ȓ�����s���܂��B
 
 
-     起動位置                        動作
-     \begin, \endの行                `\begin\end'ペアの削除
-     %#BEGIN, %#END の行             %#BEGIN,%#ENDペアの削除
-     section型コマンドの上(中)       section型コマンドの削除
-     フォント指定括弧の上            フォント指定の削除
-     括弧の上                        対をなす括弧の削除
+     �N���ʒu                        ����
+     \begin, \end�̍s                `\begin\end'�y�A�̍폜
+     %#BEGIN, %#END �̍s             %#BEGIN,%#END�y�A�̍폜
+     section�^�R�}���h�̏�(��)       section�^�R�}���h�̍폜
+     �t�H���g�w�芇�ʂ̏�            �t�H���g�w��̍폜
+     ���ʂ̏�                        �΂��Ȃ����ʂ̍폜
 
-`\begin, \end' および `%#BEGIN, %#END' を削除する場合、`\begin, \end' や 
-`%#BEGIN, %#END' の存在する行はまるごと削除されるので、それらの一行に 
-`\begin' などを二つ以上連ねて書かないように注意してください。上記のものは
-すべて本文を囲う「容器」を削除するように働きますが、universal-argument
-(`C-u') を打った後で`[prefix] k'をタイプすると、それぞれの「容器」に含まれ
-る「中身」も一気に削除します。以下の例を参考にして下さい。
 
-             元のテキスト:                   [prefix] k      C-u [prefix] k
-             本文\footnote{脚注}です。     本文脚注です。  本文です。
-                     ↑(カーソル位置)
+`\begin, \end' ����� `%#BEGIN, %#END' ���폜����ꍇ�A`\begin, \end' �� 
+`%#BEGIN, %#END' �̑��݂���s�͂܂邲�ƍ폜�����̂ŁA�����̈�s�� 
+`\begin' �Ȃǂ��ȏ�A�˂ď����Ȃ��悤�ɒ��ӂ��Ă��������B��L�̂��̂�
+���ׂĖ{�����͂��u�e��v���폜����悤�ɓ����܂����Auniversal-argument
+(`C-u') ��ł������`[prefix] k'���^�C�v����ƁA���ꂼ��́u�e��v�Ɋ܂܂�
+��u���g�v����C�ɍ폜���܂��B�ȉ��̗���Q�l�ɂ��ĉ������B
+
+             ���̃e�L�X�g:                   [prefix] k      C-u [prefix] k
+             �{��\footnote{�r��}�ł��B     �{���r���ł��B  �{���ł��B
+                     ��(�J�[�\���ʒu)
+
 
 
 File: yatexj, Node: Filling, Next: Includeonly, Prev: Modifying/Deleting, Up: Top
 
-桁揃え
+������
 ******
 
 
-itemの桁揃え
+item�̌�����
 ============
 
-  itemize 環境中にある`\item'の項目(文章)が複数行に渡る場合に、項目の先頭
-を桁揃えしたい場合には、
+  itemize �����ɂ���`\item'�̍���(����)�������s�ɓn��ꍇ�ɁA���ڂ̐擪
+���������������ꍇ�ɂ́A
 
 
 `M-q'
-             ... 桁揃え
+             ... ������
 
-によって、その item のインデントの深さに応じて fill されます。なお、古い
-NTT jTeX を使用している場合には、Lisp 変数`NTT-jTeX'を`t'にセットして下さ
-い。
+�ɂ���āA���� item �̃C���f���g�̐[���ɉ����� fill ����܂��B�Ȃ��A�Â�
+NTT jTeX ���g�p���Ă���ꍇ�ɂ́ALisp �ϐ�`NTT-jTeX'��`t'�ɃZ�b�g���ĉ���
+���B
 
-  このとき、変数`YaTeX-item-regexp'の値(標準では `"\\\\item"')を項目指定コ
-マンドの正規表現として検索に使用します。itemize 環境で、独自のコマンドを定
-義して項目を列挙している場合(例えば`\underlineitem')は、`~/.emacs' で次の
-ように指定して下さい。
+  ���̂Ƃ��A�ϐ�`YaTeX-item-regexp'�̒l(�W���ł� `"\\\\item"')�����ڎw��R
+�}���h�̐��K�\���Ƃ��Č����Ɏg�p���܂��Bitemize ���ŁA�Ǝ��̃R�}���h���
+�`���č��ڂ�񋓂��Ă���ꍇ(�Ⴆ��`\underlineitem')�́A`~/.emacs' �Ŏ���
+�悤�Ɏw�肵�ĉ������B
 
              (setq YaTeX-item-regexp
                    "\\(\\\\\\(sub\\)*item\\)\\|\\(\\\\underlineitem\\)")
 
-この変数の指定の仕方がよく分からない場合は、独自の項目列挙コマンドの名前を
-``"\item"'で始まるものにして下さい(例えば"\itembf"')。
 
-野鳥の `M-q' では `\item' を環境に応じて以下のように「ハングインデント」し
-ます。
+���̕ϐ��̎w��̎d�����悭������Ȃ��ꍇ�́A�Ǝ��̍��ڗ񋓃R�}���h�̖��O��
+``"\item"'�Ŏn�܂���̂ɂ��ĉ�����(�Ⴆ��"\itembf"')�B
 
-     itemize, enumerate環境:
-            >\item[ほげほげ] 英語では、特に意味のない単語を `foo' であらわしま
-            >                すが、これの日本語版ともいえる単語が「ほげほげ」
-            >                です。
-     description環境:
-            > \item[へろへろ] 「ほげほげ」をでたらめが単語として使った時に、第
-            >            2のでたらめな単語として「へろへろ」が使われることが多
-            >            いようです。
+�쒹�� `M-q' �ł� `\item' �����ɉ����Ĉȉ��̂悤�Ɂu�n���O�C���f���g�v��
+�܂��B
+
+     itemize, enumerate��:
+            >\item[�ق��ق�] �p��ł́A���ɈӖ��̂Ȃ��P��� `foo' �ł���킵��
+            >                �����A����̓��{��łƂ�������P�ꂪ�u�ق��ق��v
+            >                �ł��B
+     description��:
+            > \item[�ւ�ւ�] �u�ق��ق��v���ł���߂��P��Ƃ��Ďg�������ɁA��
+            >            2�̂ł���߂ȒP��Ƃ��āu�ւ�ւ�v���g���邱�Ƃ���
+            >            ���悤�ł��B
 
 
-パラグラフの桁揃え
+�p���O���t�̌�����
 ==================
 
-  itemize環境以外でのパラグラフの桁揃え(fill)は、基本的に他のモードと同じ
-ように機能しますが、verbatim環境や、tabular環境など桁揃えをすると悲惨な状
-況になるような環境中では機能しません。また、\verb で括ってあるものは決して
-行分割されません(変数 `YaTeX-verb-regexp' で制御) )。さらに、一時的にイン
-デントの深さを変えてある箇所では、そのインデントの先頭で`M-q'を押すことに
-より fill-prefix をいちいち変更しなくて桁揃えができます。
+  itemize���ȊO�ł̃p���O���t�̌�����(fill)�́A��{�I�ɑ��̃��[�h�Ɠ���
+�悤�ɋ@�\���܂����Averbatim����Atabular���Ȃǌ�����������ƔߎS�ȏ�
+���ɂȂ�悤�Ȋ����ł͋@�\���܂���B�܂��A\verb �Ŋ����Ă�����̂͌�����
+�s��������܂���(�ϐ� `YaTeX-verb-regexp' �Ő���) )�B����ɁA�ꎞ�I�ɃC��
+�f���g�̐[����ς��Ă���ӏ��ł́A���̃C���f���g�̐擪��`M-q'���������Ƃ�
+��� fill-prefix �����������ύX���Ȃ��Č��������ł��܂��B
+
 
 
 
 File: yatexj, Node: Includeonly, Next: What column, Prev: Filling, Up: Top
 
-勝手にincludeonly
+�����includeonly
 *****************
 
-  ファイルを分割して文章を入力している時には、メインファイル中に
+  �t�@�C���𕪊����ĕ��͂���͂��Ă��鎞�ɂ́A���C���t�@�C������
 
-             \includeonly{現在編集中のファイル名}
+             \includeonly{���ݕҏW���̃t�@�C����}
 
-のように書いておくことで、タイプセットの時間を節約できますが、ちょっと他の
-ファイルを手直ししたい時には
+�̂悤�ɏ����Ă������ƂŁA�^�C�v�Z�b�g�̎��Ԃ�ߖ�ł��܂����A������Ƒ���
+�t�@�C�����蒼�����������ɂ�
 
-             \includeonly{ちょっと手直ししたいファイル名}
+             \includeonly{������Ǝ蒼���������t�@�C����}
 
-と書き直さなければならず手間がかかります。野鳥では現在編集しているファイル
-名がメインファイルの`\includeonly'にない場合には自動的にこれを検出し、次の
-指示を仰ぎます。
+
+�Ə��������Ȃ���΂Ȃ炸��Ԃ�������܂��B�쒹�ł͌��ݕҏW���Ă���t�@�C��
+�������C���t�@�C����`\includeonly'�ɂȂ��ꍇ�ɂ͎����I�ɂ�������o���A����
+�w�������܂��B
 
              A)dd R)eplace %)comment?
 
-現在編集中のファイルを `\includeonly' のリストに加えたい時には`a'を、現在
-編集中のファイルだけを `\includeonly' にしたい時は`r'を、`\includeonly' の
-行をコメントアウトして無効化したい時には、`%'をそれぞれ押して下さい。
+
+���ݕҏW���̃t�@�C���� `\includeonly' �̃��X�g�ɉ����������ɂ�`a' ���A����
+�ҏW���̃t�@�C�������� `\includeonly' �ɂ���������`r'���A`\includeonly' ��
+�s���R�����g�A�E�g���Ė��������������ɂ́A`%'�����ꂼ�ꉟ���ĉ������B
+
 
 
 File: yatexj, Node: What column, Next: Intelligent newline, Prev: Includeonly, Up: Top
 
-ここはどこ?
+�����͂ǂ�?
 ***********
 
-  項目数の多い tabular などをたくさん書いていると下の方の行で、いま書いて
-いる桁がどこに対応するのかわからなくなってしまうことがあります。例えば、以
-下のような tabular において、
+  ���ڐ��̑��� tabular �Ȃǂ��������񏑂��Ă���Ɖ��̕��̍s�ŁA���܏�����
+���錅���ǂ��ɑΉ�����̂��킩��Ȃ��Ȃ��Ă��܂����Ƃ�����܂��B�Ⴆ�΁A��
+���̂悤�� tabular �ɂ����āA
 
              \begin{tabular}{|c|c|c|c|c|c|c|c|}\hline
-              氏名&所属&〒&住所&電話&FAX&帰省先&帰省先電話\\ \hline
-              矢上二郎 & 6 & 223 & 横浜市港北区日吉 & xxx-yyy &
-                     zzz-www & トンガ & 9876-54321 \\
-              日吉小僧 & 2 & \multicolumn{2}{c|}{教えない}
+              ����&����&��&�Z��&�d�b&FAX&�A�Ȑ�&�A�Ȑ�d�b\\ \hline
+              ����Y & 6 & 223 & ���l�s�`�k����g & xxx-yyy &
+                     zzz-www & �g���K & 9876-54321 \\
+              ���g���m & 2 & \multicolumn{2}{c|}{�����Ȃ�}
                      &&&(???)
               \\ \hline
              \end{tabular}
 
-(???)の部分がどの項目なのかすぐに判断するのは難しいでしょう。こんな時は、
+
+(???)�̕������ǂ̍��ڂȂ̂������ɔ��f����͓̂���ł��傤�B����Ȏ��́A
 
 `[prefix] &'
-             ... 現在のカラム表示
+             ... ���݂̃J�����\��
 
-を押すとカーソル位置のカラムがどの項目に該当するかをミニバッファに表示しま
-す。tabular/array環境の第1行目を項目名の並びとみなして対応するものを探しま
-す。もし項目名として別のものを表示して欲しい場合は、行頭を`%'にしてダミー
-の項目並びを作っておくと良いでしょう。
+�������ƃJ�[�\���ʒu�̃J�������ǂ̍��ڂɊY�����邩���~�j�o�b�t�@�ɕ\������
+���Btabular/array���̑�1�s�ڂ����ږ��̕��тƂ݂Ȃ��đΉ�������̂�T����
+���B�������ږ��Ƃ��ĕʂ̂��̂�\�����ė~�����ꍇ�́A�s����`%'�ɂ��ă_�~�[
+�̍��ڕ��т�����Ă����Ɨǂ��ł��傤�B
+
 
 
 File: yatexj, Node: Intelligent newline, Next: Usepackage cheker, Prev: What column, Up: Top
 
-おまかせ改行
+���܂������s
 ************
 
-  tabular[*], array, itemize, enumerate, tabbing 環境をbegin型補完で入力し
-た時、または各環境内で
+  tabular[*], array, itemize, enumerate, tabbing ����begin�^�⊮�œ��͂�
+�����A�܂��͊e������
 
 `ESC RET'
-             ... おまかせ改行
+             ... ���܂������s
 
-を押すと、その環境に応じた行エントリを次の行に挿入します(begin型補完時に自
-動挿入されたエントリが不要な場合は undo によって消去できます)。例えば、
-tabular環境では、その環境のカラム数に対応した個数の `&' に加え、行末の 
-`\\' を入れます。この時それ以前に `\hline' があればそれも付け加えます。環
-境とそれに応じて自動入力するものの対応は以下のようになります。
+
+�������ƁA���̊��ɉ������s�G���g�������̍s�ɑ}�����܂�(begin�^�⊮���Ɏ�
+���}�����ꂽ�G���g�����s�v�ȏꍇ�� undo �ɂ���ď����ł��܂�)�B�Ⴆ�΁A
+tabular���ł́A���̊��̃J�������ɑΉ��������� `&' �ɉ����A�s���� 
+`\\' �����܂��B���̎�����ȑO�� `\hline' ������΂�����t�������܂��B��
+���Ƃ���ɉ����Ď������͂�����̂̑Ή��͈ȉ��̂悤�ɂȂ�܂��B
 
    * `tabular', `tabular*', `array'
 
-             カラム数-1 だけの `&' と `\\'。必要に応じて `\hline'
+             �J������-1 ������ `&' �� `\\'�B�K�v�ɉ����� `\hline'
 
    * `tabbing'
 
-             一行目で定義している `\=' と同じ個数の `\>'。
+             ��s�ڂŒ�`���Ă��� `\=' �Ɠ������� `\>'�B
 
    * `itemize', `enumerate', `description', `list'
 
-             `\item' または `item[]'
+             `\item' �܂��� `item[]'
 
-  tabular 環境の例のように、本機能は各環境の一行目の内容を参考にして動作す
-るので、なるべく二行目以降で呼び出すようにしてください。
+  tabular ���̗�̂悤�ɁA�{�@�\�͊e���̈�s�ڂ̓��e���Q�l�ɂ��ē��삷
+��̂ŁA�Ȃ�ׂ���s�ڈȍ~�ŌĂяo���悤�ɂ��Ă��������B
 
-  もし、その他の環境、例えば `foo'、に対して`おまかせ改行'を動作させたい時
-は、`YaTeX-intelligent-newline-foo' という名前の関数を定義します。定義した
-関数は、現在の行に改行を挿入した直後の行頭の位置で呼ばれます。関数 
-`YaTeX-indent-line' を呼ぶと現在の環境のネストに応じた深さにインデントされ
-るので、これを呼んでから何かを挿入するようなコードを書くとよいでしょう。
-`yatexenv.el'内の関数 `YaTeX-intelligent-newline-itemize' の定義などを参考
-にしてください。
+  �����A���̑��̊��A�Ⴆ�� `foo'�A�ɑ΂���`���܂������s'�𓮍삳��������
+�́A`YaTeX-intelligent-newline-foo' �Ƃ������O�̊֐����`���܂��B��`����
+�֐��́A���݂̍s�ɉ��s��}����������̍s���̈ʒu�ŌĂ΂�܂��B�֐� 
+`YaTeX-indent-line' ���ĂԂƌ��݂̊��̃l�X�g�ɉ������[���ɃC���f���g����
+��̂ŁA������Ă�ł��牽����}������悤�ȃR�[�h�������Ƃ悢�ł��傤�B
+`yatexenv.el'���̊֐� `YaTeX-intelligent-newline-itemize' �̒�`�Ȃǂ��Q�l
+�ɂ��Ă��������B
+
 
 
 
 File: yatexj, Node: Usepackage cheker, Next: Changing mode of YaTeX, Prev: Intelligent newline, Up: Top
 
-先回りusepackage
+����usepackage
 ****************
 
-  begin型、section型、maketitle型、いずれかのLaTeX2eマクロを補完入力すると、
-そのマクロの利用に外部パッケージを必要とする場合、そのパッケージを本文中で 
-`\usepackage{}' しているかどうかを調査し、もししていなければプリアンブルに
-対応するパッケージを引数にした `\usepackage' 文を(確認後に)挿入します。
+  begin�^�Asection�^�Amaketitle�^�A�����ꂩ��LaTeX2e�}�N����⊮���͂���ƁA
+���̃}�N���̗��p�ɊO���p�b�P�[�W��K�v�Ƃ���ꍇ�A���̃p�b�P�[�W��{������ 
+`\usepackage{}' ���Ă��邩�ǂ����𒲍����A�������Ă��Ȃ���΃v���A���u����
+�Ή�����p�b�P�[�W�������ɂ��� `\usepackage' ����(�m�F���)�}�����܂��B
 
-  ただしこの機能が働くためには、パッケージ名とその中で定義されているマクロ
-群をalistの形式で変数 `YaTeX-package-alist-private' に設定しておく必要があ
-ります。
+  ���������̋@�\���������߂ɂ́A�p�b�P�[�W���Ƃ��̒��Œ�`����Ă���}�N��
+�Q��alist�̌`���ŕϐ� `YaTeX-package-alist-private' �ɐݒ肵�Ă����K�v����
+��܂��B
+
 
 
 File: yatexj, Node: Changing mode of YaTeX, Next: Online help, Prev: Usepackage cheker, Up: Top
 
-野鳥の動作モード切り替え
+�쒹�̓��샂�[�h�؂�ւ�
 ************************
 
 `[prefix] w'
-             ... 野鳥動作モード切り替えメニュー
+             ... �쒹���샂�[�h�؂�ւ����j���[
 
-で野鳥自身の動作を決定する以下のモードを切り替えます。
+�Ŗ쒹���g�̓�������肷��ȉ��̃��[�h��؂�ւ��܂��B
 
-   * 修正モード
-   * 野鳥数式モード
+   * �C�����[�h
+   * �쒹�������[�h
 
-修正モードは、開き括弧入力時の処理をコントロールし、修正モードONの時は開き
-括弧の入力は開き括弧のみの入力になり、修正モードOFFの時は開き括弧の入力だ
-けで閉じ括弧まで入力します。デフォルト(起動時)の設定は*OFF*です。
+�C�����[�h�́A�J�����ʓ��͎��̏������R���g���[�����A�C�����[�hON�̎��͊J��
+���ʂ̓��͂͊J�����ʂ݂̂̓��͂ɂȂ�A�C�����[�hOFF�̎��͊J�����ʂ̓��͂�
+���ŕ����ʂ܂œ��͂��܂��B�f�t�H���g(�N����)�̐ݒ��*OFF*�ł��B
 
-  野鳥数式モードは、変数 `YaTeX-auto-math-mode' が `nil' の時のみ有効で、
-このとき`;'や`:'を押した時(*Note Image completion::参照)に、どのようなイメー
-ジ補完を機能させるか、通常のキーとして機能させるかを手動で切り替えます。自
-動判定が遅いマシンでは`YaTeX-auto-math-mode' `nil'にセットし、野鳥数式モー
-ドを手動で切り替えると良いでしょう。
+  �쒹�������[�h�́A�ϐ� `YaTeX-auto-math-mode' �� `nil' �̎��̂ݗL���ŁA
+���̂Ƃ�`;'��`:'����������(*Note Image completion::�Q��)�ɁA�ǂ̂悤�ȃC���[
+�W�⊮���@�\�����邩�A�ʏ�̃L�[�Ƃ��ċ@�\�����邩���蓮�Ő؂�ւ��܂��B��
+�����肪�x���}�V���ł�`YaTeX-auto-math-mode' `nil'�ɃZ�b�g���A�쒹�������[
+�h���蓮�Ő؂�ւ���Ɨǂ��ł��傤�B
+
 
 
 
 File: yatexj, Node: Online help, Next: Inclusion hierarchy browser, Prev: Changing mode of YaTeX, Up: Top
 
-オンラインヘルプ
+�I�����C���w���v
 ****************
 
-  使おうとする LaTeX コマンドの用法がよく分からない時は、オンラインヘルプ
-をひきましょう。ヘルプに関するキーには以下のものがあります。
+  �g�����Ƃ��� LaTeX �R�}���h�̗p�@���悭������Ȃ����́A�I�����C���w���v
+���Ђ��܂��傤�B�w���v�Ɋւ���L�[�ɂ͈ȉ��̂��̂�����܂��B
 
 `[prefix] ?'
-             ... オンラインヘルプ
+             ... �I�����C���w���v
 `[prefix] /'
-             ... オンラインapropos
+             ... �I�����C��apropos
 
 
-オンラインヘルプ
+�I�����C���w���v
 ================
 
-  「オンラインヘルプ」は、一般的な LaTeX コマンド(デフォルトでカーソル位置
-のコマンド)に対する説明を隣のバッファに表示します。この時参照されるヘルプ
-用ファイルには「グローバルヘルプ」と「プライベートヘルプ」の二種類があり、
-前者は LaTeX の標準コマンドの主なものの説明を含むファイルで、変数
-`YaTeX-help-file'の値で指定されます。このファイルは通常公共の場所(デフォル
-トで`$EMACSEXECPATH')に置かれ、誰もがその内容を更新できるように全員に書き
-込み権が与えられるべきものです。後者は、非標準もしくは個人的なマクロ定義に
-関する説明が書かれているファイルで、変数`YaTeX-help-file-private'の値で指
-定されます。こちらはユーザのホームディレクトリの下などに置かれます。
+  �u�I�����C���w���v�v�́A��ʓI�� LaTeX �R�}���h(�f�t�H���g�ŃJ�[�\���ʒu
+�̃R�}���h)�ɑ΂��������ׂ̃o�b�t�@�ɕ\�����܂��B���̎��Q�Ƃ����w���v
+�p�t�@�C���ɂ́u�O���[�o���w���v�v�Ɓu�v���C�x�[�g�w���v�v�̓��ނ�����A
+�O�҂� LaTeX �̕W���R�}���h�̎�Ȃ��̂̐������܂ރt�@�C���ŁA�ϐ�
+`YaTeX-help-file'�̒l�Ŏw�肳��܂��B���̃t�@�C���͒ʏ�����̏ꏊ(�f�t�H��
+�g��`$EMACSEXECPATH')�ɒu����A�N�������̓��e���X�V�ł���悤�ɑS���ɏ���
+���݌����^������ׂ����̂ł��B��҂́A��W���������͌l�I�ȃ}�N����`��
+�ւ��������������Ă���t�@�C���ŁA�ϐ�`YaTeX-help-file-private'�̒l�Ŏw
+�肳��܂��B������̓��[�U�̃z�[���f�B���N�g���̉��Ȃǂɒu����܂��B
 
 
-オンラインapropos
+�I�����C��apropos
 =================
 
-  「オンラインapropos」は GNU Emacs の apropos と同様、ユーザが指定したキー
-ワードを説明文に含む項目すべてを隣のバッファに表示します。
+  �u�I�����C��apropos�v�� GNU Emacs �� apropos �Ɠ��l�A���[�U���w�肵���L�[
+���[�h��������Ɋ܂ލ��ڂ��ׂĂ�ׂ̃o�b�t�@�ɕ\�����܂��B
 
-  もし、調べようとしたLaTeXコマンドに対する説明がヘルプファイル中に見つか
-らなかった場合は、説明文の入力を求めてくるので、可能であれば参考書などを調
-べてそのコマンドの説明を入力してください。もし、なにか標準的なコマンドに対
-する説明を書いたならばぜひ私までその説明をお送り下さい。次回の配布に含めた
-いと思います。
+  �����A���ׂ悤�Ƃ���LaTeX�R�}���h�ɑ΂���������w���v�t�@�C�����Ɍ���
+��Ȃ������ꍇ�́A�������̓��͂����߂Ă���̂ŁA�\�ł���ΎQ�l���Ȃǂ�
+�ׂĂ��̃R�}���h�̐�������͂��Ă��������B�����A�Ȃɂ��W���I�ȃR�}���h�ɑ�
+����������������Ȃ�΂��Ў��܂ł��̐����������艺�����B����̔z�z�Ɋ܂߂�
+���Ǝv���܂��B
+
 
 
 File: yatexj, Node: Inclusion hierarchy browser, Next: Cooperation with other packages, Prev: Online help, Up: Top
 
-インクルード構造ブラウザ
+�C���N���[�h�\���u���E�U
 ************************
 
-複数のファイルに分割しているドキュメントを書いている場合、
+�����̃t�@�C���ɕ������Ă���h�L�������g�������Ă���ꍇ�A
 
 `[prefix] d'
-             ... インクルード構造ブラウズ
+             ... �C���N���[�h�\���u���E�Y
 
-を押すと、そのドキュメントの親ファイルを聞いて来ます。ここで全てのファイル
-の親となるファイル(デフォルトが示されているので大抵はRETのみ)を入力すると
-インクルードしている全てのファイルを解析し、インクルード状況を視覚的に表示
-します。このバッファでは以下のキー操作が有効です。
+�������ƁA���̃h�L�������g�̐e�t�@�C���𕷂��ė��܂��B�����őS�Ẵt�@�C��
+�̐e�ƂȂ�t�@�C��(�f�t�H���g��������Ă���̂ő���RET�̂�)����͂����
+�C���N���[�h���Ă���S�Ẵt�@�C������͂��A�C���N���[�h�󋵂����o�I�ɕ\��
+���܂��B���̃o�b�t�@�ł͈ȉ��̃L�[���삪�L���ł��B
 
 `n'
-             ... 次の行に移動し対応するファイルを隣のバッファに表示
+             ... ���̍s�Ɉړ����Ή�����t�@�C����ׂ̃o�b�t�@�ɕ\��
 `p'
-             ... 上の行に移動し対応するファイルを隣のバッファに表示
+             ... ��̍s�Ɉړ����Ή�����t�@�C����ׂ̃o�b�t�@�ɕ\��
 `N'
-             ... 同じインクルードレベルの次のファイルに移動
+             ... �����C���N���[�h���x���̎��̃t�@�C���Ɉړ�
 `P'
-             ... 同じインクルードレベルの前のファイルに移動
+             ... �����C���N���[�h���x���̑O�̃t�@�C���Ɉړ�
 `j'
-             ... 次の行に移動
+             ... ���̍s�Ɉړ�
 `k'
-             ... 上の行に移動
+             ... ��̍s�Ɉړ�
 `u'
-             ... 一代親にあたるファイルに移動
+             ... ���e�ɂ�����t�@�C���Ɉړ�
 `.'
-             ... カーソル位置のファイルを隣のバッファに表示
+             ... �J�[�\���ʒu�̃t�@�C����ׂ̃o�b�t�@�ɕ\��
 `SPC'
-             ... 隣のバッファの対応ファイルをスクロールアップ
+             ... �ׂ̃o�b�t�@�̑Ή��t�@�C�����X�N���[���A�b�v
 `DEL, b'
-             ... 隣のバッファの対応ファイルをスクロールダウン
+             ... �ׂ̃o�b�t�@�̑Ή��t�@�C�����X�N���[���_�E��
 `<'
-             ... 隣のバッファの対応ファイルの先頭を表示
+             ... �ׂ̃o�b�t�@�̑Ή��t�@�C���̐擪��\��
 `>'
-             ... 隣のバッファの対応ファイルの末尾を表示
+             ... �ׂ̃o�b�t�@�̑Ή��t�@�C���̖�����\��
 `''
-             ... (`<'や`>'の後で)元の表示位置に戻る
+             ... (`<'��`>'�̌��)���̕\���ʒu�ɖ߂�
 `RET, g'
-             ... カーソル位置のファイルを隣のバッファでオープン
+             ... �J�[�\���ʒu�̃t�@�C����ׂ̃o�b�t�@�ŃI�[�v��
 `mouse-2'
-             ... RETと同じ(ウィンドウ使用時のみ)
+             ... RET�Ɠ���(�E�B���h�E�g�p���̂�)
 `o'
-             ... 隣のウィンドウに移動
+             ... �ׂ̃E�B���h�E�Ɉړ�
 `1'
-             ... 他のウィンドウを消す
+             ... ���̃E�B���h�E������
 `-'
-             ... ブラウズウィンドウを小さくする
+             ... �u���E�Y�E�B���h�E������������
 `+'
-             ... ブラウズウィンドウを大きくする
+             ... �u���E�Y�E�B���h�E��傫������
 `?'
-             ... ヘルプ表示
+             ... �w���v�\��
 `q'
-             ... 表示前の状態に戻る
+             ... �\���O�̏�Ԃɖ߂�
 
-  ただし、隣のウィンドウのファイルの内容を表示する機能に関しては、対応する
-ファイルをクローズしてしまうとうまく働きませんのでご注意ください。
+  �������A�ׂ̃E�B���h�E�̃t�@�C���̓��e��\������@�\�Ɋւ��ẮA�Ή�����
+�t�@�C�����N���[�Y���Ă��܂��Ƃ��܂������܂���̂ł����ӂ��������B
+
 
 
 File: yatexj, Node: Cooperation with other packages, Next: Customizations, Prev: Inclusion hierarchy browser, Up: Top
 
-他パッケージとの連携
+���p�b�P�[�W�Ƃ̘A�g
 ********************
 
 
 gmhist
 ======
 
-  `gmhist.el'と`gmhist-mh.el' をロードしている場合、プレヴューコマンドの入
-力(`[prefix] tp]')、印刷コマンドの入力(`[prefix] tl')の時に独立したヒスト
-リを利用できます。それぞれのプロンプトで、`M-p' を押すと直前に利用したコマ
-ンド文字列をくり返し呼び出すことができます。
+  `gmhist.el'��`gmhist-mh.el' �����[�h���Ă���ꍇ�A�v�������[�R�}���h�̓�
+��(`[prefix] tp]')�A����R�}���h�̓���(`[prefix] tl')�̎��ɓƗ������q�X�g
+���𗘗p�ł��܂��B���ꂼ��̃v�����v�g�ŁA`M-p' �������ƒ��O�ɗ��p�����R�}
+���h�����������Ԃ��Ăяo�����Ƃ��ł��܂��B
 
 
 min-out
 =======
 
-  `min-out.el' (`outline-minor-mode') と野鳥を組み合わせて使うことももちろ
-ん可能です。設定の方法に関しては`yatexm-o.el'をご覧ください。
+  `min-out.el' (`outline-minor-mode') �Ɩ쒹��g�ݍ��킹�Ďg�����Ƃ�������
+��\�ł��B�ݒ�̕��@�Ɋւ��Ă�`yatexm-o.el'���������������B
+
 
 
 File: yatexj, Node: Customizations, Next: Etc, Prev: Cooperation with other packages, Up: Top
 
-カスタマイズ
+�J�X�^�}�C�Y
 ************
 
-  野鳥の動作を制御する種々の変数を独自に設定することにより、補完入力を起動
-するキーアサインを変えたり、環境名の補完候補をさらに充実させることなどがで
-きます。
+  �쒹�̓���𐧌䂷���X�̕ϐ���Ǝ��ɐݒ肷�邱�Ƃɂ��A�⊮���͂��N��
+����L�[�A�T�C����ς�����A�����̕⊮��������ɏ[�������邱�ƂȂǂ���
+���܂��B
 
 * Menu:
 
-* Lisp variables::              lisp 変数
-* Add-in functions::            付加関数(アドイン関数)
+* Lisp variables::              lisp �ϐ�
+* Add-in functions::            �t���֐�(�A�h�C���֐�)
+
 
 
 File: yatexj, Node: Lisp variables, Next: Add-in functions, Prev: Customizations, Up: Customizations
 
-lisp 変数
+lisp �ϐ�
 =========
 
-  例えば prefix キーを `C-c' 以外のキーにしたい場合は、`YaTeX-prefix'に 
-prefix キーにしたいシンボルを定義してください。さらに、「`C-c 英字'」とい
-うキーバインドは独自の関数が割り当ててあるので使いたくない。このような時は、
-`YaTeX-inhibit-prefix-letter' を `t' に設定することにより、`C-c 英字…'の
-バインドが全て、対応する`C-c C-英字…'に変わります(ただし、begin型 large型
-補完の大文字起動によるリジョン指定は可能なままです。これも無効にしたい場合
-は`t'ではなく 1 にセットして下さい。)。
+  �Ⴆ�� prefix �L�[�� `C-c' �ȊO�̃L�[�ɂ������ꍇ�́A`YaTeX-prefix'�� 
+prefix �L�[�ɂ������V���{�����`���Ă��������B����ɁA�u`C-c �p��'�v�Ƃ�
+���L�[�o�C���h�͓Ǝ��̊֐������蓖�ĂĂ���̂Ŏg�������Ȃ��B���̂悤�Ȏ��́A
+`YaTeX-inhibit-prefix-letter' �� `t' �ɐݒ肷�邱�Ƃɂ��A`C-c �p���c'��
+�o�C���h���S�āA�Ή�����`C-c C-�p���c'�ɕς��܂�(�������Abegin�^ large�^
+�⊮�̑啶���N���ɂ�郊�W�����w��͉\�Ȃ܂܂ł��B����������ɂ������ꍇ
+��`t'�ł͂Ȃ� 1 �ɃZ�b�g���ĉ������B)�B
 
 * Menu:
 
-* All customizable variables::  カスタマイズ変数一覧
-* Sample definitions::          カスタマイズ変数設定例
-* Hook variables::              hook変数
-* Hook file::                   hook用ファイル
+* All customizable variables::  �J�X�^�}�C�Y�ϐ��ꗗ
+* Sample definitions::          �J�X�^�}�C�Y�ϐ��ݒ��
+* Hook variables::              hook�ϐ�
+* Hook file::                   hook�p�t�@�C��
+
 
 
 File: yatexj, Node: All customizable variables, Next: Sample definitions, Prev: Lisp variables, Up: Lisp variables
 
-カスタマイズ変数一覧
+�J�X�^�}�C�Y�ϐ��ꗗ
 --------------------
 
-  yatex-mode における次の変数がカスタマイズ可能です。`~/.emacs' で `setq' 
-しておけば、そちらの定義が優先されます。括弧の中はデフォルト値です。実際に
-変数の値を変更する場合は `M-x describe-variable' で変数の詳細な説明を参照
-してください。
+  yatex-mode �ɂ����鎟�̕ϐ����J�X�^�}�C�Y�\�ł��B`~/.emacs' �� `setq' 
+���Ă����΁A������̒�`���D�悳��܂��B���ʂ̒��̓f�t�H���g�l�ł��B���ۂ�
+�ϐ��̒l��ύX����ꍇ�� `M-x describe-variable' �ŕϐ��̏ڍׂȐ������Q��
+���Ă��������B
 
  -- Variable: YaTeX-prefix
-     yatex-mode 中のプリフィクスキー (`\C-c')
+     yatex-mode ���̃v���t�B�N�X�L�[ (`\C-c')
 
  -- Variable: YaTeX-inhibit-prefix-letter
-     prefix キーの直後のキーバインドで `英字' のものを `C-英字' に変更 
+     prefix �L�[�̒���̃L�[�o�C���h�� `�p��' �̂��̂� `C-�p��' �ɕύX 
      (`nil')
 
  -- Variable: YaTeX-fill-prefix
-     本文を書く時の行頭に挿入する接頭辞すなわち fill-prefix (`""(nil)')
+     �{�����������̍s���ɑ}������ړ������Ȃ킿 fill-prefix (`""(nil)')
 
  -- Variable: YaTeX-user-completion-table
-     学習したLaTeXコマンド保存ファイル名 (`"~/.yatexrc"')
+     �w�K����LaTeX�R�}���h�ۑ��t�@�C���� (`"~/.yatexrc"')
 
  -- Variable: YaTeX-kanji-code
-     文書を作成する時の漢字コードnil=既存のコードのまま 
-     0=no-conversion1=Shift JIS, 2=JIS, 3=EUC (2 (MS-DOSでは1))
+     �������쐬���鎞�̊����R�[�hnil=�����̃R�[�h�̂܂� 0=no-conversion
+     1=Shift JIS, 2=JIS, 3=EUC, 4=UTF-8 (2 (MS-DOS�ł�1))
 
  -- Variable: tex-command
-     LaTeXタイプセッタコマンド名 (`"platex"')
+     LaTeX�^�C�v�Z�b�^�R�}���h�� (`"platex"')
+
 
  -- Variable: dvi2-command
-     プレヴューアコマンド名 (`"xdvi -geo +0+0 -s 4"')
+     �v�������[�A�R�}���h�� (`"xdvi -geo +0+0 -s 4"')
 
  -- Variable: dviprint-command-format
-     dviファイルの印刷に使われるコマンド式 (`"dvi2ps %f %t %s | lpr"')
+     dvi�t�@�C���̈���Ɏg����R�}���h�� (`"dvi2ps %f %t %s | lpr"')
 
  -- Variable: dviprint-from-format
-     上の`%f'に相当する開始ページ指定書式、`%b' が開始ページ番号に変わる 
+     ���`%f'�ɑ�������J�n�y�[�W�w�菑���A`%b' ���J�n�y�[�W�ԍ��ɕς�� 
      (`"-f %b"')
 
  -- Variable: dviprint-to-format
-     `%t' に相当する終了ページ指定書式、`%e'が終了ページ番号に変わる (`"-t
+     `%t' �ɑ�������I���y�[�W�w�菑���A`%e'���I���y�[�W�ԍ��ɕς�� (`"-t
      %e"')
 
  -- Variable: makeindex-command
-     makeindexコマンド (`"makeindex"' (MS-DOSでは`"makeind"'))
+     makeindex�R�}���h (`"makeindex"' (MS-DOS�ł�`"makeind"'))
+
+ -- Variable: YaTeX-dvipdf-command
+     dvi��PDF�ɕϊ�����R�}���h (`"dvipdfmx"')
 
  -- Variable: YaTeX-need-nonstop
-     `\nonstopmode{}'を自動的に付加するか (`nil')
+     `\nonstopmode{}'�������I�ɕt�����邩 (`nil')
 
  -- Variable: latex-warning-regexp
-     latexコマンドの出力するウォーニング行の正規表現 (`"line.* [0-9]*"')
+     latex�R�}���h�̏o�͂���E�H�[�j���O�s�̐��K�\�� (`"line.* [0-9]*"')
 
  -- Variable: latex-error-regexp
-     同じくエラー行の正規表現 (`"l\\.[1-9][0-9]*"')
+     �������G���[�s�̐��K�\�� (`"l\\.[1-9][0-9]*"')
 
  -- Variable: latex-dos-emergency-message
-     MS-DOS上で動作する latex コマンドが、エラーにより停止するとき出力する
-     メッセージ (`"Emergency stop"')
+     MS-DOS��œ��삷�� latex �R�}���h���A�G���[�ɂ���~����Ƃ��o�͂���
+     ���b�Z�[�W (`"Emergency stop"')
 
  -- Variable: latex-message-kanji-code
-     タイプセッタの出力するメッセージの漢字コード.タイプセットバッファの出
-     力が化ける時は、これを設定する (2, Nemacsでのみ有効)
+     �^�C�v�Z�b�^�̏o�͂��郁�b�Z�[�W�̊����R�[�h.�^�C�v�Z�b�g�o�b�t�@�̏o
+     �͂������鎞�́A�����ݒ肷�� (2, Nemacs�ł̂ݗL��)
 
  -- Variable: NTT-jTeX
-     古いNTT-jTeX使用時のようにインデントした行の先頭と前の行の(タイプセッ
-     ト後の)字間が空いてしまうのを嫌う場合は`t'にする(`nil')
+     �Â�NTT-jTeX�g�p���̂悤�ɃC���f���g�����s�̐擪�ƑO�̍s��(�^�C�v�Z�b
+     �g���)���Ԃ��󂢂Ă��܂��̂������ꍇ��`t'�ɂ���(`nil')
 
  -- Variable: YaTeX-item-regexp
-     itemの桁揃えの時に用いる、itemの正規表現 (`"\\\\(sub\\)*item"')
+     item�̌������̎��ɗp����Aitem�̐��K�\�� (`"\\\\(sub\\)*item"')
 
  -- Variable: YaTeX-verb-regexp
-     verbコマンドの正規表現。先頭の\\\\はつけない (`"verb\\*?\\|path"')
+     verb�R�}���h�̐��K�\���B�擪��\\\\�͂��Ȃ� (`"verb\\*?\\|path"')
 
  -- Variable: YaTeX-nervous
-     ローカル辞書を用いる時 `t' (`t')
+     ���[�J��������p���鎞 `t' (`t')
 
  -- Variable: YaTeX-sectioning-regexp
-     セクション区切り設定コマンドの正規表現 
+     �Z�N�V������؂�ݒ�R�}���h�̐��K�\�� 
      (`"\\(part\\|chapter\\*?\\|\\(sub\\)*\\(section\\|paragraph\\)\\*?\\)\\b"')
 
  -- Variable: YaTeX-fill-inhibit-environments
-     fill を抑止する環境名のリスト (`'("tabular" "tabular*" "array"
+     fill ��}�~��������̃��X�g (`'("tabular" "tabular*" "array"
      "picture" "eqnarray" "eqnarray*" "equation" "math" "displaymath"
      "verbatim" "verbatim*")')
 
  -- Variable: YaTeX-uncomment-once
-     領域uncommentで行頭の複数の`%'を全て削除するか (`nil')
+     �̈�uncomment�ōs���̕�����`%'��S�č폜���邩 (`nil')
 
  -- Variable: YaTeX-close-paren-always
-     開き括弧の入力で常に閉じ括弧を入力する (`t')
+     �J�����ʂ̓��͂ŏ�ɕ����ʂ���͂��� (`t')
 
  -- Variable: YaTeX-auto-math-mode
-     数式モードの切り替えを自動的に行う (`t')
+     �������[�h�̐؂�ւ��������I�ɍs�� (`t')
 
  -- Variable: YaTeX-math-key-list-private
-     数式イメージ補完で用いる (プリフィクスキー . 対応補完テーブル) の
-     alist (`nil')。補完テーブルの書き方については`yatexmth.el'を参照。
+     �����C���[�W�⊮�ŗp���� (�v���t�B�N�X�L�[ . �Ή��⊮�e�[�u��) ��
+     alist (`nil')�B�⊮�e�[�u���̏������ɂ��Ă�`yatexmth.el'���Q�ƁB
 
  -- Variable: YaTeX-default-pop-window-height
-     1画面の時にタイプセットバッファを初めて作成する時の高さ。数値で行数、
-     数字文字列でEmacsウィンドウに対する百分率 (10)
+     1��ʂ̎��Ƀ^�C�v�Z�b�g�o�b�t�@�����߂č쐬���鎞�̍����B���l�ōs���A
+     �����������Emacs�E�B���h�E�ɑ΂���S���� (10)
 
  -- Variable: YaTeX-help-file
-     共用ヘルプファイル (`$doc-directory/../../site-lisp/YATEXHLP.jp')
+     ���p�w���v�t�@�C�� (`$doc-directory/../../site-lisp/YATEXHLP.jp')
 
  -- Variable: YaTeX-help-file-private
-     個人用ヘルプファイル (`"~/YATEXHLP.jp"')
+     �l�p�w���v�t�@�C�� (`"~/YATEXHLP.jp"')
 
  -- Variable: YaTeX-no-begend-shortcut
-     `[prefix] b ??' のショートカットを使わず、`[prefix] b' だけで補完入力
-     に入る (`nil')
+     `[prefix] b ??' �̃V���[�g�J�b�g���g�킸�A`[prefix] b' �����ŕ⊮����
+     �ɓ��� (`nil')
 
  -- Variable: YaTeX-hilit-pattern-adjustment-private
-     正規表現とそれにマッチするものの論理的意味をシンボルであらわしたもの
-     のリスト…のリスト。hilit19 を組み込んでいる時のみ有効。詳しくは 
-     `(assq 'yatex-mode hilit-patterns-alist)' した結果と、変数 
-     `YaTeX-hilit-pattern-adjustment-default' の値(と場合によっては 
-     hilit19 のドキュメント)を参照せよ。
+     ���K�\���Ƃ���Ƀ}�b�`������̘̂_���I�Ӗ����V���{���ł���킵������
+     �̃��X�g�c�̃��X�g�Bhilit19 ��g�ݍ���ł��鎞�̂ݗL���B�ڂ����� 
+     `(assq 'yatex-mode hilit-patterns-alist)' �������ʂƁA�ϐ� 
+     `YaTeX-hilit-pattern-adjustment-default' �̒l(�Əꍇ�ɂ���Ă� 
+     hilit19 �̃h�L�������g)���Q�Ƃ���B
 
  -- Variable: YaTeX-sectioning-level
-     LaTeXのセクション単位宣言コマンドとその論理的高さのalist。
+     LaTeX�̃Z�N�V�����P�ʐ錾�R�}���h�Ƃ��̘_���I������alist�B
 
  -- Variable: YaTeX-hierarchy-ignore-heading-regexp
-     Hierarchy バッファは通常ファイルヘッダとして、LaTeXのセクション宣言コ
-     マンドの引数を検索し、それがなければコメント行を探すが、その際にヘッ
-     ダとしては意味を持たないパターンをこの変数に設定する。デフォルトでは 
-     RCS ヘッダとモード指定行(-*- xxx -*-)が設定されている。
+     Hierarchy �o�b�t�@�͒ʏ�t�@�C���w�b�_�Ƃ��āALaTeX�̃Z�N�V�����錾�R
+     �}���h�̈������������A���ꂪ�Ȃ���΃R�����g�s��T�����A���̍ۂɃw�b
+     �_�Ƃ��Ă͈Ӗ��������Ȃ��p�^�[�������̕ϐ��ɐݒ肷��B�f�t�H���g�ł� 
+     RCS �w�b�_�ƃ��[�h�w��s(-*- xxx -*-)���ݒ肳��Ă���B
 
  -- Variable: YaTeX-skip-default-reader
-     Non-nil に設定するとsection型コマンドの引数入力時、アドイン関数がなけ
-     ればミニバッファでの読み込みをせずに入力を完了させる (`nil')
+     Non-nil �ɐݒ肷���section�^�R�}���h�̈������͎��A�A�h�C���֐����Ȃ�
+     ��΃~�j�o�b�t�@�ł̓ǂݍ��݂������ɓ��͂����������� (`nil')
 
  -- Variable: YaTeX-create-file-prefix-g
-     `\include'などで `prefix g'した時に、ジャンプ先が存在しないファイルで
-     あってもオープンする (`nil')
+     `\include'�Ȃǂ� `prefix g'�������ɁA�W�����v�悪���݂��Ȃ��t�@�C����
+     �����Ă��I�[�v������ (`nil')
 
  -- Variable: YaTeX-simple-messages
-     各種補完時のメッセージ出力を簡素化する (`nil')
+     �e��⊮���̃��b�Z�[�W�o�͂��ȑf������ (`nil')
 
  -- Variable: YaTeX-hilit-sectioning-face
-     色付けが有効な時の `\part' の色 (`'(yellow/dodgerblue
-     yellow/slateblue)')。リストの第一要素は `hilit-background-mode' が 
-     `'light' の時の、第二要素は `'dark' の時の `\chapter' の色で、文字色/
-     背景色 のように指定する。
+     �F�t�����L���Ȏ��� `\part' �̐F (`'(yellow/dodgerblue
+     yellow/slateblue)')�B���X�g�̑��v�f�� `hilit-background-mode' �� 
+     `'light' �̎��́A���v�f�� `'dark' �̎��� `\chapter' �̐F�ŁA�����F/
+     �w�i�F �̂悤�Ɏw�肷��B
 
  -- Variable: YaTeX-hilit-sectioning-attenuation-rate
-     色付けが有効な時の、`\subparagraph' の色を `\chapter' の濃度の何%薄く
-     したものにするか (`'(15 40)') `YaTeX-hilit-sectioning-face'の項参照。
+     �F�t�����L���Ȏ��́A`\subparagraph' �̐F�� `\chapter' �̔Z�x�̉�%����
+     �������̂ɂ��邩 (`'(15 40)') `YaTeX-hilit-sectioning-face' �̍��Q�ƁB
 
  -- Variable: YaTeX-use-AMS-LaTeX
-     AMS-LaTeX を使用する場合は `t' に設定する (`nil')
+     AMS-LaTeX ���g�p����ꍇ�� `t' �ɐݒ肷�� (`nil')
 
  -- Variable: YaTeX-use-LaTeX2e
-     LaTeX2e を使用する場合は `t' に設定する (`t')
+     LaTeX2e ���g�p����ꍇ�� `t' �ɐݒ肷�� (`t')
 
  -- Variable: YaTeX-template-file
-     新規ファイル作成時に自動挿入するファイル名 (`~/work/template.tex')
+     �V�K�t�@�C���쐬���Ɏ����}������t�@�C���� (`~/work/template.tex')
 
  -- Variable: YaTeX-search-file-from-top-directory
-     inputするファイルを探すときの基準ディレクトリをmainファイルのあるディ
-     レクトリにするか (`t')
+     input����t�@�C����T���Ƃ��̊�f�B���N�g����main�t�@�C���̂���f�B
+     ���N�g���ɂ��邩 (`t')
  -- Variable: YaTeX-use-font-lock
-     ソースの色づけパッケージとして font-lock を利用するかどうか
+     �\�[�X�̐F�Â��p�b�P�[�W�Ƃ��� font-lock �𗘗p���邩�ǂ���
      (`(featurep 'font-lock)')
 
  -- Variable: YaTeX-use-hilit19
-     ソースの色づけパッケージとして hilit19 を利用するかどうか(`(featurep '
-     hilit19)')
+     �\�[�X�̐F�Â��p�b�P�[�W�Ƃ��� hilit19 �𗘗p���邩�ǂ���(`(featurep
+     'hilit19)')
 
  -- Variable: YaTeX-use-italic-bold
-     italic, boldフォントを野鳥が探すかどうか (Emacs20以降なら`t')
-     font-lock利用時のみ有効。(`(featurep 'hilit19)'
+     italic, bold�t�H���g��쒹���T�����ǂ��� (Emacs20�ȍ~�Ȃ�`t')
+     font-lock���p���̂ݗL���B(`(featurep 'hilit19)'
 
  -- Variable: YaTeX-singlecmd-suffix
-     全てのmaketitle型コマンドの補完入力直後に挿入する文字列。`"{}"' など
-     がお勧め。
+     �S�Ă�maketitle�^�R�}���h�̕⊮���͒���ɑ}�����镶����B`"{}"' �Ȃ�
+     �������߁B
 
  -- Variable: YaTeX-package-alist-private
-     LaTeX2eのパッケージ名とその中に含まれるマクロのリスト。適切に設定して
-     おくと本文入力時にマクロを補完入力するとそのマクロに必要なパッケージ
-     を usepackage するか自動的に検査してくれる。していなければ 
-     \usepackage を自動追加することもできる。リストは
-             '((パッケージ名1
-                  (補完タイプ マクロのリスト……)
-                  (補完タイプ マクロのリスト……))
-               (パッケージ名2
-                  (補完タイプ マクロのリスト……)
-                  (補完タイプ マクロのリスト……))………)という形式にする。
-     補完タイプは `env, section, maketitle' のどれか。具体例は変数 
-     `YaTeX-package-alist-default'の値参照。
+     LaTeX2e�̃p�b�P�[�W���Ƃ��̒��Ɋ܂܂��}�N���̃��X�g�B�K�؂ɐݒ肵��
+     �����Ɩ{�����͎��Ƀ}�N����⊮���͂���Ƃ��̃}�N���ɕK�v�ȃp�b�P�[�W
+     �� usepackage ���邩�����I�Ɍ������Ă����B���Ă��Ȃ���� 
+     \usepackage �������ǉ����邱�Ƃ��ł���B���X�g��'((�p�b�P�[�W��1 (��
+     ���^�C�v �}�N���̃��X�g�c�c) (�⊮�^�C�v �}�N���̃��X�g�c�c)) (�p�b�P�[
+     �W��2 (�⊮�^�C�v �}�N���̃��X�g�c�c) (�⊮�^�C�v �}�N���̃��X
+     �g�c�c))�c�c�c) �Ƃ����`���ɂ���B�⊮�^�C�v�� `env, section,
+     maketitle' �̂ǂꂩ�B��̗�͕ϐ� `YaTeX-package-alist-default' �̒l
+     �Q�ƁB
 
  -- Variable: YaTeX-tabular-indentation
-     tabular/array 環境で現在行の先頭位置が表の第Nカラムのときは標準インデ
-     ント位置から N*YaTeX-tabular-indentation 桁下げたインデントにする。
+     tabular/array ���Ō��ݍs�̐擪�ʒu���\�̑�N�J�����̂Ƃ��͕W���C���f
+     ���g�ʒu���� N*YaTeX-tabular-indentation ���������C���f���g�ɂ���B
 
  -- Variable: YaTeX-noindent-env-regexp
-     別の環境内にあっても \begin{} が行頭から始まるべき環境名の正規表現。
-     verbatim環境などを指定する。
+     �ʂ̊����ɂ����Ă� \begin{} ���s������n�܂�ׂ������̐��K�\���B
+     verbatim���Ȃǂ��w�肷��B
 
  -- Variable: YaTeX-ref-default-label-string
-     \ref{} のラベル補完でラベル未設定のものに自動的に生成するラベル名の書
-     式。strftime(3)関数に似た日付ベースで指定する。利用できる書式は以下の
-     とおり。%y -> 西暦下二桁, %b -> 月の英名, %m -> 月(1〜12) %d -> 日,
-     %H -> 時, %M -> 分, %S -> 秒, %qx -> アルファベットで26進数化した 
-     yymmdd.  %qX -> アルファベットで26進数化した HHMMSS.  デフォルトは 
+     \ref{} �̃��x���⊮�Ń��x�����ݒ�̂��̂Ɏ����I�ɐ������郉�x�����̏�
+     ���Bstrftime(3)�֐��Ɏ������t�x�[�X�Ŏw�肷��B���p�ł��鏑���͈ȉ���
+     �Ƃ���B%y -> �����, %b -> ���̉p��, %m -> ��(1�`12) %d -> ��,
+     %H -> ��, %M -> ��, %S -> �b, %qx -> �A���t�@�x�b�g��26�i�������� 
+     yymmdd.  %qX -> �A���t�@�x�b�g��26�i�������� HHMMSS.  �f�t�H���g�� 
      "%H%M%S_%d%b%y"
 
  -- Variable: YaTeX-ref-generate-label-function
-     \ref{}のラベル名自動生成のときに使う関数のシンボル。デフォルトは標準
-     の YaTeX::ref-generate-label 関数が割り当ててある。引数を2つ取る関数
-     を定義して、この変数にセットするとその関数を呼んだ結果をデフォルトの
-     ラベル名候補とする。設定例:
+     \ref{}�̃��x�������������̂Ƃ��Ɏg���֐��̃V���{���B�f�t�H���g�͕W��
+     �� YaTeX::ref-generate-label �֐������蓖�ĂĂ���B������2���֐�
+     ���`���āA���̕ϐ��ɃZ�b�g����Ƃ��̊֐����Ă񂾌��ʂ��f�t�H���g��
+     ���x�������Ƃ���B�ݒ��:
             (setq YaTeX-ref-generate-label-function 'my-yatex-generate-label)
             (defun my-yatex-generate-label (command value)
               (and (string= command "caption")
@@ -1731,227 +1836,233 @@ File: yatexj, Node: All customizable variables, Next: Sample definitions, Prev: 
                     (concat command ":" value)
                   (YaTeX::ref-generate-label nil nil))))
 
+
 
 File: yatexj, Node: Sample definitions, Next: Hook variables, Prev: All customizable variables, Up: Lisp variables
 
-カスタマイズ変数設定例
+�J�X�^�}�C�Y�ϐ��ݒ��
 ----------------------
 
-  たとえば、prefix キーとして`ESC'を使用し、新たな補完候補を格納するファイ
-ルを、`~/src/emacs/yatexrc' にし、行頭の prefix をタブ文字一つに変えたいと
-きは、
+  ���Ƃ��΁Aprefix �L�[�Ƃ���`ESC'���g�p���A�V���ȕ⊮�����i�[����t�@�C
+�����A`~/src/emacs/yatexrc' �ɂ��A�s���� prefix ���^�u������ɕς�������
+���́A
 
              (setq YaTeX-prefix "\e"
                    YaTeX-user-completion-table "~/src/emacs/yatexrc"
                    YaTeX-fill-prefix "       ")
 
-を `~/.emacs' に加えます。
+�� `~/.emacs' �ɉ����܂��B
+
 
 
 File: yatexj, Node: Hook variables, Next: Hook file, Prev: Sample definitions, Up: Lisp variables
 
-hook変数
+hook�ϐ�
 --------
 
-  また、hook 変数 `yatex-mode-hook', `yatex-mode-load-hook' を用意していま
-す。すべての yatex-mode のバッファで作用させたいものは、`yatex-mode-hook' 
-に記述し、`yatex.el' をロードする時だけ作用させたいものは
-`yatex-mode-load-hook' に記述します。例えば、`outline-minor-mode' を利用す
-る場合、それぞれのバッファで `outline-minor-mode' を有効にしたいので、
-`yatex-mode-hook' を次のように設定します。
+  �܂��Ahook �ϐ� `yatex-mode-hook', `yatex-mode-load-hook' ��p�ӂ��Ă���
+���B���ׂĂ� yatex-mode �̃o�b�t�@�ō�p�����������̂́A`yatex-mode-hook' 
+�ɋL�q���A`yatex.el' �����[�h���鎞������p�����������̂�
+`yatex-mode-load-hook' �ɋL�q���܂��B�Ⴆ�΁A`outline-minor-mode' �𗘗p��
+��ꍇ�A���ꂼ��̃o�b�t�@�� `outline-minor-mode' ��L���ɂ������̂ŁA
+`yatex-mode-hook' �����̂悤�ɐݒ肵�܂��B
 
              (setq yatex-mode-hook
                    '(lambda () (outline-minor-mode t)))
 
-逆に、独自のキー定義を行いたい時などは、`yatex-mode-load-hook' を利用しま
-す。例えば、begin 型補完において、 document や、enumerate 以外の環境名もショー
-トカットキーで入れたいなどという時は、次のようにします。以下の例は、
-`[prefix] ba' で `\begin{abstract}', `\end{abstract}' を挿入します。
+
+�t�ɁA�Ǝ��̃L�[��`���s���������Ȃǂ́A`yatex-mode-load-hook' �𗘗p����
+���B�Ⴆ�΁Abegin �^�⊮�ɂ����āA document ��Aenumerate �ȊO�̊�����
+�V���[�g�J�b�g�L�[�œ��ꂽ���ȂǂƂ������́A���̂悤�ɂ��܂��B�ȉ��̗�́A
+`[prefix] ba' �� `\begin{abstract}', `\end{abstract}' ��}�����܂��B
 
              (setq yatex-mode-load-hook
                    '(lambda() (YaTeX-define-begend-key "ba" "abstract")))
 
-なお、新たなキーの定義には、関数 `YaTeX-define-key'
-`YaTeX-define-begend-key'を利用するようにしてください。
+�Ȃ��A�V���ȃL�[�̒�`�ɂ́A�֐� `YaTeX-define-key'
+`YaTeX-define-begend-key'�𗘗p����悤�ɂ��Ă��������B
+
 
 
 File: yatexj, Node: Hook file, Prev: Hook variables, Up: Lisp variables
 
-hook用ファイル
+hook�p�t�@�C��
 --------------
 
-  変数 `yatex-mode-load-hook' で定義する内容が多い時は、`yatexhks.el'とい
-うファイルを作り、その中に野鳥関連の設定を書く事で、初期化の時に自動的にロー
-ドします。
+  �ϐ� `yatex-mode-load-hook' �Œ�`������e���������́A`yatexhks.el'�Ƃ�
+���t�@�C�������A���̒��ɖ쒹�֘A�̐ݒ���������ŁA�������̎��Ɏ����I�Ƀ��[
+�h���܂��B
+
 
 
 
 File: yatexj, Node: Add-in functions, Prev: Lisp variables, Up: Customizations
 
-付加関数(アドイン関数)
+�t���֐�(�A�h�C���֐�)
 ======================
 
-  各種補完時に、環境名やコマンド名に応じたきめ細やかな補完入力機能を実現す
-るための関数を作成することができます。この関数の作成方法や、組み込み方法に
-関しては、`yatexadd.doc' をご覧ください。
+  �e��⊮���ɁA������R�}���h���ɉ��������ߍׂ₩�ȕ⊮���͋@�\��������
+�邽�߂̊֐����쐬���邱�Ƃ��ł��܂��B���̊֐��̍쐬���@��A�g�ݍ��ݕ��@��
+�ւ��ẮA`yatexadd.doc' ���������������B
+
 
 
 File: yatexj, Node: Etc, Next: Copying, Prev: Customizations, Up: Top
 
-その他
+���̑�
 ******
 
-  野鳥の標準の LaTeX コマンドの辞書には、作者が頻繁に使うものしか登録され
-ていません。これは、補完候補に使いそうもないコマンドが存在して、補完したい
-コマンドを出すまでのストローク数を増やしてしまう事を防止するためです。標準
-辞書にないコマンドも、できるだけ補完入力方式を利用し、ユーザ辞書を充実させ
-ることで、あなたの LaTeX スタイルにあった野鳥へと育っていくことでしょう。
+  �쒹�̕W���� LaTeX �R�}���h�̎����ɂ́A��҂��p�ɂɎg�����̂����o�^����
+�Ă��܂���B����́A�⊮���Ɏg���������Ȃ��R�}���h�����݂��āA�⊮������
+�R�}���h���o���܂ł̃X�g���[�N���𑝂₵�Ă��܂�����h�~���邽�߂ł��B�W��
+�����ɂȂ��R�}���h���A�ł��邾���⊮���͕����𗘗p���A���[�U�������[������
+�邱�ƂŁA���Ȃ��� LaTeX �X�^�C���ɂ������쒹�ւƈ���Ă������Ƃł��傤�B
+
 
 
 File: yatexj, Node: Copying, Next: Concept Index, Prev: Etc, Up: Top
 
-取り扱い
+��舵��
 ********
 
-  本プログラムはフリーソフトウェアです。本プログラムを使用して生じたいかな
-る結果に対しても作者は責任を負わないこととします。転載等に関しては制限いた
-しません。常識的に扱ってください。また、本プログラムに含まれるコードを利用
-すること、改造することも自由に行なって構いませんが、流用することにより契約
-締結の必要が生じる場合、私はいかなる契約も締結しません。具体的にはGPLへの
-サインはしませんので、GNUに寄贈するものを作っている場合私の作品から取り込
-んだコードを流用すると苦労するかもしれません。いかなるコード流用も拒否しま
-せんが契約締結は辞退します。
+  �{�v���O�����̓t���[�\�t�g�E�F�A�ł��B�{�v���O�������g�p���Đ�����������
+�錋�ʂɑ΂��Ă���҂͐ӔC�𕉂�Ȃ����ƂƂ��܂��B�]�ړ��Ɋւ��Ă͐�������
+���܂���B�펯�I�Ɉ����Ă��������B�܂��A�{�v���O�����Ɋ܂܂��R�[�h�𗘗p
+���邱�ƁA�������邱�Ƃ����R�ɍs�Ȃ��č\���܂��񂪁A���p���邱�Ƃɂ��_��
+�����̕K�v��������ꍇ�A���͂����Ȃ�_����������܂���B��̓I�ɂ�GPL�ւ�
+�T�C���͂��܂���̂ŁAGNU�Ɋ񑡂�����̂�����Ă���ꍇ���̍�i�����荞
+�񂾃R�[�h�𗬗p����Ƌ�J���邩������܂���B�����Ȃ�R�[�h���p�����ۂ���
+���񂪌_������͎��ނ��܂��B
 
-  苦情、希望、バグ報告、感想等は歓迎いたします。連絡は yuuji@yatex.org ま
-で(2004年1月現在)。継続的に使用してくださる方はメイリングリスト「fj野鳥の
-会」に是非加入してください。加入方法については本パッケージの `docs/qanda'
-ファイルの「その他」の章を御覧ください。
+  ���A��]�A�o�O�񍐁A���z���͊��}�������܂��B�A���� yuuji@yatex.org ��
+��(2004�N1������)�B�p���I�Ɏg�p���Ă���������̓��C�����O���X�g�ufj�쒹��
+��v�ɐ���������Ă��������B�������@�ɂ��Ă͖{�p�b�P�[�W�� `docs/qanda' 
+�t�@�C���́u���̑��v�̏͂��䗗���������B
 
-仕様は、予告なく確実に(気分次第で)変更されます:-p。
+�d�l�́A�\���Ȃ��m����(�C�������)�ύX����܂�:-p�B
 
-                                                                  広瀬雄二
+                                                                  �L���Y��
+
 
 
 File: yatexj, Node: Concept Index, Prev: Copying, Up: Top
 
-索引
+����
 ****
 
 * Menu:
 
 * ::                            Greek letter completion.  4.
 * ;:                            Image completion.       4.
+* ��[������]:                   Image completion.       4.
+* ����[������]:                 Enclose section-type command.  4.
+* ����[������]:                 large�^�⊮.            22.
+* ����[�Ђ�����]:               2�ȏ�̈������Ƃ� section�^�R�}���h.  4.
+* ����[�����ӂ�]:               Accent mark completion.  4.
+* ;���g[;������]:               Image completion.       32.
+* ��[�ނ��񂽂�]:               Image completion.       4.
+* ���[�₵�邵]:               Image completion.       4.
+* �u���b�N[�ӂ��]:           begin�^�⊮.            81.
+* �q�X�g��[�Ђ��Ƃ�]:           Cooperation with other packages.  8.
+* ������[�������낦]:           Filling.                4.
+* �₿�傤[�₿�悤]:           Intro.                  4.
+* �W�����v[������]:           view-sectioning.        42.
+* &����[&�ɂ䂤��悭]:         Intelligent newline.    4.
+* �ݒ��[���Ă��ꂢ]:         Sample definitions.     4.
+* �����⊮[�������ق���]:       Arbitrary completion.   4.
+* �����߂�[�Ƃ����߂�]:       begin�^�⊮.            81.
+* �ċA�⊮[�������ق���]:       Recursive completion.   4.
+* ���[�U����[�䂤��������]:     begin�^�⊮.            71.
+* �_���K�w[���肩������]:     view-sectioning.        42.
+* �����͂ǂ�?[�����͂Ƃ�?]:     What column.            4.
+* ���G�`���c�[���N��[�����������邫�Ƃ�]: ���G�`���c�[���N��.  4.
+* ���̐擪��[���񂫂悤�̂���Ƃ���]: ����P�ʂƂ����W�����v.  7.
+* ���̖�����[���񂫂悤�̂܂Ђ�]: ����P�ʂƂ����W�����v.  7.
+* �����}�[�N[���񂫂悤���܂���]: ����P�ʂƂ����W�����v.  7.
+* �J�X�^�}�C�Y[�������܂���]:   Customizations.         4.
+* �L�[�A�T�C��[������������]:   Customizations.         4.
+* �������[�h[��������������]:   Image completion.       4.
+* �C���X�g�[��[���񂷂Ƃ���]:   Installation.           4.
+* �^�C�v�Z�b�^[�����ӂ���]:   Invocation.             4.
+* �v�������[�A[�ӂ�Ђ䂤��]:   Invocation.             4.
+* �A�E�g���C��[�����Ƃ炢��]:   view-sectioning.        4.
+* �����̌���ς���[�Ђ������̂�������������]: 2�ȏ�̈������Ƃ� section�^�R�}���h.  24.
+* �A�N�Z���g�L���⊮[��������Ƃ������ق���]: Accent mark completion.  4.
+* �J�X�^�}�C�Y�ϐ��ꗗ[�������܂����ւ񂷂��������]: All customizable variables.  4.
+* �����̕⊮[���񂫂悤�߂��̂ق���]: begin�^�⊮.    4.
+* �G���[�C��[���炠���䂤����]: Calling typesetter.     4.
+* �^�C�v�Z�b�^�N��[�����ӂ������Ƃ�]: Calling typesetter.  4.
+* �^�C�v�Z�b�g�G���[[�����ӂ��Ƃ��炠]: Calling typesetter.  4.
+* �����̕ύX[���񂫂悤�߂��̂ւ񂱂�]: Changing LaTeX command.  20.
+* ���[�h�؂�ւ�[�����Ƃ��肩��]: Changing mode of YaTeX.  4.
+* �^�C�v�Z�b�^�̎g������[�����ӂ����̂����킯]: Changing typesetter.  12.
+* �N������R�}���h��ς���[���Ƃ����邱�܂�Ƃ�������]: Changing typesetter.  7.
+* �R�����g�A�E�g[���߂�Ƃ�����]: Commenting out.       4.
+* ���̑��̃R�}���h����[���̂��̂��܂�Ƃ�������]: Controlling which command to invoke.  4.
+* ���p�b�P�[�W�Ƃ̘A�g[���͂������Ƃ̂�񂯂�]: Cooperation with other packages.  4.
+* �R�}���h�q�X�g��[���܂�ƂЂ��Ƃ�]: Cooperation with other packages.  8.
+* �J�[�\���W�����v[�������邵����]: Cursor jump.      4.
+* %#�L�@���̂̕ҏW[%#���ق��������̂ւ񂵂䂤]: Editing %# notation.  4.
+* �p���O���t�̌�����[�͂炭��ӂ̂������낦]: Filling.  47.
+* �̈挈��K��[��悤�������Ă�������]: Fix region for typesetting.  25.
+* �����t�@�C���̕ҏW[�Ȃ����ӂ�����̂ւ񂵂䂤]: Fix region for typesetting.  34.
+* �Œ�̈�̃^�C�v�Z�b�g[���Ă���悤�����̂����ӂ���]: Fix region for typesetting.  4.
+* �M���V�������⊮[���肵������ق���]: Greek letter completion.  4.
+* �C���[�W�⊮[���߂����ق���]: Image completion.       4.
+* �����L���C���[�W�⊮[�����������������߂����ق���]: Image completion.  4.
+* ���̃t�@�C���̎蒼��[�ق��̂ӂ�����̂ĂȂ���]: Includeonly.  11.
+* �C���N���[�h�\��[���񂭂邤�Ƃ�������]: Inclusion hierarchy browser.  4.
+* ���܂������s[���܂����������悤]: Intelligent newline.  4.
+* �v�����g�A�E�g[�ӂ��Ƃ�����]: Invocation.           4.
+* ���̍폜[���񂫂悤�̂�������]: Killing LaTeX command.  6.
+* ���x����������[��ւ邵�Ƃ���������]: label-generation.  4.
+* �t�H���g�w��q[�ӂ���Ƃ��Ă���]: large�^�⊮.        18.
+* �����T�C�Y�w��q[�������������Ă���]: large�^�⊮.    18.
+* ���[�J������[�남���邵����]: Local dictionary.       4.
+* �ύX/�폜[�ւ񂱂�/��������]: Modifying/Deleting.     4.
+* �O���[�o���w���v[���남�͂�ւ��]: Online help.      16.
+* �I�����C���w���v[����炢��ւ��]: Online help.      4.
+* �L�[���[�h����[�����킠�Ƃ��񂳂�]: Online help.      4.
+* �v���C�x�[�g�w���v[�ӂ炢�ւ��Ƃւ��]: Online help.  16.
+* ���̓t�@�C������[�ɂ䂤��悭�ӂ�����ӂ񂩂�]: Splitting input files.  11.
+* �Z�N�V������؂�ꗗ�o�b�t�@[��������񂭂��肢�����͂ӂ�]: view-sectioning.  18.
+* �Z�N�V������؂�[��������񂭂���]: view-sectioning.  42.
+* ���݂̃J�����\��[���񂳂��̂���ނЂ悤��]: What column.  23.
 * apropos:                      Online help.            4.
 * autoload:                     Installation.           4.
 * auto-mode-alist:              Installation.           4.
-* グローバルヘルプ[くろおはるへるふ]: Online help.      16.
-* 引数[ひきすう]:               2個以上の引数をとる section型コマンド.  4.
-* 引数の個数を変える[ひきすうのこすうをかえる]: 2個以上の引数をとる section型コマンド.  24.
-* おまかせ改行[おまかせかいきよう]: Intelligent newline.  4.
-* Σ[しくま]:                   Image completion.       4.
-* 欧文[おうふん]:               Accent mark completion.  4.
-* ここはどこ?[ここはとこ?]:     What column.            4.
-* コメントアウト[こめんとあうと]: Commenting out.       4.
-* 括る[くくる]:                 Enclose section-type command.  4.
-* 括る[くくる]:                 large型補完.            21.
-* お絵描きツール起動[おえかきつうるきとう]: お絵描きツール起動.  4.
-* コマンドヒストリ[こまんとひすとり]: Cooperation with other packages.  8.
-* 環境名の補完[かんきようめいのほかん]: begin型補完.    4.
-* 環境名の変更[かんきようめいのへんこう]: Changing LaTeX command.  20.
-* 環境の先頭へ[かんきようのせんとうへ]: 環境を単位としたジャンプ.  7.
-* 環境の末尾へ[かんきようのまつひへ]: 環境を単位としたジャンプ.  7.
-* 環境の削除[かんきようのさくしよ]: Killing LaTeX command.  6.
-* 環境をマーク[かんきようをまあく]: 環境を単位としたジャンプ.  7.
-* 起動するコマンドを変える[きとうするこまんとをかえる]: Changing typesetter.  7.
-* %#記法自体の編集[%#きほうしたいのへんしゆう]: Editing %# notation.  4.
-* キーアサイン[きいあさいん]:   Customizations.         4.
-* 桁揃え[けたそろえ]:           Filling.                4.
-* セクション区切り一覧バッファ[せくしよんくきりいちらんはつふあ]: view-sectioning.  18.
-* セクション区切り[せくしよんくきり]: view-sectioning.  42.
-* ジャンプ[しやんふ]:           view-sectioning.        42.
-* 固定領域のタイプセット[こていりよういきのたいふせつと]: Fix region for typesetting.  4.
-* 現在のカラム表示[けんさいのからむひようし]: What column.  22.
-* カスタマイズ[かすたまいす]:   Customizations.         4.
-* カスタマイズ変数一覧[かすたまいすへんすういちらん]: All customizable variables.  4.
-* イメージ補完[いめえしほかん]: Image completion.       4.
-* モード切り替え[もうときりかえ]: Changing mode of YaTeX.  4.
-* 他のファイルの手直し[ほかのふあいるのてなおし]: Includeonly.  11.
-* 他パッケージとの連携[たはつけえしとのれんけい]: Cooperation with other packages.  4.
-* 長いファイルの編集[なかいふあいるのへんしゆう]: Fix region for typesetting.  34.
-* やちょう[やちよう]:           Intro.                  4.
-* 設定例[せつていれい]:         Sample definitions.     4.
 * %#BEGIN:                      Fix region for typesetting.  4.
-* begin型補完[beginかたほかん]: begin型補完.            4.
-* 再帰補完[さいきほかん]:       Recursive completion.   4.
-* ユーザ辞書[ゆうさししよ]:     begin型補完.            71.
-* &入力[&にゆうりよく]:         Intelligent newline.    4.
-* 入力ファイル分割[にゆうりよくふあいるふんかつ]: Splitting input files.  11.
-* ∞[むけんたい]:               Image completion.       4.
-* 先回りusepackage[さきまわり]: Usepackage cheker.      4.
-* ;自身[;ししん]:               Image completion.       31.
-* アウトライン[あうとらいん]:   view-sectioning.        4.
-* エラー修正[えらあしゆうせい]: Calling typesetter.     4.
-* ラベル自動生成[らへるしとうせいせい]: label-generation.  4.
-* ギリシャ文字補完[きりしやもしほかん]: Greek letter completion.  4.
-* 文字サイズ指定子[もしさいすしていし]: large型補完.    17.
-* 閉じ込める[としこめる]:       begin型補完.            81.
-* 複雑なtabular[ふくさつなtabular]: What column.        4.
-* 勝手にincludeonly[かつてにincludeonly]: Includeonly.  4.
-* 変更/削除[へんこう/さくしよ]: Modifying/Deleting.     4.
-* カーソルジャンプ[かあそるしやんふ]: Cursor jump.      4.
-* 矢印[やしるし]:               Image completion.       4.
-* ローカル辞書[ろおかるししよ]: Local dictionary.       4.
-* 領域決定規則[りよういきけつていきそく]: Fix region for typesetting.  25.
-* キーワード検索[きいわあとけんさく]: Online help.      4.
-* 随時補完[すいしほかん]:       Arbitrary completion.   4.
-* 論理階層[ろんりかいそう]:     view-sectioning.        42.
-* 出力開始ページ[しゆつりよくかいしへえし]: Print out.  9.
-* 出力終了ページ[しゆつりよくしゆうりようへえし]: Print out.  9.
-* パラグラフの桁揃え[はらくらふのけたそろえ]: Filling.  46.
-* ヒストリ[ひすとり]:           Cooperation with other packages.  8.
-* インストール[いんすとおる]:   Installation.           4.
-* アクセント記号補完[あくせんときこうほかん]: Accent mark completion.  4.
-* オンラインヘルプ[おんらいんへるふ]: Online help.      4.
-* インクルード構造[いんくるうとこうそう]: Inclusion hierarchy browser.  4.
-* 数式記号イメージ補完[すうしききこういめえしほかん]: Image completion.  4.
-* 数式モード[すうしきもおと]:   Image completion.       4.
-* フォント指定子[ふおんとしていし]: large型補完.        17.
-* ブロック[ふろつく]:           begin型補完.            81.
-* タイプセッタ起動[たいふせつたきとう]: Calling typesetter.  4.
-* タイプセッタ[たいふせつた]:   Invocation.             4.
-* タイプセットエラー[たいふせつとえらあ]: Calling typesetter.  4.
-* タイプセッタの使い分け[たいふせつたのつかいわけ]: Changing typesetter.  12.
-* プライベートヘルプ[ふらいへえとへるふ]: Online help.  16.
-* プリントアウト[ふりんとあうと]: Invocation.           4.
-* プレヴューア[ふれひゆうあ]:   Invocation.             4.
-* ページ確認省略lpr起動[へえしかくにんしようりやくlprきとう]: Print out.  12.
+* begin�^�⊮[begin�����ق���]: begin�^�⊮.            4.
 * C-c:                          Invocation.             4.
 * Demacs:                       Intro.                  4.
 * .emacs:                       Installation.           4.
 * %#END:                        Fix region for typesetting.  4.
-* end補完[endほかん]:           end補完.                4.
+* end�⊮[end�ق���]:           end�⊮.                4.
 * ghostview:                    Splitting input files.  16.
 * gmhist:                       Cooperation with other packages.  8.
-* hook変数[hookへんすう]:       Hook variables.         4.
+* hook�ϐ�[hook�ւ񂷂�]:       Hook variables.         4.
+* �o�͏I���y�[�W[�����悭���䂤��悤�ւ���]: Print out.  9.
 * includeonly:                  Includeonly.            4.
 * Install:                      Installation.           4.
-* itemなどの桁揃え[itemなとのけたそろえ]: Filling.      8.
+* item�Ȃǂ̌�����[item�ȂƂ̂������낦]: Filling.      8.
+* �o�͊J�n�y�[�W[�����悭�������ւ���]: Print out.  9.
 * jlatex:                       Invocation.             4.
-* large型補完[largeかたほかん]: large型補完.            4.
+* large�^�⊮[large�����ق���]: large�^�⊮.            4.
 * LaTeX:                        Intro.                  4.
 * leftarrow:                    Image completion.       4.
 * lpr format:                   lpr format.             4.
-* lprふぉーまっと[lprふおおまつと]: lpr format.         4.
-* lprフォーマット[lprふおおまつと]: lpr format.         4.
-* lprフォーマットの変更[lprふおおまつとのへんこう]: Editing %# notation.  18.
-* maketitle型補完[maketitleかたほかん]: maketitle型補完.  4.
-* M-C-@:                        環境を単位としたジャンプ.  7.
-* M-C-a:                        環境を単位としたジャンプ.  7.
-* M-C-e:                        環境を単位としたジャンプ.  7.
+* lpr�t�H�[�}�b�g�̕ύX[lpr�ӂ����܂Ƃ̂ւ񂱂�]: Editing %# notation.  18.
+* lpr�ӂ��[�܂���[lpr�ӂ����܂�]: lpr format.         4.
+* lpr�t�H�[�}�b�g[lpr�ӂ����܂�]: lpr format.         4.
+* maketitle�^�⊮[maketitle�����ق���]: maketitle�^�⊮.  4.
+* M-C-@:                        ����P�ʂƂ����W�����v.  7.
+* M-C-a:                        ����P�ʂƂ����W�����v.  7.
+* M-C-e:                        ����P�ʂƂ����W�����v.  7.
 * min-out:                      Cooperation with other packages.  17.
-* M-q:                          Filling.                46.
+* M-q:                          Filling.                47.
 * Mule:                         Intro.                  4.
-* NTT-jTeX[えぬていいていいしえいてつく]: Filling.      16.
+* �����includeonly[���Ă�includeonly]: Includeonly.  4.
+* NTT-jTeX[���ʂĂ����Ă����������Ă�]: Filling.      15.
 * platex:                       Invocation.             4.
 * prefix ,:                     Commenting out.         4.
 * prefix .:                     Commenting out.         4.
@@ -1961,93 +2072,97 @@ File: yatexj, Node: Concept Index, Prev: Copying, Up: Top
 * prefix ?:                     Online help.            4.
 * prefix &:                     What column.            4.
 * prefix a:                     Accent mark completion.  4.
-* prefix b:                     begin型補完.            4.
+* prefix b:                     begin�^�⊮.            4.
 * prefix c:                     Modifying/Deleting.     4.
 * prefix d:                     Inclusion hierarchy browser.  4.
-* prefix e:                     end補完.                4.
+* prefix e:                     end�⊮.                4.
 * prefix g:                     Cursor jump.            4.
 * prefix i:                     Filling.                8.
 * prefix k:                     Modifying/Deleting.     4.
 * prefix key:                   Invocation.             4.
-* prefix l:                     large型補完.            4.
-* prefix m:                     maketitle型補完.        4.
-* prefix s:                     section型補完.          4.
+* prefix l:                     large�^�⊮.            4.
+* prefix m:                     maketitle�^�⊮.        4.
+* prefix s:                     section�^�⊮.          4.
 * prefix SPC:                   Arbitrary completion.   4.
 * prefix w:                     Changing mode of YaTeX.  4.
-* prefixキー変更[prefixきいへんこう]: Lisp variables.   4.
-* section型補完[sectionかたほかん]: section型補完.      4.
+* prefix�L�[�ύX[prefix�����ւ񂱂�]: Lisp variables.   4.
+* �y�[�W�m�F�ȗ�lpr�N��[�ւ��������ɂ񂵂悤��₭lpr���Ƃ�]: Print out.  12.
+* section�^�⊮[section�����ق���]: section�^�⊮.      4.
+* ���G��tabular[�ӂ�����tabular]: What column.        4.
+* ����usepackage[�����܂��]: Usepackage cheker.      4.
 * YaTeX-help-file:              Online help.            16.
 * YaTeX-help-file-private:      Online help.            16.
 * YaTeX-item-regexp:            Filling.                20.
-* YaTeX-math-sign-alist-private: Image completion.      56.
+* YaTeX-math-sign-alist-private: Image completion.      57.
 * yatex-mode-hook:              Hook variables.         4.
 * yatex-mode-load-hook:         Hook variables.         4.
-* YaTeX-nervous:                Local dictionary.       21.
+* YaTeX-nervous:                Local dictionary.       22.
 * .yatexrc:                     Local dictionary.       4.
 
 
 
 
 Tag table:
-Node: Top153
-Node: Intro1496
-Node: Terminology2066
-Node: Main features3186
-Node: Installation5035
-Node: Invocation7121
-Node: Calling typesetter8100
-Node: Calling previewer10257
-Node: Print out10854
-Node: %#notation11299
-Node: Changing typesetter11866
-Node: Splitting input files12255
-Node: Fix region for typesetting14160
-Node: lpr format15905
-Node: Editing %# notation17305
-Node: Completion18057
-Node: begin型補完18701
-Node: section型補完22831
-Node: 2個以上の引数をとる section型コマンド24617
-Node: Enclose section-type command26115
-Node: Recursive completion26515
-Node: view-sectioning27067
-Node: label-generation29528
-Node: large型補完30273
-Node: maketitle型補完31400
-Node: Arbitrary completion31882
-Node: end補完32488
-Node: Accent mark completion33125
-Node: Image completion33856
-Node: Greek letter completion37390
-Node: Local dictionary38385
-Node: Commenting out39625
-Node: Cursor jump41857
-Node: 対応オブジェクトへのジャンプ42231
-Node: お絵描きツール起動44128
-Node: メインファイルへのジャンプ46093
-Node: 環境を単位としたジャンプ46762
-Node: 最後の補完位置へのジャンプ47426
-Node: Modifying/Deleting47904
-Node: Changing LaTeX command48558
-Node: Killing LaTeX command49574
-Node: Filling51007
-Node: Includeonly53476
-Node: What column54565
-Node: Intelligent newline55914
-Node: Usepackage cheker57849
-Node: Changing mode of YaTeX58630
-Node: Online help59777
-Node: Inclusion hierarchy browser61920
-Node: Cooperation with other packages64375
-Node: Customizations65133
-Node: Lisp variables65619
-Node: All customizable variables66653
-Node: Sample definitions77680
-Node: Hook variables78259
-Node: Hook file79619
-Node: Add-in functions79954
-Node: Etc80372
-Node: Copying81013
-Node: Concept Index82458
+Node: Top257
+Node: Intro1311
+Node: Terminology1614
+Node: Main features2249
+Node: Installation3282
+Node: Invocation4500
+Node: Calling typesetter5319
+Node: Calling previewer6556
+Node: Print out6872
+Node: %#notation7138
+Node: Changing typesetter7566
+Node: Splitting input files7824
+Node: Fix region for typesetting8776
+Node: lpr format9677
+Node: Controlling which command to invoke10486
+Node: Editing %# notation10887
+Node: Completion11344
+Node: begin�^�⊮11817
+Node: section�^�⊮14401
+Node: 2�ȏ�̈������Ƃ� section�^�R�}���h15496
+Node: Enclose section-type command16314
+Node: Recursive completion16551
+Node: view-sectioning16857
+Node: label-generation18053
+Node: large�^�⊮18402
+Node: maketitle�^�⊮18982
+Node: Arbitrary completion19281
+Node: end�⊮19594
+Node: Accent mark completion19936
+Node: Image completion20361
+Node: Greek letter completion22178
+Node: Local dictionary22638
+Node: Commenting out23243
+Node: Cursor jump24402
+Node: �Ή��I�u�W�F�N�g�ւ̃W�����v24639
+Node: ���G�`���c�[���N��25627
+Node: ���C���t�@�C���ւ̃W�����v26547
+Node: ����P�ʂƂ����W�����v26883
+Node: �Ō�̕⊮�ʒu�ւ̃W�����v27240
+Node: Modifying/Deleting27477
+Node: Changing LaTeX command27883
+Node: Killing LaTeX command28434
+Node: Filling29305
+Node: Includeonly30634
+Node: What column31195
+Node: Intelligent newline31974
+Node: Usepackage cheker33007
+Node: Changing mode of YaTeX33433
+Node: Online help34009
+Node: Inclusion hierarchy browser34985
+Node: Cooperation with other packages36263
+Node: Customizations36718
+Node: Lisp variables37015
+Node: All customizable variables37622
+Node: Sample definitions44923
+Node: Hook variables45357
+Node: Hook file46251
+Node: Add-in functions46457
+Node: Etc46684
+Node: Copying46968
+Node: Concept Index47599
 
 End tag table
