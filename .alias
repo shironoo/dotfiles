@@ -1,9 +1,6 @@
 #alias
 
-alias ls='ls --color=auto'
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
+alias ls='ls -G'
 
 # some more ls aliases
 alias ll='ls -alhF'
@@ -26,9 +23,6 @@ alias tree="tree -NC"
 
 alias up="cd .."
 alias cl="clear"
-
-alias pbcopy="xsel -ib"
-alias pbpaste="xsel -ob"
 
 alias pu="pushd"
 alias po="popd"

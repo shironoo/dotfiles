@@ -12,7 +12,7 @@ setopt prompt_subst # 便利なプロント
 bindkey -e # emacsライクなキーバインド
 
 #補完候補に色をつける
-eval `dircolors -b`
+eval `gdircolors -b`
 zstyle ':completion:*' list-colors di=34 fi=0
 
 #export LANG=ja_JP.UTF-8 # 日本語環境
