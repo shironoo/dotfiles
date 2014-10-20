@@ -1,16 +1,3 @@
-# intel compiler
-if [ -f /opt/intel/composerxe-2011.4.191/bin/iccvars.sh ]; then
-   . /opt/intel/composerxe-2011.4.191/bin/iccvars.sh intel64
-fi
-
-# python
-if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
-   #export PYTHONPATH=/usr/local/lib/python2.6/dist-packages/
-   #export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/
-   export WORKON_HOME=${HOME}/venvs
-   source /usr/local/bin/virtualenvwrapper.sh
-fi
-
 # syntax highlight
 if [ -f /usr/share/source-highlight/src-hilite-lesspipe.sh ]; then
    export LESS='-R'
@@ -22,8 +9,10 @@ export PIP_DOWNLOAD_CACHE=${HOME}/.pip_cache
 export PIP_RESPECT_VIRTUALENV=true
 PIP_REQUIRE_VIRTUALENV=true
 
+# rbenv
+export PATH="$HOME/.rbenv/bin:$PATH"
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
 # z
 export _Z_CMD=j
 source ~/.zsh.d/z/z.sh
-export PATH="$HOME/.rbenv/bin:$PATH"
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi

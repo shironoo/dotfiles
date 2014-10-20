@@ -7,4 +7,6 @@
 .emacs.d/url/
 .emacs.d/tramp
 .emacs.d/anything-c-adaptive-history
+.emacs.d/.cask
 .DS_Store
+
