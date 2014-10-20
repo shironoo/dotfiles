@@ -1,3 +1,6 @@
+# set LS_COLORS
+eval $(gdircolors -b)
+
 # syntax highlight
 if [ -f /usr/share/source-highlight/src-hilite-lesspipe.sh ]; then
    export LESS='-R'
