@@ -5,7 +5,6 @@ setopt transient_rprompt
 setopt prompt_subst
 bindkey -e
 
-eval `gdircolors -b`
 zstyle ':completion:*' list-colors di=34 fi=0
 
 export LANG=en_US.UTF-8
