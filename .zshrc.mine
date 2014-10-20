@@ -25,3 +25,5 @@ PIP_REQUIRE_VIRTUALENV=true
 # z
 export _Z_CMD=j
 source ~/.zsh.d/z/z.sh
+export PATH="$HOME/.rbenv/bin:$PATH"
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi

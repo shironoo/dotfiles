@@ -25,4 +25,4 @@
                (concat YaTeX-prefix "<") 'YaTeX-uncomment-region)
 (define-key YaTeX-mode-map "\C-q" 'YaTeX-fill-paragraph)
 ))
-(setq YaTeX-fill-column 120)
+(setq YaTeX-fill-column nil)

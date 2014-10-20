@@ -1,3 +1,21 @@
 [submodule ".zsh.d/z"]
 	path = .zsh.d/z
 	url = git://github.com/knu/z
+[submodule ".emacs.d/elisp/emacs-epc"]
+	path = .emacs.d/elisp/emacs-epc
+	url = git://github.com/kiwanami/emacs-epc.git
+[submodule ".emacs.d/elisp/emacs-deferred"]
+	path = .emacs.d/elisp/emacs-deferred
+	url = git://github.com/kiwanami/emacs-deferred.git
+[submodule ".emacs.d/elisp/jedi"]
+	path = .emacs.d/elisp/jedi
+	url = git://github.com/davidhalter/jedi.git
+[submodule ".emacs.d/elisp/python-epc"]
+	path = .emacs.d/elisp/python-epc
+	url = git://github.com/tkf/python-epc.git
+[submodule ".emacs.d/elisp/emacs-jedi"]
+	path = .emacs.d/elisp/emacs-jedi
+	url = git://github.com/tkf/emacs-jedi.git
+[submodule ".emacs.d/elisp/emacs-ctable"]
+	path = .emacs.d/elisp/emacs-ctable
+	url = git://github.com/kiwanami/emacs-ctable.git

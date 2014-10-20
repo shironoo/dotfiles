@@ -1,10 +1,6 @@
 # PROMPT
-#PS1="[@${HOST%%.*} %1~]%(!.#.$) " # この辺は好み
-
-PROMPT='%n@%m:%(5~,%-2~/.../%2~,%~)%(!.#.$) '
-#PROMPT="%{[31m%}%/%%%{[m%} " ; color
-#PROMPT="%{[36m%n@%m:%(5~,%-2~/.../%2~,%~)%(!.#.$)[m %}"
-
+autoload -U colors && colors
+PROMPT="%{$fg_bold[red]%}%n@%m%{$reset_color%}:%{$fg_bold[blue]%}%2~%{$reset_color%}%# "
 
 #RPROMPT="%T" # 右側に時間を表示する
 setopt transient_rprompt # 右側まで入力がきたら時間を消す

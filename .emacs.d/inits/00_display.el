@@ -13,7 +13,7 @@
 ;(menu-bar-mode -1)
 
 ;; ツールバーを表示しない
-(tool-bar-mode 0)
+(if window-system (tool-bar-mode 0))
 
 ;; タイトルをファイル名に
 (setq frame-title-format "%b")
